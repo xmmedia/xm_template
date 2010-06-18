@@ -1,0 +1,1 @@
+<input type="submit" name="<?= get('name', $model) ?>" value="<?= get('value', $model) ?>"/>
