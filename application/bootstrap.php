@@ -80,6 +80,7 @@ Kohana::modules(array(
     'jelly'             => MODPATH.'jelly',             // Jelly ORM
     'jelly-group-auth'  => MODPATH.'jelly-group-auth',  // Jelly group-based authentication plug-in
     'auth'              => MODPATH.'auth',              // Authorization
+    'claero-admin'      => MODPATH.'claero-admin',      // Claero administration module
 	));
 
 Kohana::$log->attach(new FirePHP_Log_File(APPPATH.'logs'));
