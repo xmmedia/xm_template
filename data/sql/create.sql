@@ -13,9 +13,7 @@ CREATE TABLE IF NOT EXISTS `roles` (
 INSERT INTO `roles`
     (`id`, `name`, `description`)
 VALUES
-    (1, 'Login', 'Login privileges, granted after account confirmation'),
-    (2, 'Edit Groups', 'Can edit groups and roles they have.'),
-    (3, 'Edit Users', 'Can edit users and groups they belong to.');
+    (1, 'Login', 'Login privileges, granted after account confirmation');
 
 -- Groups
 
@@ -32,7 +30,7 @@ INSERT INTO `groups`
     (`id`, `name`, `description`)
 VALUES
     (1, 'Superuser', 'Superuser.  Can do anything without needing specific roles.'),
-    (2, 'User', 'Basic user.  May log in.'),
+    (2, 'User', 'Basic user.  May log in.');
 
 -- Users
  
@@ -50,9 +48,9 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- Default administrative user, password "admin1" with default salt
 
 INSERT INTO `users`
-    (`id`, `email`, `password`, `name` )
+    (`id`, `email`, `password` )
 VALUES
-    (1, 'admin@admin.com', 'af47bcfd2b57fb330b72b117250a011a23c49d7a3f32f5fb9a', 'Admin');
+    (1, 'admin@admin.com', 'af47bcfd2b57fb330b72b117250a011a23c49d7a3f32f5fb9a');
 
 -- Session tokens for users
 
