@@ -13,7 +13,9 @@ CREATE TABLE IF NOT EXISTS `roles` (
 INSERT INTO `roles`
     (`id`, `name`, `description`)
 VALUES
-    (1, 'Login', 'Login privileges, granted after account confirmation');
+    (1, 'Login', 'Login privileges, granted after account confirmation'),
+    (2, 'Edit Users', 'Edit users and the groups they belong to.'),
+    (3, 'Manage Groups', 'Edit groups and the roles they have.');
 
 -- Groups
 
@@ -30,7 +32,8 @@ INSERT INTO `groups`
     (`id`, `name`, `description`)
 VALUES
     (1, 'Superuser', 'Superuser.  Can do anything without needing specific roles.'),
-    (2, 'User', 'Basic user.  May log in.');
+    (2, 'User', 'Basic user.  May log in.'),
+    (3, 'Director', 'User/Group administrator.');
 
 -- Users
  
@@ -48,9 +51,9 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- Default administrative user, password "admin1" with default salt
 
 INSERT INTO `users`
-    (`id`, `email`, `password` )
+    (`id`, `email`, `password`, `name` )
 VALUES
-    (1, 'admin@admin.com', 'af47bcfd2b57fb330b72b117250a011a23c49d7a3f32f5fb9a');
+    (1, 'admin@admin.com', 'af47bcfd2b57fb330b72b117250a011a23c49d7a3f32f5fb9a', 'Admin');
 
 -- Session tokens for users
 
@@ -82,7 +85,10 @@ CREATE TABLE `groups_roles` (
 INSERT INTO `groups_roles`
     (`group_id`, `role_id`)
 VALUES
-    (2, 1); -- Users need Login role
+    (2, 1), -- Users need Login role
+    (3, 1), -- Director must be able to log in,
+    (3, 2), --   edit users, and
+    (3, 3); --   edit groups.
 
 -- What groups users are in
 

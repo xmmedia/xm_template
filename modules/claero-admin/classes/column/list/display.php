@@ -22,7 +22,15 @@ class Column_List_Display extends Column_List {
      * @param object $record The record to display this column from.
      */
     public function value($record) {
-        return $record->{$this->property_name};
+        // Collections are displayed a little differently
+        if (is_object($record->{$this->property_name}) && 'Jelly_Collection' == get_class($record->{$this->property_name})) {
+            $value = 'Collection';
+        }
+        else {
+            $value = $record->{$this->property_name};
+        }
+        
+        return $value;
     }
     
     /**

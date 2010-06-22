@@ -17,11 +17,9 @@ class AdminOptions_Groups extends AdminOptions_Default {
         $this->list_columns = array(
             'name'          => new Column_List_Display('name'),
             'description'   => new Column_List_Display('description'),
-            'edit'          => new Column_List_Action('edit', $url_prefix),
-            'delete'        => new Column_List_Action('delete', $url_prefix, array(
-                                        'anchor_text' => '<a href="' . $url_prefix . 'delete/{id}"><img src="/images/icons/delete.png" /></a>'
-                                    )
-                                ),
+            'roles'         => new Column_List_Display_Collection('roles'),
+            'edit'          => new Column_List_Action_Image('edit', $url_prefix, array('source' => '/images/icons/page_white_edit.png')),
+            'delete'        => new Column_List_Action_Image('delete', $url_prefix),
         );
     }
 }
