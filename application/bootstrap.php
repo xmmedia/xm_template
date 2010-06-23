@@ -1,5 +1,23 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
+//-- Identify environment -----------------------------------------------------
+
+define('ENVIRONMENT_LOCAL', 'local');
+define('ENVIRONMENT_STORM6', 'storm6');
+
+switch ($_SERVER['SERVER_NAME']) {
+    // Running on storm6
+    case 'template4.claero.com':
+        define('ENVIRONMENT', ENVIRONMENT_STORM6);
+    break;
+    
+    // Running on local machine
+    case 'template4':
+    default:
+        define('ENVIRONMENT', ENVIRONMENT_LOCAL);
+    break;
+}
+
 //-- Environment setup --------------------------------------------------------
 
 /**
