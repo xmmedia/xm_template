@@ -2,23 +2,6 @@
 
 class Controller_Cadmin extends Controller_Template {
 	/**
-     * Display a list for the current model.
-     */
-    public function action_index($model, $action = null, $id = null) {
-		echo "Model: $model - Y: $action - ID: $id";
-		exit;
-		
-        $groups = Jelly::select(Inflector::singular($model))->execute();
-        
-        $this->template->content = View::factory(
-            'admin/groups/index',
-            array(
-                'groups' => $groups
-            )
-        );
-	}
-	
-	/**
 	 * Route the admin action.
 	 *
 	 * @param string  $model  The model to operate on.
