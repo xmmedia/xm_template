@@ -84,21 +84,17 @@ Kohana::$config->attach(new Kohana_Config_File);
 
 /**
  * Enable modules. Modules are referenced by a relative or absolute path.
+ * Order matters.
  */
 Kohana::modules(array(
-    'claero'            => MODPATH.'claero',            // Claero Common
-	// 'codebench'      => MODPATH.'codebench',         // Benchmarking tool
+    'claero-common'     => MODPATH.'claero-common',     // Claero Common
 	'database'          => MODPATH.'database',          // Database access
-	// 'image'          => MODPATH.'image',             // Image manipulation
-	// 'orm'            => MODPATH.'orm',               // Object Relationship Mapping
-	// 'pagination'     => MODPATH.'pagination',        // Paging of results
-	// 'userguide'      => MODPATH.'userguide',         // User guide and API documentation
     'firephp'           => MODPATH.'firephp',           // FirePHP library
     'kform'             => MODPATH.'kform',             // KForm form generation library
     'jelly'             => MODPATH.'jelly',             // Jelly ORM
-    'jelly-group-auth'  => MODPATH.'jelly-group-auth',  // Jelly group-based authentication plug-in
+    'jelly-group-auth'  => MODPATH.'jelly-group-auth',  // Jelly group-based authentication plug-in (must be included before auth)
     'auth'              => MODPATH.'auth',              // Authorization
-    'claero-admin'      => MODPATH.'claero-admin',      // Claero administration module
+    'claero-admin'      => MODPATH.'claero-admin',      // Claero administration module (must be included after claero-common)
 	));
 
 Kohana::$log->attach(new FirePHP_Log_File(APPPATH.'logs'));
@@ -136,7 +132,6 @@ echo Request::instance()
 	->execute()
 	->send_headers()
 	->response;
-
 
 FirePHP_Profiler::instance()
 	->group('KO3 FirePHP Profiler Results:')
