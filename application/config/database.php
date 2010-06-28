@@ -1,7 +1,7 @@
 <?php defined('SYSPATH') OR die('No direct access allowed.');
 
-switch (ENVIRONMENT) {
-    case ENVIRONMENT_LOCAL:
+switch (Kohana::config('environment.server')) {
+    case 'local':
         return array (
             'default' => array (
                 'type'       => 'mysql',
@@ -20,7 +20,7 @@ switch (ENVIRONMENT) {
         );
     break;
 
-    case ENVIRONMENT_STORM6:
+    case 'storm6':
        return array (
             'default' => array (
                 'type'       => 'mysql',
