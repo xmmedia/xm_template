@@ -20,6 +20,7 @@ class AdminOptions_Groups extends AdminOptions_Default {
         
         $url_prefix = $this->url_base . $this->url_model_name . "/";
         
+        // Have to specify what kind of list fields to include.
         $this->list_fields = array(
             'name'          => new Field_List_Display('name'),
             'description'   => new Field_List_Display('description'),
@@ -28,8 +29,11 @@ class AdminOptions_Groups extends AdminOptions_Default {
             'delete'        => new Field_List_Action_Image('delete', $url_prefix),
         );
         
+        // Edit fields are more auto-detectable.
         $this->edit_fields = array(
-            'name'          => new Field_Edit_Auto(),
+            'id'            => $this->edit_field('id'),
+            'name'          => $this->edit_field('name'),
+            'description'   => $this->edit_field('description'),
         );
     }
 }
