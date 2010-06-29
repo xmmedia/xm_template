@@ -58,7 +58,7 @@ li {margin:0; padding:0 0 0 5px;}
     font-weight: bold;
 }
 
-.table-form input.text, .table-form input.password {
+.table-form input.text, .table-form input.password, .table-form textarea {
     width: 98%;
 }
 
