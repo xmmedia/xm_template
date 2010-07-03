@@ -16,6 +16,12 @@ class Controller_ClaeroAdmin_Groups extends Controller_ClaeroAdmin_Claero_Defaul
                 'roles'         => new Field_List_Display_Collection,
                 'edit'          => new Field_List_Action_Image(array('source' => '/images/icons/page_white_edit.png')),
                 'delete'        => new Field_List_Action_Image,
+             ))
+             ->edit_fields(array(
+                'id'            => new Field_Edit_Hidden,
+                'name'          => new Field_Edit_Text,
+                'description'   => new Field_Edit_TextArea,
+                'roles'         => new Field_Edit_Checkboxes,
              ));
     }
 }

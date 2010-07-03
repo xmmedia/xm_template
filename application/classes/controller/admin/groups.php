@@ -13,10 +13,18 @@ class Controller_Admin_Groups extends Controller_Template {
     }
     
     /**
-     * Display the main page of the administration area
+     * Display the main page of the administration area.
      */
 	public function action_index() {
 		$this->template->content = Request::factory('claero-admin/groups')->execute()->response;
 	}
     
+	/**
+	 * Edits an instance of this class.
+	 *
+	 * @param integer $id The ID of the instance to edit.
+	 */
+	public function action_edit($id) {
+		$this->template->content = Request::factory("claero-admin/groups/edit/$id")->execute()->response;
+	}
 }
