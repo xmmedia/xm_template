@@ -15,6 +15,7 @@ class Controller_ClaeroAdmin_Groups extends Controller_ClaeroAdmin_Claero_Defaul
                 'name'          => new Field_List_Display,
                 'description'   => new Field_List_Display,
                 'roles'         => new Field_List_Display_Collection,
+                'view'          => new Field_List_Action,
                 'edit'          => new Field_List_Action_Image(array('source' => '/images/icons/page_white_edit.png')),
                 'delete'        => new Field_List_Action_Image,
              ))

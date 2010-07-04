@@ -34,4 +34,13 @@ class Controller_Admin_Groups extends Controller_Template {
 	public function action_new() {
 		$this->template->content = Request::factory("claero-admin/groups/new")->execute()->response;
 	}
+	
+	/**
+	 * Views a group.
+	 *
+	 * @param integer $id The ID of the group to view.
+	 */
+	public function action_view($id) {
+		$this->template->content = Request::factory("claero-admin/groups/view/$id")->execute()->response;
+	}
 }
