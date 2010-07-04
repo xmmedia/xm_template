@@ -10,6 +10,7 @@ class Controller_ClaeroAdmin_Groups extends Controller_ClaeroAdmin_Claero_Defaul
         parent::__construct($request);
         
         $this->model('group')
+			 ->identifier_label_field('name')
              ->list_fields(array(
                 'name'          => new Field_List_Display,
                 'description'   => new Field_List_Display,
