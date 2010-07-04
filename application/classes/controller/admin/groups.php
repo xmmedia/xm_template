@@ -43,4 +43,13 @@ class Controller_Admin_Groups extends Controller_Template {
 	public function action_view($id) {
 		$this->template->content = Request::factory("claero-admin/groups/view/$id")->execute()->response;
 	}
+	
+	/**
+	 * Deletes a group.
+	 *
+	 * @param integer $id The ID of the group to delete.
+	 */
+	public function action_delete($id) {
+		Request::factory("claero-admin/groups/delete/$id")->execute();
+	}
 }
