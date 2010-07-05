@@ -20,10 +20,12 @@ class Controller_ClaeroAdmin_Users extends Controller_ClaeroAdmin_Claero_Default
                 'delete'        => new Field_List_Action_Image,
              ))
              ->edit_fields(array(
-                'id'            => new Field_Edit_Hidden,
-                'name'          => new Field_Edit_Text,
-                'email'   		=> new Field_Edit_Text,
-                'groups'        => new Field_Edit_Checkboxes,
+                'id'            	=> new Field_Edit_Hidden,
+                'name'          	=> new Field_Edit_Text,
+                'email'   			=> new Field_Edit_Text,
+				'password'			=> new Field_Edit_Password,
+				'password_confirm'	=> new Field_Edit_Password,
+                'groups'        	=> new Field_Edit_Checkboxes,
              ));
     }
 }
