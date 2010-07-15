@@ -69,6 +69,7 @@ Kohana::$config->attach(new Kohana_Config_File);
  * Order matters.
  */
 Kohana::modules(array(
+    'phpids'            => MODPATH.'phpids',            // PHP Intrusion Defense System
     'claero-common'     => MODPATH.'claero-common',     // Claero Common
 	'database'          => MODPATH.'database',          // Database access
     'firephp'           => MODPATH.'firephp',           // FirePHP library
@@ -79,7 +80,6 @@ Kohana::modules(array(
     'claero-admin'      => MODPATH.'claero-admin',      // Claero administration module (must be included after claero-common)
 	));
 
-Kohana::$log->attach(new FirePHP_Log_File(APPPATH.'logs'));
 Kohana::$log->attach(new FirePHP_Log_Console());
 
 /**
