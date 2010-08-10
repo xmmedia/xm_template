@@ -1,1 +1,0 @@
-<input type="hidden" name="<?= $model['name']?>" value="<?= get('value', $model) ?>"/>
