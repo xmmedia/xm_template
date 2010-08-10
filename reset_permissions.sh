@@ -1,5 +1,6 @@
-sudo chown trialto -R *
-sudo chgrp trialto -R *
+cd /home/templat4/template4.claero.com
+sudo chown templat4 -R *
+sudo chgrp templat4 -R *
 sudo chgrp apache -R uploads
 sudo chgrp apache -R sessions
 sudo chgrp apache -R logs

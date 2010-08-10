@@ -8,7 +8,7 @@
  * @see  http://kohanaframework.org/guide/using.configuration
  * @see  http://php.net/timezones
  */
-date_default_timezone_set('America/Chicago');
+date_default_timezone_set('America/Edmonton');
 
 /**
  * Set the default locale.
@@ -16,7 +16,7 @@ date_default_timezone_set('America/Chicago');
  * @see  http://kohanaframework.org/guide/using.configuration
  * @see  http://php.net/setlocale
  */
-setlocale(LC_ALL, 'en_US.utf-8');
+setlocale(LC_ALL, 'en_CA.utf-8');
 
 /**
  * Enable the Kohana auto-loader.
@@ -49,14 +49,20 @@ ini_set('unserialize_callback_func', 'spl_autoload_call');
  * - boolean  profile     enable or disable internal profiling               TRUE
  * - boolean  caching     enable or disable internal caching                 FALSE
  */
-Kohana::init(array(
-	'base_url'   => '/',
-));
+$settings = array(
+    'base_url' => '/',
+    'index_file' => '',
+    'errors' => DEBUG_FLAG,
+    'profiling' => DEBUG_FLAG,
+    'caching' => CACHE_FLAG,
+);
+Kohana::init($settings);
 
 /**
  * Attach the file write to logging. Multiple writers are supported.
  */
-Kohana::$log->attach(new Kohana_Log_File(APPPATH.'logs'));
+//Kohana::$log->attach(new Kohana_Log_File(APPPATH.'logs'));
+Kohana::$log->attach(new Kohana_Log_File(ABS_ROOT . '/logs'));
 
 /**
  * Attach a file reader to config. Multiple readers are supported.
@@ -64,20 +70,29 @@ Kohana::$log->attach(new Kohana_Log_File(APPPATH.'logs'));
 Kohana::$config->attach(new Kohana_Config_File);
 
 /**
- * Enable modules. Modules are referenced by a relative or absolute path.
+ * Enable modules. Modules are referenced by a relative or absolute path. 
+ * ORDER MATTERS HERE!!!
  */
-Kohana::modules(array(
-	// 'auth'       => MODPATH.'auth',       // Basic authentication
-	// 'cache'      => MODPATH.'cache',      // Caching with multiple backends
-	// 'codebench'  => MODPATH.'codebench',  // Benchmarking tool
-	// 'database'   => MODPATH.'database',   // Database access
-	// 'image'      => MODPATH.'image',      // Image manipulation
-	// 'orm'        => MODPATH.'orm',        // Object Relationship Mapping
-	// 'oauth'      => MODPATH.'oauth',      // OAuth authentication
-	// 'pagination' => MODPATH.'pagination', // Paging of results
-	// 'unittest'   => MODPATH.'unittest',   // Unit testing
-	// 'userguide'  => MODPATH.'userguide',  // User guide and API documentation
-	));
+$modules = array(
+    'claero'            => MODPATH.'claero',            // Claerolib3 conversion (must be at the top)
+    'firephp'           => MODPATH.'firephp',
+    'database'          => MODPATH.'database',          // Database access
+    'image'             => MODPATH.'image',             // Image manipulation
+    //'orm'               => MODPATH.'orm',             // Object Relationship Mapping
+    'jelly'             => MODPATH.'jelly',             // Jelly ORM
+    'auth'              => MODPATH.'auth',              // Basic authentication
+    'pagination'        => MODPATH.'pagination',        // Paging of results
+    //'userguide'       => MODPATH.'userguide',         // User guide and API documentation
+);
+if (CACHE_FLAG) $modules['cache'] = MODPATH.'cache';      // Caching with multiple backends
+if (DEBUG_FLAG) $modules['codebench'] = MODPATH.'codebench';  // Benchmarking tool
+Kohana::modules($modules);
+
+// set up firephp for debugging
+if (DEBUG_FLAG) {
+    Kohana::$log->attach(new FirePHP_Log_File(APPPATH.'logs'));
+    Kohana::$log->attach(new FirePHP_Log_Console());
+}
 
 /**
  * Set the routes. Each route must have a minimum of a name, a URI and a set of
@@ -99,4 +114,14 @@ if ( ! defined('SUPPRESS_REQUEST'))
 		->execute()
 		->send_headers()
 		->response;
+}
+
+// set up firephp for debugging
+if (DEBUG_FLAG) {
+    FirePHP_Profiler::instance()
+    	->group('KO3 FirePHP Profiler Results:')
+    	->superglobals() // New Superglobals method to show them all...
+    	->database()
+    	->benchmark()
+    	->groupEnd();
 }
