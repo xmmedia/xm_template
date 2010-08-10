@@ -96,12 +96,25 @@ if (DEBUG_FLAG) {
 
 /**
  * Set the routes. Each route must have a minimum of a name, a URI and a set of
- * defaults for the URI.
+ * defaults for the URI.  Routes are selected by whichever one matches first.
  */
+ 
+ // routes for static pages
+Route::set('static', '<lang>/pages/<section>(/<page>(/<action>))', array('lang' => '(en-ca|fr-ca)','page' => '.*'))
+    ->defaults(array(
+        'controller' => 'page',
+        'section' => 'home',
+        'page' => '',
+));
+
+// last chance default route:
 Route::set('default', '(<controller>(/<action>(/<id>)))')
 	->defaults(array(
-		'controller' => 'welcome',
+		'controller' => 'home',
 		'action'     => 'index',
+        'section' => '',
+        'page' => '',
+        'id' => '',
 	));
 
 if ( ! defined('SUPPRESS_REQUEST'))

@@ -25,15 +25,15 @@ switch ($serverId) {
         define('URL_ROOT','http://template4.claero.com');
         define('ABS_ROOT','/home/templat4/template4.claero.com');
         define('UPLOAD_ROOT','/home/templat4/template4.claero.com/uploads');
-        define('ANALYTICS_ID', 'ADD_YOURS_HERE');
-        define('GOOGLE_API_KEY','ADD_YOURS_HERE');
-        define('CAPTCHA_PUBLIC_KEY','ADD_YOURS_HERE'); 
-        define('CAPTCHA_PRIVATE_KEY','ADD_YOURS_HERE');
+        define('ANALYTICS_ID', '');
+        define('GOOGLE_API_KEY','');
+        define('CAPTCHA_PUBLIC_KEY',''); 
+        define('CAPTCHA_PRIVATE_KEY','');
         define('SMTP_HOST','localhost');
         define('SMTP_PORT','25');
         define('SMTP_USER','');
         define('SMTP_PASS','');
-        define('AWS_MEDIA_URL','ADD_YOURS_HERE');
+        define('AWS_MEDIA_URL','');
         define('DEFAULT_DB','dev_trialto_com'); // default config/database.php database settings name
         define('EN_LOCALE_ID', 1);
         define('FR_LOCALE_ID', 2);
