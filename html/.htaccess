@@ -1,0 +1,43 @@
+#For DEV Sites (this is an example):
+#AuthType Basic
+#AuthName "By Invitation Only"
+#AuthUserFile /var/www/vhosts/dev.trialto.com/conf/dev-pass
+#Require valid-user
+
+# Turn on URL rewriting
+RewriteEngine On
+
+# Installation directory
+RewriteBase /
+
+# Protect hidden files from being viewed
+<Files .*>
+	Order Deny,Allow
+	Deny From All
+</Files>
+
+# Protect application and system files from being viewed
+RewriteRule ^(?:application|modules|system)\b.* index.php/$0 [L]
+
+# Allow any files or directories that exist to be displayed directly
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Rewrite all other URLs to index.php/URL
+RewriteRule .* index.php/$0 [PT]
+
+# Add expires settings
+ExpiresDefault "access plus 1 month"
+
+# 480 weeks, best to change the filename if you change these types of files
+<FilesMatch "\.(ico|pdf|flv|jpg|jpeg|png|gif|js|css|swf)$">
+    Header set Cache-Control "max-age=290304000, public"
+</FilesMatch>
+
+# remove etags for now, only relevant in multiple server environment
+FileETag none
+
+# make sure the font files are compressed
+<Files *.woff>
+    SetOutputFilter DEFLATE
+</Files>
