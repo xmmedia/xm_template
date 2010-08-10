@@ -1,0 +1,120 @@
+/* reset min code */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td { margin:0; padding:0; }
+table { border-collapse:collapse; border-spacing:0; }
+fieldset,img { border:0; }
+address,caption,cite,code,dfn,em,strong,th,var { font-style:normal; font-weight:normal; }
+caption,th { text-align:left; }
+h1,h2,h3,h4,h5,h6 { font-weight:normal; }
+q:before,q:after { content:''; }
+abbr,acronym { border:0; }
+
+/* html5 stuff */
+header, footer, nav, article, section, aside {display:block;}
+
+/* get rid of those system borders being generated for A tags */
+a:active { outline:none; }
+
+/* always show vertical scrollbar in firefox and ie8 */
+html {overflow-y: scroll;}
+
+/* default HTML tag code */
+body, p, span, td, h1, h2, h3, h4, h5 {font: 1em "Cambria","Georgia","Times New Roman","Calibri",serif; color:#000;}
+p {margin:10px 0px 10px 0px; }
+html {overflow:-moz-scrollbars-vertical;} /* always show vertical scrollbar in firefox */
+td {font-size:0.8em}
+h1, h2, h3, h4, h5 {color:#b2a07c;}
+h1 {font-size:2em; font-weight:normal; margin-bottom:5px;}
+h1 a:link, h1 a:visited, h1 a:active {color:#ff6600;}
+h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover {color:#cc6633;}
+h2, h2 a:link, h2 a:visited, h2 a:active {text-transform:capitalize; font-size:1.6em; font-weight:normal; color:#ada17a; margin: 15px 0px 15px 0px;}
+h3, h3 a:link, h3 a:visited, h3 a:active {font-size:1.4em; font-weight:normal; color: #555; margin: 10px 0px 10px 0px;}
+h4, h4 a:link, h4 a:visited, h4 a:active {text-transform:capitalize; font-size:1.2em; font-weight:normal; color: #666; margin: 10px 0px 10px 0px;}
+h1 a, h2 a, h3 a, h4 a {text-decoration:none;}
+section {margin:0px 0px 15px 0px;}
+ol, ul {margin:15px 15px 15px 40px;}
+li {margin:5px 0px 5px 0px;}
+hr {height:1px; width:100%; color:#b0a279;}
+
+/* misc styles */
+.highlight {font-weight:bold;}
+.grey, .grey a:link, .grey a:active, .grey a:visited {color:#333}
+.smallGrey {font-size:12px; color:#333;}
+.statusMessage { font-size:14px; font-weight:bold; color:#ff6633; margin:5px; padding:5px 15px 5px 10px; margin:0px 0px 15px 0px; border:1px dashed #ff9966; }
+.message {margin:10px 25px 5px 25px;}
+.errorMessage { font-size:14px; font-weight:bold; color:#c71209; margin:5px; padding:5px; border:2px dashed #f00; }
+.pleaseWait { font-size:14px; font-weight:bold; color:#f00; margin:5px; padding:5px; border:1px dashed #666; padding-left:25px; background: url(/images/indicator.gif) no-repeat 5px 5px; }
+aside.controlRow {margin:2px 0px 2px 0px; padding:6px 2px 6px 2px; border-top:1px #ccc solid; border-bottom:1px #ccc solid;}
+aside.controlRow ul {list-style-type:none; margin:0; padding:0;}
+aside.controlRow li {display:inline; padding:0px 15px 0px 15px;}
+aside.development {width:100%; text-align:center; margin-top:20px; font-size:2em; padding:5px; border-top:1px solid #555; border-bottom:1px solid #555; }
+
+/* list styles */
+ol.nostyle, ul.nostyle {list-style-type:none; margin:0; padding:0;}
+
+/* main body layout styles */
+body {background-color:#f4f4f4;}
+div#wrapper {
+    width:970px;
+    top:0px;
+    margin: 0px auto 0px auto;
+    padding:0;
+    overflow:hidden;
+    background-color:#fff;
+}
+div#mainContent {min-height:400px; margin:0px 20px 0px 20px;}
+body {padding: 0px 0px 25px 0px;}
+
+/* header styles */
+header {height:50px;}
+aside#loggedIn {
+    font: 0.8em Arial Narrow, Arial, sans-serif; text-align:right; color:#777;
+    height:12px; width:400px; float:right; border-top:1px solid #ccc;
+}
+
+/* global menu */
+nav#global ul {margin:10px 20px 10px 10px; font-size:14px; letter-spacing:0.3px; list-style-type:none;}
+nav#global ul li {float:left; width:auto; position:relative; padding:0; vertical-align:text-bottom;}
+nav#global ul li a {padding-right:10px; padding-left:10px; border-right:1px solid #333; color:#b2a576; text-transform: uppercase;}
+nav#global ul li.last {padding-left:5px;}
+nav#global ul li.last a {padding:0; border:0;}
+nav#global ul li a:link, nav ul li a:visited, nav ul li a:active {font-weight:normal; color:#AAA271; text-decoration:none;}
+nav#global ul li a:hover {color:#000; text-decoration:none;}
+
+/* highlight current section */
+body.s_home nav#global li.home a, body.s_about nav#global li.about a, body.s_news nav#global li.news a, body.s_contact nav#global li.contact a {color:#000;}
+
+/* language switcher */
+.language {color: #d7d2bc;}
+.language a:link, .languageSwitch a:visited, .languageSwitch a:active {color:#ffff99; text-decoration:underline;}
+.language a:hover {color:#fff; text-decoration:underline;}
+
+/* footer styles */
+footer {min-height:72px; padding:40px 10px 0px 20px; font-size:12px; color:#333;}
+footer a:link, footer a:visited, footer a:active {font-weight:normal; color:#333; text-decoration:none;}
+footer a:hover {color:#000; text-decoration:none;}
+div#kohana-profiler {margin-top:20px;}
+
+/* default form styles */
+input[type="text"], input[type="password"], textarea {width:195px; font-size:14px; padding:5px; margin: 5px 2px 5px 2px; border:1px solid #CCCCCC; -moz-box-shadow:inset 0 0 10px 0px #eeeeee;}
+input[type="button"], input[type="submit"] {font-size:14px; padding:5px; margin: 5px 2px 5px 2px;}
+select {font-size:14px; padding:5px 20px 5px 5px; margin:5px 2px 5px 2px;}
+textarea { width:100%; height:150px;}
+input.date {width:150px;}
+input.title {width:350px;}
+input.tags {width:90%;}
+.editFormContainer {padding:10px;}
+input.metaField {width:100%;}
+form.editForm label {display:block; padding:5px; height:17px; width:250px; float:left;}
+form.editForm label.line {display:inline; width:auto; float:none;}
+form.editForm textarea {width:100%; height:300px;}
+form.editForm input[type="text"], form.editForm input[type="password"] {width:400px;}
+form.editForm select {width:350px;}
+form.editForm checkbox {width:10px; height:10px;}
+
+/* claero content admin stuff */
+table#claeroEdit {width:600px;}
+table#claeroContent th.column0, table#claeroContent td.column0 {width:100px;}
+div.tableMenu {margin:0px 20px 0px 20px;}
+form#claeroForm {width:600px; margin:15px; padding:15px; border:1px dashed #ccc;}
+form#claeroForm input,form#claeroForm select {width:auto;}
+form#claeroForm textarea {width:90%; height:150px;}

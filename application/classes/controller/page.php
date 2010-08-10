@@ -14,9 +14,10 @@ class Controller_Page extends Controller_Base {
 
         // get the page from the static templates or database
         try {
-            $this->template->bodyHtml .= View::factory('menus/' . $this->section) . EOL; 
-            $this->template->bodyHtml .= '    <div class="subpagecontent">' . EOL;
-            $this->template->bodyHtml .= $this->getStaticTemplate($this->page, $commonTemplateData);
+            $pageViewName = ($this->page != '') ? $this->page : $this->section;
+            //$this->template->bodyHtml .= View::factory('menus/' . $this->section) . EOL; 
+            $this->template->bodyHtml .= '    <div id="mainContent">' . EOL;
+            $this->template->bodyHtml .= $this->get_static_template($pageViewName, $commonTemplateData);
             $this->template->bodyHtml .= '    </div>' . EOL;
         } catch (Exception $e) {
             $this->template->bodyHtml .= '<p>There was a problem loading the page content.</p>';

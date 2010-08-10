@@ -108,14 +108,14 @@ Route::set('static', '<lang>/pages/<section>(/<page>(/<action>))', array('lang' 
 ));
 
 // last chance default route:
-Route::set('default', '(<controller>(/<action>(/<id>)))')
-	->defaults(array(
-		'controller' => 'home',
-		'action'     => 'index',
-        'section' => '',
-        'page' => '',
-        'id' => '',
-	));
+Route::set('default', '(<lang>/)(<controller>)(/<action>(/<id>))', array('lang' => '(en-ca|fr-ca)', 'id'=>'.+'))
+->defaults(array(
+    'controller' => 'home',
+    'action' => 'index',
+    'section' => '',
+    'page' => '',
+    'id' => '',
+));
 
 if ( ! defined('SUPPRESS_REQUEST'))
 {

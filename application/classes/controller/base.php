@@ -18,7 +18,7 @@ class Controller_Base extends Controller_Template {
     protected $auth; // auth object
     protected $user; // currently logged-in user
     protected $roles_required = array(); // roles required to perform current action (must satisfy all)
-
+    
     // called before our action method
     public function before()
     {
@@ -92,10 +92,11 @@ class Controller_Base extends Controller_Template {
             $this->template->bodyClass = i18n::lang(); // other classes are added to this with spaces
             $this->template->language = $this->language;
             $this->template->message = __(claero::flash_get('message'));
-            $this->template->dateToday = $this->getCurrentDate();
+            $this->template->dateToday = $this->get_current_date();
             $this->template->languageOptions = $languageSwitchLink;
             $this->template->dateinputOptions = $dateinputOptions;
             $this->template->bodyHtml = '';
+            $this->template->user = '';
 
             // connect to the database
             $db = Database::instance();
@@ -150,6 +151,8 @@ class Controller_Base extends Controller_Template {
         if ($this->auto_render) $this->template->user = $this->user;
         */
 
+
+/*
         // create a new auth object for this page
         // creates a new Auth object defined in modules/jelly-group-auth/config/auth.php of Auth_Jelly_Group
         // modules/jelly-group-auth/classes/auth/jelly/group.php
@@ -192,13 +195,14 @@ class Controller_Base extends Controller_Template {
                 $this->request->redirect('/account/login');
             }
         }
+*/
+        $this->auth = false;
+        $this->user = false;
+        if ($this->auto_render) $this->template->user = $this->user;
+        
     }
 
-    public function generateStaticView($pageName) {
-
-    }
-
-    public function getCurrentDate($format = null, $timestamp = null) {
+    public function get_current_date($format = null, $timestamp = null) {
 
         if ($timestamp == null) $timestamp = time();
         if ($format == null) {
@@ -221,7 +225,7 @@ class Controller_Base extends Controller_Template {
     //     - database content in english with a notice
     //     - if authorized, then a create form to create the page
     //     - if not authorized, then a relevant notive that the page is empty
-    public function getStaticTemplate($page, $parameters) {
+    public function get_static_template($page, $parameters) {
 
         $returnHtml = '';
         $pageLoaded = true;
@@ -232,21 +236,21 @@ class Controller_Base extends Controller_Template {
         $returnHtml .= '<div id="' . $containerDivId . '">' . EOL;
 
         // check for language specific static page template file and use this if it exists
-        Fire::log('loading page: looking for file:' . 'staticpages/' . $this->locale . '/' . $page);
-        if (file_exists(ABS_ROOT . '/application/views/staticpages/' . $this->locale . '/' . $page . '.php')) {
-            Fire::log('loading page: using file:' . 'staticpages/' . $this->locale . '/' . $page);
-            $returnHtml .= View::factory('staticpages/' . $this->locale . '/' . $page, $parameters) . EOL;
+        Fire::log('loading page: looking for file:' . ABS_ROOT . '/application/views/pages/en-ca/' . $page . '.php');
+        if (file_exists(ABS_ROOT . '/application/views/pages/' . $this->locale . '/' . $page . '.php')) {
+            Fire::log('loading page: using file:' . 'pages/' . $this->locale . '/' . $page);
+            $returnHtml .= View::factory('pages/' . $this->locale . '/' . $page, $parameters) . EOL;
         } else {
             // not in this language, so see if the page template file exists in english, and use that with an appropriate message
-            if ($this->locale != 'en-ca') Fire::log('loading page: looking for file:' . 'staticpages/en-ca/' . $page);
-            if ($this->locale != 'en-ca' && file_exists(ABS_ROOT . '/application/views/staticpages/en-ca/' . $page . '.php')) {
-                Fire::log('loading page: using file:' . 'staticpages/en-ca/' . $page);
+            if ($this->locale != 'en-ca') Fire::log('loading page: looking for file:' . 'pages/en-ca/' . $page);
+            if ($this->locale != 'en-ca' && file_exists(ABS_ROOT . '/application/views/pages/en-ca/' . $page . '.php')) {
+                Fire::log('loading page: using file:' . 'pages/en-ca/' . $page);
                 // display the english verson with a notice
                 $returnHtml .= '<p class="statusMessage">' . __('No translation was available, we apologize for any inconvenience. Here is the Canadian English version:') . '</p>' . EOL;
-                $returnHtml .= View::factory('staticpages/en-ca/' . $page, $parameters) . EOL;
+                $returnHtml .= View::factory('pages/en-ca/' . $page, $parameters) . EOL;
             } else {
                 // OK, no template file, so see if the page exists in the database in the language specified
-                $pageContent = $this->getPageContents($page, $this->locale);
+                $pageContent = $this->get_page_contents($page, $this->locale);
                 if ($pageContent) {
                     Fire::log('loading page: using db content with locale:' . $this->locale);
                     // display the page contents
@@ -287,51 +291,6 @@ class Controller_Base extends Controller_Template {
     $("#en_html").wysiwyg();
     $("#fr_html").wysiwyg();
 EOA;
-                            // htmlbox option
-                            /*
-                            $this->template->scripts[] = 'htmlbox_4.0/htmlbox.colors.js';
-                            $this->template->scripts[] = 'htmlbox_4.0/htmlbox.styles.js';
-                            $this->template->scripts[] = 'htmlbox_4.0/htmlbox.syntax.js';
-                            $this->template->scripts[] = 'htmlbox_4.0/xhtml.js';
-                            $this->template->scripts[] = 'htmlbox_4.0/htmlbox.full.js';
-                            $this->template->styles['jquery-ui-1.8.2.custom.css'] = 'screen';
-                            $this->template->onLoadJs = <<<EOA
-    $("#start_date").datepicker({dateFormat: "DD MM d, yy", showAnim : "fadeIn"});
-    $("#end_date").datepicker({dateFormat: "DD MM d, yy", showAnim : "fadeIn"});
-    $("#en_html").css("height","300").css("width","700").htmlbox({
-        toolbars:[
-    	    [
-    		// Cut, Copy, Paste
-    		"separator","cut","copy","paste",
-    		// Undo, Redo
-    		"separator","undo","redo",
-    		// Bold, Italic, Underline, Strikethrough, Sup, Sub
-    		"separator","bold","italic","underline","strike","sup","sub",
-    		// Left, Right, Center, Justify
-    		"separator","justify","left","center","right",
-    		// Ordered List, Unordered List, Indent, Outdent
-    		"separator","ol","ul","indent","outdent",
-    		// Hyperlink, Remove Hyperlink, Image
-    		"separator","link","unlink","image"
-
-    		],
-    		[// Show code
-    		"separator","code",
-            // Formats, Font size, Font family, Font color, Font, Background
-            "separator","formats","fontsize","fontfamily",
-    		"separator","fontcolor","highlight",
-    		],
-    		[
-    		//Strip tags
-    		"separator","removeformat","striptags","hr","paragraph",
-    		// Styles, Source code syntax buttons
-    		"separator","quote","styles","syntax"
-    		]
-    	],
-    	skin:"blue"
-    });
-EOA;
-                            */
                         } else {
                             Fire::log('loading page: user not authorized to edit pages, displaying error message');
                             // display a notice
@@ -401,7 +360,7 @@ EOA;
 
     /* query the database for the given page content / locale and return the data array or false if none or error */
     // 20100621 CSN TODO change so that it uses the cached view if it exists
-    private function getPageContents($pageName, $locale) {
+    private function get_page_contents($pageName, $locale) {
 
         // create the query
         $sql = "
@@ -458,18 +417,6 @@ EOA;
 
             return false;
         }
-    }
-
-
-    public function __call($method, $arguments)
-    {
-        // Disable auto-rendering
-        $this->auto_render = FALSE;
-
-        // By defining a __call method, all pages routed to this controller
-        // that result in 404 errors will be handled by this method, instead of
-        // being displayed as "Page Not Found" errors.
-        echo 'This text is generated by __call. If you expected the index page, you need to use: '.substr(Router::$current_uri, 8);
     }
 
     // called after our action method
