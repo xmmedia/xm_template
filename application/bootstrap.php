@@ -99,23 +99,54 @@ if (DEBUG_FLAG) {
  * defaults for the URI.  Routes are selected by whichever one matches first.
  */
  
- // routes for static pages
-Route::set('static', '<lang>/pages/<section>(/<page>(/<action>))', array('lang' => '(en-ca|fr-ca)','page' => '.*'))
+ // routes for public pages
+Route::set('pages', '<lang>/page/<section>(/<page>(/<action>))', array('lang' => '(en-ca|fr-ca)','page' => '.*'))
     ->defaults(array(
         'controller' => 'page',
         'section' => 'home',
         'page' => '',
 ));
 
-// last chance default route:
-Route::set('default', '(<lang>/)(<controller>)(/<action>(/<id>))', array('lang' => '(en-ca|fr-ca)', 'id'=>'.+'))
-->defaults(array(
-    'controller' => 'home',
-    'action' => 'index',
-    'section' => '',
-    'page' => '',
-    'id' => '',
+// account page
+Route::set('account', '(<lang>/)account(/<action>(/<id>))', array('lang' => '(en-ca|fr-ca)'))
+    ->defaults(array(
+        'controller' => 'account',
+        'action' => 'index',
+        'section' => 'admin',
+        'page' => '',
 ));
+
+
+// administration page
+Route::set('admin', '(<lang>/)admin(/<action>(/<id>))', array('lang' => '(en-ca|fr-ca)'))
+    ->defaults(array(
+        'controller' => 'admin',
+        'action' => 'index',
+        'section' => 'admin',
+        'page' => '',
+));
+
+ // home page is the default for everything else
+Route::set('home', '(<lang>/)', array('lang' => '(en-ca|fr-ca)'))
+    ->defaults(array(
+        'controller' => 'home',
+        'action' => 'index',
+        'section' => 'home',
+        'page' => 'home',
+        'id' => '',
+));
+
+/*
+// last chance default route: is this safe?  what about modules, third-party modules, etc.?
+Route::set('default', '(<lang>/)(<controller>)(/<action>(/<id>))', array('lang' => '(en-ca|fr-ca)', 'id'=>'.+'))
+    ->defaults(array(
+        'controller' => 'home',
+        'action' => 'index',
+        'section' => '',
+        'page' => '',
+        'id' => '',
+));
+*/
 
 if ( ! defined('SUPPRESS_REQUEST'))
 {

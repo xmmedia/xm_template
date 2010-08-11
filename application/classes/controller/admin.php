@@ -17,22 +17,18 @@ class Controller_Admin extends Controller_Base {
     public $fileOptions = array();
     public $editOptions = array();
     public $displayOptions = array();
-    public $claeroDb = '';
 
     public function before() {
     
         parent::before();
         
-        // add claerolib4 css and js
-        $this->template->styles['cl4.css'] = 'screen';
-        $this->template->scripts[] = 'cl4.js';
-        
-        // add jquery
-        $this->template->scripts[] = 'http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js';
-        
-        // add jquery ui
-        $this->template->styles['jquery-ui-1.8.2.custom.css'] = 'screen';
+        // add jquery ui css and js
+        $this->template->styles['css/jquery-ui-1.8.2.custom.css'] = 'screen';
         $this->template->scripts[] = 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/jquery-ui.min.js';
+        
+        // add claerolib4 css and js
+        $this->template->styles['css/cl4.css'] = 'screen';
+        $this->template->scripts[] = 'js/cl4.js';
         
         // default settings
         $this->defaultSettings = array(
@@ -41,34 +37,6 @@ class Controller_Admin extends Controller_Base {
             'offset' => 0,
             CLAERO_REQUEST_FORM_NAME => 'user',
         );
-        
-        // set up error handling
-        /*
-        $errorOptions = array(
-            'log' => SITE::$errorLogFile,
-            'recipient' => 'craig.nakamoto@claero.com',
-            'subject' => SITE::$applicationShortName . ' PHP Error',
-        );
-        $error = new claeroerror($errorAction, $errorOptions);
-        */
-        
-        // set up database connection
-        $databaseSettings = Kohana::config('database');
-        $dsn = array(
-            $databaseSettings[DEFAULT_DB]['connection']['hostname'],
-            $databaseSettings[DEFAULT_DB]['connection']['username'],
-            $databaseSettings[DEFAULT_DB]['connection']['password'],
-            $databaseSettings[DEFAULT_DB]['connection']['port'],
-            $databaseSettings[DEFAULT_DB]['connection']['database'],
-        );
-            
-        $userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : 0;
-        $this->claeroDb = new claerodb($dsn, $userId);
-        if (!$this->claeroDb->GetStatus()) {
-            trigger_error('Connection Error: Connection to database failed. ' . $this->claeroDb->GetError(), E_USER_ERROR);
-            echo 'No database connection. Cannot continue.';
-            exit;
-        }
         
         /***********************************
         * USER INPUT

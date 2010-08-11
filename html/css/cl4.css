@@ -11,7 +11,7 @@ a.add, a.edit, a.delete, a.calendar, a.view, a.magnify, a.checkbox, a.nocheckbox
     padding-left: 16px;
     padding-top: 2px;
     text-decoration: none;
-    background: url('cl4_icons.png') no-repeat top left;
+    background: url('/images/cl4_icons.png') no-repeat top left;
     /*line-height:16px;*/
 }
 a.add { background-position: 0px -80px; }
@@ -53,7 +53,7 @@ span.emptyLink { padding-left: 19px; }
 /* main page buttons row, appears above the search results and has the add, edit multiple, search, etc. buttons */
 #claeroTools { background-color: #EDF8CA; border: 1px solid #ccc; padding: 2px; margin: 4px 0; }
 
-.stop { padding-left:18px; background: url('cl4_icons.png') no-repeat -167px -173px; }
+.stop { padding-left:18px; background: url('/images/cl4_icons.png') no-repeat -167px -173px; }
 
 input.cSmallButton { font-family: Arial, Helvetica, sans-serif; font-size: xx-small; }
 
@@ -64,7 +64,7 @@ img.icon { border: none; vertical-align: middle; }
 table.file tbody tr td { border: none; }
 
 .info { color: #aaa; }
-span.checked { padding-left: 18px; background: url('cl4_icons.png') no-repeat 0 -314px; }
+span.checked { padding-left: 18px; background: url('/images/cl4_icons.png') no-repeat 0 -314px; }
 span.cUnknown { color: #bbb; }
 span.requiredLabel { color: red; font-weight: bold; }
 span.label { font-weight: bold; color: #635959; }
@@ -144,14 +144,14 @@ form.confirm { padding-top: 0; margin-top: 0; padding-bottom: 0; margin-bottom: 
     background-color: #6385B1;
     background-image: url(/images/asc.png);
     background-repeat: no-repeat;
-    /* not ready yet: background: url('/cl4_icons.png') no-repeat 0 -176px; */
+    /* not ready yet: background: url('/images/cl4_icons.png') no-repeat 0 -176px; */
 }
 .claeroContent thead tr th a { font-weight: bold; text-decoration: none; color: #fff; }
 .claeroContent thead tr th.sortDESC {
     background-color: #6385B1;
     background-image: url(/images/desc.png);
     background-repeat: no-repeat;
-    /* not ready yet: background: url('cl4_icons.png') no-repeat 0 -458px; */
+    /* not ready yet: background: url('/images/cl4_icons.png') no-repeat 0 -458px; */
 }
 .claeroContent tbody tr td.sortDESC,
 .claeroContent tbody tr td.sortASC {
@@ -175,7 +175,7 @@ div.cStatus {
     border: 1px solid #EFEF49;
     padding-left: 22px;
     padding-right: 20px;
-    background: url('cl4_icons.png') no-repeat -164px -598px;
+    background: url('/images/cl4_icons.png') no-repeat -164px -598px;
     color: #91912C;
     margin-top: 4px;
     margin-bottom: 8px;
@@ -204,7 +204,7 @@ div.cStatus h2 {
     font-weight: bold;
     padding-left: 18px;
     font-size: larger;
-    background-image: url(/lib/claerolib_4/images/table.png);
+    background-image: url(/images/table.png);
     background-repeat: no-repeat;
     background-position: center left;
 }
@@ -274,31 +274,31 @@ span.claeroNav a.next:hover {
 }
 
 span.claeroNav span.noPrevious {
-    background: url('cl4_icons.png') no-repeat 0 -1461px;
+    background: url('/images/cl4_icons.png') no-repeat 0 -1461px;
     padding-left: 18px;
 }
 
 span.claeroNav a.previous {
-    background: url('cl4_icons.png') no-repeat 0 -1701px;
+    background: url('/images/cl4_icons.png') no-repeat 0 -1701px;
     padding-left: 18px;
 }
 
 span.claeroNav a.previous:hover {
-    background: url('cl4_icons.png') no-repeat 0 -1749px;
+    background: url('/images/cl4_icons.png') no-repeat 0 -1749px;
 }
 
 span.claeroNav span.noNext {
-    background: url('cl4_icons.png') no-repeat 30px -1413px;
+    background: url('/images/cl4_icons.png') no-repeat 30px -1413px;
     padding-right: 18px;
 }
 
 span.claeroNav a.next {
-    background: url('cl4_icons.png') no-repeat 30px -1269px;
+    background: url('/images/cl4_icons.png') no-repeat 30px -1269px;
     padding-right: 18px;
 }
 
 span.claeroNav a.next:hover {
-    background: url('cl4_icons.png') no-repeat 30px -1317px;
+    background: url('/images/cl4_icons.png') no-repeat 30px -1317px;
 }
 
 div.noRows {

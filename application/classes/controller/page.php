@@ -16,9 +16,7 @@ class Controller_Page extends Controller_Base {
         try {
             $pageViewName = ($this->page != '') ? $this->page : $this->section;
             //$this->template->bodyHtml .= View::factory('menus/' . $this->section) . EOL; 
-            $this->template->bodyHtml .= '    <div id="mainContent">' . EOL;
             $this->template->bodyHtml .= $this->get_static_template($pageViewName, $commonTemplateData);
-            $this->template->bodyHtml .= '    </div>' . EOL;
         } catch (Exception $e) {
             $this->template->bodyHtml .= '<p>There was a problem loading the page content.</p>';
             $this->template->bodyHtml .= Kohana::debug($e);

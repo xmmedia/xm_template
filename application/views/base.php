@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width" />
 <?php foreach ($styles as $file => $type) echo '    ' . HTML::style($file, array('media' => $type)), EOL; ?>
     <!-- http://www.modernizr.com/ fixes missing html5 elements in IE and detects for new HTML5 features -->
-    <script src="/modernizr-1.5.min.js"></script>
+    <script src="/js/modernizr-1.5.min.js"></script>
     <script>
         var pageLocale = '<?php echo i18n::lang(); ?>';
         var pageUrl = 'http://<?php echo $_SERVER['SERVER_NAME']; ?><?php echo $_SERVER['REQUEST_URI']; ?>';
@@ -28,36 +28,38 @@
     <header>
         <nav id="global">
             <ul>
-                <li class="home"><a href="/<?php echo i18n::lang(); ?>/home"><?php echo __('Home'); ?></a></li>
-                <li class="about"><a href="/<?php echo i18n::lang(); ?>/pages/about"><?php echo __('About'); ?></a></li>
-                <li class="news"><a href="/<?php echo i18n::lang(); ?>/pages/news"><?php echo __('News'); ?></a></li>
-                <li class="missing"><a href="/<?php echo i18n::lang(); ?>/pages/missing"><?php echo __('Missing'); ?></a></li>
-                <li class="contact"><a href="/<?php echo i18n::lang(); ?>/pages/contact"><?php echo __('Contact'); ?></a></li>
-<?php if ($user == false) { ?>
-                <li><a href="/<?php echo i18n::lang(); ?>/pages/home/login"><?php echo __('Login'); ?></a></li>
+                <li class="home"><a href="/<?php echo i18n::lang(); ?>/page/home"><?php echo __('Home'); ?></a></li>
+                <li class="about"><a href="/<?php echo i18n::lang(); ?>/page/about"><?php echo __('About'); ?></a></li>
+                <li class="news"><a href="/<?php echo i18n::lang(); ?>/page/news"><?php echo __('News'); ?></a></li>
+                <li class="missing"><a href="/<?php echo i18n::lang(); ?>/page/missing"><?php echo __('Missing'); ?></a></li>
+                <li class="contact"><a href="/<?php echo i18n::lang(); ?>/page/contact"><?php echo __('Contact'); ?></a></li>
+<?php if (!$loggedIn) { ?>
+                <li><a href="/<?php echo i18n::lang(); ?>/account"><?php echo __('Login'); ?></a></li>
 <?php } else { ?>
-                <li><a href="/<?php echo i18n::lang(); ?>/admin"><?php echo __('Admin'); ?></a></li>
-                <li><a href="/<?php echo i18n::lang(); ?>/meta"><?php echo __('Meta'); ?></a></li>
-                <li><a href="/<?php echo i18n::lang(); ?>/account/logout"><?php echo __('Logout'); ?></a></li>
+                <li class="private"><a href="/<?php echo i18n::lang(); ?>/account"><?php echo __('My Account'); ?></a></li>
+                <li class="private"><a href="/<?php echo i18n::lang(); ?>/admin"><?php echo __('Admin'); ?></a></li>
+                <li class="private"><a href="/<?php echo i18n::lang(); ?>/meta"><?php echo __('Meta'); ?></a></li>
+                <li class="private"><a href="/<?php echo i18n::lang(); ?>/account/logout"><?php echo __('Logout'); ?></a></li>
 <?php } // if ?>
                 <li class="last language"><?php echo __('Language: '); ?><?php if (isset($languageOptions)) echo $languageOptions; ?></li>
             </ul>
-<?php if ($user) { ?>
-            <aside id="loggedIn"><?php echo __('Welcome'); ?> <?php echo $user->first_name; ?></aside>
+<?php if ($loggedIn) { ?>
+            <aside id="loggedIn"><?php echo __('Welcome'); ?> <?php echo $_SESSION['full_name']; ?></aside>
 <?php } // if ?>
         </nav>
     </header>
 <?php if (isset($message) && $message != '') echo '<div class="statusMessage message">' . $message . '</div>' . EOL; ?>
+    <div id="mainContent">
 <?php echo $bodyHtml; ?>
-    
+    </div>
     <div style="clear:both;"></div>
     
     <footer>
         <nav>
             &copy;<?php echo date('Y'); ?> Claero Systems <?php echo __('All Rights Reserved'); ?>
-            | <a href="/<?php echo i18n::lang(); ?>/pages/home/sitemap"><?php echo __('Site Map'); ?></a>
-            | <a href="/<?php echo i18n::lang(); ?>/pages/home/privacy"><?php echo __('Privacy Policy'); ?></a>
-            | <a href="/<?php echo i18n::lang(); ?>/pages/home/aboutsite"><?php echo __('About this site'); ?></a>
+            | <a href="/<?php echo i18n::lang(); ?>/page/home/sitemap"><?php echo __('Site Map'); ?></a>
+            | <a href="/<?php echo i18n::lang(); ?>/page/home/privacy"><?php echo __('Privacy Policy'); ?></a>
+            | <a href="/<?php echo i18n::lang(); ?>/page/home/aboutsite"><?php echo __('About this site'); ?></a>
         </nav>
 
         <div style="clear:both;"></div>

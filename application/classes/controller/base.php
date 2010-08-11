@@ -13,7 +13,8 @@ class Controller_Base extends Controller_Template {
     public $provinceId = false; //  the selected province id, just chosen, or from session, or from cookie - or false
     public $provinceName = false; // the selected province full name
     public $thisPage = '';
-
+    public $claeroDb = ''; // the cl4 database resource
+    
     protected $authenticated = true; // until auth is added, use this to flip
     protected $auth; // auth object
     protected $user; // currently logged-in user
@@ -41,10 +42,7 @@ class Controller_Base extends Controller_Template {
         i18n::lang($this->locale);
         Cookie::set('language', $this->locale); // todo: put this in a try()?
         $this->language = substr(i18n::lang(),0,2);
-
-        // perform authorization checks
-        $this->perform_auth();
-
+        
 	    // set up the config settings
 	    $this->config = Kohana::config(CONFIG_FILE);
 
@@ -53,7 +51,6 @@ class Controller_Base extends Controller_Template {
         $this->section = Request::instance()->param('section');
         $this->page = Request::instance()->param('page');
         $this->thisPage = $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
-        $this->controller = 'home';
 
         //Fire::log(Request::instance());
 
@@ -78,6 +75,23 @@ class Controller_Base extends Controller_Template {
             $dateinputOptions .= "            format: 'dddd mmmm dd, yyyy'" . EOL;
         } // if
 
+        // set up the database connection
+        $databaseSettings = Kohana::config('database');
+        $dsn = array(
+            $databaseSettings[DEFAULT_DB]['connection']['hostname'],
+            $databaseSettings[DEFAULT_DB]['connection']['username'],
+            $databaseSettings[DEFAULT_DB]['connection']['password'],
+            $databaseSettings[DEFAULT_DB]['connection']['port'],
+            $databaseSettings[DEFAULT_DB]['connection']['database'],
+        );
+        $userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : 0;
+        $this->claeroDb = new claerodb($dsn, $userId);
+        if (!$this->claeroDb->GetStatus()) {
+            trigger_error('Connection Error: Connection to database failed. ' . $this->claeroDb->GetError(), E_USER_ERROR);
+            echo 'No database connection. Cannot continue.';
+            exit;
+        }
+
         // set up the default template values for the base template
         if ($this->auto_render)
         {
@@ -88,9 +102,9 @@ class Controller_Base extends Controller_Template {
             $this->template->metaDescription = __("This template site uses the open source cl4 Kohana 3 module!");
             $this->template->metaKeywords = __('claero systems kohana3 module default site');
             $this->template->pageSection = $this->section;
-            $this->template->pageName = ($this->page != '') ? $this->page : $this->controller;
+            $this->template->pageName = ($this->page != '') ? $this->page : $this->request->controller;
             $this->template->onLoadJs = '';
-            $this->template->styles = array('base.css' => 'screen');
+            $this->template->styles = array('css/base.css' => 'screen');
             $this->template->scripts = array();
             $this->template->bodyClass = i18n::lang(); // other classes are added to this with spaces
             $this->template->language = $this->language;
@@ -99,109 +113,50 @@ class Controller_Base extends Controller_Template {
             $this->template->languageOptions = $languageSwitchLink;
             $this->template->dateinputOptions = $dateinputOptions;
             $this->template->bodyHtml = '';
-            $this->template->user = '';
-
-            // connect to the database
-            $db = Database::instance();
-
-            // set up the externals for editing
-            // todo: make sure the user has auth to edit
-            if (0) {
-                $this->template->scripts[] = 'jwysiwyg/jquery.wysiwyg.js'; // needed for wysiwyg editor
-                $this->template->styles['jwysiwyg/jquery.wysiwyg.css'] = 'screen'; // needed for wysiwyg editor
-                $this->template->styles['jquery-ui-1.8.2.custom.css'] = 'screen'; // needed for date picker, etc.
-            } // if
-
+            // add jquery js (for all pages, other js relies on it, so it has to be included first)
+            $this->template->scripts[] = 'http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js';
         }
+
+        // perform authorization checks
+        $this->perform_auth();
+        
+        // add 'logged in' flag to template
+        if ($this->auto_render) $this->template->loggedIn = $this->auth->IsLoggedIn();
     }
 
 
     /**
-     * Perform authorization.
+     * Perform authorization based on controller and action
      */
     private function perform_auth() {
+    
+        // set up publicly accessible controllers
+        $publicControllers = array('home', 'page', 'account');
 
-
-        /* 20100709 CSN started to implement standard claero auth, but stopped and reverted to jely auth
         // set up authentication
         $authOptions = array(
             'logout_exclude' => array('username', CLAERO_SESSION_LOGIN_RETRIES, 'status_message'),
             'login_where_clause' => " AND inactive_flag = 0 ",
+            'claero_db' => $this->claeroDb,
+            'publicControllers' => $publicControllers,
         );
         $this->auth = new ClaeroAuth($authOptions);
 
-        //if (!in_array($_SERVER['SCRIPT_NAME'], $publicPages)) {
+        if (!in_array($this->request->controller, $publicControllers)) {
             if (!$this->auth->IsLoggedIn()) {
                 claero::AddStatusMsg($this->auth->GetMessage(HEOL));
-                if (isset($_SERVER['REQUEST_URI'])) {
-                    Redirect('/private/login.php?' . CLAERO_REQUEST_USER_ACTION . '=logout&redir=' . urlencode($_SERVER['REQUEST_URI']));
-                } else {
-                    Redirect('/private/login.php?' . CLAERO_REQUEST_USER_ACTION . '=logout');
-                }
+                $this->request->redirect('/account');
                 exit;
-            } else if (!$this->auth->CheckPerm()) {
-                claero::AddStatusMsg('You do not have permission to view this page.');
-                $pageTitle = 'Permission Error';
-                require_once(SITE::$header);
-                echo claero::DisplayStatusMsg();
-                require_once(SITE::$footer);
+            } else if (!$this->auth->CheckPerm($this->request->controller,  $this->request->action)) {
+                claero::AddStatusMsg('You do not have permission to view that page.');
+                $this->request->redirect('/account');
                 exit;
+            } else {
+                $this->user = $_SESSION['username'];
             } // if
-        //} // if
-
-        // add user to template (for displaying name)
-        // todo: don't need all this stuff - just name, etc.
-        if ($this->auto_render) $this->template->user = $this->user;
-        */
-
-
-/*
-        // create a new auth object for this page
-        // creates a new Auth object defined in modules/jelly-group-auth/config/auth.php of Auth_Jelly_Group
-        // modules/jelly-group-auth/classes/auth/jelly/group.php
-        $this->auth = Auth::instance();
-
-        // get the current user (if already logged in)
-        $this->user = $this->auth->get_user();
-
-        //fire::log($this->user);
-
-        // add user to template (for displaying name)
-        // todo: don't need all this stuff - just name, etc.
-        if ($this->auto_render) $this->template->user = $this->user;
-
-        // check for roles and permissions
-        if (count($this->roles_required) > 0) {
-            // If we have a user
-            if (false !== $this->user) {
-                try {
-                    $this->user->authorize($this->roles_required);
-                }
-                // User is not authorized
-                catch (Exception_NotAuthorized $e) {
-                    // Display the "Not Authorized" warning
-                    $this->template->content = View::factory(
-                        Kohana::config('site.not_authed_view'), array(
-                            'roles' => $e->missing_roles
-                        )
-                    );
-
-                    echo $this->template;
-                    exit;
-                }
-            }
-            // If user is not logged in
-            else {
-                // Redirect to login page
-                Flash::set('message', 'You must log in to perform this action.');
-                Flash::set('return_to', $this->request->uri);
-                $this->request->redirect('/account/login');
-            }
-        }
-*/
-        $this->auth = false;
-        $this->user = false;
-        if ($this->auto_render) $this->template->user = $this->user;
+        } else {
+            $this->user = false;
+        } // if
         
     }
 
@@ -329,29 +284,7 @@ EOA;
         return $returnHtml;
 
     }
-
-    // set up the page with the data from the database
-    private function create_page($pageData) {
-
-        Fire::log($pageData);
-        $pageContent = '';
-
-        // clean / replace some stuff in the html field, add email addresses to employee names, etc.
-        $formattedContent = trialto::filter_page_output($pageData['html']);
-
-        // create the page conent
-        $pageContent .= '<h1>' . $pageData['title'] . '</h1>' . EOL;
-        $pageContent .= $formattedContent . EOL;
-
-        // add the other relevant data to the template
-        if (isset($pageData['best_meta_description']) && $pageData['best_meta_description'] != '') $this->template->metaDescription = $pageData['best_meta_description'];
-        if (isset($pageData['best_meta_keywords']) && $pageData['best_meta_keywords'] != '') $this->template->metaKeywords = $pageData['best_meta_keywords'];
-        // set up the page title
-        $this->template->pageTitle = ucwords($pageData['title']);
-
-        return $pageContent;
-    }
-
+    
     // tries to get the page id for the page with the given short_name, returns 0 if none
     private function get_page_id($shortName) {
         $pageId = 0;
@@ -367,9 +300,7 @@ EOA;
 
         // create the query
         $sql = "
-            SELECT c.*, p.*, l.*,
-                IF(c.meta_keywords != '', c.meta_keywords, p.meta_keywords) AS best_meta_keywords,
-                IF(c.meta_description != '', c.meta_description, p.meta_description) AS best_meta_description
+            SELECT c.*, p.*, l.*
             FROM page AS p
             LEFT JOIN content AS c ON c.page_id = p.id
             LEFT JOIN locale AS l ON l.id = c.locale_id
@@ -379,16 +310,7 @@ EOA;
             LIMIT 1
         ";
         $sql = DB::query(Database::SELECT, $sql);
-        /*
-        $sql = DB::select(DB::expr('content.*, page.*, locale.*'))->from('page');
-        $sql->join('content')->on('content.page_id','=','page.id');
-        $sql->join('locale')->on('locale.id', '=', 'content.locale_id');
-        $sql->and_where('page.short_name','LIKE',$pageName);
-        $sql->and_where('page.publish_flag','=',1);
-        $sql->and_where('locale.name','LIKE',$locale);
-        $sql->and_where('content.publish_flag','=',1);
-        $sql->limit(1); // there should only be one content item per locale per page
-        */
+
         Fire::log('loading page: looking in db with: ' . $sql);
 
         // try to execute the query
@@ -421,6 +343,28 @@ EOA;
             return false;
         }
     }
+    
+    // set up the page with the data from the database
+    private function create_page($pageData) {
+
+        //fire::log($pageData);
+        $pageContent = '';
+
+        // clean / replace some stuff in the html field, add email addresses to employee names, etc.
+        $formattedContent = $pageData['html'];
+
+        // create the page conent
+        $pageContent .= '<h1>' . $pageData['title'] . '</h1>' . EOL;
+        $pageContent .= $formattedContent . EOL;
+
+        // add the other relevant data to the template
+        $this->template->metaDescription = $pageData['meta_description'];
+        $this->template->metaKeywords = $pageData['meta_keywords'];
+        // set up the page title
+        $this->template->pageTitle = ucwords($pageData['title']);
+
+        return $pageContent;
+    }
 
     // called after our action method
     public function after()
@@ -438,10 +382,10 @@ EOA;
             // set up the css depending on the browser type, these files override trialto.css
             switch (BROWSER_TYPE) {
                 case 'mobile_safari':
-                    //$styles['trialto_iphone.css'] = 'screen';
+                    //$styles['css/iphone.css'] = 'screen';
                     break;
                 case 'mobile_default':
-                    //$styles['trialto_mobile.css'] = 'screen';
+                    //$styles['css/mobile.css'] = 'screen';
                     break;
                 case 'pc_default':
                 default:
@@ -453,18 +397,21 @@ EOA;
                 case 'en':
                     break;
                 case 'fr':
-                    //$styles['base_fr.css'] = 'screen';
+                    //$styles['css/base_fr.css'] = 'screen';
                     break;
             } // switch
 
             // set up default styles that are used on ALL pages
             $scripts = array(
-                'base.js',
+                'js/base.js',
             );
 
             // merge with any existing styles or scripts added within the controller
             $this->template->styles = array_merge( $this->template->styles, $styles );
             $this->template->scripts = array_merge( $this->template->scripts, $scripts );
+            
+            // look for any status message and display
+            $this->template->message = claero::DisplayStatusMsg();
         }
         parent::after();
     }
