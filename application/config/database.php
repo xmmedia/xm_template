@@ -18,6 +18,7 @@ return array
 			 * Ports and sockets may be appended to the hostname.
 			 */
 			'hostname'   => 'localhost',
+			'port'       => 3306,
 			'database'   => 'templat4_core',
 			'username'   => 'templat4_core',
 			'password'   => 'template467',

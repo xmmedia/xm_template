@@ -1,17 +1,15 @@
 <!DOCTYPE html>
-<html lang="<?php if (isset($language)) echo $language; ?>">
+<html lang="<?php if (isset($language)) echo $language; ?>" class="no-js">
 <head>
     <meta charset="utf-8">
-    <title><?php if (DEVELOPMENT_FLAG) echo '*** DEVELOPMENT SITE '; ?>Trialto <?php if (isset($pageTitle) && trim($pageTitle) != '') echo ' - ' . $pageTitle; ?></title>
+    <title><?php if (DEVELOPMENT_FLAG) echo '*** DEVELOPMENT SITE '; ?><?php echo SHORT_NAME . ' v' . APP_VERSION; ?> <?php if (isset($pageTitle) && trim($pageTitle) != '') echo ' - ' . $pageTitle; ?></title>
     <meta name="description" content="<?php if (isset($metaDescription)) echo $metaDescription; ?>" />
     <meta name="keywords" content="<?php if (isset($metaKeywords)) echo $metaKeywords; ?>" />
     <meta name="author" content="<?php if (isset($metaAuthor)) echo $metaAuthor; ?>" />
     <meta name="viewport" content="width=device-width" />
 <?php foreach ($styles as $file => $type) echo '    ' . HTML::style($file, array('media' => $type)), EOL; ?>
-    <!-- load custom jquery theme (ui-lightness excluding effects) -->
-    <link rel="stylesheet" href="/jquery-ui-1.8.2.custom.css" type="text/css" />
     <!-- http://www.modernizr.com/ fixes missing html5 elements in IE and detects for new HTML5 features -->
-    <script src="/modernizr-1.5.js"></script>
+    <script src="/modernizr-1.5.min.js"></script>
     <script>
         var pageLocale = '<?php echo i18n::lang(); ?>';
         var pageUrl = 'http://<?php echo $_SERVER['SERVER_NAME']; ?><?php echo $_SERVER['REQUEST_URI']; ?>';
@@ -25,7 +23,7 @@
 <body id="<?php if (isset($pageName)) echo str_replace(' ','_',$pageName); ?>" class="<?php echo $bodyClass; ?>">
 <div id="wrapper">
 <?php if (DEVELOPMENT_FLAG) { ?>
-    <aside class="development">DEVELOPMENT SITE</aside>
+    <aside class="development"><?php echo SHORT_NAME . ' v' . APP_VERSION; ?> DEVELOPMENT SITE</aside>
 <?php } // if ?>
     <header>
         <nav id="global">
@@ -72,19 +70,21 @@
     </footer>
 </div> <!-- wrapper -->
 
+<!-- disabled for now, should only be loaded as needed...
 <?php if (GOOGLE_API_KEY != '') { ?>
-<!-- Javascript jquery libraries loaded from Google CDN for paralell processing and caching advantage, using google.load as prescribed best practice -->
+<?php // Javascript jquery libraries loaded from Google CDN for paralell processing and caching advantage, using google.load as prescribed best practice ?>
 <script src="http://www.google.com/jsapi?key=<?php echo GOOGLE_API_KEY; ?>" type="text/javascript"></script>
 <script>
     google.load("jquery", "1.4.2");
     google.load("jqueryui", "1.8.2");
 </script>
 <?php } else { ?>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/jquery-ui.min.js" type="text/javascript"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/jquery-ui.min.js" type="text/javascript"></script>
 <?php } // if ?>
+-->
 
-<!-- Javascript, always includes /site.js, put all javascript here or in $onloadJs if possible -->
+<!-- Javascript, put all javascript here or in $onloadJs if possible -->
 <?php foreach ($scripts as $file) echo HTML::script($file), "\n"; ?>
 
 <!-- Javascript to run once the page is loaded -->

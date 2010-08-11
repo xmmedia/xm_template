@@ -9,7 +9,7 @@ class Controller_Home extends Controller_Base {
 	   // normally all sorts of cool dynamic stuff would happen here, but for now, we just blob out some helpful advice
 		$this->template->bodyHtml .= <<<EOA
 <div id="mainContent">
-    <h1>Home</h1>
+    <h1>Welcome to the cl4 sample site</h1>
     <p>Welcome to the current cl4 template site.  This site is designed to help get you started with cl4.</p>
     <h2>Debugging</h2>
     <p>By default FirePHP is used for debugging, this can be overridden easily by doing the following:</p>

@@ -16,7 +16,7 @@ date_default_timezone_set('America/Edmonton');
  * @see  http://kohanaframework.org/guide/using.configuration
  * @see  http://php.net/setlocale
  */
-setlocale(LC_ALL, 'en_CA.utf-8');
+setlocale(LC_ALL, 'en-ca.utf-8');
 
 /**
  * Enable the Kohana auto-loader.

@@ -21,7 +21,7 @@ switch ($serverId) {
         define('UNAVAILABLE_FLAG', false);
         define('LONG_NAME','CL4 Template Site');
         define('SHORT_NAME','CL4');
-        define('APP_VERSION','3.0');
+        define('APP_VERSION','0.1');
         define('URL_ROOT','http://template4.claero.com');
         define('ABS_ROOT','/home/templat4/template4.claero.com');
         define('UPLOAD_ROOT','/home/templat4/template4.claero.com/uploads');
@@ -34,7 +34,7 @@ switch ($serverId) {
         define('SMTP_USER','');
         define('SMTP_PASS','');
         define('AWS_MEDIA_URL','');
-        define('DEFAULT_DB','dev_trialto_com'); // default config/database.php database settings name
+        define('DEFAULT_DB','default'); // default config/database.php database settings name
         define('EN_LOCALE_ID', 1);
         define('FR_LOCALE_ID', 2);
         break;

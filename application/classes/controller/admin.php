@@ -24,15 +24,22 @@ class Controller_Admin extends Controller_Base {
         parent::before();
         
         // add claerolib4 css and js
-        $this->template->styles['lib/claerolib4/cl4.css'] = 'screen';
-        $this->template->scripts[] = 'lib/claerolib4/cl4.js';
+        $this->template->styles['cl4.css'] = 'screen';
+        $this->template->scripts[] = 'cl4.js';
+        
+        // add jquery
+        $this->template->scripts[] = 'http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js';
+        
+        // add jquery ui
+        $this->template->styles['jquery-ui-1.8.2.custom.css'] = 'screen';
+        $this->template->scripts[] = 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/jquery-ui.min.js';
         
         // default settings
         $this->defaultSettings = array(
             'sort_by_column' => 'id',
             'sort_by_order' => 'DESC',
             'offset' => 0,
-            CLAERO_REQUEST_FORM_NAME => 'users',
+            CLAERO_REQUEST_FORM_NAME => 'user',
         );
         
         // set up error handling
@@ -46,7 +53,6 @@ class Controller_Admin extends Controller_Base {
         */
         
         // set up database connection
-        //$dsn = array('localhost', 'dev_trialto_com', 'MpF3GmeZCPxn8pZ6', 3306, 'dev_trialto_com');
         $databaseSettings = Kohana::config('database');
         $dsn = array(
             $databaseSettings[DEFAULT_DB]['connection']['hostname'],
@@ -84,7 +90,13 @@ class Controller_Admin extends Controller_Base {
         */
         
         //make sure the user is logged in and set permissions
-        if ($this->user) {
+        
+        
+        
+        
+        
+        // 20100811 CSN disabled for now, ened to re-implement auth!!!!!!
+        if (1 || $this->user) {
             //if ($this->user->email == 'admin@admin.com') {
                 // 
             //} else { 
@@ -94,6 +106,10 @@ class Controller_Admin extends Controller_Base {
         } else {
             die('you are not authorized to view this page');
         } // if
+        
+        
+        
+        
         
         // the first time to the page
         if (!isset($_SESSION['db_admin'])) {
@@ -157,7 +173,7 @@ class Controller_Admin extends Controller_Base {
             'class' => 'small',
             'id' => 'form_name',
             'attributes' => array('on_change' => 'this.form.submit();'),
-            //'allowed_tables' => $this->allowedTables,
+            'allowed_tables' => $this->allowedTables,
         );
         
         //fire::log($options);
@@ -169,8 +185,8 @@ class Controller_Admin extends Controller_Base {
             <div class="tableMenu">
                 Tables ' . $tableList->GetHtml() . '
                 <input type="submit" value="Go" />
-                ' . ($this->user->email == 'admin@admin.com' ? '&nbsp;&nbsp;<a href="?' . CLAERO_REQUEST_FORM_NAME . '=users">Users</a>
-                &nbsp;&nbsp;<a href="?' . CLAERO_REQUEST_FORM_NAME . '=' . CLAERO_META_TABLE . '">Meta Data</a>' : '') . '
+                <a href="?' . CLAERO_REQUEST_FORM_NAME . '=user">Users</a>
+                &nbsp;&nbsp;<a href="?' . CLAERO_REQUEST_FORM_NAME . '=' . CLAERO_META_TABLE . '">Meta Data</a>
             </div>
             </form>';
         
@@ -201,7 +217,7 @@ class Controller_Admin extends Controller_Base {
                 // no break here
             default:
                 $claeroDisplay = new claerodisplay($this->formName, $this->displayOptions);
-                $this->template->bodyHtml .= $claeroDisplay->GetHtml();
+                $this->template->bodyHtml .= '<section class="claeroDisplay">' . $claeroDisplay->GetHtml() . '</section>';
                 break;
         
         } // switch
@@ -283,7 +299,6 @@ class Controller_Admin extends Controller_Base {
         
     }
     
-
     /**
     *   perform a search based on POST variables
     *

@@ -35,7 +35,10 @@ class Controller_Base extends Controller_Template {
 
         // set locale and language and save in a cookie
         $this->locale = Request::instance()->param('lang',$defaultLocale);
-        if (in_array($this->locale, $this->allowedLanguages)) i18n::lang($this->locale);
+        if (!in_array($this->locale, $this->allowedLanguages)) {
+            $this->locale = 'en-ca';
+        } // if
+        i18n::lang($this->locale);
         Cookie::set('language', $this->locale); // todo: put this in a try()?
         $this->language = substr(i18n::lang(),0,2);
 
@@ -295,7 +298,7 @@ EOA;
                             Fire::log('loading page: user not authorized to edit pages, displaying error message');
                             // display a notice
                             $returnHtml .= '<p class="statusMessage">' . __('Unfortunately this page has no content yet. We apologize for any inconvenience.');
-                            $returnHtml .= ' If you are an authorized Trialto employee, you can log in and publish or create this page.</p>' . EOL;
+                            $returnHtml .= ' If you are an authorized user, you can log in and publish or create this page.</p>' . EOL;
                             //$returnHtml .= '<p class="statusMessage">' . __('If you were logged in, you could create this page.') . '</p>' . EOL;
                             //if (DEBUG_FLAG) $returnHtml .= '<p>Template file:<br />' . ABS_ROOT . '/application/views/staticpages/en-ca/' . $page . '.php</p>';
                         } // if
@@ -447,17 +450,16 @@ EOA;
 
             // set up any language specific styles
             switch($this->language) {
-
                 case 'en':
                     break;
                 case 'fr':
-                    $styles['trialto_fr.css'] = 'screen';
+                    //$styles['base_fr.css'] = 'screen';
                     break;
             } // switch
 
             // set up default styles that are used on ALL pages
             $scripts = array(
-                'trialto.js',
+                'base.js',
             );
 
             // merge with any existing styles or scripts added within the controller
