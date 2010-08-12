@@ -116,7 +116,6 @@ Route::set('account', '(<lang>/)account(/<action>(/<id>))', array('lang' => '(en
         'page' => '',
 ));
 
-
 // administration page
 Route::set('admin', '(<lang>/)admin(/<action>(/<id>))', array('lang' => '(en-ca|fr-ca)'))
     ->defaults(array(
