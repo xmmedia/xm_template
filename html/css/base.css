@@ -46,7 +46,8 @@ hr {height:1px; width:100%; color:#b0a279;}
 aside.controlRow {margin:2px 0px 2px 0px; padding:6px 2px 6px 2px; border-top:1px #ccc solid; border-bottom:1px #ccc solid;}
 aside.controlRow ul {list-style-type:none; margin:0; padding:0;}
 aside.controlRow li {display:inline; padding:0px 15px 0px 15px;}
-aside.development {width:100%; text-align:center; margin-top:5px; font-size:1.1em; padding:2px; border-top:1px solid #555; border-bottom:1px solid #555; background-color:#ffff66;}
+aside.development {width:100%; text-align:center; margin-top:5px; font-size:0.8em; padding:1px; border-top:1px solid #555; border-bottom:1px solid #555; background-color:#ffff66;}
+aside.mainTitle {width:100%; text-align:center; margin-top:5px; font-size:1.2em; padding:2px; border-top:1px solid #555; border-bottom:1px solid #555; color:#fff; background-color:#000;}
 
 /* list styles */
 ol.nostyle, ul.nostyle {list-style-type:none; margin:0; padding:0;}
@@ -65,26 +66,30 @@ div#mainContent {min-height:400px; margin:0px 20px 0px 20px;}
 body {padding: 0px 0px 25px 0px;}
 
 /* header styles */
-header {height:50px;}
-aside#loggedIn {
-    font: 0.8em Arial Narrow, Arial, sans-serif; text-align:right; color:#777;
-    height:12px; width:500px; float:left; border-top:1px solid #ccc;
-}
+header {margin-bottom:10px;}
+aside#loggedIn {height:12px; width:600px; border-top:1px solid #ccc; font: 0.8em Arial Narrow, Arial, sans-serif; text-align:right; color:#777;}
 
-/* global menu */
-nav#global ul {margin:10px 20px 10px 10px; font-size:14px; letter-spacing:0.3px; list-style-type:none;}
-nav#global ul li {float:left; width:auto; position:relative; padding:0; vertical-align:text-bottom;}
-nav#global ul li a {padding-right:7px; padding-left:7px; border-right:1px solid #333; color:#00f; text-transform: uppercase;}
-nav#global ul li.last {padding-left:5px;}
-nav#global ul li.last a {padding:0; border:0;}
-nav#global ul li a:link, nav ul li a:visited, nav ul li a:active {font-weight:normal; color:#00f; text-decoration:none;}
-nav#global ul li a:hover {color:#000; text-decoration:none;}
-nav#global ul li.private a {color:#f00;}
-nav#global ul li.private a:link, nav ul li a:visited, nav ul li a:active {font-weight:normal; color:#f00; text-decoration:none;}
-nav#global ul li.private a:hover {color:#000; text-decoration:none;}
+/* primary menu */
+nav.primary ul {height:20px; width:900px; margin:10px 20px 10px 10px; font-size:14px; letter-spacing:0.3px; list-style-type:none;}
+nav.primary ul li {float:left; width:auto; position:relative; padding:0; vertical-align:text-bottom;}
+nav.primary ul li a {padding-right:7px; padding-left:7px; border-right:1px solid #333; color:#00f; text-transform: uppercase;}
+nav.primary ul li.last {padding-left:5px;}
+nav.primary ul li.last a {padding:0; border:0;}
+nav.primary ul li a:link, nav ul li a:visited, nav ul li a:active {font-weight:normal; color:#00f; text-decoration:none;}
+nav.primary ul li a:hover {color:#000; text-decoration:none;}
+
+/* "for authenticated users" menu */
+nav.private ul {height:20px; width:600px; margin:4px 20px 10px 10px; font-size:14px; letter-spacing:0.3px; list-style-type:none;}
+nav.private ul li {float:left; width:auto; position:relative; padding:0; vertical-align:text-bottom;}
+nav.private ul li a {padding-right:7px; padding-left:7px; border-right:1px solid #333; color:#00f; text-transform: uppercase;}
+nav.private ul li.last {padding-left:5px;}
+nav.private ul li.last a {padding:0; border:0;}
+nav.private ul li a {color:#f00; font-size:10px;}
+nav.private ul li a:link, nav.private ul li a:visited, nav.private ul li a:active {font-weight:normal; color:#f00; text-decoration:none;}
+nav.private ul li a:hover {color:#000; text-decoration:none;}
 
 /* highlight current section */
-body.s_home nav#global li.home a, body.s_about nav#global li.about a, body.s_news nav#global li.news a, body.s_contact nav#global li.contact a {color:#000;}
+body.s_home nav.primary li.home a, body.s_about nav.primary li.about a, body.s_news nav.primary li.news a, body.s_contact nav.primary li.contact a {color:#000;}
 
 /* language switcher */
 .language {color: #d7d2bc;}

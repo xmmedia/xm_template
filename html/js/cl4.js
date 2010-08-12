@@ -20,6 +20,60 @@ $(function() {
     $('.numeric').numeric();
 });
 
+
+// ******************** new functions added for cl4 START
+
+// attempt to create a generic edit record code
+// this code will use the content container and replace it with the form, and then replace again with new content id saved
+function EditRecord(containerId, type, id, wysiwygFlag) {
+
+    // TODO add more error checking, confirm type, etc.
+
+    // add the waiting indicator
+    $('#'+containerId).html('<img src="/images/loading.gif" /> Loading, please wait.');
+
+    // load the javascript needed for jwysiwyg
+
+
+    // get the contents of the form and load them in to the element with the given id
+    $.ajax({
+        type: 'GET',
+        data: "section=" + pageSection + "&page=" + pageName,
+        url: baseUrl + '/' + pageLocale + '/edit/' + type + '/createform/' + id,
+        success: function(data) {
+            $('#'+containerId).html(data);
+            // todo: hide the edit button bar
+
+            // add in the editor js
+            /* 20100630 CSN this was a great idea but it doesn;t work ;-) oh well...
+            $('#editFormJs').load('/jwysiwyg/jquery.wysiwyg.js' , function() {
+                // Code here runs once the content has loaded
+                // modify the textarea elements to use an editor
+                $("#start_date").datepicker({dateFormat: "DD MM d, yy", showAnim : "fadeIn"});
+                $("#end_date").datepicker({dateFormat: "DD MM d, yy", showAnim : "fadeIn"});
+                $("#en_html").wysiwyg();
+                $("#fr_html").wysiwyg();
+            });
+            */
+            // modify the textarea elements to use an editor
+            $("#start_date").datepicker({dateFormat: "DD MM d, yy", showAnim : "fadeIn"});
+            $("#end_date").datepicker({dateFormat: "DD MM d, yy", showAnim : "fadeIn"});
+            if (wysiwygFlag) $("#en_html").wysiwyg();
+            if (wysiwygFlag) $("#fr_html").wysiwyg();
+        },
+        error: function(data) {
+            $('#'+containerId).html(data);
+        }
+    });
+
+} // function EditRecord
+
+
+
+// ******************** new functions added for cl4 END
+
+
+
 // invoked when a user clicks the checkbox to either expire or delete a record
 function SetExpireFlag(b) {
   var confirmDeleteForm = document.forms['confirm_delete'];

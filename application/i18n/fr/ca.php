@@ -13,6 +13,12 @@ return array
     'Our values' => 'Nos valeurs',
     'Our guiding principles' => 'Principes directeurs',
     'Testimonials' => 'Témoignages',
+    'My Account' => 'Mon compte',
+    
+    // admin menu items
+    'Admin' => 'Admin',
+    'Meta' => 'Méta',
+    'Logout' => 'Déconnexion',
 
     // misc
     'Welcome' => 'Bienvenue',

@@ -23,10 +23,11 @@
 <body id="<?php if (isset($pageName)) echo str_replace(' ','_',$pageName); ?>" class="<?php echo $bodyClass; ?>">
 <div id="wrapper">
 <?php if (DEVELOPMENT_FLAG) { ?>
-    <aside class="development"><?php echo SHORT_NAME . ' v' . APP_VERSION; ?> DEVELOPMENT SITE</aside>
+    <aside class="development">THIS SITE IS CURRENTLY UNDER DEVELOPMENT</aside>
 <?php } // if ?>
+    <aside class="mainTitle"><?php echo LONG_NAME . ' v' . APP_VERSION; ?></aside>
     <header>
-        <nav id="global">
+        <nav class="primary">
             <ul>
                 <li class="home"><a href="/<?php echo i18n::lang(); ?>/page/home"><?php echo __('Home'); ?></a></li>
                 <li class="about"><a href="/<?php echo i18n::lang(); ?>/page/about"><?php echo __('About'); ?></a></li>
@@ -35,18 +36,21 @@
                 <li class="contact"><a href="/<?php echo i18n::lang(); ?>/page/contact"><?php echo __('Contact'); ?></a></li>
 <?php if (!$loggedIn) { ?>
                 <li><a href="/<?php echo i18n::lang(); ?>/account"><?php echo __('Login'); ?></a></li>
-<?php } else { ?>
-                <li class="private"><a href="/<?php echo i18n::lang(); ?>/account"><?php echo __('My Account'); ?></a></li>
-                <li class="private"><a href="/<?php echo i18n::lang(); ?>/admin"><?php echo __('Admin'); ?></a></li>
-                <li class="private"><a href="/<?php echo i18n::lang(); ?>/meta"><?php echo __('Meta'); ?></a></li>
-                <li class="private"><a href="/<?php echo i18n::lang(); ?>/account/logout"><?php echo __('Logout'); ?></a></li>
 <?php } // if ?>
                 <li class="last language"><?php echo __('Language: '); ?><?php if (isset($languageOptions)) echo $languageOptions; ?></li>
             </ul>
-<?php if ($loggedIn) { ?>
-            <aside id="loggedIn"><?php echo __('Welcome'); ?> <?php echo $_SESSION['full_name']; ?></aside>
-<?php } // if ?>
         </nav>
+<?php if ($loggedIn) { ?>
+        <nav class="private">
+            <ul>
+                <li style="padding-left:7px;"><?php echo __('Welcome'); ?> <?php echo $_SESSION['full_name']; ?></li>
+                <li><a href="/<?php echo i18n::lang(); ?>/account"><?php echo __('My Account'); ?></a></li>
+                <li><a href="/<?php echo i18n::lang(); ?>/admin"><?php echo __('Admin'); ?></a></li>
+                <li><a href="/<?php echo i18n::lang(); ?>/meta"><?php echo __('Meta'); ?></a></li>
+                <li class="last"><a href="/<?php echo i18n::lang(); ?>/account/logout"><?php echo __('Logout'); ?></a></li>
+            </ul>
+        </nav>
+<?php } // if ?>
     </header>
 <?php if (isset($message) && $message != '') echo '<div class="statusMessage message">' . $message . '</div>' . EOL; ?>
     <div id="mainContent">

@@ -19,8 +19,8 @@ switch ($serverId) {
         define('CACHE_FLAG', false);
         define('DEBUG_FLAG', true);
         define('UNAVAILABLE_FLAG', false);
-        define('LONG_NAME','CL4 Template Site');
-        define('SHORT_NAME','CL4');
+        define('LONG_NAME','cl4 Sample CMS Site');
+        define('SHORT_NAME','cl4sample');
         define('APP_VERSION','0.1');
         define('URL_ROOT','http://template4.claero.com');
         define('ABS_ROOT','/home/templat4/template4.claero.com');

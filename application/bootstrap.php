@@ -116,13 +116,22 @@ Route::set('account', '(<lang>/)account(/<action>(/<id>))', array('lang' => '(en
         'page' => '',
 ));
 
-// administration page
-Route::set('admin', '(<lang>/)admin(/<action>(/<id>))', array('lang' => '(en-ca|fr-ca)'))
+// administration pages
+Route::set('admin', '(<lang>/)<controller>(/<action>(/<id>))', array('lang' => '(en-ca|fr-ca)', 'controller' => '(admin|meta)'))
     ->defaults(array(
         'controller' => 'admin',
         'action' => 'index',
         'section' => 'admin',
         'page' => '',
+));
+
+// routes for editing
+Route::set('edit', '<lang>/edit/<type>/<action>(/<id>)', array('lang' => '(en-ca|fr-ca)', 'id'=>'.+'))
+->defaults(array(
+    'lang' => 'en-ca',
+    'controller' => 'edit',
+    'action' => 'createform',
+    'id' => '',
 ));
 
  // home page is the default for everything else

@@ -1,6 +1,10 @@
 <?php defined('SYSPATH') or die('No direct script access.');
-  
-// todo: make generic, right now it just does pages
+
+/* 
+This controller handles CRUD and provides a back-end admin interface to the database.
+The authentication and authorization is managed by Controller_Base.    
+ */
+
 class Controller_Admin extends Controller_Base {
 
     public $internal = false;
@@ -47,37 +51,6 @@ class Controller_Admin extends Controller_Base {
         $this->offset = claero::ProcessRequest('offset', null);
         $this->sortColumn = claero::ProcessRequest('sort_by_column', null);
         $this->sortOrder = claero::ProcessRequest('sort_by_order', null);
-        
-        /*
-        if ($this->user && $this->user->email != 'admin@admin.com') {
-            $this->allowedTables = array('user','user_group','group','group_permission','permission');
-            if (!in_array($formName, $this->allowedTables)) $formName = $this->allowedTables[0];
-        } else {
-            $this->allowedTables = false;
-        }
-        */
-        
-        //make sure the user is logged in and set permissions
-        
-        
-        
-        
-        
-        // 20100811 CSN disabled for now, ened to re-implement auth!!!!!!
-        if (1 || $this->user) {
-            //if ($this->user->email == 'admin@admin.com') {
-                // 
-            //} else { 
-                $this->allowedTables = array('user','user_group','group','group_permission','permission');
-            //} // if
-            //if (!in_array($this->formName, $this->allowedTables)) $this->formName = $this->allowedTables[0];
-        } else {
-            die('you are not authorized to view this page');
-        } // if
-        
-        
-        
-        
         
         // the first time to the page
         if (!isset($_SESSION['db_admin'])) {
@@ -141,7 +114,7 @@ class Controller_Admin extends Controller_Base {
             'class' => 'small',
             'id' => 'form_name',
             'attributes' => array('on_change' => 'this.form.submit();'),
-            'allowed_tables' => $this->allowedTables,
+            //'allowed_tables' => $this->allowedTables,
         );
         
         //fire::log($options);

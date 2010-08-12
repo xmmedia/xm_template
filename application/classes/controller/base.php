@@ -18,7 +18,7 @@ class Controller_Base extends Controller_Template {
     protected $authenticated = true; // until auth is added, use this to flip
     protected $auth; // auth object
     protected $user; // currently logged-in user
-    protected $roles_required = array(); // roles required to perform current action (must satisfy all)
+    protected $loggedIn = false; // whether user is logged in
     
     // called before our action method
     public function before()
@@ -141,9 +141,12 @@ class Controller_Base extends Controller_Template {
             'publicControllers' => $publicControllers,
         );
         $this->auth = new ClaeroAuth($authOptions);
+        
+        // check to see if the user is logged in
+        $this->loggedIn = $this->auth->IsLoggedIn();
 
         if (!in_array($this->request->controller, $publicControllers)) {
-            if (!$this->auth->IsLoggedIn()) {
+            if (!$this->loggedIn) {
                 claero::AddStatusMsg($this->auth->GetMessage(HEOL));
                 $this->request->redirect('/account');
                 exit;
@@ -216,7 +219,7 @@ class Controller_Base extends Controller_Template {
                     $pageId = $pageContent['page_id'];
                 } else {
                     // display the english verson with a notice
-                    if ($this->locale != 'en-ca' && $pageContent = $this->getPageContents($page, 'en-ca')) {
+                    if ($this->locale != 'en-ca' && $pageContent = $this->get_page_contents($page, 'en-ca')) {
                         Fire::log('loading page: using db content with locale: en-ca');
                         // display the page contents
                         $returnHtml .= '<p class="statusMessage">' . __('No translation was available, we apologize for any inconvenience. Here is the Canadian English version:') . '</p>' . EOL;
@@ -263,22 +266,38 @@ EOA;
         } // if
         $returnHtml .= '</div> <!-- ' . $containerDivId . '-->' . EOL;
 
-        // if this is an admin, display the control bar with add/edit/delete, etc. functions
-        if ($pageLoaded && $this->user) {
+        // if the current user has edit permissions, display the control bar with add/edit/delete, etc. functions
+        if ($pageLoaded && $this->loggedIn) {
 
-            // if we don't have a pageid yet, see if this page has one in the db
+            // if we don't have a page id yet, see if this page has one in the db
             if (!$pageId) $pageId = $this->get_page_id($page);
 
-            // display the edit bar at the bottom of the page
-            $returnHtml .= '<aside class="controlRow" style="clear:both">' . EOL;
-            $returnHtml .= Form::button('Edit', __('Edit'), array(
+            // generate the edit html for this content
+            $editHtml = '<aside class="controlRow" style="clear:both">' . EOL;
+            $editHtml .= Form::button('Edit', __('Edit'), array(
                     'type' => 'button', 'onclick' => 'EditRecord(\'' . $containerDivId . '\',\'page\',' . $pageId . ',true);')) . EOL;
-            $returnHtml .= Form::button('EditHtml', __('Edit HTML Source'), array(
+            $editHtml .= Form::button('EditHtml', __('Edit HTML Source'), array(
                     'type' => 'button', 'onclick' => 'EditRecord(\'' . $containerDivId . '\',\'page\',' . $pageId . ',false);')) . EOL;
             // display meta information so it is easy for admins, etc. to view
-            $returnHtml .= '<p>Meta Description: ' . $this->template->metaDescription . '</p>' . EOL;
-            $returnHtml .= '<p>Meta Keywords: ' . $this->template->metaKeywords . '</p>' . EOL;
-            $returnHtml .= '</aside>' . EOL;
+            $editHtml .= '<p>Meta Description: ' . $this->template->metaDescription . '</p>' . EOL;
+            $editHtml .= '<p>Meta Keywords: ' . $this->template->metaKeywords . '</p>' . EOL;
+            $editHtml .= '</aside>' . EOL;
+            
+            // add the edit html to the begining of the content
+            $returnHtml = $editHtml . $returnHtml;
+            
+            // add jquery ui css and js
+            $this->template->styles['css/jquery-ui-1.8.2.custom.css'] = 'screen';
+            $this->template->scripts[] = 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/jquery-ui.min.js';
+            
+            // add jquery wysiwyg css and js
+            $this->template->scripts[] = 'jwysiwyg/jquery.wysiwyg.js'; // needed for wysiwyg editor
+            $this->template->styles['jwysiwyg/jquery.wysiwyg.css'] = 'screen'; // needed for wysiwyg editor
+            
+            // add claerolib4 css and js
+            $this->template->styles['css/cl4.css'] = 'screen';
+            $this->template->scripts[] = 'js/cl4.js';
+
         }
 
         return $returnHtml;
@@ -289,7 +308,7 @@ EOA;
     private function get_page_id($shortName) {
         $pageId = 0;
         $pageData = Jelly::select('page')->where('short_name','=',$shortName)->limit(1)->execute();
-        if ($pageData->id) $pageId = $pageData->id;
+        if ($pageData && $pageData->id) $pageId = $pageData->id;
         Fire::log('attempt to get page id for page: ' . $shortName . ' id returned is: ' . $pageId);
         return $pageId;
     }
