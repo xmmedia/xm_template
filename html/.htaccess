@@ -4,14 +4,57 @@
 #AuthUserFile /path/to/htaccess/file/dev-pass
 #Require valid-user
 
-# DH? - setting the charset, session lifetime and save path for the session
-php_value default_charset "UTF-8"
-php_value session.gc_maxlifetime 7200
-# php_value session.save_path "/home/templat4/template4.claero.com/sessions/"
 
-# DH? - setting the default charset for apache
-AddDefaultCharset UTF-8
-AddCharset UTF-8 .html .htm .php
+
+# custom 404 page
+#ErrorDocument 404 /404.html
+
+
+
+# set the default character set for PHP
+php_value default_charset "UTF-8"
+
+# use utf-8 encoding for anything served text/plain or text/html
+AddDefaultCharset utf-8
+# force utf-8 for a number of file formats
+AddCharset utf-8 .html .htm .php .css .js .xml .json .rss
+
+
+
+# hacks.mozilla.org/2009/07/cross-site-xmlhttprequest-with-cors/
+# Disabled. Uncomment to serve cross-domain ajax requests
+#<IfModule mod_headers.c>
+#  Header set Access-Control-Allow-Origin "*"
+#</IfModule>
+
+# allow access from all domains for webfonts
+# alternatively you could only whitelist
+#   your subdomains like "sub.domain.com"
+<FilesMatch "\.(ttf|otf|eot|woff|font.css)$">
+  <IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "*"
+  </IfModule>
+</FilesMatch>
+
+# video
+AddType video/ogg               ogg ogv
+AddType video/mp4               mp4
+AddType video/webm              webm
+
+# Proper svg serving. Required for svg webfonts on iPad
+#   twitter.com/FontSquirrel/status/14855840545
+AddType image/svg+xml           svg svgz
+
+# webfonts
+AddType application/vnd.ms-fontobject   eot
+AddType font/ttf                        ttf
+AddType font/otf                        otf
+AddType font/x-woff                     woff
+
+AddType text/cache-manifest             manifest
+
+
+
 
 # Turn on URL rewriting
 RewriteEngine On
@@ -19,12 +62,12 @@ RewriteEngine On
 # Installation directory
 RewriteBase /
 
-# css/js
-# DH? - this is so you can control versions easily on your CSS, JS and LESS files; includes can become /css/filename.[timestamp].css
+# css/js/less
+# this is so you can control the cache more easily on your CSS, JS and LESS files; includes can become /css/filename.[timestamp].css
 # RewriteRule ^(.*)\.[\d]+\.(css|js|less)$ $1.$2 [L]
 
 # for www
-# DH? - this can be used for easily redirecting people to the www version of a site (useful to add CSS only sites)
+# this can be used for easily redirecting people to the www version of a site (it's a good idea to do this incase there is a future need for a CDN)
 #RewriteCond %{HTTP_HOST} !^www\.example\.com [NC]
 #RewriteRule ^(.*) http://www.example.com/$1 [L,R]
 
@@ -43,33 +86,71 @@ ExpiresDefault "access plus 1 month"
     Header set Cache-Control "max-age=290304000, public"
 </FilesMatch>
 
+
+
 # DH? - do this work if it's here and do we want to put it here instead of in the apache config or do we leave it here so can use it as a template for what to put in the apache config
 # remove etags for now, only relevant in multiple server environment
-FileETag none
+FileETag None
 
-# try adding compression:
 
-# Insert filter
-SetOutputFilter DEFLATE
 
-# Netscape 4.x has some problems...
-BrowserMatch ^Mozilla/4 gzip-only-text/html
+# gzip compression.
+<IfModule mod_deflate.c>
 
-# Netscape 4.06-4.08 have some more problems
-BrowserMatch ^Mozilla/4\.0[678] no-gzip
+# html, xml, css, and js:
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css application/x-javascript text/javascript application/javascript application/json
 
-# MSIE masquerades as Netscape, but it is fine
-# BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+# webfonts and svg:
+  <FilesMatch "\.(ttf|otf|eot|svg)$" >
+    SetOutputFilter DEFLATE
+  </FilesMatch>
+</IfModule>
 
-# NOTE: Due to a bug in mod_setenvif up to Apache 2.0.48
-# the above regex won't work. You can use the following
-# workaround to get the desired effect:
-BrowserMatch \bMSI[E] !no-gzip !gzip-only-text/html
 
-# Don't compress images
-SetEnvIfNoCase Request_URI \
-\.(?:gif|jpe?g|png)$ no-gzip dont-vary
 
-# Make sure proxies don't deliver the wrong content
-Header append Vary User-Agent env=!dont-vary
-# compression END
+# these are pretty far-future expires headers
+# they assume you control versioning with cachebusting query params like
+#   <script src="application.js?20100608">
+# additionally, consider that outdated proxies may miscache
+#   www.stevesouders.com/blog/2008/08/23/revving-filenames-dont-use-querystring/
+
+# if you don't use filenames to version, lower the css and js to something like
+#   "access plus 1 week" or so
+
+<IfModule mod_expires.c>
+  Header set cache-control: public
+  ExpiresActive on
+
+# Perhaps better to whitelist expires rules? Perhaps.
+  ExpiresDefault                          "access plus 1 month"
+
+# cache.manifest needs re-reqeusts in FF 3.6 (thx Remy ~Introducing HTML5)
+  ExpiresByType text/cache-manifest       "access plus 0 seconds"
+
+# your document html
+  ExpiresByType text/html                  "access"
+
+# rss feed
+  ExpiresByType application/rss+xml       "access plus 1 hour"
+
+# favicon (cannot be renamed)
+  ExpiresByType image/vnd.microsoft.icon  "access plus 1 week"
+
+# media: images, video, audio
+  ExpiresByType image/png                 "access plus 1 month"
+  ExpiresByType image/jpg                 "access plus 1 month"
+  ExpiresByType image/jpeg                "access plus 1 month"
+  ExpiresByType video/ogg                 "access plus 1 month"
+  ExpiresByType audio/ogg                 "access plus 1 month"
+  ExpiresByType video/mp4                 "access plus 1 month"
+
+# webfonts
+  ExpiresByType font/ttf                  "access plus 1 month"
+  ExpiresByType font/woff                 "access plus 1 month"
+  ExpiresByType image/svg+xml             "access plus 1 month"
+
+# css and javascript
+  ExpiresByType text/css                  "access plus 1 month"
+  ExpiresByType application/javascript    "access plus 1 month"
+  ExpiresByType text/javascript           "access plus 1 month"
+</IfModule>
