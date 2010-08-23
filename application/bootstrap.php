@@ -101,6 +101,7 @@ if (DEBUG_FLAG) {
  // routes for public pages
 Route::set('pages', '<lang>/page/<section>(/<page>(/<action>))', array('lang' => '(en-ca|fr-ca)', 'page' => '.*'))
     ->defaults(array(
+        'lang' => 'en-ca',
         'controller' => 'page',
         'section' => 'home',
         'page' => '',
@@ -109,6 +110,7 @@ Route::set('pages', '<lang>/page/<section>(/<page>(/<action>))', array('lang' =>
 // account page
 Route::set('account', '(<lang>/)account(/<action>(/<id>))', array('lang' => '(en-ca|fr-ca)'))
     ->defaults(array(
+        'lang' => 'en-ca',
         'controller' => 'account',
         'action' => 'index',
         'section' => 'admin',
@@ -118,6 +120,7 @@ Route::set('account', '(<lang>/)account(/<action>(/<id>))', array('lang' => '(en
 // administration pages
 Route::set('admin', '(<lang>/)<controller>(/<action>(/<id>))', array('lang' => '(en-ca|fr-ca)', 'controller' => '(admin|meta)'))
     ->defaults(array(
+        'lang' => 'en-ca',
         'controller' => 'admin',
         'action' => 'index',
         'section' => 'admin',
@@ -126,16 +129,17 @@ Route::set('admin', '(<lang>/)<controller>(/<action>(/<id>))', array('lang' => '
 
 // routes for editing
 Route::set('edit', '<lang>/edit/<type>/<action>(/<id>)', array('lang' => '(en-ca|fr-ca)', 'id'=>'.+'))
-->defaults(array(
-    'lang' => 'en-ca',
-    'controller' => 'edit',
-    'action' => 'createform',
-    'id' => '',
+    ->defaults(array(
+        'lang' => 'en-ca',
+        'controller' => 'edit',
+        'action' => 'createform',
+        'id' => '',
 ));
 
  // home page is the default for everything else
 Route::set('home', '(<lang>/)', array('lang' => '(en-ca|fr-ca)'))
     ->defaults(array(
+        'lang' => 'en-ca',
         'controller' => 'home',
         'action' => 'index',
         'section' => 'home',
@@ -155,7 +159,7 @@ Route::set('default', '(<lang>/)(<controller>)(/<action>(/<id>))', array('lang' 
 ));
 */
 
-if (!defined('SUPPRESS_REQUEST')) {
+if ( ! defined('SUPPRESS_REQUEST')) {
 	/**
 	 * Execute the main request. A source of the URI can be passed, eg: $_SERVER['PATH_INFO'].
 	 * If no source is specified, the URI will be automatically detected.

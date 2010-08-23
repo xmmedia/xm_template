@@ -11,12 +11,13 @@ if (!RUNNING_AT_COMMAND_LINE && isset($_SERVER['SERVER_NAME']) && isset($_SERVER
     $serverId = $_SERVER['PWD'];
 }
 switch ($serverId) {
-    case 'www.claero.com:80': // production site
+    // production site
+    case 'www.claero.com:80':
         define('CONFIG_FILE', 'development');
-        define('DEVELOPMENT_FLAG', false);
-        define('CACHE_FLAG', false);
-        define('DEBUG_FLAG', false);
-        define('UNAVAILABLE_FLAG', false);
+        define('DEVELOPMENT_FLAG', FALSE);
+        define('CACHE_FLAG', FALSE);
+        define('DEBUG_FLAG', FALSE);
+        define('UNAVAILABLE_FLAG', FALSE);
         define('LONG_NAME', 'cl4 Sample CMS Site');
         define('SHORT_NAME', 'cl4sample');
         define('APP_VERSION', '0.1');
@@ -37,12 +38,13 @@ switch ($serverId) {
         define('FR_LOCALE_ID', 2);
         break;
 
-    case 'template4.claero.com:80': // development site
+    // development site
+    case 'template4.claero.com:80':
         define('CONFIG_FILE', 'development');
-        define('DEVELOPMENT_FLAG', false);
-        define('CACHE_FLAG', false);
-        define('DEBUG_FLAG', false);
-        define('UNAVAILABLE_FLAG', false);
+        define('DEVELOPMENT_FLAG', TRUE);
+        define('CACHE_FLAG', FALSE);
+        define('DEBUG_FLAG', TRUE);
+        define('UNAVAILABLE_FLAG', FALSE);
         define('LONG_NAME', 'cl4 Sample CMS Site');
         define('SHORT_NAME', 'cl4sample');
         define('APP_VERSION', '0.1');
