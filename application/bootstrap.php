@@ -61,7 +61,6 @@ Kohana::init($settings);
 /**
  * Attach the file write to logging. Multiple writers are supported.
  */
-//Kohana::$log->attach(new Kohana_Log_File(APPPATH.'logs'));
 Kohana::$log->attach(new Kohana_Log_File(ABS_ROOT . '/logs'));
 
 /**
@@ -70,37 +69,37 @@ Kohana::$log->attach(new Kohana_Log_File(ABS_ROOT . '/logs'));
 Kohana::$config->attach(new Kohana_Config_File);
 
 /**
- * Enable modules. Modules are referenced by a relative or absolute path. 
+ * Enable modules. Modules are referenced by a relative or absolute path.
  * ORDER MATTERS HERE!!!
  */
 $modules = array(
-    'claero'            => MODPATH.'claero',            // Claerolib3 conversion (must be at the top)
-    'firephp'           => MODPATH.'firephp',
-    'database'          => MODPATH.'database',          // Database access
-    'image'             => MODPATH.'image',             // Image manipulation
-    //'orm'               => MODPATH.'orm',             // Object Relationship Mapping
-    'jelly'             => MODPATH.'jelly',             // Jelly ORM
-    'auth'              => MODPATH.'auth',              // Basic authentication
-    'pagination'        => MODPATH.'pagination',        // Paging of results
-    //'userguide'       => MODPATH.'userguide',         // User guide and API documentation
+    'claero'            => MODPATH . 'claero',            // Claerolib3 conversion (must be at the top)
+    'firephp'           => MODPATH . 'firephp',
+    'database'          => MODPATH . 'database',          // Database access
+    'image'             => MODPATH . 'image',             // Image manipulation
+    //'orm'               => MODPATH . 'orm',               // Object Relationship Mapping
+    'jelly'             => MODPATH . 'jelly',             // Jelly ORM
+    'auth'              => MODPATH . 'auth',              // Basic authentication
+    'pagination'        => MODPATH . 'pagination',        // Paging of results
+    //'userguide'         => MODPATH . 'userguide',         // User guide and API documentation
 );
-if (CACHE_FLAG) $modules['cache'] = MODPATH.'cache';      // Caching with multiple backends
-if (DEBUG_FLAG) $modules['codebench'] = MODPATH.'codebench';  // Benchmarking tool
+if (CACHE_FLAG) $modules['cache'] = MODPATH . 'cache';      // Caching with multiple backends
+if (DEBUG_FLAG) $modules['codebench'] = MODPATH . 'codebench';  // Benchmarking tool
 Kohana::modules($modules);
 
 // set up firephp for debugging
 if (DEBUG_FLAG) {
-    Kohana::$log->attach(new FirePHP_Log_File(APPPATH.'logs'));
+    Kohana::$log->attach(new FirePHP_Log_File(APPPATH . 'logs'));
     Kohana::$log->attach(new FirePHP_Log_Console());
 }
 
 /**
  * Set the routes. Each route must have a minimum of a name, a URI and a set of
- * defaults for the URI.  Routes are selected by whichever one matches first.
+ * defaults for the URI. Routes are selected by whichever one matches first.
  */
- 
+
  // routes for public pages
-Route::set('pages', '<lang>/page/<section>(/<page>(/<action>))', array('lang' => '(en-ca|fr-ca)','page' => '.*'))
+Route::set('pages', '<lang>/page/<section>(/<page>(/<action>))', array('lang' => '(en-ca|fr-ca)', 'page' => '.*'))
     ->defaults(array(
         'controller' => 'page',
         'section' => 'home',
@@ -156,8 +155,7 @@ Route::set('default', '(<lang>/)(<controller>)(/<action>(/<id>))', array('lang' 
 ));
 */
 
-if ( ! defined('SUPPRESS_REQUEST'))
-{
+if (!defined('SUPPRESS_REQUEST')) {
 	/**
 	 * Execute the main request. A source of the URI can be passed, eg: $_SERVER['PATH_INFO'].
 	 * If no source is specified, the URI will be automatically detected.

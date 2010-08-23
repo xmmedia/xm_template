@@ -1,8 +1,17 @@
 #For DEV Sites (this is an example):
 #AuthType Basic
 #AuthName "By Invitation Only"
-#AuthUserFile /var/www/vhosts/dev.trialto.com/conf/dev-pass
+#AuthUserFile /path/to/htaccess/file/dev-pass
 #Require valid-user
+
+# DH? - setting the charset, session lifetime and save path for the session
+php_value default_charset "UTF-8"
+php_value session.gc_maxlifetime 7200
+# php_value session.save_path "/home/templat4/template4.claero.com/sessions/"
+
+# DH? - setting the default charset for apache
+AddDefaultCharset UTF-8
+AddCharset UTF-8 .html .htm .php
 
 # Turn on URL rewriting
 RewriteEngine On
@@ -10,14 +19,14 @@ RewriteEngine On
 # Installation directory
 RewriteBase /
 
-# Protect hidden files from being viewed
-<Files .*>
-	Order Deny,Allow
-	Deny From All
-</Files>
+# css/js
+# DH? - this is so you can control versions easily on your CSS, JS and LESS files; includes can become /css/filename.[timestamp].css
+# RewriteRule ^(.*)\.[\d]+\.(css|js|less)$ $1.$2 [L]
 
-# Protect application and system files from being viewed
-RewriteRule ^(?:application|modules|system)\b.* index.php/$0 [L]
+# for www
+# DH? - this can be used for easily redirecting people to the www version of a site (useful to add CSS only sites)
+#RewriteCond %{HTTP_HOST} !^www\.example\.com [NC]
+#RewriteRule ^(.*) http://www.example.com/$1 [L,R]
 
 # Allow any files or directories that exist to be displayed directly
 RewriteCond %{REQUEST_FILENAME} !-f
@@ -34,32 +43,33 @@ ExpiresDefault "access plus 1 month"
     Header set Cache-Control "max-age=290304000, public"
 </FilesMatch>
 
+# DH? - do this work if it's here and do we want to put it here instead of in the apache config or do we leave it here so can use it as a template for what to put in the apache config
 # remove etags for now, only relevant in multiple server environment
 FileETag none
 
 # try adding compression:
-    
-    # Insert filter
-    SetOutputFilter DEFLATE
-    
-    # Netscape 4.x has some problems...
-    BrowserMatch ^Mozilla/4 gzip-only-text/html
-    
-    # Netscape 4.06-4.08 have some more problems
-    BrowserMatch ^Mozilla/4\.0[678] no-gzip
-    
-    # MSIE masquerades as Netscape, but it is fine
-    # BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
-    
-    # NOTE: Due to a bug in mod_setenvif up to Apache 2.0.48
-    # the above regex won't work. You can use the following
-    # workaround to get the desired effect:
-    BrowserMatch \bMSI[E] !no-gzip !gzip-only-text/html
-    
-    # Don't compress images
-    SetEnvIfNoCase Request_URI \
-    \.(?:gif|jpe?g|png)$ no-gzip dont-vary
-    
-    # Make sure proxies don't deliver the wrong content
-    Header append Vary User-Agent env=!dont-vary
-    # compression END
+
+# Insert filter
+SetOutputFilter DEFLATE
+
+# Netscape 4.x has some problems...
+BrowserMatch ^Mozilla/4 gzip-only-text/html
+
+# Netscape 4.06-4.08 have some more problems
+BrowserMatch ^Mozilla/4\.0[678] no-gzip
+
+# MSIE masquerades as Netscape, but it is fine
+# BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+
+# NOTE: Due to a bug in mod_setenvif up to Apache 2.0.48
+# the above regex won't work. You can use the following
+# workaround to get the desired effect:
+BrowserMatch \bMSI[E] !no-gzip !gzip-only-text/html
+
+# Don't compress images
+SetEnvIfNoCase Request_URI \
+\.(?:gif|jpe?g|png)$ no-gzip dont-vary
+
+# Make sure proxies don't deliver the wrong content
+Header append Vary User-Agent env=!dont-vary
+# compression END

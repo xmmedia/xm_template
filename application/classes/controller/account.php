@@ -18,43 +18,43 @@ class Controller_Account extends Controller_Base {
                 //$this->roles_required = array('view own account');
             break;
         }
-        
+
         // need to figure out a safe way to do this if at all, for now just go home
         $this->redirectUrl = '/' . i18n::lang() . '/account';
     }
-    
+
     /**
      * If the user is logged in, then the account page is displayed, otherwise the login page is displayed
      */
 	public function action_index() {
-	   
+
         // check to see if we are already logged in
         if ($this->auth->IsLoggedIn()) {
             $this->template->bodyHtml .= View::factory('pages/' . i18n::lang() . '/account') . EOL;
         } else {
             // display the login form
             //$this->template->bodyHtml .= "<p>Display the login form.<p>";
-            $this->template->bodyHtml .= View::factory('pages/' . i18n::lang() . '/login') . EOL; 
+            $this->template->bodyHtml .= View::factory('pages/' . i18n::lang() . '/login') . EOL;
         } // if
 	}
-    
+
     /**
      * Log a user in.
      */
     public function action_login() {
-    
+
 		// check to see if we are already logged in
 		if ($this->auth->IsLoggedIn()) {
 			claero::AddStatusMsg('You already appear to be logged in. (<a href="/account/destroy_seession">kill session</a>)');
 		} else if (Request::$method == 'POST') {
 
-            // check for the required post variables, clean them, etc. 
+            // check for the required post variables, clean them, etc.
     		$submittedEmail = Security::xss_clean(Arr::get($_POST, 'username', false));
     		$submittedPassword = Security::xss_clean(Arr::get($_POST, 'password', false));
 
 			// try to login
 			if ($this->auth->Login($submittedEmail, $submittedPassword, false)) {
-                
+
                 // now get the user information
                 $this->user = Jelly::select('user')->where('username', '=', $submittedEmail)->load(1);
 
@@ -73,65 +73,61 @@ class Controller_Account extends Controller_Base {
             // do something smart
             claero::AddStatusMsg("Invalid login request type (not POST).");
 		}
-		
+
 		// redirect to login page or redirect page
 		$this->request->redirect($this->redirectUrl);
 
     }
-    
+
     /**
      * destroy the session and reload the main account page (login form)
      */
     public function action_destroy_session() {
-    
+
         session_destroy();
-        
+
         $this->request->redirect($this->redirectUrl);
-        
+
     }
-	
+
 	/**
 	 * Logs a user out.
 	 */
 	public function action_logout() {
-	
+
 		if ($this->auth->IsLoggedIn()) {
 			$this->auth->Logout();
 		}
-		
+
 		$this->request->redirect('/');
 	}
-	
+
 	/**
 	 * Registers a new user.
 	 */
 	public function action_register() {
-	
+
 		// see if the user is already logged in
 		// todo: do something smarter here, like ask if they want to register a new user?
 		if ($this->auth->logged_in()) {
 			claero::flash_set('message', 'You already have an account.');
 			$this->request->redirect($this->redirectUrl);
 		}
-		
+
 		$this->redirectPage = 'register';
-		
+
 		if (Request::$method == 'POST') {
             // try to create a new user with the supplied credentials
             try {
-            
-                // check the recaptcha string to make sure it was entered properly    
+
+                // check the recaptcha string to make sure it was entered properly
                 require_once(ABS_ROOT . '/lib/recaptcha/recaptchalib.php');
-                $resp = recaptcha_check_answer(CAPTCHA_PRIVATE_KEY,
-                    $_SERVER["REMOTE_ADDR"],
-                    $_POST["recaptcha_challenge_field"],
-                    $_POST["recaptcha_response_field"]
-                );
+                $resp = recaptcha_check_answer(RECAPTCHA_PRIVATE_KEY, $_SERVER['REMOTE_ADDR'], $_POST['recaptcha_challenge_field'], $_POST['recaptcha_response_field']);
                 if (!$resp->is_valid) {
-                    claero::flash_set('message', __("The reCAPTCHA text did not match up, please try again."));
+                    claero::flash_set('message', __('The reCAPTCHA text did not match up, please try again.'));
                     Fire::log('The reCAPTCHA text did not match up, please try again.');
                 } else {
-                
+
                     // try to create the new user
                     $newUser = Jelly::factory('user')
                          ->set(array(
@@ -154,31 +150,31 @@ class Controller_Account extends Controller_Base {
                     } // if
                     //Fire::log('looks like it worked?');
                 } // if
-                
+
             } catch (Validate_Exception $e) {
                 claero::flash_set('message', __("A validation error occurred, please correct your information and try again."));
                 Fire::log('A validation exception occurred: ');
                 Fire::log($e->array);
-            
+
             } catch (Exception $e) {
                 Fire::log('Some other exception occured');
                 Fire::log($e);
                 $this->template->bodyHtml .= 'Could not create user. Error: "' . $e->getMessage() . '"';
                 claero::flash_set('message', 'An error occurred during registration, please try again later.');
-                
+
             } // try
         } else {
             // invalid request type for registration
             Fire::log('invalid request type for registration');
 		} // if
-		
+
         // Redirect to login
         //$this->request->redirect($this->redirectUrl);
         fire::log('here we are');
-        
-        
+
+
         $this->provinceId = Security::xss_clean(Arr::get($_POST, 'province_id', ''));
-        
+
 	} // function action_register
-	
+
 } // class

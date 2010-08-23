@@ -14,15 +14,14 @@ class Controller_Base extends Controller_Template {
     public $provinceName = false; // the selected province full name
     public $thisPage = '';
     public $claeroDb = ''; // the cl4 database resource
-    
+
     protected $authenticated = true; // until auth is added, use this to flip
     protected $auth; // auth object
     protected $user; // currently logged-in user
     protected $loggedIn = false; // whether user is logged in
-    
+
     // called before our action method
-    public function before()
-    {
+    public function before() {
         parent::before();
 
         // open a session
@@ -35,14 +34,14 @@ class Controller_Base extends Controller_Template {
         $defaultLocale = Cookie::get('language', 'en-ca');
 
         // set locale and language and save in a cookie
-        $this->locale = Request::instance()->param('lang',$defaultLocale);
+        $this->locale = Request::instance()->param('lang', $defaultLocale);
         if (!in_array($this->locale, $this->allowedLanguages)) {
             $this->locale = 'en-ca';
         } // if
         i18n::lang($this->locale);
         Cookie::set('language', $this->locale); // todo: put this in a try()?
         $this->language = substr(i18n::lang(),0,2);
-        
+
 	    // set up the config settings
 	    $this->config = Kohana::config(CONFIG_FILE);
 
@@ -119,7 +118,7 @@ class Controller_Base extends Controller_Template {
 
         // perform authorization checks
         $this->perform_auth();
-        
+
         // add 'logged in' flag to template
         if ($this->auto_render) $this->template->loggedIn = $this->auth->IsLoggedIn();
     }
@@ -129,7 +128,7 @@ class Controller_Base extends Controller_Template {
      * Perform authorization based on controller and action
      */
     private function perform_auth() {
-    
+
         // set up publicly accessible controllers
         $publicControllers = array('home', 'page', 'account');
 
@@ -141,7 +140,7 @@ class Controller_Base extends Controller_Template {
             'publicControllers' => $publicControllers,
         );
         $this->auth = new ClaeroAuth($authOptions);
-        
+
         // check to see if the user is logged in
         $this->loggedIn = $this->auth->IsLoggedIn();
 
@@ -160,7 +159,7 @@ class Controller_Base extends Controller_Template {
         } else {
             $this->user = false;
         } // if
-        
+
     }
 
     public function get_current_date($format = null, $timestamp = null) {
@@ -258,7 +257,7 @@ EOA;
                             $returnHtml .= '<p class="statusMessage">' . __('Unfortunately this page has no content yet. We apologize for any inconvenience.');
                             $returnHtml .= ' If you are an authorized user, you can log in and publish or create this page.</p>' . EOL;
                             //$returnHtml .= '<p class="statusMessage">' . __('If you were logged in, you could create this page.') . '</p>' . EOL;
-                            //if (DEBUG_FLAG) $returnHtml .= '<p>Template file:<br />' . ABS_ROOT . '/application/views/staticpages/en-ca/' . $page . '.php</p>';
+                            //if (DEBUG_FLAG) $returnHtml .= '<p>Template file:<br>' . ABS_ROOT . '/application/views/staticpages/en-ca/' . $page . '.php</p>';
                         } // if
                     } // if
                 } // if
@@ -282,18 +281,18 @@ EOA;
             $editHtml .= '<p>Meta Description: ' . $this->template->metaDescription . '</p>' . EOL;
             $editHtml .= '<p>Meta Keywords: ' . $this->template->metaKeywords . '</p>' . EOL;
             $editHtml .= '</aside>' . EOL;
-            
+
             // add the edit html to the begining of the content
             $returnHtml = $editHtml . $returnHtml;
-            
+
             // add jquery ui css and js
             $this->template->styles['css/jquery-ui-1.8.2.custom.css'] = 'screen';
             $this->template->scripts[] = 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/jquery-ui.min.js';
-            
+
             // add jquery wysiwyg css and js
             $this->template->scripts[] = 'jwysiwyg/jquery.wysiwyg.js'; // needed for wysiwyg editor
             $this->template->styles['jwysiwyg/jquery.wysiwyg.css'] = 'screen'; // needed for wysiwyg editor
-            
+
             // add claerolib4 css and js
             $this->template->styles['css/cl4.css'] = 'screen';
             $this->template->scripts[] = 'js/cl4.js';
@@ -303,7 +302,7 @@ EOA;
         return $returnHtml;
 
     }
-    
+
     // tries to get the page id for the page with the given short_name, returns 0 if none
     private function get_page_id($shortName) {
         $pageId = 0;
@@ -362,7 +361,7 @@ EOA;
             return false;
         }
     }
-    
+
     // set up the page with the data from the database
     private function create_page($pageData) {
 
@@ -428,7 +427,7 @@ EOA;
             // merge with any existing styles or scripts added within the controller
             $this->template->styles = array_merge( $this->template->styles, $styles );
             $this->template->scripts = array_merge( $this->template->scripts, $scripts );
-            
+
             // look for any status message and display
             $this->template->message = claero::DisplayStatusMsg();
         }
