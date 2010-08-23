@@ -2,14 +2,14 @@
 /**
  * 
  */
-class Model_Article extends ORM
+class Model_Group extends ORM
 {
     protected $_db = DEFAULT_DB; // or any db group defined in database configuration
  
     protected $_table_names_plural 	 = false;
-    protected $_table_name  = 'article'; // default: accounts
+    protected $_table_name  = 'group'; // default: accounts
     //protected $_primary_key = 'id';      // default: id
-    //protected $_primary_val = 'name';      // default: name (column used as primary value)
+    //protected $_primary_val = 'username';      // default: name (column used as primary value)
  
     // default for $_table_columns: use db introspection to find columns and info
     // see http://v3.kohanaphp.com/guide/api/Database_MySQL#list_columns for all possible column attributes
@@ -24,7 +24,9 @@ class Model_Article extends ORM
     //);
     
     // relationships
-    protected $_has_one = array('user' => array('foreign_key' => 'author_id'));
-    protected $_has_many = array('content' => array('foreign_key' => 'article_id', 'far_key' => 'id'), 'trialtoCategory' => array('through' => 'article_category', 'foreign_key' => 'article_id', 'far_key' => 'category_id'));
+	protected $_has_many = array(
+		'user' => array('through' => 'user_group', 'foreign_key' => 'user_id', 'far_key' => 'group_id')
+		'permission' => ('through' => 'group_permission', 'foreign_key' => 'permission_id', 'far_key' => 'group_id')
+	);
 
 }
