@@ -77,9 +77,9 @@ $modules = array(
     'firephp'           => MODPATH . 'firephp',
     'database'          => MODPATH . 'database',          // Database access
     'image'             => MODPATH . 'image',             // Image manipulation
-    //'orm'               => MODPATH . 'orm',               // Object Relationship Mapping
-    'jelly'             => MODPATH . 'jelly',             // Jelly ORM
-    'auth'              => MODPATH . 'auth',              // Basic authentication
+    'orm'               => MODPATH . 'orm',               // Object Relationship Mapping
+    //'jelly'             => MODPATH . 'jelly',             // Jelly ORM
+    //'auth'              => MODPATH . 'auth',              // Basic authentication
     'pagination'        => MODPATH . 'pagination',        // Paging of results
     //'userguide'         => MODPATH . 'userguide',         // User guide and API documentation
 );
@@ -147,8 +147,8 @@ Route::set('home', '(<lang>/)', array('lang' => '(en-ca|fr-ca)'))
         'id' => '',
 ));
 
-/*
 // last chance default route: is this safe?  what about modules, third-party modules, etc.?
+// in a production site this should be locked to specific controllers or commented out
 Route::set('default', '(<lang>/)(<controller>)(/<action>(/<id>))', array('lang' => '(en-ca|fr-ca)', 'id'=>'.+'))
     ->defaults(array(
         'controller' => 'home',
@@ -157,7 +157,6 @@ Route::set('default', '(<lang>/)(<controller>)(/<action>(/<id>))', array('lang' 
         'page' => '',
         'id' => '',
 ));
-*/
 
 if ( ! defined('SUPPRESS_REQUEST')) {
 	/**
