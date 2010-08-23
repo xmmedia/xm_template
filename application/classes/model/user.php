@@ -2,7 +2,7 @@
 /**
  * 
  */
-class Model_User extends ORM
+class Model_User extends ClaeroORM
 {
     protected $_db = DEFAULT_DB; // or any db group defined in database configuration
  
@@ -25,4 +25,12 @@ class Model_User extends ORM
     
     // relationships
     protected $_has_many = array('group' => array('through' => 'user_group', 'foreign_key' => 'grop_id', 'far_key' => 'group_id'));
+    
+    
+    
+    // cl4 additions
+    protected $form_options = array(
+    	'form_type' => 'post',
+    	
+    );
 }

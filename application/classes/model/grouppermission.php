@@ -2,7 +2,7 @@
 /**
  * 
  */
-class Model_GroupPermission extends ORM
+class Model_GroupPermission extends Claero_ORM
 {
     protected $_db = DEFAULT_DB; // or any db group defined in database configuration
     

@@ -130,7 +130,7 @@ class Controller_Base extends Controller_Template {
     private function perform_auth() {
 
         // set up publicly accessible controllers
-        $publicControllers = array('home', 'page', 'account');
+        $publicControllers = array('home', 'page', 'account', 'test');
 
         // set up authentication
         $authOptions = array(

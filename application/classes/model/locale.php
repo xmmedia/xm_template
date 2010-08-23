@@ -1,33 +1,25 @@
 <?php defined('SYSPATH') or die ('No direct script access.');
-
-class Model_Locale extends Jelly_Model
+/**
+ * 
+ */
+class Model_Locale extends ClaeroORM
 {
-    public static function initialize(Jelly_Meta $meta)
-    {
-        $meta->table('locale')
-            ->sorting(array('name' => 'ASC'))
-            ->fields(array(
-                'id' => new Field_Primary(array(
-                    'column' => 'id',
-                )),
-                'name' => new Field_String(array(
-                    'column' => 'name',
-                    'label' => 'Name',
-                    'unique' => FALSE,
-                    'rules' => array(
-                        'max_length' => array(255),
-                        'not_empty' => array(TRUE)
-                    )
-                )),
-                'description' => new Field_Text(array(
-                    'column' => 'description',
-                    'label' => 'Description',
-                    'rules' => array(
-                        //'max_length' => array(255),
-                        //'not_empty' => array(FALSE)
-                    )
-                )),
-
-        ));
-    }
+    protected $_db = DEFAULT_DB; // or any db group defined in database configuration
+ 
+    protected $_table_names_plural 	 = false;
+    protected $_table_name  = 'locale'; // default: accounts
+    //protected $_primary_key = 'id';      // default: id
+    //protected $_primary_val = 'username';      // default: name (column used as primary value)
+ 
+    // default for $_table_columns: use db introspection to find columns and info
+    // see http://v3.kohanaphp.com/guide/api/Database_MySQL#list_columns for all possible column attributes
+    //protected $_table_columns = array(
+    //    'column_name'   => array('data_type' => 'int',    'is_nullable' => FALSE),
+    //    'column_name2'  => array('data_type' => 'string', 'is_nullable' => TRUE),
+    //);
+ 
+    // fields mentioned here can be accessed like properties, but will not be referenced in write operations
+    //protected $_ignored_columns = array(
+    //    'helper_field',
+    //);
 }
