@@ -103,8 +103,17 @@ class Controller_Base extends Controller_Template {
             $this->template->pageSection = $this->section;
             $this->template->pageName = ($this->page != '') ? $this->page : $this->request->controller;
             $this->template->onLoadJs = '';
-            $this->template->styles = array('css/base.css' => 'screen');
-            $this->template->scripts = array();
+            $this->template->styles = array(
+                'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/themes/pepper-grinder/jquery-ui.css' => 'screen',
+                'lib/cl4/cl4.css' => 'screen',
+                'css/base.css' => 'screen',
+            );
+            $this->template->scripts = array(
+                // add jquery js (for all pages, other js relies on it, so it has to be included first)
+                'http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js',
+                'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.4/jquery-ui.min.js',
+                'lib/cl4/cl4.js',
+            );
             $this->template->bodyClass = i18n::lang(); // other classes are added to this with spaces
             $this->template->language = $this->language;
             $this->template->message = __(claero::flash_get('message'));
@@ -112,8 +121,6 @@ class Controller_Base extends Controller_Template {
             $this->template->languageOptions = $languageSwitchLink;
             $this->template->dateinputOptions = $dateinputOptions;
             $this->template->bodyHtml = '';
-            // add jquery js (for all pages, other js relies on it, so it has to be included first)
-            $this->template->scripts[] = 'http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js';
         }
 
         // perform authorization checks

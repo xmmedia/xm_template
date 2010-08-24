@@ -69,20 +69,9 @@
         </nav>
 
         <div style="clear:both;"></div>
-<?php if (DEBUG_FLAG) { ?>
-        <div id="kohana-profiler">
-<?php echo View::factory('profiler/stats'); ?>
-        </div>
-<?php //echo Kohana::debug($_SERVER); ?>
-<?php } ?>
-
     </footer>
 </div><!-- wrapper -->
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.4/jquery-ui.min.js"></script>
-
-<!--  -->
 <?php // Javascript, put all javascript here or in $onloadJs if possible
 foreach ($scripts as $file) echo HTML::script($file) . EOL;
 ?>
@@ -92,7 +81,7 @@ foreach ($scripts as $file) echo HTML::script($file) . EOL;
     $(function() {
         $.ajaxSetup({ cache: false }); // don't cache ajax calls
         $('a').click(function() { this.blur(); }); // avoid lingering borders on selected links
-    <?php if (isset($onLoadJs)) echo $onLoadJs . EOL; ?>
+    <?php if ($onLoadJs) echo $onLoadJs . EOL; ?>
     });
 </script>
 
@@ -108,5 +97,13 @@ foreach ($scripts as $file) echo HTML::script($file) . EOL;
     })(document, 'script');
 </script>
 <?php } // if ?>
+
+<?php if (DEBUG_FLAG) { ?>
+        <div id="kohana-profiler">
+<?php echo View::factory('profiler/stats'); ?>
+        </div>
+<?php //echo Kohana::debug($_SERVER); ?>
+<?php } ?>
+
 </body>
 </html>
