@@ -3,6 +3,7 @@
 <html lang="<?php if (isset($language)) echo $language; ?>" class="no-js">
 <head>
     <meta charset="utf-8">
+    <?php if (!DEBUG_FLAG) { ?><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge;chrome=1"><![endif]--><?php echo EOL; } ?>
     <title><?php if (DEVELOPMENT_FLAG) echo '*** DEVELOPMENT SITE '; ?><?php echo SHORT_NAME . ' v' . APP_VERSION; ?> <?php if (isset($pageTitle) && trim($pageTitle) != '') echo ' - ' . $pageTitle; ?></title>
     <?php if (isset($metaDescription) && $metaDescription != '') { ?><meta name="description" content="<?php echo $metaDescription; ?>"><?php } ?>
     <?php if (isset($metaKeywords) && $metaKeywords != '') { ?><meta name="keywords" content="<?php echo $metaKeywords; ?>"><?php } ?>
