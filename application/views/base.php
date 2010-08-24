@@ -69,7 +69,7 @@
 
         <div style="clear:both;"></div>
 <?php if (DEBUG_FLAG) { ?>
-        <div id="kohana-profiler" style="display:none;">
+        <div id="kohana-profiler">
 <?php echo View::factory('profiler/stats'); ?>
         </div>
 <?php //echo Kohana::debug($_SERVER); ?>
