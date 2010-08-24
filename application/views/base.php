@@ -4,9 +4,9 @@
 <head>
     <meta charset="utf-8">
     <title><?php if (DEVELOPMENT_FLAG) echo '*** DEVELOPMENT SITE '; ?><?php echo SHORT_NAME . ' v' . APP_VERSION; ?> <?php if (isset($pageTitle) && trim($pageTitle) != '') echo ' - ' . $pageTitle; ?></title>
-    <?php if ($metaDescription != '') { ?><meta name="description" content="<?php echo $metaDescription; ?>"><?php } ?>
-    <?php if ($metaKeywords != '') { ?><meta name="keywords" content="<?php echo $metaKeywords; ?>"><?php } ?>
-    <?php if ($metaAuthor != '') { ?><meta name="author" content="<?php echo $metaAuthor; ?>"><?php } ?>
+    <?php if (isset($metaDescription) && $metaDescription != '') { ?><meta name="description" content="<?php echo $metaDescription; ?>"><?php } ?>
+    <?php if (isset($metaKeywords) && $metaKeywords != '') { ?><meta name="keywords" content="<?php echo $metaKeywords; ?>"><?php } ?>
+    <?php if (isset($metaAuthor) && $metaAuthor != '') { ?><meta name="author" content="<?php echo $metaAuthor; ?>"><?php } ?>
     <meta name="viewport" content="width=device-width">
 <?php foreach ($styles as $file => $type) echo '    ' . HTML::style($file, array('media' => $type)) . EOL; ?>
 <?php // http://www.modernizr.com fixes missing html5 elements in IE and detects for new HTML5 features; this needs to be loaded here so the HTML5 tags will show in IE ?>
@@ -70,7 +70,7 @@
         <div style="clear:both;"></div>
 <?php if (DEBUG_FLAG) { ?>
         <div id="kohana-profiler" style="display:none;">
-<?php //echo View::factory('profiler/stats'); ?>
+<?php echo View::factory('profiler/stats'); ?>
         </div>
 <?php //echo Kohana::debug($_SERVER); ?>
 <?php } ?>
