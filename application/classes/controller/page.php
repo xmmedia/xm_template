@@ -18,11 +18,11 @@ class Controller_Page extends Controller_Base {
             //$this->template->bodyHtml .= View::factory('menus/' . $this->section) . EOL;
             $this->template->bodyHtml .= $this->get_static_template($pageViewName, $commonTemplateData);
 
-            // special code to add additional date fields
+            // hack: special code to add additional date fields
             if ($pageViewName == 'demo') {
                 $this->template->onLoadJs .= <<<EOA
 $('#newDate').click(function() {
-    $('#dateFieldToCopy').after('Date 2: <input type="text" id="date" name="date" value="2010-08-10" size="10" maxlength="10" class="testField date_field-date"><br><br>');
+    $('#additional_date_fields').after('Date 2: <input type="text" id="date" name="date" value="2010-08-10" size="10" maxlength="10" class="testField date_field-date"><br><br>');
     $('.date_field-date').datepicker();
     return false;
 });
