@@ -20,7 +20,7 @@ class Model_User extends ClaeroORM
         'password_confirm'  => array(),
         'first_name'        => array('data_type' => 'string', 'is_nullable' => FALSE),
         'last_name'         => array('data_type' => 'string', 'is_nullable' => FALSE),
-        'inactive_flag'     => array('data_type' => 'string', 'is_nullable' => FALSE),
+        'inactive_flag'     => array('data_type' => 'checkbox', 'is_nullable' => FALSE),
         'passphrase_q'      => array('data_type' => 'string', 'is_nullable' => FALSE),
         'passphrase_a'      => array('data_type' => 'string', 'is_nullable' => FALSE),
         'login_count'       => array('data_type' => 'int', 'is_nullable' => FALSE),
