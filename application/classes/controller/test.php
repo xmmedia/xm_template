@@ -7,8 +7,9 @@ class Controller_Test extends Controller_Base {
 
     public function action_index() {
     
-    
-        $this->template->bodyHtml .= ORM::factory('user',2)->get_html();
+    	
+    	 $this->template->bodyHtml .= '<style>.required {color:red;}</style>' . EOL;
+    	 $this->template->bodyHtml .= ORM::factory('user',2)->get_html();
         
     
         //$this->template->bodyHtml .= Kohana::debug(Kohana::config('production'));
