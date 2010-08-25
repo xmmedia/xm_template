@@ -1,3 +1,13 @@
+<script>
+	// set up the model field update function
+	function UpdateModel() {
+		$.get('/rest/model/' + $('#table_name option:selected').html(), function(data) {
+			$('#model_code').html(data);
+		});
+	} // function
+
+</script>
+
 <h1>cl4 ORM Extension Examples</h1>
 
 <h2>Generate a precanned edit form, from a model</h2>
@@ -21,10 +31,9 @@ LAST: <?php echo $new_user->get_field_html('last_name'); ?>
 	$db = Database::instance();
 	$table_name = Security::xss_clean(Arr::get($_GET, 'table_name', 100));
 	$table_list = $db->list_tables();
-	$table_change_js = ""
 ?>
 Select a table to generate the cl4/orm model code:
-<?php echo ClaeroForm::select('table_name', $table_list, $table_name, array('onchange' => $table_change_js)); ?>
-<textarea id="model_code" style="width:100%; height:400px;">
+<?php echo ClaeroForm::select('table_name', $table_list, $table_name, array('onchange' => 'UpdateModel()')); ?>
+<textarea id="model_code" style="width:100%; height:400px; margin-top:15px;">
 <?php echo ORM::factory('user')->create_model('user'); ?>
 </textarea>
