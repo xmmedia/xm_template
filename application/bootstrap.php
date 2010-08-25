@@ -136,6 +136,24 @@ Route::set('edit', '<lang>/edit/<type>/<action>(/<id>)', array('lang' => '(en-ca
         'id' => '',
 ));
 
+// routes for RESTful requests (like ajax)
+Route::set('rest', 'rest/<rtype>/<rindex>')
+    ->defaults(array(
+        'lang' => 'en-ca',
+        'rtype' => '',
+        'rindex' => '',
+        'controller' => 'rest',
+));
+
+// routes for RESTful requests (like ajax) with locale specified
+Route::set('restlang', '<lang>/rest/<rtype>(/<rindex>)', array('lang' => '(en-ca|fr-ca)'))
+    ->defaults(array(
+        'lang' => 'en-ca',
+        'rtype' => '',
+        'rindex' => '',
+        'controller' => 'rest',
+));
+
  // home page is the default for everything else
 Route::set('home', '(<lang>/)', array('lang' => '(en-ca|fr-ca)'))
     ->defaults(array(
