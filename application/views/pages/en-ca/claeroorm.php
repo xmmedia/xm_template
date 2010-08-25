@@ -7,23 +7,30 @@
 	} // function
 
 </script>
-
+<style>
+	code, .code {display:block; width:500px; padding:4px; border:1px #ccc dashed; margin:5px;}
+</style>
 <h1>cl4 ORM Extension Examples</h1>
 
 <h2>Generate a precanned edit form, from a model</h2>
-<?php echo ORM::factory('user',2)->get_html(); ?>
+<code>echo ORM::factory('User',2)->get_html();</code>
+<?php echo ORM::factory('User',2)->get_html(); ?>
+<code>echo ORM::factory('AuthLog',2)->__toString();</code>
+<?php echo ORM::factory('AuthLog',2)->__toString(); ?>
 
 <h2>Create a custom form, from a model</h2>
 <?php 
+	// create the new model and prepare the form fields
 	$new_user = new Model_User;
 	$new_user->prepare_form(); 
+	// now generate our custom form and grab the fields we want
 ?>
 <form>
-EMAIL: <?php echo $new_user->get_field_html('username'); ?>
-PASS: <?php echo $new_user->get_field_html('password'); ?>
-FIRST: <?php echo $new_user->get_field_html('first_name'); ?>
-LAST: <?php echo $new_user->get_field_html('last_name'); ?>
-<?php echo ClaeroForm::input('submit', 'submit', array('type' => 'submit')); ?>
+ 	EMAIL: <?php echo $new_user->get_field_html('username') . EOL; ?>
+	PASS: <?php echo $new_user->get_field_html('password') . EOL; ?>
+	FIRST: <?php echo $new_user->get_field_html('first_name') . EOL; ?>
+	LAST: <?php echo $new_user->get_field_html('last_name') . EOL; ?>
+	<?php echo ClaeroForm::input('submit', 'submit', array('type' => 'submit')) . EOL; ?>
 </form>
 
 <h2>Generate model PHP from table</h2>
