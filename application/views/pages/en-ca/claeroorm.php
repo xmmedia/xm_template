@@ -15,8 +15,10 @@
 <h2>Generate a precanned edit form, from a model</h2>
 <code>echo ORM::factory('User',2)->get_html();</code>
 <?php echo ORM::factory('User',2)->get_html(); ?>
-<code>echo ORM::factory('AuthLog',2)->__toString();</code>
-<?php echo ORM::factory('AuthLog',2)->__toString(); ?>
+
+<h2>same as above but using the magic PHP __toString() function:</h2>
+<code>echo ORM::factory('AuthLog',2);</code>
+<?php echo ORM::factory('AuthLog',2); ?>
 
 <h2>Create a custom form, from a model</h2>
 <?php 

@@ -1,6 +1,6 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
-class claeroauth extends Claerolib4_Auth {
+class claeroauth extends Claero_Auth {
 
 
     /**

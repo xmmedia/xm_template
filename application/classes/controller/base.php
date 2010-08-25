@@ -116,18 +116,21 @@ class Controller_Base extends Controller_Template {
             );
             $this->template->bodyClass = i18n::lang(); // other classes are added to this with spaces
             $this->template->language = $this->language;
-            $this->template->message = __(claero::flash_get('message'));
+            $this->template->message = ''; // todo: use replacement for this: __(claero::flash_get('message'));
             $this->template->dateToday = $this->get_current_date();
             $this->template->languageOptions = $languageSwitchLink;
             $this->template->dateinputOptions = $dateinputOptions;
             $this->template->bodyHtml = '';
+            $this->template->loggedIn = false;
         }
 
         // perform authorization checks
-        $this->perform_auth();
+        // todo: re-write and re-enable this:
+        //$this->perform_auth();
 
         // add 'logged in' flag to template
-        if ($this->auto_render) $this->template->loggedIn = $this->auth->IsLoggedIn();
+        // todo: uncomment this once auth is re-written
+        //if ($this->auto_render) $this->template->loggedIn = $this->auth->IsLoggedIn();
     }
 
 
@@ -436,7 +439,7 @@ EOA;
             $this->template->scripts = array_merge( $this->template->scripts, $scripts );
 
             // look for any status message and display
-            $this->template->message = claero::DisplayStatusMsg();
+            $this->template->message = ''; // todo: replace this with something: claero::DisplayStatusMsg();
         }
         parent::after();
     }
