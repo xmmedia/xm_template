@@ -8,11 +8,18 @@
 
 </script>
 <style>
-	code, .code {display:block; width:500px; padding:4px; border:1px #ccc dashed; margin:5px;}
+	code, .code {display:block; width:700px; padding:4px; border:1px #ccc dashed; margin:5px;}
+	/* table form css */
+	table.cl4 {border:1px solid #ccc; margin-top:10px; margin-bottom:10px;}
 	table.cl4 td {padding:4px;}
 	table.cl4 input[type="password"], table.cl4 input[type=text], table.cl4 select {width:200px;}
 	table.cl4 tr.even td, table.cl4 tr.odd td {background-color:#fff;}
 	table.cl4 td.column0 {text-align:right; padding-right:20px; width:100px;}
+	/* ul form css */
+	ul.cl4 {display:block; margin-top:10px; margin-bottom:10px;}
+	ul.cl4 li {list-style-type:none;}
+	ul.cl4 li ul {width:450px;}
+	ul.cl4 li ul li{position:relative; float:left; width:200px;}
 </style>
 <h1>cl4 ORM Extension Examples</h1>
 
@@ -24,12 +31,26 @@
 ?>
 
 <h2>Generate a precanned edit form, from a model</h2>
-<code>echo ORM::factory('User',2)->get_html();</code>
-<?php echo ORM::factory('User',2)->get_html(); ?>
+<p>The edit form is generated based on the model information.  cl4 uses the default Kohana ORM model data
+and also adds some properties (form and column) to provide additional features.</p>
+<code>echo ORM::factory('User',2)->get_html(array('form_id' => 'test1'));</code>
+<?php echo ORM::factory('User',2)->get_html(array('form_id' => 'test1')); ?>
 
 <h2>same as above but using the magic PHP __toString() function:</h2>
 <code>echo ORM::factory('AuthLog',2);</code>
 <?php echo ORM::factory('AuthLog',2); ?>
+
+<h2>Generate a precanned edit form, from a model, with a different view</h2>
+<code>
+	$userForm = new Model_User(1);<br />
+	$userForm->set_options(array('form_view' => 'claero/form_ul'));<br />
+	echo $userForm->get_html(); <br />
+</code>
+<?php 
+	$userForm = new Model_User(1);
+	$userForm->set_options(array('form_view' => 'claero/form_ul'));
+	echo $userForm->get_html(); 
+?>
 
 <h2>Create a custom form, from a model</h2>
 <?php 
