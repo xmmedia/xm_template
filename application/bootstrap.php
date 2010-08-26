@@ -78,10 +78,9 @@ $modules = array(
     'database'          => MODPATH . 'database',          // Database access
     'image'             => MODPATH . 'image',             // Image manipulation
     'orm'               => MODPATH . 'orm',               // Object Relationship Mapping
-    //'jelly'             => MODPATH . 'jelly',             // Jelly ORM
-    //'auth'              => MODPATH . 'auth',              // Basic authentication
+    'auth'              => MODPATH . 'auth',              // Basic authentication
     'pagination'        => MODPATH . 'pagination',        // Paging of results
-    //'userguide'         => MODPATH . 'userguide',         // User guide and API documentation
+    'userguide'         => MODPATH . 'userguide',         // User guide and API documentation
 );
 if (CACHE_FLAG) $modules['cache'] = MODPATH . 'cache';      // Caching with multiple backends
 if (DEBUG_FLAG) $modules['codebench'] = MODPATH . 'codebench';  // Benchmarking tool

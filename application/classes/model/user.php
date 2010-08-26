@@ -206,6 +206,12 @@ class Model_User extends Claero_ORM {
 		'last_name' => 'Last Name',
 		'inactive_flag' => 'Inactive Flag',
 		'login_count' => 'Login Count',
+	);	
+	
+	// sorting
+	protected $_sorting = array(
+		'first_name' => 'ASC',
+		'last_name' => 'ASC',
 	);
 
 	// relationships
@@ -216,19 +222,24 @@ class Model_User extends Claero_ORM {
 	// validation rules
 	protected $_rules = array(
 		'username' => array(
-			'not_empty'  => NULL,
+			'not_empty'  => true,
 			'min_length' => array(4),
 			'max_length' => array(32),
 			'regex'      => array('/^[-\pL\pN_.]++$/uD'),
 		),
 		'password' => array(
-			'not_empty'  => NULL,
 			'min_length' => array(5),
 			'max_length' => array(42),
 		),
 		'password_confirm' => array(
 			'matches'    => array('password'),
 		),
+		'first_name' => array(
+			'not_empty' => true,
+		),
+		'last_name' => array(
+			'not_empty' => true,
+		)
 	);
 
 	// Columns to ignore

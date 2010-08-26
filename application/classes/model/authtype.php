@@ -102,11 +102,16 @@ class Model_AuthType extends Claero_ORM {
 		'name' => 'Name',
 		'display_order' => 'Display Order',
 	);
+	
+	// sorting
+	protected $_sorting = array(
+		'display_order' => 'ASC'
+	);
 
 	// relationships
-	protected $_has_one = array();
-	protected $_has_many = array();
-	protected $_belongs_to = array();
+	//protected $_has_one = array();
+	//protected $_has_many = array();
+	//protected $_belongs_to = array();
 
 	// validation rules
 	protected $_rules = array(

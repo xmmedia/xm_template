@@ -9,8 +9,20 @@
 </script>
 <style>
 	code, .code {display:block; width:500px; padding:4px; border:1px #ccc dashed; margin:5px;}
+	table.cl4 td {padding:4px;}
 </style>
 <h1>cl4 ORM Extension Examples</h1>
+
+<?php 
+	echo kohana::debug(ORM::factory('AuthLog',2)->authtype->name);
+	echo kohana::debug(ORM::factory('AuthLog',2)->user->first_name);
+	
+	//echo kohana::debug(ORM::factory('AuthLog',2)->authtype); 
+	
+	echo kohana::debug(ORM::factory('AuthLog',2)->find());
+	
+?>
+
 
 <h2>Generate a precanned edit form, from a model</h2>
 <code>echo ORM::factory('User',2)->get_html();</code>

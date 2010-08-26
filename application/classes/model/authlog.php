@@ -66,7 +66,7 @@ class Model_AuthLog extends Claero_ORM {
 			'field_size' => 30,
 			'max_length' => 255,
 			'source_data' => '',
-			'source_label' => 'name',
+			'source_label' => 'first_name',
 			'source_value' => 'id',
 		),
 		'username' => array(
@@ -139,7 +139,7 @@ class Model_AuthLog extends Claero_ORM {
 			'view_flag' => 1,
 			'field_size' => 30,
 			'max_length' => 255,
-			'source_data' => array('1' => 'source data in model test1', '2' => 'source data in model test2'),
+			'source_data' => '', //array('1' => 'source data in model test1', '2' => 'source data in model test2'),
 			'source_label' => 'name',
 			'source_value' => 'id',
 		),
@@ -205,16 +205,42 @@ class Model_AuthLog extends Claero_ORM {
 		'browser' => 'Browser',
 		'ip_address' => 'Ip Address',
 	);
+	
+	// sorting
+	protected $_sorting = array(
+		'access_time' => 'DESC'
+	);
 
 	// relationships
-	protected $_has_one = array(
+	//protected $_has_one = array(
+		//authtype' => array('foreign_key' => 'auth_type_id'),
+		//'user' => array('foreign_key' => 'user_id', 'name_sql' => 'username')
+	//);
+	//protected $_has_many = array();
+	protected $_belongs_to = array(
 		'authtype' => array('foreign_key' => 'auth_type_id'),
-		'user' => array('foreign_key' => 'user_id', 'name_sql' => 'username')
+		'user' => array(),
+		//'user' => array('foreign_key' => 'user_id', 'name_sql' => 'username')
 	);
-	protected $_has_many = array();
-	protected $_belongs_to = array();
-
+	
+	// load with
+	/*
+	protected $_load_with = array(
+		'authtype_id',
+		'user_id'
+	);
+	*/
+	
 	// validation rules
 	protected $_rules = array(
+		'user_id' => array(
+			'not_empty'  => true,
+		),
+		'username' => array(
+			'not_empty'  => true,
+		),
+		'access_time' => array(
+			'not_empty'  => true,
+		),
 	);
 } // class
