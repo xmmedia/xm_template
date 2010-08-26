@@ -209,7 +209,7 @@ class Model_AuthLog extends Claero_ORM {
 	// relationships
 	protected $_has_one = array(
 		'authtype' => array('foreign_key' => 'auth_type_id'),
-		'authtype' => array('foreign_key' => 'auth_type_id')
+		'user' => array('foreign_key' => 'user_id', 'name_sql' => 'username')
 	);
 	protected $_has_many = array();
 	protected $_belongs_to = array();
