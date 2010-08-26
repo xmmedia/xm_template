@@ -32,10 +32,9 @@
         <nav class="primary">
             <ul>
                 <li class="home"><a href="/<?php echo i18n::lang(); ?>/page/home"><?php echo __('Home'); ?></a></li>
-                <li class="about"><a href="/<?php echo i18n::lang(); ?>/page/about"><?php echo __('About'); ?></a></li>
-                <li class="news"><a href="/<?php echo i18n::lang(); ?>/page/news"><?php echo __('News'); ?></a></li>
-                <li class="missing"><a href="/<?php echo i18n::lang(); ?>/page/missing"><?php echo __('Missing'); ?></a></li>
-                <li class="contact"><a href="/<?php echo i18n::lang(); ?>/page/contact"><?php echo __('Contact'); ?></a></li>
+                <li class="claeroform"><a href="/<?php echo i18n::lang(); ?>/page/claeroform"><?php echo __('claeroform'); ?></a></li>
+                <li class="claerotable"><a href="/<?php echo i18n::lang(); ?>/page/claerotable"><?php echo __('claerotable'); ?></a></li>
+                <li class="claeroorm"><a href="/<?php echo i18n::lang(); ?>/page/claeroorm"><?php echo __('claeroorm'); ?></a></li>
 <?php if (!$loggedIn) { ?>
                 <li><a href="/<?php echo i18n::lang(); ?>/account"><?php echo __('Login'); ?></a></li>
 <?php } // if ?>
