@@ -18,6 +18,7 @@ $table = new Claero_Table(array(
 	),
 	'heading' => array('Col 1', 'Col 2', 'Col 3', 'Col 4', 'Col 5'),
 	'data' => $test_data,
+	'eol' => "\n\n",
 ));
 
 // add the data rows to the table
