@@ -51,7 +51,7 @@ switch ($serverId) {
         define('URL_ROOT', 'http://template4.claero.com');
         define('ABS_ROOT', '/home/templat4/template4.claero.com');
         define('UPLOAD_ROOT', UPLOAD_ROOT . '/uploads');
-        define('ANALYTICS_ID', '');
+        define('ANALYTICS_ID', 'UA-468095-28'); // UA-468095-28 is for template4.claero.com
         define('GOOGLE_API_KEY', '');
         define('RECAPTCHA_PUBLIC_KEY', '');
         define('RECAPTCHA_PRIVATE_KEY', '');

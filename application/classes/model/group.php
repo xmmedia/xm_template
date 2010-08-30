@@ -25,8 +25,8 @@ class Model_Group extends ClaeroORM
     
     // relationships
 	protected $_has_many = array(
-		'user' => array('through' => 'user_group', 'foreign_key' => 'user_id', 'far_key' => 'group_id')
-		'permission' => ('through' => 'group_permission', 'foreign_key' => 'permission_id', 'far_key' => 'group_id')
+		'user' => array('through' => 'user_group', 'foreign_key' => 'user_id', 'far_key' => 'group_id'),
+		'permission' => array('through' => 'group_permission', 'foreign_key' => 'permission_id', 'far_key' => 'group_id'),
 	);
 
 }

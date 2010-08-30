@@ -23,18 +23,18 @@
 </style>
 <h1>cl4 ORM Extension Examples</h1>
 
-<?php 
+<?php
 	//echo kohana::debug(ORM::factory('AuthLog',2)->authtype->name);
 	//echo kohana::debug(ORM::factory('AuthLog',2)->user->first_name);
-	//echo kohana::debug(ORM::factory('AuthLog',2)->authtype); 
+	//echo kohana::debug(ORM::factory('AuthLog',2)->authtype);
 	//echo kohana::debug(ORM::factory('AuthLog',2)->find());
 ?>
 
 <h2>Generate a precanned edit form, from a model</h2>
 <p>The edit form is generated based on the model information.  cl4 uses the default Kohana ORM model data
 and also adds some properties (form and column) to provide additional features.</p>
-<code>echo ORM::factory('User',2)->get_html(array('form_id' => 'test1'));</code>
-<?php echo ORM::factory('User',2)->get_html(array('form_id' => 'test1')); ?>
+<code>echo ORM::factory('User',2)->get_form(array('form_id' => 'test1'));</code>
+<?php echo ORM::factory('User',2)->get_form(array('form_id' => 'test1')); ?>
 
 <h2>same as above but using the magic PHP __toString() function:</h2>
 <code>echo ORM::factory('AuthLog',2);</code>
@@ -44,31 +44,41 @@ and also adds some properties (form and column) to provide additional features.<
 <code>
 	$userForm = new Model_User(1);<br />
 	$userForm->set_options(array('form_view' => 'claero/form_ul'));<br />
-	echo $userForm->get_html(); <br />
+	echo $userForm->get_form(); <br />
 </code>
-<?php 
+<?php
 	$userForm = new Model_User(1);
 	$userForm->set_options(array('form_view' => 'claero/form_ul'));
-	echo $userForm->get_html(); 
+	echo $userForm->get_form();
 ?>
 
 <h2>Create a custom form, from a model</h2>
-<?php 
+<?php
 	// create the new model and prepare the form fields
 	$new_user = new Model_User;
-	$new_user->prepare_form(); 
+	$new_user->prepare_form();
 	// now generate our custom form and grab the fields we want
 ?>
 <form>
- 	EMAIL: <?php echo $new_user->get_field_html('username') . EOL; ?>
-	PASS: <?php echo $new_user->get_field_html('password') . EOL; ?>
-	FIRST: <?php echo $new_user->get_field_html('first_name') . EOL; ?>
-	LAST: <?php echo $new_user->get_field_html('last_name') . EOL; ?>
+ 	EMAIL: <?php echo $new_user->get_field('username') . EOL; ?>
+	PASS: <?php echo $new_user->get_field('password') . EOL; ?>
+	FIRST: <?php echo $new_user->get_field('first_name') . EOL; ?>
+	LAST: <?php echo $new_user->get_field('last_name') . EOL; ?>
 	<?php echo ClaeroForm::input('submit', 'submit', array('type' => 'submit')) . EOL; ?>
 </form>
 
+<h2>Generate a listing of data from a model</h2>
+<?php //echo ClaeroORM::factory('claerochange')->get_list(); ?>
+<?php //echo ClaeroORM::factory('claerochange', array('table_name' => 'claero_meta'))->get_list(); ?>
+<?php echo ClaeroORM::factory('claerochange')->where('table_name','=','claero_meta')->limit(5)->get_list(); ?>
+
+<h2>Generate an editable listing of data from a model</h2>
+<?php //echo ClaeroORM::factory('claerochange')->get_list(); ?>
+<?php //echo ClaeroORM::factory('claerochange', array('table_name' => 'claero_meta'))->get_list(); ?>
+<?php echo ClaeroORM::factory('claerochange')->where('table_name','=','claero_meta')->limit(5)->get_admin(); ?>
+
 <h2>Generate model PHP from table</h2>
-<?php 
+<?php
 	$db = Database::instance();
 	$table_name = Security::xss_clean(Arr::get($_GET, 'table_name', 100));
 	$table_list = $db->list_tables();
@@ -78,3 +88,5 @@ Select a table to generate the cl4/orm model code:
 <textarea id="model_code" style="width:100%; height:400px; margin-top:15px;">
 <?php echo ORM::factory('user')->create_model('user'); ?>
 </textarea>
+<h2>Sample Model</h2>
+<?php echo kohana::debug(ORM::factory('user')); ?>
