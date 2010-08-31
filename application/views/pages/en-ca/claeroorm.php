@@ -75,7 +75,7 @@ and also adds some properties (form and column) to provide additional features.<
 <h2>Generate an editable listing of data from a model</h2>
 <?php //echo ClaeroORM::factory('claerochange')->get_list(); ?>
 <?php //echo ClaeroORM::factory('claerochange', array('table_name' => 'claero_meta'))->get_list(); ?>
-<?php echo ClaeroORM::factory('claerochange')->where('table_name','=','claero_meta')->limit(5)->get_admin(); ?>
+<?php echo ClaeroORM::factory('claerochange')->where('table_name','=','claero_meta')->get_admin(); ?>
 
 <h2>Generate model PHP from table</h2>
 <?php
