@@ -33,8 +33,8 @@
 <h2>Generate a precanned edit form, from a model</h2>
 <p>The edit form is generated based on the model information.  cl4 uses the default Kohana ORM model data
 and also adds some properties (form and column) to provide additional features.</p>
-<code>echo ORM::factory('User',2)->get_form(array('form_id' => 'test1'));</code>
-<?php echo ORM::factory('User',2)->get_form(array('form_id' => 'test1')); ?>
+<code>echo ORM::factory('Claerochange',2)->get_form(array('form_id' => 'test1'));</code>
+<?php echo ORM::factory('Claerochange',2)->get_form(array('form_id' => 'test1')); ?>
 
 <h2>same as above but using the magic PHP __toString() function:</h2>
 <code>echo ORM::factory('AuthLog',2);</code>
@@ -47,7 +47,7 @@ and also adds some properties (form and column) to provide additional features.<
 	echo $userForm->get_form(); <br />
 </code>
 <?php
-	$userForm = new Model_User(1);
+	$userForm = new Model_Claerochange(1);
 	$userForm->set_options(array('form_view' => 'claero/form_ul'));
 	echo $userForm->get_form();
 ?>
@@ -55,7 +55,7 @@ and also adds some properties (form and column) to provide additional features.<
 <h2>Create a custom form, from a model</h2>
 <?php
 	// create the new model and prepare the form fields
-	$new_user = new Model_User;
+	$new_user = new Model_Claerochange;
 	$new_user->prepare_form();
 	// now generate our custom form and grab the fields we want
 ?>
@@ -86,7 +86,7 @@ and also adds some properties (form and column) to provide additional features.<
 Select a table to generate the cl4/orm model code:
 <?php echo ClaeroForm::select('table_name', $table_list, $table_name, array('onchange' => 'UpdateModel()')); ?>
 <textarea id="model_code" style="width:100%; height:400px; margin-top:15px;">
-<?php echo ORM::factory('user')->create_model('user'); ?>
+<?php echo ORM::factory('Claerochange')->create_model('claero_change'); ?>
 </textarea>
 <h2>Sample Model</h2>
 <?php echo kohana::debug(ORM::factory('user')); ?>

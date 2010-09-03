@@ -1,7 +1,7 @@
 <?php defined('SYSPATH') or die ('No direct script access.');
 
 /**
- * This model was created using Claero_ORM and should provide 
+ * This model was created using Claero_ORM and should provide
  * standard Kohana ORM features in additon to cl4 specific features.
  */
 
@@ -105,7 +105,7 @@ class Model_ClaeroChange extends Claero_ORM {
 			'extra' => '',
 			'key' => '',
 			'privileges' => 'select,insert,update,references',
-			'field_type' => 'text',
+			'field_type' => 'textarea',
 			'display_order' => 1,
 			'display_flag' => 1,
 			'edit_flag' => 1,
