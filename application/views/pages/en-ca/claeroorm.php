@@ -1,7 +1,7 @@
 <script>
 	// set up the model field update function
 	function UpdateModel() {
-		$.get('/rest/model/' + $('#table_name option:selected').html(), function(data) {
+		$.get('/rest/model/' + $('#m_table_name option:selected').html(), function(data) {
 			$('#model_code').html(data);
 		});
 	} // function
@@ -84,7 +84,7 @@ and also adds some properties (form and column) to provide additional features.<
 	$table_list = $db->list_tables();
 ?>
 Select a table to generate the cl4/orm model code:
-<?php echo ClaeroForm::select('table_name', $table_list, $table_name, array('onchange' => 'UpdateModel()')); ?>
+<?php echo ClaeroForm::select('m_table_name', $table_list, $table_name, array('id' => 'm_table_name', 'onchange' => 'UpdateModel()')); ?>
 <textarea id="model_code" style="width:100%; height:400px; margin-top:15px;">
 <?php echo ORM::factory('Claerochange')->create_model('claero_change'); ?>
 </textarea>

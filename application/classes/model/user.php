@@ -1,7 +1,7 @@
 <?php defined('SYSPATH') or die ('No direct script access.');
 
 /**
- * This model was created using Claero_ORM and should provide 
+ * This model was created using Claero_ORM and should provide
  * standard Kohana ORM features in additon to cl4 specific features.
  */
 
@@ -206,8 +206,8 @@ class Model_User extends Claero_ORM {
 		'last_name' => 'Last Name',
 		'inactive_flag' => 'Inactive Flag',
 		'login_count' => 'Login Count',
-	);	
-	
+	);
+
 	// sorting
 	protected $_sorting = array(
 		'first_name' => 'ASC',
@@ -244,5 +244,5 @@ class Model_User extends Claero_ORM {
 
 	// Columns to ignore
 	protected $_ignored_columns = array('password_confirm');
-	
+
 } // class

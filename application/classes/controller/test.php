@@ -7,7 +7,13 @@ class Controller_Test extends Controller_Base {
 
 	public function action_index() {
 
+		$this->template->bodyHtml .= '<p>sanity check</p>';
 
+		$this->template->bodyHtml .= Kohana::debug(Kohana::list_files('classes/model'));
+		//$this->template->bodyHtml .= Kohana::find_file('views','base');
+		//$this->template->bodyHtml .= Kohana::find_file('classes/model','user');
+
+		/* testing array merge options
 		$options = array(
 			'test1' => 1,
 			'test2' => array(
@@ -39,6 +45,8 @@ class Controller_Test extends Controller_Base {
 		//$options = array_merge_recursive($default_options, $options);
 		$options = arr::merge($default_options, $options);
 		$this->template->bodyHtml .= kohana::debug($options);
+
+		*/
 
 
 		//$this->template->bodyHtml .= '<style>.required {color:red;}</style>' . EOL;
