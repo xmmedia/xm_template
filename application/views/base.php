@@ -38,6 +38,7 @@
 <?php if (!$loggedIn) { ?>
                 <li><a href="/<?php echo i18n::lang(); ?>/account"><?php echo __('Login'); ?></a></li>
 <?php } // if ?>
+                <li><a href="/claeroadmin"><?php echo __('claeroadmin'); ?></a></li>
                 <li class="last language"><?php echo __('Language: '); ?><?php if (isset($languageOptions)) echo $languageOptions; ?></li>
             </ul>
         </nav>
