@@ -8,7 +8,16 @@ class Controller_Test extends Controller_Base {
 	public function action_index() {
 
 		$this->template->bodyHtml .= '<p>sanity check</p>';
-		$this->template->bodyHtml .= Request::instance()->uri(); //  $_SERVER['REQUEST_URI'];
+
+		$test_data = array('row_count' => '23', 'query_time' => '23');
+
+		$test = ClaeroORM::factory('claerochange', 65);
+		//$test->row_count = 2;
+		$test->values($test_data);
+		$test->save();
+
+
+		//$this->template->bodyHtml .= Request::instance()->uri(); //  $_SERVER['REQUEST_URI'];
 		//$this->template->bodyHtml .= Kohana::debug(Kohana::list_files('classes/model'));
 		//$this->template->bodyHtml .= Kohana::find_file('views','base');
 		//$this->template->bodyHtml .= Kohana::find_file('classes/model','user');
