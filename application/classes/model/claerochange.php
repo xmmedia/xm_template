@@ -262,7 +262,9 @@ class Model_ClaeroChange extends Claero_ORM {
 	);
 
 	// relationships
-	protected $_has_one = array();
+	protected $_has_one = array(
+		'cl4blogperson' => array('foreign_key' => 'user_id', 'name_sql' => 'first_name'),
+	);
 	protected $_has_many = array();
 	protected $_belongs_to = array();
 
@@ -272,4 +274,8 @@ class Model_ClaeroChange extends Claero_ORM {
 
 	// auto-update columns
 	protected $_updated_column = array('column' => 'event_time', 'format' => 'Y:m:d H:i:s');
+
+	// ignored columns
+	protected $_ignored_columns = array('event_time');
+
 } // class
