@@ -40,7 +40,7 @@ and also adds some properties (form and column) to provide additional features.<
 <code>echo ORM::factory('AuthLog',2);</code>
 <?php echo ORM::factory('AuthLog',2); ?>
 
-<h2>Generate a precanned edit form, from a model, with a different view</h2>
+<h2>Generate a pre-canned edit form, from a model, with a different view</h2>
 <code>
 	$userForm = new Model_User(1);<br />
 	$userForm->set_options(array('form_view' => 'claero/form_ul'));<br />

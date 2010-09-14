@@ -10,10 +10,21 @@ class Model_Cl4BlogPost extends Claero_ORM {
 	protected $_db = 'default'; // or any group in database configuration
 	protected $_table_names_plural = false;
 	protected $_table_name = 'cl4_blog_post';
-	protected $_table_name_display = 'Cl4 Blog Post';
 	protected $_primary_key = 'id'; // default: id
 	protected $_primary_val = 'name'; // default: name (column used as primary value)
-	// see http://v3.kohanaphp.com/guide/api/Database_MySQL#list_columns for all possible column attributes
+
+	// column labels
+	protected $_labels = array(
+		'id' => 'Id',
+		'cl4_blog_person_id' => 'Blog Author',
+		'title' => 'Title',
+		'post' => 'Post',
+		'publish_flag' => 'Publish Flag',
+		'publish_start_time' => 'Publish Start Time',
+		'publish_end_time' => 'Publish End Time',
+	);
+
+	public $_table_name_display = 'Blog Post';
 
 	// column definitions
 	protected $_table_columns = array(
@@ -31,6 +42,7 @@ class Model_Cl4BlogPost extends Claero_ORM {
 			'extra' => 'auto_increment',
 			'key' => 'PRI',
 			'privileges' => 'select,insert,update,references',
+			// cl4-specific properties
 			'field_type' => 'hidden',
 			'display_order' => 1,
 			'display_flag' => 0,
@@ -58,6 +70,7 @@ class Model_Cl4BlogPost extends Claero_ORM {
 			'extra' => '',
 			'key' => 'MUL',
 			'privileges' => 'select,insert,update,references',
+			// cl4-specific properties
 			'field_type' => 'select',
 			'display_order' => 1,
 			'display_flag' => 1,
@@ -68,7 +81,7 @@ class Model_Cl4BlogPost extends Claero_ORM {
 			'max_length' => 255,
 			'min_width' => 0,
 			'source_data' => '',
-			'source_label' => 'name',
+			'source_label' => 'email_address',
 			'source_value' => 'id',
 		),
 		'title' => array(
@@ -84,7 +97,8 @@ class Model_Cl4BlogPost extends Claero_ORM {
 			'extra' => '',
 			'key' => '',
 			'privileges' => 'select,insert,update,references',
-			'field_type' => 'checkbox',
+			// cl4-specific properties
+			'field_type' => 'text',
 			'display_order' => 1,
 			'display_flag' => 1,
 			'edit_flag' => 1,
@@ -110,7 +124,8 @@ class Model_Cl4BlogPost extends Claero_ORM {
 			'extra' => '',
 			'key' => '',
 			'privileges' => 'select,insert,update,references',
-			'field_type' => 'text',
+			// cl4-specific properties
+			'field_type' => 'textarea',
 			'display_order' => 1,
 			'display_flag' => 1,
 			'edit_flag' => 1,
@@ -137,6 +152,7 @@ class Model_Cl4BlogPost extends Claero_ORM {
 			'extra' => '',
 			'key' => '',
 			'privileges' => 'select,insert,update,references',
+			// cl4-specific properties
 			'field_type' => 'checkbox',
 			'display_order' => 1,
 			'display_flag' => 1,
@@ -161,7 +177,8 @@ class Model_Cl4BlogPost extends Claero_ORM {
 			'extra' => '',
 			'key' => '',
 			'privileges' => 'select,insert,update,references',
-			'field_type' => 'text',
+			// cl4-specific properties
+			'field_type' => 'datetime',
 			'display_order' => 1,
 			'display_flag' => 1,
 			'edit_flag' => 1,
@@ -185,7 +202,8 @@ class Model_Cl4BlogPost extends Claero_ORM {
 			'extra' => '',
 			'key' => '',
 			'privileges' => 'select,insert,update,references',
-			'field_type' => 'text',
+			// cl4-specific properties
+			'field_type' => 'datetime',
 			'display_order' => 1,
 			'display_flag' => 1,
 			'edit_flag' => 1,
@@ -200,23 +218,17 @@ class Model_Cl4BlogPost extends Claero_ORM {
 		),
 	);
 
-	// column labels
-	protected $_labels = array(
-		'id' => 'Id',
-		'cl4_blog_person_id' => 'Cl4 Blog Person Id',
-		'title' => 'Title',
-		'post' => 'Post',
-		'publish_flag' => 'Publish Flag',
-		'publish_start_time' => 'Publish Start Time',
-		'publish_end_time' => 'Publish End Time',
-	);
-
 	// relationships
 	protected $_has_one = array();
 	protected $_has_many = array();
-	protected $_belongs_to = array();
+	protected $_belongs_to = array(
+		'cl4blogperson' => array('foreign_key' => 'cl4_blog_person_id', 'name' => 'email_address'),
+	);
 
 	// validation rules
 	protected $_rules = array(
+		'cl4_blog_person_id' => array('not_empty'  => array()),
+		'title' => array('not_empty'  => array()),
+		'post' => array('not_empty'  => array()),
 	);
 } // class

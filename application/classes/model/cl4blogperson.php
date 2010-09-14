@@ -7,15 +7,19 @@
 
 class Model_Cl4BlogPerson extends ClaeroORM {
 
+	// these are default Kohana_ORM properties
 	protected $_db = 'default'; // or any group in database configuration
 	protected $_table_names_plural = false;
 	protected $_table_name = 'cl4_blog_person';
-	protected $_table_name_display = 'Cl4 Blog Person';
 	protected $_primary_key = 'id'; // default: id
 	protected $_primary_val = 'name'; // default: name (column used as primary value)
-	// see http://v3.kohanaphp.com/guide/api/Database_MySQL#list_columns for all possible column attributes
+
+	// these are cl4-specific properties
+	public $_table_name_display = 'Blog Author'; // the friendly display name used for this object
 
 	// column definitions
+	// see http://v3.kohanaphp.com/guide/api/Database_MySQL#list_columns for all possible column attributes
+	// see http://cl4.claero.com/en-ca/dokuwiki/cl4:model for cl4-specific properties
 	protected $_table_columns = array(
 		'id' => array(
 			'type' => 'int',
@@ -31,6 +35,7 @@ class Model_Cl4BlogPerson extends ClaeroORM {
 			'extra' => 'auto_increment',
 			'key' => 'PRI',
 			'privileges' => 'select,insert,update,references',
+			// these are cl4-specific properties
 			'field_type' => 'hidden',
 			'display_order' => 1,
 			'display_flag' => 0,
@@ -57,6 +62,7 @@ class Model_Cl4BlogPerson extends ClaeroORM {
 			'extra' => '',
 			'key' => '',
 			'privileges' => 'select,insert,update,references',
+			// these are cl4-specific properties
 			'field_type' => 'text',
 			'display_order' => 1,
 			'display_flag' => 1,
@@ -83,6 +89,7 @@ class Model_Cl4BlogPerson extends ClaeroORM {
 			'extra' => '',
 			'key' => '',
 			'privileges' => 'select,insert,update,references',
+			// these are cl4-specific properties
 			'field_type' => 'text',
 			'display_order' => 1,
 			'display_flag' => 1,
@@ -109,6 +116,7 @@ class Model_Cl4BlogPerson extends ClaeroORM {
 			'extra' => '',
 			'key' => '',
 			'privileges' => 'select,insert,update,references',
+			// these are cl4-specific properties
 			'field_type' => 'text',
 			'display_order' => 1,
 			'display_flag' => 1,
@@ -139,5 +147,7 @@ class Model_Cl4BlogPerson extends ClaeroORM {
 
 	// validation rules
 	protected $_rules = array(
+		'first_name' => array('not_empty' => array()),
+		'email_address'    => array('not_empty' => array(), 'email' => array()),
 	);
 } // class
