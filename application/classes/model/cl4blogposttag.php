@@ -82,7 +82,7 @@ class Model_Cl4BlogPostTag extends Claero_ORM {
 	// relationships
 	protected $_has_one = array();
 	protected $_has_many = array();
-	protected $_belongs_to = array();
+	protected $_belongs_to = array('cl4blogpost' => array(), 'cl4blogtag' => array());
 
 	// validation rules
 	protected $_rules = array(

@@ -27,7 +27,7 @@
     <aside class="development">THIS SITE IS CURRENTLY UNDER DEVELOPMENT</aside>
 <?php } // if ?>
 <?php // DH? - should this be an aside? kind of important for the page; craig agrees ?>
-    <aside class="mainTitle"><?php echo LONG_NAME . ' v' . APP_VERSION; ?></aside>
+    <aside class="mainTitle"><?php echo LONG_NAME . ' v' . APP_VERSION; ?><?php if (isset($pageTitle) && trim($pageTitle) != '') echo ' - ' . $pageTitle; ?></aside>
     <header>
         <nav class="primary">
             <ul>

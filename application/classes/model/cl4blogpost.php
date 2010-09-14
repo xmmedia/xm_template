@@ -20,8 +20,8 @@ class Model_Cl4BlogPost extends Claero_ORM {
 		'title' => 'Title',
 		'post' => 'Post',
 		'publish_flag' => 'Publish Flag',
-		'publish_start_time' => 'Publish Start Time',
-		'publish_end_time' => 'Publish End Time',
+		'publish_start_time' => 'Publish Start',
+		'publish_end_time' => 'Publish End',
 	);
 
 	public $_table_name_display = 'Blog Post';
@@ -220,9 +220,11 @@ class Model_Cl4BlogPost extends Claero_ORM {
 
 	// relationships
 	protected $_has_one = array();
-	protected $_has_many = array();
+	protected $_has_many = array(
+		'cl4blogtag' => array('through' => 'cl4blogposttag', 'foreign_key' => 'cl4_blog_post_id', 'far_key' => 'cl4_blog_tag_id')
+	);
 	protected $_belongs_to = array(
-		'cl4blogperson' => array('foreign_key' => 'cl4_blog_person_id', 'name' => 'email_address'),
+		'cl4blogperson' => array('foreign_key' => 'cl4_blog_person_id'), // or should this be has one?
 	);
 
 	// validation rules
