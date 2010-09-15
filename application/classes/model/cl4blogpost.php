@@ -221,7 +221,21 @@ class Model_Cl4BlogPost extends Claero_ORM {
 	// relationships
 	protected $_has_one = array();
 	protected $_has_many = array(
-		'cl4blogtag' => array('through' => 'cl4blogposttag', 'foreign_key' => 'cl4_blog_post_id', 'far_key' => 'cl4_blog_tag_id')
+		'cl4blogtag' => array(
+			'model' => 'cl4blogtag',
+			'through' => 'cl4_blog_post_tag',
+			'foreign_key' => 'cl4_blog_post_id',
+			'far_key' => 'cl4_blog_tag_id',
+			'field_type' => 'checkboxes', // cl4-specific, which field type to use for this relationship in forms'display_flag' => 1,
+			'field_label' => 'Tags',
+			'source_model' => 'cl4blogtag',
+			'source_data' => 'cl4_blog_tag',
+			'source_label' => 'name',
+			'source_value' => 'id',
+			'edit_flag' => 1, // cl4-specific
+			'search_flag' => 1, // cl4-specific
+			'view_flag' => 1, // cl4-specific
+		),
 	);
 	protected $_belongs_to = array(
 		'cl4blogperson' => array('foreign_key' => 'cl4_blog_person_id'), // or should this be has one?

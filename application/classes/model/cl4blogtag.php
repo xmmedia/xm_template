@@ -10,10 +10,42 @@ class Model_Cl4BlogTag extends Claero_ORM {
 	protected $_db = 'default'; // or any group in database configuration
 	protected $_table_names_plural = false;
 	protected $_table_name = 'cl4_blog_tag';
-	protected $_table_name_display = 'Cl4 Blog Tag';
 	protected $_primary_key = 'id'; // default: id
 	protected $_primary_val = 'name'; // default: name (column used as primary value)
-	// see http://v3.kohanaphp.com/guide/api/Database_MySQL#list_columns for all possible column attributes
+
+	// column labels
+	protected $_labels = array(
+		'id' => 'Id',
+		'name' => 'Name',
+		'description' => 'Description',
+	);
+
+	public $_table_name_display = 'Cl4 Blog Tag';
+
+	// relationships
+	protected $_has_one = array();
+	protected $_has_many = array(
+		'cl4blogpost' => array(
+			'through' => 'cl4_blog_post_tag',
+			'foreign_key' => 'cl4_blog_tag_id',
+			'far_key' => 'cl4_blog_post_id',
+			'field_type' => 'checkboxes', // cl4-specific, which field type to use for this relationship in forms'display_flag' => 1,
+			'field_label' => 'Posts',
+			'source_model' => 'cl4blogpost',
+			'source_data' => 'cl4_blog_post',
+			'source_label' => 'title',
+			'source_value' => 'id',
+			'edit_flag' => 0, // cl4-specific
+			'search_flag' => 0, // cl4-specific
+			'view_flag' => 0, // cl4-specific
+		),
+	);
+	protected $_belongs_to = array();
+
+	// validation rules
+	protected $_rules = array(
+		'name' => array('not_empty'  => array()),
+	);
 
 	// column definitions
 	protected $_table_columns = array(
@@ -98,19 +130,4 @@ class Model_Cl4BlogTag extends Claero_ORM {
 		),
 	);
 
-	// column labels
-	protected $_labels = array(
-		'id' => 'Id',
-		'name' => 'Name',
-		'description' => 'Description',
-	);
-
-	// relationships
-	protected $_has_one = array();
-	protected $_has_many = array();
-	protected $_belongs_to = array();
-
-	// validation rules
-	protected $_rules = array(
-	);
 } // class
