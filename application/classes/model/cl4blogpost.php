@@ -8,7 +8,7 @@
 class Model_Cl4BlogPost extends Claero_ORM {
 
 	protected $_db = 'default'; // or any group in database configuration
-	protected $_table_names_plural = false;
+	protected $_table_names_plural = FALSE;
 	protected $_table_name = 'cl4_blog_post';
 	protected $_primary_key = 'id'; // default: id
 	protected $_primary_val = 'name'; // default: name (column used as primary value)
@@ -22,6 +22,8 @@ class Model_Cl4BlogPost extends Claero_ORM {
 		'publish_flag' => 'Publish Flag',
 		'publish_start_time' => 'Publish Start',
 		'publish_end_time' => 'Publish End',
+		'filename' => 'File',
+		'filename_original' => 'Original Filename',
 	);
 
 	public $_table_name_display = 'Blog Post';
@@ -35,7 +37,7 @@ class Model_Cl4BlogPost extends Claero_ORM {
 			'column_name' => 'id',
 			'column_default' => null,
 			'data_type' => 'int',
-			'is_nullable' => false,
+			'is_nullable' => FALSE,
 			'ordinal_position' => 1,
 			'display' => '11',
 			'comment' => '',
@@ -63,7 +65,7 @@ class Model_Cl4BlogPost extends Claero_ORM {
 			'column_name' => 'cl4_blog_person_id',
 			'column_default' => null,
 			'data_type' => 'int',
-			'is_nullable' => false,
+			'is_nullable' => FALSE,
 			'ordinal_position' => 2,
 			'display' => '11',
 			'comment' => '',
@@ -89,7 +91,7 @@ class Model_Cl4BlogPost extends Claero_ORM {
 			'column_name' => 'title',
 			'column_default' => null,
 			'data_type' => 'varchar',
-			'is_nullable' => false,
+			'is_nullable' => FALSE,
 			'ordinal_position' => 3,
 			'character_maximum_length' => '255',
 			'collation_name' => 'utf8_unicode_ci',
@@ -117,7 +119,7 @@ class Model_Cl4BlogPost extends Claero_ORM {
 			'column_name' => 'post',
 			'column_default' => null,
 			'data_type' => 'text',
-			'is_nullable' => false,
+			'is_nullable' => FALSE,
 			'ordinal_position' => 4,
 			'collation_name' => 'utf8_unicode_ci',
 			'comment' => '',
@@ -145,7 +147,7 @@ class Model_Cl4BlogPost extends Claero_ORM {
 			'column_name' => 'publish_flag',
 			'column_default' => null,
 			'data_type' => 'tinyint',
-			'is_nullable' => false,
+			'is_nullable' => FALSE,
 			'ordinal_position' => 5,
 			'display' => '1',
 			'comment' => '',
@@ -171,7 +173,7 @@ class Model_Cl4BlogPost extends Claero_ORM {
 			'column_name' => 'publish_start_time',
 			'column_default' => null,
 			'data_type' => 'datetime',
-			'is_nullable' => false,
+			'is_nullable' => FALSE,
 			'ordinal_position' => 6,
 			'comment' => '',
 			'extra' => '',
@@ -196,7 +198,7 @@ class Model_Cl4BlogPost extends Claero_ORM {
 			'column_name' => 'publish_end_time',
 			'column_default' => null,
 			'data_type' => 'datetime',
-			'is_nullable' => false,
+			'is_nullable' => FALSE,
 			'ordinal_position' => 7,
 			'comment' => '',
 			'extra' => '',
@@ -218,10 +220,10 @@ class Model_Cl4BlogPost extends Claero_ORM {
 		),
 		'filename' => array(
 			'type' => 'string',
-			'column_name' => 'Filename',
+			'column_name' => 'filename',
 			'column_default' => null,
 			'data_type' => 'varchar',
-			'is_nullable' => false,
+			'is_nullable' => FALSE,
 			'ordinal_position' => 3,
 			'character_maximum_length' => '255',
 			'collation_name' => 'utf8_unicode_ci',
@@ -231,7 +233,7 @@ class Model_Cl4BlogPost extends Claero_ORM {
 			'privileges' => 'select,insert,update,references',
 			// cl4-specific properties
 			'field_type' => 'file',
-			'display_order' => 1,
+			'display_order' => 100,
 			'display_flag' => 1,
 			'edit_flag' => 1,
 			'search_flag' => 1,
@@ -242,13 +244,16 @@ class Model_Cl4BlogPost extends Claero_ORM {
 			'source_data' => '',
 			'source_label' => '',
 			'source_value' => '',
+			'file_url' => '',
+			'original_filename_column' => 'filename_original',
+			'use_file_download_helper' => FALSE,
 		),
 		'filename_original' => array(
 			'type' => 'string',
-			'column_name' => 'Original Filename',
+			'column_name' => 'filename_original',
 			'column_default' => null,
 			'data_type' => 'varchar',
-			'is_nullable' => false,
+			'is_nullable' => FALSE,
 			'ordinal_position' => 3,
 			'character_maximum_length' => '255',
 			'collation_name' => 'utf8_unicode_ci',
@@ -259,10 +264,10 @@ class Model_Cl4BlogPost extends Claero_ORM {
 			// cl4-specific properties
 			'field_type' => 'text',
 			'display_order' => 1,
-			'display_flag' => 1,
-			'edit_flag' => 1,
-			'search_flag' => 1,
-			'view_flag' => 1,
+			'display_flag' => 0,
+			'edit_flag' => 0,
+			'search_flag' => 0,
+			'view_flag' => 0,
 			'field_size' => 30,
 			'max_length' => 255,
 			'min_width' => 0,
