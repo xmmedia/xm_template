@@ -5,7 +5,7 @@
  * standard Kohana ORM features in additon to cl4 specific features.
  */
 
-class Model_Cl4BlogPost extends ORM {
+class Model_Cl4BlogPost extends Claero_ORM {
 
 	protected $_db = 'default'; // or any group in database configuration
 	protected $_table_names_plural = FALSE;
