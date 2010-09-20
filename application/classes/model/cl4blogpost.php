@@ -5,7 +5,7 @@
  * standard Kohana ORM features in additon to cl4 specific features.
  */
 
-class Model_Cl4BlogPost extends Claero_ORM {
+class Model_Cl4BlogPost extends ORM {
 
 	protected $_db = 'default'; // or any group in database configuration
 	protected $_table_names_plural = FALSE;
@@ -244,9 +244,20 @@ class Model_Cl4BlogPost extends Claero_ORM {
 			'source_data' => '',
 			'source_label' => '',
 			'source_value' => '',
-			'file_url' => '',
-			'original_filename_column' => 'filename_original',
-			'use_file_download_helper' => FALSE,
+			'file_options' => array(
+				'file_url' => '',
+				'file_location' => '',
+				'filename_change' => '', // prepend, append, overrite, overwrite_all, timestamp, id
+				'filename_lowercase' => '',
+				'overwrite' => '',
+				'doc_root' => '',
+				'download_file' => '',
+				'ext_check_only' => '',
+				'original_filename_column' => 'filename_original',
+				'allow_any_file' => false,
+			),
+
+
 		),
 		'filename_original' => array(
 			'type' => 'string',
