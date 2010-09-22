@@ -20,15 +20,52 @@ class Controller_Base extends Controller_Template {
     protected $user; // currently logged-in user
     protected $loggedIn = false; // whether user is logged in
 
+	/**
+	* Controls access for the whole controller, if not set to FALSE we will only allow user roles specified
+	*
+	* Can be set to a string or an array, for example array('login', 'admin') or 'login'
+	*/
+	public $auth_required = FALSE;
+
+	/** Controls access for separate actions
+	*
+	*  Examples:
+	* 'adminpanel' => 'admin' will only allow users with the role admin to access action_adminpanel
+	* 'moderatorpanel' => array('login', 'moderator') will only allow users with the roles login and moderator to access action_moderatorpanel
+	*/
+	public $secure_actions = FALSE;
+
     // called before our action method
     public function before() {
+		// This codeblock is very useful in development sites:
+		// What it does is get rid of invalid sessions which cause exceptions, which may happen
+		// 1) when you make errors in your code.
+		// 2) when the session expires!
+		try {
+			$this->session = Session::instance();
+		} catch (Exception $e) {
+			session_destroy();
+		}
+
         parent::before();
 
         // open a session
         $this->session = Session::instance();
 
-        // a few things while working on claero admin
-        //$_SESSION['username'] = 'admin@admin.com';
+        // Check user auth and role
+		$action_name = Request::instance()->action;
+
+		// auth is required AND user role given in auth_required is NOT logged in
+        if (($this->auth_required !== FALSE && Auth::instance()->logged_in($this->auth_required) === FALSE)
+			// OR secure_actions is set AND the user role given in secure_actions is NOT logged in
+			|| (is_array($this->secure_actions) && array_key_exists($action_name, $this->secure_actions) && Auth::instance()->logged_in($this->secure_actions[$action_name]) === FALSE)) {
+			if (Auth::instance()->logged_in()){
+				// user is logged in but not on the secure_actions list
+				Request::instance()->redirect('user/noaccess');
+			} else {
+				Request::instance()->redirect('user/login');
+			}
+		}
 
         // see if we have a locale cookie to use
         $defaultLocale = Cookie::get('language', 'en-ca');
@@ -73,7 +110,7 @@ class Controller_Base extends Controller_Template {
             $dateinputOptions = "            lang: 'fr', " . EOL; // defined in master js file, must execute before this does
             $dateinputOptions .= "            format: 'dddd mmmm dd, yyyy'" . EOL;
         } // if
-
+/*
         // set up the database connection
         $databaseSettings = Kohana::config('database');
         $dsn = array(
@@ -83,14 +120,14 @@ class Controller_Base extends Controller_Template {
             $databaseSettings[DEFAULT_DB]['connection']['port'],
             $databaseSettings[DEFAULT_DB]['connection']['database'],
         );
-        $userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : 0;
+        $userId = ! empty($_SESSION['user_id']) ? $_SESSION['user_id'] : 0;
         $this->claeroDb = new claerodb($dsn, $userId);
         if (!$this->claeroDb->GetStatus()) {
             trigger_error('Connection Error: Connection to database failed. ' . $this->claeroDb->GetError(), E_USER_ERROR);
             echo 'No database connection. Cannot continue.';
             exit;
         }
-
+*/
         // set up the default template values for the base template
         if ($this->auto_render)
         {

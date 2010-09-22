@@ -39,9 +39,9 @@ return array(
 			 * string   password    database password
 			 * boolean  persistent  use persistent connections?
 			 */
-			'dsn'        => 'mysql:host=localhost;dbname=kohana',
-			'username'   => 'root',
-			'password'   => 'r00tdb',
+			'dsn'        => 'mysql:host=localhost;dbname=templat4_core',
+			'username'   => 'templat4_core',
+			'password'   => 'template467',
 			'persistent' => FALSE,
 		),
 		/**
