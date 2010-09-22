@@ -245,16 +245,16 @@ class Model_Cl4BlogPost extends Claero_ORM {
 			'source_label' => '',
 			'source_value' => '',
 			'file_options' => array(
-				'file_url' => '',
-				'file_location' => '',
-				'filename_change' => '', // prepend, append, overrite, overwrite_all, timestamp, id
-				'filename_lowercase' => '',
-				'overwrite' => '',
-				'doc_root' => '',
-				'download_file' => '',
-				'ext_check_only' => '',
-				'original_filename_column' => 'filename_original',
-				'allow_any_file' => false,
+                'destination_file_path' => UPLOAD_ROOT, // the absolute file path where these files should be uploaded
+                'name_change_method' => 'timestamp', // 'keep', 'timestamp', 'random', 'prepend', 'append', 'overwrite', 'overwrite_all'
+                //'name_change_text' => '', // used in prepend, apend, overrite, and overwrite_all cases
+                'original_filename_column' => 'filename_original',
+                'file_download_url' => PRIVATE_DOWNLOAD_FILE,
+                'lowercase_filename' => TRUE,
+                'clean_filename' => FALSE,
+                'ext_check_only' => FALSE,
+                'overwrite' => FALSE,
+                'allow_any_file_type' => FALSE,
 			),
 
 
