@@ -106,6 +106,28 @@ Route::set('pages', '<lang>/page/<section>(/<page>(/<action>))', array('lang' =>
         'page' => '',
 ));
 
+// login page, forgot password, register
+Route::set('login', '(<lang>/)login(/<action>(/<id>))', array('lang' => '(en-ca|fr-ca)'))
+    ->defaults(array(
+        'lang' => 'en-ca',
+        'controller' => 'claerologin',
+        'action' => 'index',
+        //'section' => 'admin',
+        'page' => '',
+));
+
+// logout
+Route::set('logout', '(<lang>/)logout(/)', array('lang' => '(en-ca|fr-ca)'))
+    ->defaults(array(
+        'lang' => 'en-ca',
+        'controller' => 'claerologin',
+        'action' => 'logout',
+        //'section' => 'admin',
+        'page' => '',
+));
+
+
+
 // account page
 Route::set('account', '(<lang>/)account(/<action>(/<id>))', array('lang' => '(en-ca|fr-ca)'))
     ->defaults(array(

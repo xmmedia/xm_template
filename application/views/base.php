@@ -35,21 +35,21 @@
                 <li class="claeroform"><a href="/<?php echo i18n::lang(); ?>/page/claeroform"><?php echo __('claeroform'); ?></a></li>
                 <li class="claerotable"><a href="/<?php echo i18n::lang(); ?>/page/claerotable"><?php echo __('claerotable'); ?></a></li>
                 <li class="claeroorm"><a href="/<?php echo i18n::lang(); ?>/page/claeroorm"><?php echo __('claeroorm'); ?></a></li>
-<?php if (!$loggedIn) { ?>
-                <li><a href="/<?php echo i18n::lang(); ?>/account"><?php echo __('Login'); ?></a></li>
+<?php if ( ! $logged_in) { ?>
+                <li><a href="/<?php echo i18n::lang(); ?>/login"><?php echo __('Login'); ?></a></li>
 <?php } // if ?>
                 <li><a href="/claeroadmin"><?php echo __('claeroadmin'); ?></a></li>
                 <li class="last language"><?php echo __('Language: '); ?><?php if (isset($languageOptions)) echo $languageOptions; ?></li>
             </ul>
         </nav>
-<?php if ($loggedIn) { ?>
+<?php if ($logged_in) { ?>
         <nav class="private">
             <ul>
-                <li style="padding-left:7px;"><?php echo __('Welcome') . ' ' . $_SESSION['full_name']; ?></li>
-                <li><a href="/<?php echo i18n::lang(); ?>/account"><?php echo __('My Account'); ?></a></li>
+                <li style="padding-left:7px;"><?php echo __('Welcome')/* . ' ' . $_SESSION['full_name']*/; ?></li>
+                <li><a href="/<?php echo i18n::lang(); ?>/account/profile"><?php echo __('My Account'); ?></a></li>
                 <li><a href="/<?php echo i18n::lang(); ?>/admin"><?php echo __('Admin'); ?></a></li>
                 <li><a href="/<?php echo i18n::lang(); ?>/meta"><?php echo __('Meta'); ?></a></li>
-                <li class="last"><a href="/<?php echo i18n::lang(); ?>/account/logout"><?php echo __('Logout'); ?></a></li>
+                <li class="last"><a href="/<?php echo i18n::lang(); ?>/logout"><?php echo __('Logout'); ?></a></li>
             </ul>
         </nav>
 <?php } // if ?>
@@ -102,6 +102,7 @@ foreach ($scripts as $file) echo HTML::script($file) . EOL;
         <div id="kohana-profiler">
 <?php echo View::factory('profiler/stats'); ?>
         </div>
+<?php echo View::factory('claero/debug'); ?>
 <?php //echo Kohana::debug($_SERVER); ?>
 <?php } ?>
 

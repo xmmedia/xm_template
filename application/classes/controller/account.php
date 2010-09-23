@@ -1,7 +1,20 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
 class Controller_Account extends Controller_Base {
+    public $auth_required = FALSE;
 
+   /** Controls access for separate actions
+    *
+    *  See Controller_App for how this implemented.
+    *
+    *  Examples:
+    * 'adminpanel' => 'admin' will only allow users with the role admin to access action_adminpanel
+    * 'moderatorpanel' => array('login', 'moderator') will only allow users with the roles login and moderator to access action_moderatorpanel
+    */
+   public $secure_actions = array(
+      // user actions
+      'profile' => 'login',
+      );
 
     public $redirctUrl = ''; // holds the url to which the user should be eventually redirected
     public $redirectPage = 'login';
@@ -27,80 +40,64 @@ class Controller_Account extends Controller_Base {
      * If the user is logged in, then the account page is displayed, otherwise the login page is displayed
      */
 	public function action_index() {
-
-        // check to see if we are already logged in
-        if ($this->auth->IsLoggedIn()) {
-            $this->template->bodyHtml .= View::factory('pages/' . i18n::lang() . '/account') . EOL;
-        } else {
-            // display the login form
-            //$this->template->bodyHtml .= "<p>Display the login form.<p>";
-            $this->template->bodyHtml .= View::factory('pages/' . i18n::lang() . '/login') . EOL;
-        } // if
+		Request::instance()->redirect('account/profile');
 	}
 
     /**
-     * Log a user in.
-     */
-    public function action_login() {
+    * View: Profile editor
+    */
+   public function action_profile() {
+      // set the template title (see Controller_App for implementation)
+      $this->template->title = 'Edit user profile';
+      $id = Auth::instance()->get_user()->id;
+      // load the content from view
+      $view = View::factory('claero/profile');
 
-		// check to see if we are already logged in
-		if ($this->auth->IsLoggedIn()) {
-			claero::AddStatusMsg('You already appear to be logged in. (<a href="/account/destroy_seession">kill session</a>)');
-		} else if (Request::$method == 'POST') {
+      // save the data
+      if ( !empty($_POST) && is_numeric($id) ) {
+         $model = null;
+         // Load the validation rules, filters etc...
+         $model = ORM::factory('user', $id);
+         // password can be empty if an id exists - it will be ignored in save.
+         if (is_numeric($id) && (empty($_POST['password']) || (trim($_POST['password']) == '')) )  {
+            unset($_POST['password']);
+            unset($model->password);
+         }
+         // editing requires that the username and email do not exist (EXCEPT for this ID)
+         $post = $model->validate_edit($id, $_POST);
 
-            // check for the required post variables, clean them, etc.
-    		$submittedEmail = Security::xss_clean(Arr::get($_POST, 'username', false));
-    		$submittedPassword = Security::xss_clean(Arr::get($_POST, 'password', false));
+         // If the post data validates using the rules setup in the user model
+         if ($post->check()) {
+            // Affects the sanitized vars to the user object
+            $model->values($post);
+            // save first, so that the model has an id when the relationships are added
+            $model->save();
+            // message: save success
+            Message::add('success', 'Values saved.');
+            // redirect and exit
+            Request::instance()->redirect('account/profile');
+            return;
+         } else {
+            // Get errors for display in view
+            Message::add('error', 'Validation errors: '.var_export($post->errors(), TRUE));
+            // set the data from POST
+            $view->set('defaults', $post->as_array());
+         }
+      } else {
+         // load the information for viewing
+         $model = ORM::factory('user', $id);
+         $view->set('data', $model->as_array());
+         // retrieve roles into array
+         $roles = array();
+         foreach($model->role->find_all() as $role) {
+            $roles[$role->name] = $role->description;
+         }
+         $view->set('user_role', $roles);
+      }
+      $view->set('id', $id);
+      $this->template->bodyHtml = $view;
 
-			// try to login
-			if ($this->auth->Login($submittedEmail, $submittedPassword, false)) {
-
-                // now get the user information
-                $this->user = Jelly::select('user')->where('username', '=', $submittedEmail)->load(1);
-
-                // make sure that the user is active
-                if ($this->user->inactive_flag == 0) {
-                    claero::AddStatusMsg('Login succeeded!');
-    				$this->redirectUrl = '/';
-                } else {
-                    $this->auth->logout();
-                    claero::AddStatusMsg('Your account has not yet been activated.  Please contact an administrator to have your account activated.  If you just registered, it may take a few days before someone processes your request.');
-                } // if
-
-			}
-			claero::AddStatusMsg($this->auth->GetError());
-		} else {
-            // do something smart
-            claero::AddStatusMsg("Invalid login request type (not POST).");
-		}
-
-		// redirect to login page or redirect page
-		$this->request->redirect($this->redirectUrl);
-
-    }
-
-    /**
-     * destroy the session and reload the main account page (login form)
-     */
-    public function action_destroy_session() {
-
-        session_destroy();
-
-        $this->request->redirect($this->redirectUrl);
-
-    }
-
-	/**
-	 * Logs a user out.
-	 */
-	public function action_logout() {
-
-		if ($this->auth->IsLoggedIn()) {
-			$this->auth->Logout();
-		}
-
-		$this->request->redirect('/');
-	}
+   }
 
 	/**
 	 * Registers a new user.

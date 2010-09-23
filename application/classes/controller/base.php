@@ -61,11 +61,15 @@ class Controller_Base extends Controller_Template {
 			|| (is_array($this->secure_actions) && array_key_exists($action_name, $this->secure_actions) && Auth::instance()->logged_in($this->secure_actions[$action_name]) === FALSE)) {
 			if (Auth::instance()->logged_in()){
 				// user is logged in but not on the secure_actions list
-				Request::instance()->redirect('user/noaccess');
+				// todo: we should do a redirect here because when people press back after not being able to access the page, they will be taken back to the page they can't access; we should instead just display the page and exit
+				Request::instance()->redirect('login/noaccess');
 			} else {
-				Request::instance()->redirect('user/login');
+				Request::instance()->redirect('login');
 			}
 		}
+
+		$this->logged_in = Auth::instance()->logged_in();
+		$this->template->logged_in = $this->logged_in;
 
         // see if we have a locale cookie to use
         $defaultLocale = Cookie::get('language', 'en-ca');
@@ -110,24 +114,7 @@ class Controller_Base extends Controller_Template {
             $dateinputOptions = "            lang: 'fr', " . EOL; // defined in master js file, must execute before this does
             $dateinputOptions .= "            format: 'dddd mmmm dd, yyyy'" . EOL;
         } // if
-/*
-        // set up the database connection
-        $databaseSettings = Kohana::config('database');
-        $dsn = array(
-            $databaseSettings[DEFAULT_DB]['connection']['hostname'],
-            $databaseSettings[DEFAULT_DB]['connection']['username'],
-            $databaseSettings[DEFAULT_DB]['connection']['password'],
-            $databaseSettings[DEFAULT_DB]['connection']['port'],
-            $databaseSettings[DEFAULT_DB]['connection']['database'],
-        );
-        $userId = ! empty($_SESSION['user_id']) ? $_SESSION['user_id'] : 0;
-        $this->claeroDb = new claerodb($dsn, $userId);
-        if (!$this->claeroDb->GetStatus()) {
-            trigger_error('Connection Error: Connection to database failed. ' . $this->claeroDb->GetError(), E_USER_ERROR);
-            echo 'No database connection. Cannot continue.';
-            exit;
-        }
-*/
+
         // set up the default template values for the base template
         if ($this->auto_render)
         {
@@ -148,7 +135,7 @@ class Controller_Base extends Controller_Template {
             $this->template->scripts = array(
                 // add jquery js (for all pages, other js relies on it, so it has to be included first)
                 'http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js',
-                'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.4/jquery-ui.min.js',
+                'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js',
                 'lib/cl4/cl4.js',
             );
             $this->template->bodyClass = i18n::lang(); // other classes are added to this with spaces
@@ -334,7 +321,7 @@ EOA;
 
             // add jquery ui css and js
             $this->template->styles['css/jquery-ui-1.8.2.custom.css'] = 'screen';
-            $this->template->scripts[] = 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/jquery-ui.min.js';
+            $this->template->scripts[] = 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js';
 
             // add jquery wysiwyg css and js
             $this->template->scripts[] = 'jwysiwyg/jquery.wysiwyg.js'; // needed for wysiwyg editor

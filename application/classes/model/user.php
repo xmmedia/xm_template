@@ -29,13 +29,37 @@ class Model_User extends Model_Auth_User {
 		'reset_token' => 'Reset Password Token',
 	);
 
+	protected $_table_columns = array(
+		'last_login' => array(
+			'edit_flag' => TRUE,
+			'field_type' => 'datetime',
+		),
+	);
+
 	// relationships
     protected $_has_many = array(
-		'user_token' => array('model' => 'user_token'),
+		'user_token' => array('model' => 'user_token'), // todo: source model shouldn't be needed
 		'role'       => array('model' => 'role', 'through' => 'role_user'),
 	);
 
 	// Columns to ignore
 	protected $_ignored_columns = array('password_confirm');
+
+	public function __construct($id = NULL, $options = array()) {
+		parent::__construct($id, $options);
+
+		$this->_rules['username']['regex'] = array('/^[-\pL\pN_@.]++$/uD');
+	}
+
+    /**
+	 * Allows a model use both email and username as unique identifiers for login
+	 *
+	 * @param   string  unique value
+	 * @return  string  field name
+	 */
+	public function unique_key($value)
+	{
+		return 'username';
+	}
 
 } // class

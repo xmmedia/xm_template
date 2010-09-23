@@ -28,7 +28,7 @@ class Controller_Admin extends Controller_Base {
 
         // add jquery ui css and js
         $this->template->styles['css/jquery-ui-1.8.2.custom.css'] = 'screen';
-        $this->template->scripts[] = 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/jquery-ui.min.js';
+        $this->template->scripts[] = 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js';
 
         // add claerolib4 css and js
         $this->template->styles['css/cl4.css'] = 'screen';
