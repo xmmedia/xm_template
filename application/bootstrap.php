@@ -163,7 +163,7 @@ Route::set('home', '(<lang>/)', array('lang' => '(en-ca|fr-ca)'))
         'page' => 'home',
         'id' => '',
 ));
-
+/*
  // required for cl4 admion functions
 Route::set('claeroadmin', '(<lang>/)claeroadmin/(<action>(/<id>))', array('lang' => '(en-ca|fr-ca)', 'id'=>'.+'))
     ->defaults(array(
@@ -173,7 +173,7 @@ Route::set('claeroadmin', '(<lang>/)claeroadmin/(<action>(/<id>))', array('lang'
         'action' => 'index',
         'id' => '',
 ));
-
+*/
 // last chance default route: is this safe?  what about modules, third-party modules, etc.?
 // in a production site this should be locked to specific controllers or commented out
 Route::set('default', '(<lang>/)(<controller>)(/<action>(/<id>))', array('lang' => '(en-ca|fr-ca)', 'id'=>'.+'))
