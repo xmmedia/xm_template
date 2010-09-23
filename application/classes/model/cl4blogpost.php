@@ -256,6 +256,7 @@ class Model_Cl4BlogPost extends Claero_ORM {
              'ext_check_only' => FALSE,
              'overwrite' => FALSE,
              'allow_any_file_type' => FALSE,
+				'allowed_types' => array('application/pdf','image/jpeg','image/gif','image/png','application/zip'),
 			),
 
 
