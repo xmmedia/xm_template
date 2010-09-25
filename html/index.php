@@ -36,6 +36,7 @@ switch ($serverId) {
         define('DEFAULT_DB', 'default'); // default config/database.php database settings name
         define('EN_LOCALE_ID', 1);
         define('FR_LOCALE_ID', 2);
+        define('SESSION_TYPE', 'database');
         break;
 
     // development site
@@ -63,6 +64,7 @@ switch ($serverId) {
         define('DEFAULT_DB', 'default'); // default config/database.php database settings name
         define('EN_LOCALE_ID', 1);
         define('FR_LOCALE_ID', 2);
+        define('SESSION_TYPE', 'database');
         break;
 
     default:

@@ -29,7 +29,6 @@ hr {height:1px; width:100%; color:#b0a279;}
 .highlight {font-weight:bold;}
 .grey, .grey a:link, .grey a:active, .grey a:visited {color:#333}
 .smallGrey {font-size:12px; color:#333;}
-.statusMessage { font-size:14px; font-weight:bold; color:#ff6633; margin:5px; padding:5px 15px 5px 10px; margin:0px 0px 15px 0px; border:1px dashed #ff9966; }
 .message {margin:10px 25px 5px 25px;}
 .errorMessage { font-size:14px; font-weight:bold; color:#c71209; margin:5px; padding:5px; border:2px dashed #f00; }
 .pleaseWait { font-size:14px; font-weight:bold; color:#f00; margin:5px; padding:5px; border:1px dashed #666; padding-left:25px; background: url(/images/indicator.gif) no-repeat 5px 5px; }

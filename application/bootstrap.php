@@ -92,6 +92,8 @@ if (DEBUG_FLAG) {
     Kohana::$log->attach(new FirePHP_Log_Console());
 }
 
+Session::$default = SESSION_TYPE;
+
 /**
  * Set the routes. Each route must have a minimum of a name, a URI and a set of
  * defaults for the URI. Routes are selected by whichever one matches first.
