@@ -1,11 +1,11 @@
 <?php defined('SYSPATH') or die ('No direct script access.');
 
 /**
- * This model was created using Claero_ORM and should provide 
+ * This model was created using Claero_ORM and should provide
  * standard Kohana ORM features in additon to cl4 specific features.
  */
 
-class Model_AuthLog extends Claero_ORM {
+class Model_AuthLog extends ORM {
 
 	protected $_db = 'default'; // or any group in database configuration
 	protected $_table_names_plural = false;
@@ -205,7 +205,7 @@ class Model_AuthLog extends Claero_ORM {
 		'browser' => 'Browser',
 		'ip_address' => 'Ip Address',
 	);
-	
+
 	// sorting
 	protected $_sorting = array(
 		'access_time' => 'DESC'
@@ -222,7 +222,7 @@ class Model_AuthLog extends Claero_ORM {
 		'user' => array(),
 		//'user' => array('foreign_key' => 'user_id', 'name_sql' => 'username')
 	);
-	
+
 	// load with
 	/*
 	protected $_load_with = array(
@@ -230,7 +230,7 @@ class Model_AuthLog extends Claero_ORM {
 		'user_id'
 	);
 	*/
-	
+
 	// validation rules
 	protected $_rules = array(
 		'user_id' => array(

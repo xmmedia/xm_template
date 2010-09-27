@@ -72,14 +72,14 @@ and also adds some properties (form and column) to provide additional features.<
 </form>
 
 <h2>Generate a listing of data from a model</h2>
-<?php //echo ClaeroORM::factory('claerochange')->get_list(); ?>
-<?php //echo ClaeroORM::factory('claerochange', array('table_name' => 'claero_meta'))->get_list(); ?>
-<?php echo ClaeroORM::factory('Cl4BlogPost')->where('publish_flag','=','1')->limit(5)->get_list(); ?>
+<?php //echo ORM::factory('claerochange')->get_list(); ?>
+<?php //echo ORM::factory('claerochange', array('table_name' => 'claero_meta'))->get_list(); ?>
+<?php echo ORM::factory('Cl4BlogPost')->where('publish_flag','=','1')->limit(5)->get_list(); ?>
 
 <h2>Generate an editable listing of data from a model</h2>
-<?php //echo ClaeroORM::factory('claerochange')->get_list(); ?>
-<?php //echo ClaeroORM::factory('claerochange', array('table_name' => 'claero_meta'))->get_list(); ?>
-<?php echo ClaeroORM::factory('Cl4BlogPost')->where('publish_flag','=','1')->get_editable_list(); ?>
+<?php //echo ORM::factory('claerochange')->get_list(); ?>
+<?php //echo ORM::factory('claerochange', array('table_name' => 'claero_meta'))->get_list(); ?>
+<?php echo ORM::factory('Cl4BlogPost')->where('publish_flag','=','1')->get_editable_list(); ?>
 
 <h2>Generate model PHP from table</h2>
 <?php

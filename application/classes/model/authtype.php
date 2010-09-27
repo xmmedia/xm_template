@@ -1,11 +1,11 @@
 <?php defined('SYSPATH') or die ('No direct script access.');
 
 /**
- * This model was created using Claero_ORM and should provide 
+ * This model was created using Claero_ORM and should provide
  * standard Kohana ORM features in additon to cl4 specific features.
  */
 
-class Model_AuthType extends Claero_ORM {
+class Model_AuthType extends ORM {
 
 	protected $_db = 'default'; // or any group in database configuration
 	protected $_table_names_plural = false;
@@ -102,7 +102,7 @@ class Model_AuthType extends Claero_ORM {
 		'name' => 'Name',
 		'display_order' => 'Display Order',
 	);
-	
+
 	// sorting
 	protected $_sorting = array(
 		'display_order' => 'ASC'

@@ -5,7 +5,7 @@
  * standard Kohana ORM features in additon to cl4 specific features.
  */
 
-class Model_Locale extends Claero_ORM {
+class Model_Locale extends ORM {
 
 	protected $_db = 'default'; // or any group in database configuration
 	protected $_table_names_plural = false;
