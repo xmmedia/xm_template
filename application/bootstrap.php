@@ -188,7 +188,7 @@ Route::set('home', '(<lang>/)', array('lang' => '(en-ca|fr-ca)'))
         'id' => '',
 ));
 /*
- // required for cl4 admion functions
+ // required for cl4 admin functions
 Route::set('claeroadmin', '(<lang>/)claeroadmin/(<action>(/<id>))', array('lang' => '(en-ca|fr-ca)', 'id'=>'.+'))
     ->defaults(array(
         'lang' => 'en-ca',

@@ -5,7 +5,6 @@
 			$('#model_code').html(data);
 		});
 	} // function
-
 </script>
 <style>
 	code, .code {display:block; width:700px; padding:4px; border:1px #ccc dashed; margin:5px;}
