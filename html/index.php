@@ -10,6 +10,7 @@ if (!RUNNING_AT_COMMAND_LINE && isset($_SERVER['SERVER_NAME']) && isset($_SERVER
 } else if (RUNNING_AT_COMMAND_LINE) {
     $serverId = $_SERVER['PWD'];
 }
+// @todo make a defaults file with all the constants used through the site and load it after this switch so we don't have to everything in here even when it's not used; for example AWS_MEDIA_URL; this file could also include comments as to how each constant is used
 switch ($serverId) {
     // production site
     case 'www.claero.com:80':
@@ -28,15 +29,12 @@ switch ($serverId) {
         define('GOOGLE_API_KEY', '');
         define('RECAPTCHA_PUBLIC_KEY', '');
         define('RECAPTCHA_PRIVATE_KEY', '');
-        define('SMTP_HOST', 'localhost');
-        define('SMTP_PORT', '25');
-        define('SMTP_USER', '');
-        define('SMTP_PASS', '');
         define('AWS_MEDIA_URL', '');
         define('DEFAULT_DB', 'default'); // default config/database.php database settings name
         define('EN_LOCALE_ID', 1);
         define('FR_LOCALE_ID', 2);
         define('SESSION_TYPE', 'database');
+        define('ADMIN_EMAIL', 'claero-support@claero.com');
         break;
 
     // development site
@@ -56,15 +54,12 @@ switch ($serverId) {
         define('GOOGLE_API_KEY', '');
         define('RECAPTCHA_PUBLIC_KEY', '');
         define('RECAPTCHA_PRIVATE_KEY', '');
-        define('SMTP_HOST', 'localhost');
-        define('SMTP_PORT', '25');
-        define('SMTP_USER', '');
-        define('SMTP_PASS', '');
         define('AWS_MEDIA_URL', '');
         define('DEFAULT_DB', 'default'); // default config/database.php database settings name
         define('EN_LOCALE_ID', 1);
         define('FR_LOCALE_ID', 2);
         define('SESSION_TYPE', 'database');
+        define('ADMIN_EMAIL', 'claero-support@claero.com');
         break;
 
     default:
