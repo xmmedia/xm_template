@@ -18,6 +18,7 @@ switch ($serverId) {
         define('DEVELOPMENT_FLAG', FALSE);
         define('CACHE_FLAG', FALSE);
         define('DEBUG_FLAG', FALSE);
+        define('FIREPHP_FLAG', FALSE);
         define('UNAVAILABLE_FLAG', FALSE);
         define('LONG_NAME', 'cl4 Sample CMS Site');
         define('SHORT_NAME', 'cl4sample');
@@ -43,6 +44,7 @@ switch ($serverId) {
         define('DEVELOPMENT_FLAG', TRUE);
         define('CACHE_FLAG', FALSE);
         define('DEBUG_FLAG', TRUE);
+        define('FIREPHP_FLAG', FALSE);
         define('UNAVAILABLE_FLAG', FALSE);
         define('LONG_NAME', 'cl4 Sample CMS Site');
         define('SHORT_NAME', 'cl4sample');
