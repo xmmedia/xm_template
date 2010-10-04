@@ -72,22 +72,22 @@ Kohana::$config->attach(new Kohana_Config_File);
  * Enable modules. Modules are referenced by a relative or absolute path.
  * ORDER MATTERS HERE!!!
  */
-$modules = array(
-    'claero'            => MODPATH . 'claero',            // Claerolib3 conversion (must be at the top)
-    'firephp'           => MODPATH . 'firephp',
-    'database'          => MODPATH . 'database',          // Database access
-    'image'             => MODPATH . 'image',             // Image manipulation
-    'orm'               => MODPATH . 'orm',               // Object Relationship Mapping
-    'auth'              => MODPATH . 'auth',              // Basic authentication
-    'pagination'        => MODPATH . 'pagination',        // Paging of results
-    'userguide'         => MODPATH . 'userguide',         // User guide and API documentation
-);
+$modules = array();
+$modules['claero'] = MODPATH . 'claero';            // Claerolib3 conversion (must be at the top)
+if (FIREPHP_FLAG) $modules['firephp'] = MODPATH . 'firephp';          // FIre PHP debugging - ONLY WORKS IN FIREFOX
+$modules['database'] = MODPATH . 'database';        // Database access
+$modules['image'] = MODPATH . 'image';              // Image manipulation
+$modules['orm'] = MODPATH . 'orm';                  // Object Relationship Mapping
+$modules['auth'] = MODPATH . 'auth';                // Basic authentication
+$modules['pagination'] = MODPATH . 'pagination';    // Paging of results
+$modules['userguide'] = MODPATH . 'userguide';      // User guide and API documentation
+
 if (CACHE_FLAG) $modules['cache'] = MODPATH . 'cache';      // Caching with multiple backends
 if (DEBUG_FLAG) $modules['codebench'] = MODPATH . 'codebench';  // Benchmarking tool
 Kohana::modules($modules);
 
 // set up firephp for debugging
-if (DEBUG_FLAG) {
+if (FIREPHP_FLAG && DEBUG_FLAG) {
     Kohana::$log->attach(new FirePHP_Log_File(APPPATH . 'logs'));
     Kohana::$log->attach(new FirePHP_Log_Console());
 }
@@ -221,7 +221,7 @@ if ( ! defined('SUPPRESS_REQUEST')) {
 }
 
 // set up firephp for debugging
-if (DEBUG_FLAG) {
+if (FIREPHP_FLAG && DEBUG_FLAG) {
     FirePHP_Profiler::instance()
     	->group('KO3 FirePHP Profiler Results:')
     	->superglobals() // New Superglobals method to show them all...
