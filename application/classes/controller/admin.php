@@ -9,7 +9,6 @@ class Controller_Admin extends Controller_Base {
 
     public $internal = false;
     public $pageTitle = 'Administration';
-    public $bodyHtml = '';
     public $defaultSettings = '';
     public $userAction = '';
     public $formName = '';
@@ -122,7 +121,7 @@ class Controller_Admin extends Controller_Base {
 
         $tableList = new claerofield('table_select', CLAERO_REQUEST_FORM_NAME, $this->formName, $options);
         //echo kohana::debug($tableList);
-        $this->template->bodyHtml .= '<form name="form_select" method="get">
+        $this->template->body_html .= '<form name="form_select" method="get">
             <div class="tableMenu">
                 Tables ' . $tableList->GetHtml() . '
                 <input type="submit" value="Go">
@@ -158,7 +157,7 @@ class Controller_Admin extends Controller_Base {
                 // no break here
             default:
                 $claeroDisplay = new claerodisplay($this->formName, $this->displayOptions);
-                $this->template->bodyHtml .= '<section class="claeroDisplay">' . $claeroDisplay->GetHtml() . '</section>';
+                $this->template->body_html .= '<section class="claeroDisplay">' . $claeroDisplay->GetHtml() . '</section>';
                 break;
 
         } // switch
@@ -191,7 +190,7 @@ class Controller_Admin extends Controller_Base {
         $this->editOptions['mode'] = $this->userAction;
 
         $claeroEdit = new ClaeroEdit($this->formName, $this->editOptions);
-        $this->template->bodyHtml .= $claeroEdit->GetHtml();
+        $this->template->body_html .= $claeroEdit->GetHtml();
 
     } // if
 
@@ -204,7 +203,7 @@ class Controller_Admin extends Controller_Base {
             claero::Redirect($_SERVER['SCRIPT_NAME'] . '?' . CLAERO_REQUEST_FORM_NAME . '=' . $this->formName);
             exit;
         } else {
-            $this->template->bodyHtml .= $claeroEdit->GetHtml();
+            $this->template->body_html .= $claeroEdit->GetHtml();
         }
 
     }
@@ -249,7 +248,7 @@ class Controller_Admin extends Controller_Base {
         if (count($_POST) == 0) {
             $this->editOptions['mode'] = 'search';
             $claeroEdit = new ClaeroEdit($this->formName, $this->editOptions);
-            $this->template->bodyHtml .= $claeroEdit->GetHtml();
+            $this->template->body_html .= $claeroEdit->GetHtml();
         } else {
             $this->displayOptions['new_search_flag'] = true;
         }

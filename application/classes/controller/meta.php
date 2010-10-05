@@ -78,7 +78,7 @@ class Controller_Meta extends Controller_Base {
         $tableSelect = new claerofield('table_select', 'table_name', $tableName, array('claero_db' => $this->claeroDb));
         $tableHtml = $tableSelect->GetField();
 
-        $this->template->bodyHtml .= <<<EOA
+        $this->template->body_html .= <<<EOA
         <h3>Claero Libraries Meta Editor</h3>
         Database: {$this->claeroDb->GetDbName()}
         <form name="meta" method="post">

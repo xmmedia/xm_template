@@ -11,7 +11,7 @@ class Controller_Auth extends Controller_Base {
 		}
 
 		#Load the view
-		$content = $this->template->bodyHtml = View::factory('register');
+		$content = $this->template->body_html = View::factory('register');
 
 		#If there is a post and $_POST is not empty
 		if ($_POST)
@@ -46,7 +46,7 @@ class Controller_Auth extends Controller_Base {
                                 #Get errors for display in view
 			    $errors = $post->errors('register');
 			    foreach ($errors as $error) {
-					$this->template->bodyHtml .= $error . HEOL;
+					$this->template->body_html .= $error . HEOL;
 			    }
 
 			}

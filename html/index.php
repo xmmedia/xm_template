@@ -27,7 +27,6 @@ switch ($serverId) {
         define('ABS_ROOT', '/home/templat4/template4.claero.com');
         define('UPLOAD_ROOT', UPLOAD_ROOT . '/uploads');
         define('ANALYTICS_ID', '');
-        define('GOOGLE_API_KEY', '');
         define('RECAPTCHA_PUBLIC_KEY', '');
         define('RECAPTCHA_PRIVATE_KEY', '');
         define('AWS_MEDIA_URL', '');
@@ -53,7 +52,6 @@ switch ($serverId) {
         define('ABS_ROOT', '/home/templat4/template4.claero.com');
         define('UPLOAD_ROOT', ABS_ROOT . '/uploads');
         define('ANALYTICS_ID', 'UA-468095-28'); // UA-468095-28 is for template4.claero.com
-        define('GOOGLE_API_KEY', '');
         define('RECAPTCHA_PUBLIC_KEY', '');
         define('RECAPTCHA_PRIVATE_KEY', '');
         define('AWS_MEDIA_URL', '');
@@ -91,20 +89,21 @@ if (DEBUG_FLAG) {
     error_reporting(E_ALL | E_STRICT);
 } // if
 
-define('THIS_PAGE','http://' . URL_ROOT . $_SERVER['REQUEST_URI']);
+define('THIS_PAGE', 'http://' . URL_ROOT . $_SERVER['REQUEST_URI']);
 
 // detect the browser to get the browser type
-// DH? - should we just use substr() instead of substr_count() ?
-$userAgent = $_SERVER['HTTP_USER_AGENT'];
-if (substr_count($userAgent, 'iPhone') > 0) {
-    $browserType = 'mobile_safari';
-} else if (substr_count($userAgent, 'Windows CE') > 0 && substr_count($userAgent, 'Smartphone') > 0) {
-    $browserType = 'mobile_default';
-} else if (substr_count($userAgent, 'IEMobile') > 0) {
-    $browserType = 'mobile_default';
+if ( ! empty($_SERVER['HTTP_USER_AGENT'])) {
+	$userAgent = $_SERVER['HTTP_USER_AGENT'];
+	if (substr($userAgent, 'iPhone') !== FALSE) {
+	    $browserType = 'mobile_safari';
+	} else if ((substr($userAgent, 'Windows CE') !== FALSE && substr($userAgent, 'Smartphone') !== FALSE) || substr($userAgent, 'IEMobile') !== FALSE) {
+	    $browserType = 'mobile_default';
+	} else {
+	    $browserType = 'pc_default';
+	}
 } else {
-    $browserType = 'pc_default';
-};
+	$browserType = 'pc_default';
+}
 define('BROWSER_TYPE', $browserType);
 
 /**

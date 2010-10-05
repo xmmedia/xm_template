@@ -7,7 +7,7 @@ class Controller_Test extends Controller_Base {
 
 	public function action_index() {
 
-		$this->template->bodyHtml .= '<p>sanity check</p>';
+		$this->template->body_html .= '<p>sanity check</p>';
 
 		$test_data = array('row_count' => '23', 'query_time' => '23');
 
@@ -17,10 +17,10 @@ class Controller_Test extends Controller_Base {
 		$test->save();
 
 
-		//$this->template->bodyHtml .= Request::instance()->uri(); //  $_SERVER['REQUEST_URI'];
-		//$this->template->bodyHtml .= Kohana::debug(Kohana::list_files('classes/model'));
-		//$this->template->bodyHtml .= Kohana::find_file('views','base');
-		//$this->template->bodyHtml .= Kohana::find_file('classes/model','user');
+		//$this->template->body_html .= Request::instance()->uri(); //  $_SERVER['REQUEST_URI'];
+		//$this->template->body_html .= Kohana::debug(Kohana::list_files('classes/model'));
+		//$this->template->body_html .= Kohana::find_file('views','base');
+		//$this->template->body_html .= Kohana::find_file('classes/model','user');
 
 		/* testing array merge options
 		$options = array(
@@ -31,7 +31,7 @@ class Controller_Test extends Controller_Base {
 			),
 			'test3' => 'test',
 		);
-		$this->template->bodyHtml .= kohana::debug($options);
+		$this->template->body_html .= kohana::debug($options);
 
 		$default_options = array(
 			'test1' => 0,
@@ -47,19 +47,19 @@ class Controller_Test extends Controller_Base {
 				'test5-2' => 'default2',
 			),
 		);
-		$this->template->bodyHtml .= kohana::debug($default_options);
+		$this->template->body_html .= kohana::debug($default_options);
 
 		//$options += $default_options;
 		//$options = array_merge($default_options, $options);
 		//$options = array_merge_recursive($default_options, $options);
 		$options = arr::merge($default_options, $options);
-		$this->template->bodyHtml .= kohana::debug($options);
+		$this->template->body_html .= kohana::debug($options);
 
 		*/
 
 
-		//$this->template->bodyHtml .= '<style>.required {color:red;}</style>' . EOL;
-		//$this->template->bodyHtml .= ORM::factory('user',2)->get_html();
+		//$this->template->body_html .= '<style>.required {color:red;}</style>' . EOL;
+		//$this->template->body_html .= ORM::factory('user',2)->get_html();
 	}
 
 }
