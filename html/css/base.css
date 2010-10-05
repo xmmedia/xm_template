@@ -32,11 +32,11 @@ hr {height:1px; width:100%; color:#b0a279;}
 .message {margin:10px 25px 5px 25px;}
 .errorMessage { font-size:14px; font-weight:bold; color:#c71209; margin:5px; padding:5px; border:2px dashed #f00; }
 .pleaseWait { font-size:14px; font-weight:bold; color:#f00; margin:5px; padding:5px; border:1px dashed #666; padding-left:25px; background: url(/images/indicator.gif) no-repeat 5px 5px; }
-aside.controlRow {margin:2px 0px 2px 0px; padding:6px 2px 6px 2px; border-top:1px #ccc solid; border-bottom:1px #ccc solid;}
-aside.controlRow ul {list-style-type:none; margin:0; padding:0;}
-aside.controlRow li {display:inline; padding:0px 15px 0px 15px;}
-aside.development {width:100%; text-align:center; margin-top:5px; font-size:0.8em; padding:1px; border-top:1px solid #555; border-bottom:1px solid #555; background-color:#ffff66;}
-aside.mainTitle {width:100%; text-align:center; margin-top:5px; font-size:1.2em; padding:2px; border-top:1px solid #555; border-bottom:1px solid #555; color:#fff; background-color:#000;}
+.controlRow {margin:2px 0px 2px 0px; padding:6px 2px 6px 2px; border-top:1px #ccc solid; border-bottom:1px #ccc solid;}
+.controlRow ul {list-style-type:none; margin:0; padding:0;}
+.controlRow li {display:inline; padding:0px 15px 0px 15px;}
+.development {width:100%; text-align:center; margin-top:5px; font-size:0.8em; padding:1px; border-top:1px solid #555; border-bottom:1px solid #555; background-color:#ffff66;}
+.mainTitle {width:100%; text-align:center; margin-top:5px; font-size:1.2em; padding:2px; border-top:1px solid #555; border-bottom:1px solid #555; color:#fff; background-color:#000;}
 
 /* list styles */
 ol.nostyle, ul.nostyle {list-style-type:none; margin:0; padding:0;}
