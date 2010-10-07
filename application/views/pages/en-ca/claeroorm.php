@@ -55,7 +55,7 @@ and also adds some properties (form and column) to provide additional features.<
  	EMAIL: echo $new_user->get_field('email_address') . EOL;<br />
 	FIRST: echo $new_user->get_field('first_name') . EOL;<br />
 	LAST: echo $new_user->get_field('last_name') . EOL;<br />
-	echo ClaeroForm::input('submit', 'submit', array('type' => 'submit')) . EOL;<br />
+	echo Form::input('submit', 'submit', array('type' => 'submit')) . EOL;<br />
 </code>
 <?php
 	// create the new model and prepare the form fields
@@ -67,7 +67,7 @@ and also adds some properties (form and column) to provide additional features.<
  	EMAIL: <?php echo $new_user->get_field('email_address') . EOL; ?>
 	FIRST: <?php echo $new_user->get_field('first_name') . EOL; ?>
 	LAST: <?php echo $new_user->get_field('last_name') . EOL; ?>
-	<?php echo ClaeroForm::input('submit', 'submit', array('type' => 'submit')) . EOL; ?>
+	<?php echo Form::input('submit', 'submit', array('type' => 'submit')) . EOL; ?>
 </form>
 
 <h2>Generate a listing of data from a model</h2>
@@ -87,7 +87,7 @@ and also adds some properties (form and column) to provide additional features.<
 	$table_list = $db->list_tables();
 ?>
 Select a table to generate the cl4/orm model code:
-<?php echo ClaeroForm::select('m_table_name', $table_list, $table_name, array('id' => 'm_table_name', 'onchange' => 'UpdateModel()')); ?>
+<?php echo Form::select('m_table_name', $table_list, $table_name, array('id' => 'm_table_name', 'onchange' => 'UpdateModel()')); ?>
 <textarea id="model_code" style="width:100%; height:400px; margin-top:15px;">
 <?php echo ORM::factory('Cl4BlogPost')->create_model('claero_change'); ?>
 </textarea>
