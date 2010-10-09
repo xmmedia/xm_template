@@ -108,7 +108,7 @@ Route::set('pages', '<lang>/page/<section>(/<page>(/<action>))', array('lang' =>
         'page' => '',
 ));
 
-// login page, forgot password, register
+// login page
 Route::set('login', '(<lang>/)login(/<action>(/<id>))', array('lang' => '(en-ca|fr-ca)'))
     ->defaults(array(
         'lang' => 'en-ca',
@@ -128,9 +128,7 @@ Route::set('logout', '(<lang>/)logout(/)', array('lang' => '(en-ca|fr-ca)'))
         'page' => '',
 ));
 
-
-
-// account page
+// account: profile, password, forgot, register
 Route::set('account', '(<lang>/)account(/<action>(/<id>))', array('lang' => '(en-ca|fr-ca)'))
     ->defaults(array(
         'lang' => 'en-ca',

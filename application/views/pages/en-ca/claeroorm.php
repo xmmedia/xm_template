@@ -9,20 +9,20 @@
 <style>
 	code, .code {display:block; width:700px; padding:4px; border:1px #ccc dashed; margin:5px;}
 	/* table form css */
-	table.cl4 {border:1px solid #ccc; margin-top:10px; margin-bottom:10px;}
-	table.cl4 td {padding:4px;}
-	table.cl4 input[type="password"], table.cl4 input[type=text], table.cl4 select {width:200px;}
-	table.cl4 input.date_field-date {width:80px;}
-	table.cl4 input.date_field-hour, table.cl4 input.date_field-min, table.cl4 input.date_field-sec {width:20px;}
-	table.cl4 tr.even td, table.cl4 tr.odd td {background-color:#fff;}
-	table.cl4 td.column0 {text-align:right; padding-right:20px; width:100px;}
+	table.cl4_form {border:1px solid #ccc; margin-top:10px; margin-bottom:10px;}
+	table.cl4_form td {padding:4px;}
+	table.cl4_form input[type="password"], table.cl4_form input[type=text], table.cl4_form select {width:200px;}
+	table.cl4_form input.date_field-date {width:80px;}
+	table.cl4_form input.date_field-hour, table.cl4_form input.date_field-min, table.cl4_form input.date_field-sec {width:20px;}
+	table.cl4_form tr.even td, table.cl4_form tr.odd td {background-color:#fff;}
+	table.cl4_form td.column0 {text-align:right; padding-right:20px; width:100px;}
 	/* ul form css */
-	ul.cl4 {display:block; margin-top:10px; margin-bottom:10px;}
-	ul.cl4 li {list-style-type:none;}
-	ul.cl4 li ul {width:700px;}
-	ul.cl4 li ul li{position:relative; float:left;}
-	ul.cl4 li ul li.fieldlabel{width:200px;}
-	ul.cl4 li ul li.fieldvalue{width:500px;}
+	ul.cl4_form {display:block; margin-top:10px; margin-bottom:10px;}
+	ul.cl4_form li {list-style-type:none;}
+	ul.cl4_form li ul {width:700px;}
+	ul.cl4_form li ul li{position:relative; float:left;}
+	ul.cl4_form li ul li.field_label{width:200px;}
+	ul.cl4_form li ul li.field_value{width:500px;}
 </style>
 <h1>cl4 ORM Extension Examples</h1>
 
