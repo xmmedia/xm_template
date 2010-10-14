@@ -7,14 +7,16 @@ class Controller_Test extends Controller_Base {
 
 	public function action_index() {
 
-		$this->template->body_html .= '<p>sanity check</p>';
+	$this->template->body_html .= Route::get('claeroadmin')->uri(array('object' => 'user', 'action' => 'edit', 'id' => 3));
+	$this->template->body_html .= kohana::debug(Request::instance()->route);
+	$this->template->body_html .= kohana::debug(Route::name(Request::instance()->route));
 
-		$test_data = array('row_count' => '23', 'query_time' => '23');
-
-		$test = ClaeroORM::factory('claerochange', 65);
-		//$test->row_count = 2;
-		$test->values($test_data);
-		$test->save();
+		//$this->template->body_html .= '<p>sanity check</p>';
+		//$test_data = array('row_count' => '23', 'query_time' => '23');
+		//$test = ClaeroORM::factory('claerochange', 65);
+			//$test->row_count = 2;
+		//$test->values($test_data);
+		//$test->save();
 
 
 		//$this->template->body_html .= Request::instance()->uri(); //  $_SERVER['REQUEST_URI'];

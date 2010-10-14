@@ -185,17 +185,17 @@ Route::set('home', '(<lang>/)', array('lang' => '(en-ca|fr-ca)'))
         'page' => 'home',
         'id' => '',
 ));
-/*
- // required for cl4 admin functions
-Route::set('claeroadmin', '(<lang>/)claeroadmin/(<action>(/<id>))', array('lang' => '(en-ca|fr-ca)', 'id'=>'.+'))
+
+// clasero admin
+Route::set('claeroadmin', '(<lang>/)claeroadmin(/<model>(/<action>(/<id>)))', array('lang' => '(en-ca|fr-ca)', 'id'=>'.+'))
     ->defaults(array(
         'lang' => 'en-ca',
         'controller' => 'claeroadmin',
-        'model' => 'claerochange',
+        'model' => 'user',
         'action' => 'index',
         'id' => '',
 ));
-*/
+
 // last chance default route: is this safe?  what about modules, third-party modules, etc.?
 // in a production site this should be locked to specific controllers or commented out
 Route::set('default', '(<lang>/)(<controller>)(/<action>(/<id>))', array('lang' => '(en-ca|fr-ca)', 'id'=>'.+'))
