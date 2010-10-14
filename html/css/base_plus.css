@@ -1,7 +1,5 @@
 /**** additional styles that are not just defaults, but include some formatting ****/
-/** major container elements **/
-#wrapper { width: 955px; margin: 0 auto; padding: 0 0 15px 0; background-color: #fff; text-align: left; }
-#main_content { min-height: 400px; }
+
 /* in the cl4 template this is a div as it's unimportant for SEO and there should only be 1 h1 on a page */
 .app_name {
 	width: 955px;
@@ -34,22 +32,7 @@
 .private_nav ul li a:link, .private_nav ul li a:visited, .private_nav ul li a:active {font-weight:normal; color:#f00; text-decoration:none;}
 .private_nav ul li a:hover {color:#000; text-decoration:none;}
 .private_nav ul li.welcome_name { }
-*/
-/** development related styles **/
-#kohana_profiler { margin-top: 20px; }
-.development_msg {
-	width: 100%;
-	text-align: center;
-	margin-top: 5px;
-	font-size: 1em;
-	padding: 2px;
-	border: 1px solid #555;
-	border-right: none;
-	border-left: none;
-	background-color: #ff6;
-	font-weight: bold;
-	letter-spacing: 1px;
-}
+
 
 
 /** plus **/

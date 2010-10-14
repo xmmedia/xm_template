@@ -41,6 +41,10 @@ label { cursor: pointer; }
 .clear { clear: both; }
 .hidden { display: none; }
 
+/** general formatting / containers **/
+#wrapper { min-width: 850px; max-width: 1260px; margin: 0 auto; padding: 15px; background-color: #fff; text-align: left; }
+#main_content { min-height: 400px; min-width: 850px; max-width: 1260px; }
+
 /** the following are styles to create some formatting and are not quite as "required" as the above styles **/
 /** header **/
 .page_top_wrapper { background: url(/images/top_bkg.jpg) top center repeat-x; border-bottom: 1px solid #7e7e7e; height: 82px; }
@@ -55,7 +59,7 @@ label { cursor: pointer; }
 .language_options a:hover { text-decoration: underline; }
 
 /** nav **/
-.nav_wrapper_repeat { background: url(/images/nav/repeat.jpg) repeat-x; height: 38px; }
+.nav_wrapper_repeat { background: url(/images/nav/repeat.jpg) repeat-x; height: 73px; }
 .nav_wrapper { margin: 0 auto; max-width: 1260px; min-width: 850px; }
 .nav_divider { background: url(/images/nav/divider.jpg) top no-repeat; float: left; height: 40px; width: 15px; }
 
@@ -64,16 +68,23 @@ label { cursor: pointer; }
 .main_nav li { float: left; height: auto; margin: 0; padding: 0 0 0 15px; list-style: none; height: 38px; }
 .main_nav li a { display: block; padding: 12px 15px 10px 0; color: #fff; text-decoration: none; font-size: 0.8em; }
 .main_nav li.nav_divider { padding: 0; }
-.main_nav li:hover { background: url(/images/nav/link_hover.gif); }
-.main_nav li:hover a { background: url(/images/nav/link_hover.gif) right top; }
+.main_nav li:hover { background: url(/images/nav/link_hover.gif) repeat-x; }
+.main_nav li:hover a { background: url(/images/nav/link_hover.gif) right top repeat-x; }
 .main_nav li.nav_divider:hover { background: url(/images/nav/divider.jpg) top no-repeat; }
+
+.main_nav .sub_nav { display: none; background: none; width: 600px; left: 0; position: absolute; }
+.main_nav .sub_nav li { float: left; }
+.main_nav ul li:hover ul li { display: block; }
+.main_nav ul li:hover .sub_nav { display: block; position: absolute; }
+.main_nav ul li:hover .sub_nav a, .main_nav ul li:hover .sub_nav li:hover { background: none; z-index: 100; }
+.main_nav ul li .sub_nav li a:hover { color: #94b52c; }
 
 .logged_in_nav { float: right; width: 250px; }
 .logged_in_nav li { float: right; }
 .logged_in_nav a img { vertical-align: bottom; margin-right: 5px; }
 
 /** development related styles **/
-#kohana_profiler { margin-top: 20px; }
+#kohana_profiler { margin-top: 20px; min-width: 850px; }
 .development_msg {
 	width: 100%;
 	text-align: center;
