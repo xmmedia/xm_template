@@ -92,6 +92,7 @@ if (FIREPHP_FLAG && DEBUG_FLAG) {
     Kohana::$log->attach(new FirePHP_Log_Console());
 }
 
+// this sets the session type so we don't need to set it when calling Session::instance()
 Session::$default = SESSION_TYPE;
 
 /**
@@ -100,7 +101,7 @@ Session::$default = SESSION_TYPE;
  */
 
  // routes for public pages
-Route::set('pages', '<lang>/page/<section>(/<page>(/<action>))', array('lang' => '(en-ca|fr-ca)', 'page' => '.*'))
+Route::set('pages', '(<lang>/)page/<section>(/<page>(/<action>))', array('lang' => '(en-ca|fr-ca)', 'page' => '.*'))
     ->defaults(array(
         'lang' => 'en-ca',
         'controller' => 'page',
@@ -114,7 +115,6 @@ Route::set('login', '(<lang>/)login(/<action>(/<id>))', array('lang' => '(en-ca|
         'lang' => 'en-ca',
         'controller' => 'claerologin',
         'action' => 'index',
-        //'section' => 'admin',
         'page' => '',
 ));
 
@@ -124,7 +124,6 @@ Route::set('logout', '(<lang>/)logout(/)', array('lang' => '(en-ca|fr-ca)'))
         'lang' => 'en-ca',
         'controller' => 'claerologin',
         'action' => 'logout',
-        //'section' => 'admin',
         'page' => '',
 ));
 
@@ -134,7 +133,6 @@ Route::set('account', '(<lang>/)account(/<action>(/<id>))', array('lang' => '(en
         'lang' => 'en-ca',
         'controller' => 'account',
         'action' => 'index',
-        'section' => 'admin',
         'page' => '',
 ));
 
