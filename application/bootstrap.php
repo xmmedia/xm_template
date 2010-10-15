@@ -185,7 +185,7 @@ Route::set('home', '(<lang>/)', array('lang' => '(en-ca|fr-ca)'))
 ));
 
 // clasero admin
-Route::set('claeroadmin', '(<lang>/)claeroadmin(/<model>(/<action>(/<id>)))', array('lang' => '(en-ca|fr-ca)', 'id'=>'.+'))
+Route::set('claeroadmin', '(<lang>/)dbadmin(/<model>(/<action>(/<id>)))', array('lang' => '(en-ca|fr-ca)', 'id'=>'.+'))
     ->defaults(array(
         'lang' => 'en-ca',
         'controller' => 'claeroadmin',
