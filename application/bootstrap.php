@@ -100,10 +100,12 @@ Session::$default = SESSION_TYPE;
  * defaults for the URI. Routes are selected by whichever one matches first.
  */
 
+$default_lang = NULL;
+
  // routes for public pages
 Route::set('pages', '(<lang>/)page/<section>(/<page>(/<action>))', array('lang' => '(en-ca|fr-ca)', 'page' => '.*'))
     ->defaults(array(
-        'lang' => 'en-ca',
+        'lang' => $default_lang,
         'controller' => 'page',
         'section' => 'home',
         'page' => '',
@@ -112,7 +114,7 @@ Route::set('pages', '(<lang>/)page/<section>(/<page>(/<action>))', array('lang' 
 // login page
 Route::set('login', '(<lang>/)login(/<action>(/<id>))', array('lang' => '(en-ca|fr-ca)'))
     ->defaults(array(
-        'lang' => 'en-ca',
+        'lang' => $default_lang,
         'controller' => 'claerologin',
         'action' => 'index',
         'page' => '',
@@ -121,7 +123,7 @@ Route::set('login', '(<lang>/)login(/<action>(/<id>))', array('lang' => '(en-ca|
 // logout
 Route::set('logout', '(<lang>/)logout(/)', array('lang' => '(en-ca|fr-ca)'))
     ->defaults(array(
-        'lang' => 'en-ca',
+        'lang' => $default_lang,
         'controller' => 'claerologin',
         'action' => 'logout',
         'page' => '',
@@ -130,16 +132,16 @@ Route::set('logout', '(<lang>/)logout(/)', array('lang' => '(en-ca|fr-ca)'))
 // account: profile, password, forgot, register
 Route::set('account', '(<lang>/)account(/<action>(/<id>))', array('lang' => '(en-ca|fr-ca)'))
     ->defaults(array(
-        'lang' => 'en-ca',
+        'lang' => $default_lang,
         'controller' => 'account',
         'action' => 'index',
         'page' => '',
 ));
-
+/*
 // administration pages
 Route::set('admin', '(<lang>/)<controller>(/<action>(/<id>))', array('lang' => '(en-ca|fr-ca)', 'controller' => '(admin|meta)'))
     ->defaults(array(
-        'lang' => 'en-ca',
+        'lang' => $default_lang,
         'controller' => 'admin',
         'action' => 'index',
         'section' => 'admin',
@@ -149,7 +151,7 @@ Route::set('admin', '(<lang>/)<controller>(/<action>(/<id>))', array('lang' => '
 // routes for editing
 Route::set('edit', '<lang>/edit/<type>/<action>(/<id>)', array('lang' => '(en-ca|fr-ca)', 'id'=>'.+'))
     ->defaults(array(
-        'lang' => 'en-ca',
+        'lang' => $default_lang,
         'controller' => 'edit',
         'action' => 'createform',
         'id' => '',
@@ -158,7 +160,7 @@ Route::set('edit', '<lang>/edit/<type>/<action>(/<id>)', array('lang' => '(en-ca
 // routes for RESTful requests (like ajax)
 Route::set('rest', 'rest/<rtype>/<rindex>')
     ->defaults(array(
-        'lang' => 'en-ca',
+        'lang' => $default_lang,
         'rtype' => '',
         'rindex' => '',
         'controller' => 'rest',
@@ -167,16 +169,16 @@ Route::set('rest', 'rest/<rtype>/<rindex>')
 // routes for RESTful requests (like ajax) with locale specified
 Route::set('restlang', '<lang>/rest/<rtype>(/<rindex>)', array('lang' => '(en-ca|fr-ca)'))
     ->defaults(array(
-        'lang' => 'en-ca',
+        'lang' => $default_lang,
         'rtype' => '',
         'rindex' => '',
         'controller' => 'rest',
 ));
-
+*/
  // home page is the default for everything else
 Route::set('home', '(<lang>/)', array('lang' => '(en-ca|fr-ca)'))
     ->defaults(array(
-        'lang' => 'en-ca',
+        'lang' => $default_lang,
         'controller' => 'home',
         'action' => 'index',
         'section' => 'home',
@@ -187,9 +189,9 @@ Route::set('home', '(<lang>/)', array('lang' => '(en-ca|fr-ca)'))
 // clasero admin
 Route::set('claeroadmin', '(<lang>/)dbadmin(/<model>(/<action>(/<id>)))', array('lang' => '(en-ca|fr-ca)', 'id'=>'.+'))
     ->defaults(array(
-        'lang' => 'en-ca',
+        'lang' => NULL,
         'controller' => 'claeroadmin',
-        'model' => 'user',
+        'model' => 'user', // this is the default object that will be displayed when accessing claeroadmin (dbadmin) without a model
         'action' => 'index',
         'id' => '',
 ));
@@ -198,6 +200,7 @@ Route::set('claeroadmin', '(<lang>/)dbadmin(/<model>(/<action>(/<id>)))', array(
 // in a production site this should be locked to specific controllers or commented out
 Route::set('default', '(<lang>/)(<controller>)(/<action>(/<id>))', array('lang' => '(en-ca|fr-ca)', 'id'=>'.+'))
     ->defaults(array(
+    	'lang' => $default_lang,
         'controller' => 'home',
         'action' => 'index',
         'section' => '',

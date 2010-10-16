@@ -1,7 +1,7 @@
 /** standard html tags **/
 html { overflow-y: scroll; overflow: -moz-scrollbars-vertical; } /* always show vertical scrollbar in firefox and ie8 */
 body {
-	font-family: sans-serif;
+	font-family: Arial, Helvetica, sans-serif;
 	font-size: 1em;
 	text-align: center;
 	color: #000;
@@ -32,7 +32,9 @@ table tr td, td.align_top { vertical-align: top; }
 /** other element styles -- brings back the default styling after the CSS reset **/
 em { font-style: italic; }
 strong { font-weight: bold; }
+small { font-size: 0.7em; }
 label { cursor: pointer; }
+pre { font-size: 0.9em; }
 
 /** commonly used styles **/
 .clear { clear: both; }
@@ -106,6 +108,7 @@ footer a:hover { text-decoration: underline; }
 
 /** development related styles **/
 #kohana_profiler { margin-top: 20px; min-width: 850px; }
+.debug { text-align: left; }
 .development_msg {
 	width: 100%;
 	text-align: center;
