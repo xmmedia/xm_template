@@ -38,7 +38,7 @@ Class Controller_Rest extends Kohana_Controller_REST
 			// todo: add options here
 			case 'model':
 				if ($this->recordIndex != '') {
-					$output .= ClaeroORM::create_model($this->recordIndex);
+					$output .= ORM::create_model($this->recordIndex);
 				} else {
 					$output .= 'Sorry, we did not receive a valid table name';
 				}

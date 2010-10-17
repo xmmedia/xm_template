@@ -137,45 +137,8 @@ Route::set('account', '(<lang>/)account(/<action>(/<id>))', array('lang' => '(en
         'action' => 'index',
         'page' => '',
 ));
-/*
-// administration pages
-Route::set('admin', '(<lang>/)<controller>(/<action>(/<id>))', array('lang' => '(en-ca|fr-ca)', 'controller' => '(admin|meta)'))
-    ->defaults(array(
-        'lang' => $default_lang,
-        'controller' => 'admin',
-        'action' => 'index',
-        'section' => 'admin',
-        'page' => '',
-));
 
-// routes for editing
-Route::set('edit', '<lang>/edit/<type>/<action>(/<id>)', array('lang' => '(en-ca|fr-ca)', 'id'=>'.+'))
-    ->defaults(array(
-        'lang' => $default_lang,
-        'controller' => 'edit',
-        'action' => 'createform',
-        'id' => '',
-));
-
-// routes for RESTful requests (like ajax)
-Route::set('rest', 'rest/<rtype>/<rindex>')
-    ->defaults(array(
-        'lang' => $default_lang,
-        'rtype' => '',
-        'rindex' => '',
-        'controller' => 'rest',
-));
-
-// routes for RESTful requests (like ajax) with locale specified
-Route::set('restlang', '<lang>/rest/<rtype>(/<rindex>)', array('lang' => '(en-ca|fr-ca)'))
-    ->defaults(array(
-        'lang' => $default_lang,
-        'rtype' => '',
-        'rindex' => '',
-        'controller' => 'rest',
-));
-*/
- // home page is the default for everything else
+// home page is the default for everything else
 Route::set('home', '(<lang>/)', array('lang' => '(en-ca|fr-ca)'))
     ->defaults(array(
         'lang' => $default_lang,
