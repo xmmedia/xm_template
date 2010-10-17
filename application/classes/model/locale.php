@@ -10,7 +10,7 @@ class Model_Locale extends ORM {
 	protected $_db = 'default'; // or any group in database configuration
 	protected $_table_names_plural = false;
 	protected $_table_name = 'locale';
-	protected $_table_name_display = 'Locale';
+	public $_table_name_display = 'Locale';
 	protected $_primary_key = 'id'; // default: id
 	protected $_primary_val = 'name'; // default: name (column used as primary value)
 	// see http://v3.kohanaphp.com/guide/api/Database_MySQL#list_columns for all possible column attributes
