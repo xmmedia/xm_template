@@ -63,8 +63,8 @@ RewriteEngine On
 RewriteBase /
 
 # css/js/less
-# this is so you can control the cache more easily on your CSS, JS and LESS files; includes can become /css/filename.[timestamp].css
-#RewriteRule ^(.*)\.[\d]+\.(css|js|less)$ $1.$2 [L]
+# this is so you can control the cache more easily on your CSS and JS files; includes can become /css/filename.[timestamp].css
+#RewriteRule ^(.*)\.[\d]+\.(css|js)$ $1.$2 [L]
 
 # for www
 # this can be used for easily redirecting people to the www version of a site (it's a good idea to do this incase there is a future need for a CDN)
