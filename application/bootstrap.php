@@ -154,7 +154,7 @@ Route::set('claeroadmin', '(<lang>/)dbadmin(/<model>(/<action>(/<id>)))', array(
     ->defaults(array(
         'lang' => NULL,
         'controller' => 'claeroadmin',
-        'model' => 'user', // this is the default object that will be displayed when accessing claeroadmin (dbadmin) without a model
+        'model' => 'useradmin', // this is the default object that will be displayed when accessing claeroadmin (dbadmin) without a model
         'action' => 'index',
         'id' => '',
 ));
