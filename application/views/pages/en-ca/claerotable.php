@@ -12,7 +12,7 @@ $test_data[] = array('row3 col1', 'row3 col2', 'row3 col3', 'row3 col4', 'row3 c
 $test_data[] = array('row4 col1', 'row4 col2', 'row4 col3', 'row4 col4', 'row4 col5');
 //echo kohana::debug($test_data);
 
-$table = new Claero_Table(array(
+$table = new HTMLTable(array(
 	'table_attributes' => array(
 		'id' => 'blah',
 		'class' => 'claero_table',
