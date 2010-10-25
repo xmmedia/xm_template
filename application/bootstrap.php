@@ -100,6 +100,11 @@ Session::$default = SESSION_TYPE;
  * defaults for the URI. Routes are selected by whichever one matches first.
  */
 
+/**
+* setting the default language
+* if set to NULL, then the route won't include a language by default
+* if you want a language in the route, set default_lang to the language (ie, en-ca)
+*/
 $default_lang = NULL;
 
  // routes for public pages
