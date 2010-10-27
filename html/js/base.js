@@ -75,7 +75,11 @@ $.datepicker.setDefaults({
     constrainInput: false,
     duration: 'fast',
     yearRange: 'c-5:c+5',
-    appendText: '(YYYY-MM-DD)'
+    appendText: '(YYYY-MM-DD)',
+    onClose: function(dateText, inst) {
+    	// focuses the input when the date dialog closes
+		this.focus();
+    }
 });
 
 $(function() {
