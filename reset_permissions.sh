@@ -12,5 +12,6 @@ chmod g+w -R logs
 chmod g+w -R application/cache
 chmod g+w -R application/logs
 cd html
+chmod g+w -R uploads
 sudo find . -type f -exec chmod 644 {} \;
 sudo find . -type d -exec chmod 755 {} \;
