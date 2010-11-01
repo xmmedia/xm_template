@@ -25,7 +25,9 @@ switch ($serverId) {
         define('APP_VERSION', '0.1');
         define('URL_ROOT', 'http://template4.claero.com');
         define('ABS_ROOT', '/home/templat4/template4.claero.com');
-        define('UPLOAD_ROOT', UPLOAD_ROOT . '/uploads');
+        define('UPLOAD_ROOT_PUBLIC', ABS_ROOT . '/html/uploads');
+        define('UPLOAD_ROOT_PRIVATE', ABS_ROOT . '/uploads');
+        define('UPLOAD_ROOT', UPLOAD_ROOT_PRIVATE);
         define('ANALYTICS_ID', '');
         define('RECAPTCHA_PUBLIC_KEY', '');
         define('RECAPTCHA_PRIVATE_KEY', '');
@@ -50,7 +52,9 @@ switch ($serverId) {
         define('APP_VERSION', '0.1');
         define('URL_ROOT', 'http://template4.claero.com');
         define('ABS_ROOT', '/home/templat4/template4.claero.com');
-        define('UPLOAD_ROOT', ABS_ROOT . '/uploads');
+        define('UPLOAD_ROOT_PUBLIC', ABS_ROOT . '/html/uploads');
+        define('UPLOAD_ROOT_PRIVATE', ABS_ROOT . '/uploads');
+        define('UPLOAD_ROOT', UPLOAD_ROOT_PRIVATE);
         define('ANALYTICS_ID', 'UA-468095-28'); // UA-468095-28 is for template4.claero.com
         define('RECAPTCHA_PUBLIC_KEY', '');
         define('RECAPTCHA_PRIVATE_KEY', '');

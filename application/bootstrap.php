@@ -154,10 +154,21 @@ Route::set('home', '(<lang>/)', array('lang' => '(en-ca|fr-ca)'))
         'id' => '',
 ));
 
-// clasero admin
+// claero admin download -- special to deal with file download
+Route::set('claeroadmin-download', '(<lang>/)dbadmin/download/<model>/<column_name>/<id>', array('lang' => '(en-ca|fr-ca)', 'model' => '.+', 'column_name' => '.+', 'id'=>'.+'))
+    ->defaults(array(
+        'lang' => $default_lang,
+        'controller' => 'claeroadmin',
+        'action' => 'download',
+        'model' => NULL, // this is the default object that will be displayed when accessing claeroadmin (dbadmin) without a model
+        'column_name' => NULL,
+        'id' => '',
+));
+
+// claero admin
 Route::set('claeroadmin', '(<lang>/)dbadmin(/<model>(/<action>(/<id>)))', array('lang' => '(en-ca|fr-ca)', 'id'=>'.+'))
     ->defaults(array(
-        'lang' => NULL,
+        'lang' => $default_lang,
         'controller' => 'claeroadmin',
         'model' => 'useradmin', // this is the default object that will be displayed when accessing claeroadmin (dbadmin) without a model
         'action' => 'index',
