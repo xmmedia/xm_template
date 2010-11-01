@@ -154,25 +154,17 @@ Route::set('home', '(<lang>/)', array('lang' => '(en-ca|fr-ca)'))
         'id' => '',
 ));
 
-// claero admin download -- special to deal with file download
-Route::set('claeroadmin-download', '(<lang>/)dbadmin/download/<model>/<column_name>/<id>', array('lang' => '(en-ca|fr-ca)', 'model' => '.+', 'column_name' => '.+', 'id'=>'.+'))
-    ->defaults(array(
-        'lang' => $default_lang,
-        'controller' => 'claeroadmin',
-        'action' => 'download',
-        'model' => NULL, // this is the default object that will be displayed when accessing claeroadmin (dbadmin) without a model
-        'column_name' => NULL,
-        'id' => '',
-));
-
 // claero admin
-Route::set('claeroadmin', '(<lang>/)dbadmin(/<model>(/<action>(/<id>)))', array('lang' => '(en-ca|fr-ca)', 'id'=>'.+'))
+// Most cases: /dbadmin/user/edit/2
+// Special case for download: /dbadmin/demo/download/2/public_filename
+Route::set('claeroadmin', '(<lang>/)dbadmin(/<model>(/<action>(/<id>(/<column_name>))))', array('lang' => '(en-ca|fr-ca)'))
     ->defaults(array(
         'lang' => $default_lang,
         'controller' => 'claeroadmin',
         'model' => 'useradmin', // this is the default object that will be displayed when accessing claeroadmin (dbadmin) without a model
         'action' => 'index',
         'id' => '',
+        'column_name' => NULL,
 ));
 
 // last chance default route: is this safe?  what about modules, third-party modules, etc.?
