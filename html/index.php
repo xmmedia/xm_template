@@ -15,6 +15,7 @@ switch ($serverId) {
     // production site
     case 'www.claero.com:80':
         define('CONFIG_FILE', 'development');
+        define('KOHANA_ENVIRONMENT', 'production');
         define('DEVELOPMENT_FLAG', FALSE);
         define('CACHE_FLAG', FALSE);
         define('DEBUG_FLAG', FALSE);
@@ -42,6 +43,7 @@ switch ($serverId) {
     // development site
     case 'template4.claero.com:80':
         define('CONFIG_FILE', 'development');
+        define('KOHANA_ENVIRONMENT', 'development');
         define('DEVELOPMENT_FLAG', TRUE);
         define('CACHE_FLAG', FALSE);
         define('DEBUG_FLAG', TRUE);
@@ -158,15 +160,15 @@ $system = '../system/';
 define('DOCROOT', realpath(dirname(__FILE__)) . DIRECTORY_SEPARATOR);
 
 // Make the application relative to the docroot
-if (!is_dir($application) && is_dir(DOCROOT . $application))
+if ( ! is_dir($application) && is_dir(DOCROOT . $application))
 	$application = DOCROOT . $application;
 
 // Make the modules relative to the docroot
-if (!is_dir($modules) && is_dir(DOCROOT . $modules))
+if ( ! is_dir($modules) && is_dir(DOCROOT . $modules))
 	$modules = DOCROOT . $modules;
 
 // Make the system relative to the docroot
-if (!is_dir($system) && is_dir(DOCROOT.$system))
+if ( ! is_dir($system) && is_dir(DOCROOT . $system))
 	$system = DOCROOT . $system;
 
 // Define the absolute paths for configured directories

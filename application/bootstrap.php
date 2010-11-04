@@ -58,6 +58,9 @@ $settings = array(
 );
 Kohana::init($settings);
 
+// tell Kohana if we are dev, production, staging or testing
+Kohana::$environment = KOHANA_ENVIRONMENT;
+
 /**
  * Attach the file write to logging. Multiple writers are supported.
  */
@@ -90,6 +93,11 @@ Kohana::modules($modules);
 if (FIREPHP_FLAG && DEBUG_FLAG) {
     Kohana::$log->attach(new FirePHP_Log_File(APPPATH . 'logs'));
     Kohana::$log->attach(new FirePHP_Log_Console());
+}
+
+if (isset($modules['claero'])) {
+	// sets the error handlers to use the customized Claero module versions only when the claero module is included
+	Claero::set_error_handlers();
 }
 
 // this sets the session type so we don't need to set it when calling Session::instance()
