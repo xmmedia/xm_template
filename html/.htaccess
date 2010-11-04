@@ -75,6 +75,8 @@ RewriteBase /
 #RewriteRule ^(.*) http://www.example.com/$1 [L,R]
 
 # Allow any files or directories that exist to be displayed directly
+# The following line will not send mod_pagespeed_beacon requests to index.php even though the directory doesn't exist
+RewriteCond %{REQUEST_URI} !^/mod_pagespeed_beacon
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
