@@ -2,7 +2,7 @@
 html { overflow-y:scroll; overflow:-moz-scrollbars-vertical; } /* always show vertical scrollbar in firefox and ie8 */
 body {
 	font-family:Arial, Helvetica, sans-serif;
-	font-size:1em;
+	font-size:0.8em;
 	text-align:center;
 	color:#000;
 	margin:0;
@@ -12,12 +12,12 @@ body {
 a:active { outline:none; } /* get rid of those system borders being generated for A tags */
 p { margin:10px 0; }
 h1, h2, h3, h4, h5, h6 { margin:10px 0 7px 0; font-weight:bold; }
-h1 { font-size:1.8em; }
-h2 { font-size:1.5em; }
-h3 { font-size:1.2em; }
-h4 { font-size:1em; }
-h5 { font-size:0.8em; }
-h6 { font-size:0.5em; }
+h1 { font-size:2em; }
+h2 { font-size:1.7em; }
+h3 { font-size:1.4em; }
+h4 { font-size:1.2em; }
+h5 { font-size:1em; }
+h6 { font-size:0.7em; }
 
 /* list styles */
 ol.no_style, ul.no_style { list-style-type:none; margin:0; padding:0; }
@@ -32,9 +32,9 @@ table tr td, td.align_top { vertical-align:top; }
 /** other element styles -- brings back the default styling after the CSS reset **/
 em { font-style:italic; }
 strong { font-weight:bold; }
-small { font-size:0.7em; }
+small { font-size:0.9em; }
 label { cursor:pointer; }
-pre { font-size:0.9em; }
+pre { font-size:1em; }
 
 /** commonly used styles **/
 .clear { clear:both; }
@@ -43,7 +43,7 @@ pre { font-size:0.9em; }
 /** general formatting / containers **/
 #wrapper { min-width:850px; padding:15px; background-color:#fff; text-align:left; }
 #main_content { min-height:400px; min-width:850px; }
-footer { font-size:0.7em; color:#777; text-align:right; margin:10px 0 0 0; }
+footer { font-size:0.8em; color:#777; text-align:right; margin:10px 0 0 0; }
 footer a { color:#777; text-decoration:none; }
 footer a:hover { text-decoration:underline; }
 
@@ -51,12 +51,12 @@ footer a:hover { text-decoration:underline; }
 /** header **/
 .page_top_wrapper { background:url(/images/top_bkg.jpg) top center repeat-x; border-bottom:1px solid #7e7e7e; height:82px; }
 .page_top { margin:0 auto; max-width:1260px; min-width:940px; position:relative; }
-.page_top_logo { float:left; margin:25px 0 0 15px; color:#fff; font-size:1.1em; }
+.page_top_logo { float:left; margin:25px 0 0 15px; color:#fff; font-size:1.3em; }
 .page_top_logo a, .page_top_logo a:hover { display:block; text-decoration:none; color:#fff; }
-.page_top_user_info { float:right; margin:29px 15px 0 0; font-size:0.8em; color:#ddd; }
-.page_top_user_info .login_in_as { font-size:0.8em; color:#999; }
+.page_top_user_info { float:right; margin:29px 15px 0 0; font-size:1em; color:#ddd; }
+.page_top_user_info .login_in_as { font-size:1em; color:#999; }
 .language_options { float:right; margin:10px 15px 0 0; color:#bbb; }
-.language_options .language_label { font-size:0.8em; color:#999; }
+.language_options .language_label { font-size:1em; color:#999; }
 .language_options a { color:#fff; text-decoration:none; }
 .language_options a:hover { text-decoration:underline; }
 
@@ -68,7 +68,7 @@ footer a:hover { text-decoration:underline; }
 .main_nav { float:left; height:38px; position:relative; width:auto; max-width:650px; z-index:500; }
 .main_nav ul { margin:0; }
 .main_nav li { float:left; height:auto; margin:0; padding:0 0 0 15px; list-style:none; height:38px; }
-.main_nav li a { display:block; padding:12px 15px 10px 0; color:#fff; text-decoration:none; font-size:0.8em; }
+.main_nav li a { display:block; padding:12px 15px 10px 0; color:#fff; text-decoration:none; font-size:1em; }
 .main_nav li.nav_divider { padding:0; }
 .main_nav li:hover { background:url(/images/nav/link_hover.gif) repeat-x; }
 .main_nav li:hover a { background:url(/images/nav/link_hover.gif) right top repeat-x; }
@@ -98,12 +98,12 @@ footer a:hover { text-decoration:underline; }
     -webkit-box-shadow:0 0 15px #757171;
     box-shadow:0 0 15px #757171;
 }
-.login_wrapper p { font-size:0.9em; }
+.login_wrapper p { font-size:1.1em; }
 .login_wrapper .cl4_form, .login_wrapper .cl4_form li ul { margin:0; }
 .login_wrapper .cl4_form li ul li { display:block; float:none; width:150px; }
 .login_wrapper .cl4_form li ul li.field_label { margin-top:15px; }
-.login_wrapper .cl4_form li ul li.field_value input { font-size:1em; width:390px; }
-.login_button { font-size:1em; }
+.login_wrapper .cl4_form li ul li.field_value input { font-size:1.2em; width:390px; }
+.login_button { font-size:1.2em; }
 .login_wrapper .forgot_link { float:right; }
 
 /** development related styles **/
@@ -112,7 +112,7 @@ footer a:hover { text-decoration:underline; }
 .development_msg {
 	width:100%;
 	text-align:center;
-	font-size:1em;
+	font-size:1.2em;
 	padding:5px 0;
 	border-bottom:1px solid #333;
 	background-color:#edb737;
