@@ -41,8 +41,8 @@ pre { font-size:0.9em; }
 .hidden { display:none; }
 
 /** general formatting / containers **/
-#wrapper { min-width:850px; max-width:1260px; margin:0 auto; padding:15px; background-color:#fff; text-align:left; }
-#main_content { min-height:400px; min-width:850px; max-width:1260px; }
+#wrapper { min-width:850px; padding:15px; background-color:#fff; text-align:left; }
+#main_content { min-height:400px; min-width:850px; }
 footer { font-size:0.7em; color:#777; text-align:right; margin:10px 0 0 0; }
 footer a { color:#777; text-decoration:none; }
 footer a:hover { text-decoration:underline; }
