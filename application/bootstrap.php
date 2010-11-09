@@ -72,6 +72,13 @@ Kohana::$log->attach(new Kohana_Log_File(ABS_ROOT . '/logs'));
 Kohana::$config->attach(new Kohana_Config_File);
 
 /**
+* setting the default language
+* if set to NULL, then the route won't include a language by default
+* if you want a language in the route, set default_lang to the language (ie, en-ca)
+*/
+define('DEFAULT_LANG', NULL);
+
+/**
  * Enable modules. Modules are referenced by a relative or absolute path.
  * ORDER MATTERS HERE!!!
  */
@@ -108,53 +115,19 @@ Session::$default = SESSION_TYPE;
  * defaults for the URI. Routes are selected by whichever one matches first.
  */
 
-/**
-* setting the default language
-* if set to NULL, then the route won't include a language by default
-* if you want a language in the route, set default_lang to the language (ie, en-ca)
-*/
-$default_lang = NULL;
-
  // routes for public pages
 Route::set('pages', '(<lang>/)page/<section>(/<page>(/<action>))', array('lang' => '(en-ca|fr-ca)', 'page' => '.*'))
     ->defaults(array(
-        'lang' => $default_lang,
+        'lang' => DEFAULT_LANG,
         'controller' => 'page',
         'section' => 'home',
-        'page' => '',
-));
-
-// login page
-Route::set('login', '(<lang>/)login(/<action>(/<id>))', array('lang' => '(en-ca|fr-ca)'))
-    ->defaults(array(
-        'lang' => $default_lang,
-        'controller' => 'claerologin',
-        'action' => 'index',
-        'page' => '',
-));
-
-// logout
-Route::set('logout', '(<lang>/)logout(/)', array('lang' => '(en-ca|fr-ca)'))
-    ->defaults(array(
-        'lang' => $default_lang,
-        'controller' => 'claerologin',
-        'action' => 'logout',
-        'page' => '',
-));
-
-// account: profile, password, forgot, register
-Route::set('account', '(<lang>/)account(/<action>(/<id>))', array('lang' => '(en-ca|fr-ca)'))
-    ->defaults(array(
-        'lang' => $default_lang,
-        'controller' => 'account',
-        'action' => 'index',
         'page' => '',
 ));
 
 // home page is the default for everything else
 Route::set('home', '(<lang>/)', array('lang' => '(en-ca|fr-ca)'))
     ->defaults(array(
-        'lang' => $default_lang,
+        'lang' => DEFAULT_LANG,
         'controller' => 'home',
         'action' => 'index',
         'section' => 'home',
@@ -162,24 +135,11 @@ Route::set('home', '(<lang>/)', array('lang' => '(en-ca|fr-ca)'))
         'id' => '',
 ));
 
-// claero admin
-// Most cases: /dbadmin/user/edit/2
-// Special case for download: /dbadmin/demo/download/2/public_filename
-Route::set('claeroadmin', '(<lang>/)dbadmin(/<model>(/<action>(/<id>(/<column_name>))))', array('lang' => '(en-ca|fr-ca)'))
-    ->defaults(array(
-        'lang' => $default_lang,
-        'controller' => 'claeroadmin',
-        'model' => NULL, // this is the default object that will be displayed when accessing claeroadmin (dbadmin) without a model
-        'action' => 'index',
-        'id' => '',
-        'column_name' => NULL,
-));
-
 // last chance default route: is this safe?  what about modules, third-party modules, etc.?
 // in a production site this should be locked to specific controllers or commented out
 Route::set('default', '(<lang>/)(<controller>)(/<action>(/<id>))', array('lang' => '(en-ca|fr-ca)', 'id'=>'.+'))
     ->defaults(array(
-    	'lang' => $default_lang,
+    	'lang' => DEFAULT_LANG,
         'controller' => 'home',
         'action' => 'index',
         'section' => '',
