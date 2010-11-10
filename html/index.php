@@ -22,10 +22,11 @@ switch ($serverId) {
         define('DEBUG_FLAG', FALSE);
         define('FIREPHP_FLAG', FALSE);
         define('UNAVAILABLE_FLAG', FALSE);
-        define('LONG_NAME', 'cl4 Sample CMS Site');
-        define('SHORT_NAME', 'cl4sample');
+        define('LONG_NAME', 'cl4 Template Site');
+        define('SHORT_NAME', 'cl4template');
         define('APP_VERSION', '0.1');
-        define('URL_ROOT', 'http://template4.claero.com');
+        define('HTTP_PROTOCOL', ($_SERVER['SERVER_PORT'] == '443' ? 'https' : 'http'));
+        define('URL_ROOT', HTTP_PROTOCOL . '://template4.claero.com');
         define('ABS_ROOT', '/home/templat4/template4.claero.com');
         define('UPLOAD_ROOT_PUBLIC', ABS_ROOT . '/html/uploads');
         define('UPLOAD_ROOT_PRIVATE', ABS_ROOT . '/uploads');
@@ -33,10 +34,6 @@ switch ($serverId) {
         define('ANALYTICS_ID', '');
         define('RECAPTCHA_PUBLIC_KEY', '');
         define('RECAPTCHA_PRIVATE_KEY', '');
-        define('AWS_MEDIA_URL', '');
-        define('DEFAULT_DB', 'default'); // default config/database.php database settings name
-        define('EN_LOCALE_ID', 1);
-        define('FR_LOCALE_ID', 2);
         define('SESSION_TYPE', 'database');
         define('ADMIN_EMAIL', 'claero-support@claero.com');
         break;
@@ -50,10 +47,11 @@ switch ($serverId) {
         define('DEBUG_FLAG', TRUE);
         define('FIREPHP_FLAG', FALSE);
         define('UNAVAILABLE_FLAG', FALSE);
-        define('LONG_NAME', 'cl4 Sample CMS Site');
-        define('SHORT_NAME', 'cl4sample');
+        define('LONG_NAME', 'cl4 Template Site');
+        define('SHORT_NAME', 'cl4template');
         define('APP_VERSION', '0.1');
-        define('URL_ROOT', 'http://template4.claero.com');
+        define('HTTP_PROTOCOL', ($_SERVER['SERVER_PORT'] == '443' ? 'https' : 'http'));
+        define('URL_ROOT', HTTP_PROTOCOL . '://template4.claero.com');
         define('ABS_ROOT', '/home/templat4/template4.claero.com');
         define('UPLOAD_ROOT_PUBLIC', ABS_ROOT . '/html/uploads');
         define('UPLOAD_ROOT_PRIVATE', ABS_ROOT . '/uploads');
@@ -61,10 +59,6 @@ switch ($serverId) {
         define('ANALYTICS_ID', 'UA-468095-28'); // UA-468095-28 is for template4.claero.com
         define('RECAPTCHA_PUBLIC_KEY', '');
         define('RECAPTCHA_PRIVATE_KEY', '');
-        define('AWS_MEDIA_URL', '');
-        define('DEFAULT_DB', 'default'); // default config/database.php database settings name
-        define('EN_LOCALE_ID', 1);
-        define('FR_LOCALE_ID', 2);
         define('SESSION_TYPE', 'database');
         define('ADMIN_EMAIL', 'claero-support@claero.com');
         break;

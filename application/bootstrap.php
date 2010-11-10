@@ -41,16 +41,19 @@ ini_set('unserialize_callback_func', 'spl_autoload_call');
  *
  * The following options are available:
  *
- * - string   base_url    path, and optionally domain, of your application   NULL
- * - string   index_file  name of your index file, usually "index.php"       index.php
- * - string   charset     internal character set used for input and output   utf-8
- * - string   cache_dir   set the internal cache directory                   APPPATH/cache
- * - boolean  errors      enable or disable error handling                   TRUE
- * - boolean  profile     enable or disable internal profiling               TRUE
- * - boolean  caching     enable or disable internal caching                 FALSE
+ * Type      | Setting    | Description                                    | Default Value
+ * ----------|------------|------------------------------------------------|---------------
+ * `boolean` | errors     | use internal error and exception handling?     | `TRUE`
+ * `boolean` | profile    | do internal benchmarking?                      | `TRUE`
+ * `boolean` | caching    | cache the location of files between requests?  | `FALSE`
+ * `string`  | charset    | character set used for all input and output    | `"utf-8"`
+ * `string`  | base_url   | set the base URL for the application           | `"/"`
+ * `string`  | index_file | set the index.php file name                    | `"index.php"`
+ * `string`  | cache_dir  | set the cache directory path                   | `APPPATH."cache"`
+ * `integer` | cache_life | set the default cache lifetime                 | `60`
+ * `string`  | error_view | set the error rendering view                   | `"kohana/error"`
  */
 $settings = array(
-    'base_url' => '/',
     'index_file' => '',
     'errors' => DEBUG_FLAG,
     'profiling' => DEBUG_FLAG,
