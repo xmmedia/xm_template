@@ -5,7 +5,6 @@ sudo chgrp apache -R uploads
 sudo chgrp apache -R sessions
 sudo chgrp apache -R logs
 sudo chgrp apache -R application/cache
-sudo chgrp apache -R application/logs
 chmod g+w -R uploads
 chmod g+w -R sessions
 chmod g+w -R logs
