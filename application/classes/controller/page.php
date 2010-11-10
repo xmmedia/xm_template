@@ -1,34 +1,39 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
 class Controller_Page extends Controller_Base {
-
-	// load a web page in to the default template (trialto_public) from file or database
+	// load a web page in to the default template from file or database
 	// special case for overview ages of web site 'sections'
 	public function action_index() {
-		// set up parameters to send to all template pages that are used in this method
-		$commonTemplateData = array(
-			'section' => $this->section,
-			'page' => $this->page,
-		);
+		$this->page = Request::instance()->param('page');
+		$this->section = Request::instance()->param('section');
+
 		// get the page from the static templates or database
 		try {
-			$pageViewName = ($this->page != '') ? $this->page : $this->section;
-			//$this->template->body_html .= View::factory('menus/' . $this->section) . EOL;
-			$this->template->body_html .= $this->get_static_template($pageViewName, $commonTemplateData);
-			// hack: special code to add additional date fields
-			if ($pageViewName == 'demo') {
-			$this->template->on_load_js .= <<<EOA
-$('#newDate').click(function() {
-$('#additional_date_fields').after('Date 2: <input type="text" id="date" name="date" value="2010-08-10" size="10" maxlength="10" class="testField date_field-date"><br><br>');
-$('.date_field-date').datepicker();
-return false;
-});
-EOA;
-			}
+			$this->template->body_html .= $this->get_static_template();
+		} catch (Kohana_View_Exception $e) {
+			$this->error_404();
+			Claero::exception_handler($e);
 		} catch (Exception $e) {
-			$this->template->body_html .= '<p>There was a problem loading the page content.</p>';
-			$this->template->body_html .= Kohana::debug($e);
+			Claero::exception_handler($e);
 		}
 	} // function action_index
 
+	/**
+	* Returns the view for the page specified, looking in appropriate language dir
+	*
+	* @param mixed $page
+	*/
+	protected function get_static_template() {
+		try {
+			$locale = (empty($this->locale) ? $this->allowed_languages[0] : $this->locale);
+
+			$page = '';
+			if ( ! empty($this->section)) $page .= $this->section . '/';
+			$page .= $this->page;
+
+			return View::factory('pages/' . $locale . '/' . $page);
+		} catch (Exeception $e) {
+			throw $e;
+		}
+	} // function get_static_template
 } // class Controller_Page

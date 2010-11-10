@@ -10,6 +10,7 @@ if (!RUNNING_AT_COMMAND_LINE && isset($_SERVER['SERVER_NAME']) && isset($_SERVER
 } else if (RUNNING_AT_COMMAND_LINE) {
     $serverId = $_SERVER['PWD'];
 }
+
 // @todo make a defaults file with all the constants used through the site and load it after this switch so we don't have to everything in here even when it's not used; for example AWS_MEDIA_URL; this file could also include comments as to how each constant is used
 switch ($serverId) {
     // production site
@@ -69,7 +70,7 @@ switch ($serverId) {
         break;
 
     default:
-        die("We cannot continue because the following server configuration is not defined: '{$serverId}'");
+        die('We cannot continue because the following server configuration is not defined: ' . $serverId);
         break;
 } // switch
 
@@ -94,8 +95,6 @@ if (DEBUG_FLAG) {
     // production site
     error_reporting(E_ALL | E_STRICT);
 } // if
-
-define('THIS_PAGE', 'http://' . URL_ROOT . $_SERVER['REQUEST_URI']);
 
 // detect the browser to get the browser type
 if ( ! empty($_SERVER['HTTP_USER_AGENT'])) {

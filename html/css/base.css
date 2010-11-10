@@ -42,7 +42,7 @@ pre { font-size:1em; }
 
 /** general formatting / containers **/
 #wrapper { min-width:850px; padding:15px; background-color:#fff; text-align:left; }
-#main_content { min-height:400px; min-width:850px; }
+#main_content { margin:0 auto; min-height:400px; min-width:850px; max-width:960px; }
 footer { font-size:0.8em; color:#777; text-align:right; margin:10px 0 0 0; }
 footer a { color:#777; text-decoration:none; }
 footer a:hover { text-decoration:underline; }
@@ -50,7 +50,7 @@ footer a:hover { text-decoration:underline; }
 /** the following are styles to create some formatting and are not quite as "required" as the above styles **/
 /** header **/
 .page_top_wrapper { background:url(/images/top_bkg.jpg) top center repeat-x; border-bottom:1px solid #7e7e7e; height:82px; }
-.page_top { margin:0 auto; max-width:1260px; min-width:940px; position:relative; }
+.page_top { margin:0 auto; min-width:850px; max-width:960px; position:relative; }
 .page_top_logo { float:left; margin:25px 0 0 15px; color:#fff; font-size:1.3em; }
 .page_top_logo a, .page_top_logo a:hover { display:block; text-decoration:none; color:#fff; }
 .page_top_user_info { float:right; margin:29px 15px 0 0; font-size:1em; color:#ddd; }
@@ -62,7 +62,7 @@ footer a:hover { text-decoration:underline; }
 
 /** nav **/
 .nav_wrapper_repeat { background:url(/images/nav/repeat.jpg) repeat-x; height:73px; }
-.nav_wrapper { margin:0 auto; max-width:1260px; min-width:850px; }
+.nav_wrapper { margin:0 auto; max-width:960px; min-width:850px; }
 .nav_divider { background:url(/images/nav/divider.jpg) top no-repeat; float:left; height:40px; width:15px; }
 
 .main_nav { float:left; height:38px; position:relative; width:auto; max-width:650px; z-index:500; }

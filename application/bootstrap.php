@@ -77,6 +77,7 @@ Kohana::$config->attach(new Kohana_Config_File);
 * if you want a language in the route, set default_lang to the language (ie, en-ca)
 */
 define('DEFAULT_LANG', NULL);
+$lang_options = '(en-ca|fr-ca)';
 
 /**
  * Enable modules. Modules are referenced by a relative or absolute path.
@@ -115,36 +116,29 @@ Session::$default = SESSION_TYPE;
  * defaults for the URI. Routes are selected by whichever one matches first.
  */
 
- // routes for public pages
-Route::set('pages', '(<lang>/)page/<section>(/<page>(/<action>))', array('lang' => '(en-ca|fr-ca)', 'page' => '.*'))
-    ->defaults(array(
-        'lang' => DEFAULT_LANG,
-        'controller' => 'page',
-        'section' => 'home',
-        'page' => '',
+// routes for "static" pages without a sub folder
+Route::set('pages', '(<lang>/)(<page>)', array('lang' => $lang_options))
+	->defaults(array(
+		'controller' => 'page',
+		'lang' => DEFAULT_LANG,
+		'page' => 'index',
+		'section' => NULL,
 ));
 
-// home page is the default for everything else
-Route::set('home', '(<lang>/)', array('lang' => '(en-ca|fr-ca)'))
-    ->defaults(array(
-        'lang' => DEFAULT_LANG,
-        'controller' => 'home',
-        'action' => 'index',
-        'section' => 'home',
-        'page' => 'home',
-        'id' => '',
+// route for "static" pages with a sub folder
+Route::set('pages_section', '(<lang>/)<section>/(<page>)', array('lang' => $lang_options))
+	->defaults(array(
+		'controller' => 'page',
+		'lang' => DEFAULT_LANG,
+		'section' => 'index',
+		'page' => 'index',
 ));
 
-// last chance default route: is this safe?  what about modules, third-party modules, etc.?
-// in a production site this should be locked to specific controllers or commented out
-Route::set('default', '(<lang>/)(<controller>)(/<action>(/<id>))', array('lang' => '(en-ca|fr-ca)', 'id'=>'.+'))
-    ->defaults(array(
-    	'lang' => DEFAULT_LANG,
-        'controller' => 'home',
-        'action' => 'index',
-        'section' => '',
-        'page' => '',
-        'id' => '',
+// for all other pages, show a 404
+Route::set('catch_all', '<path>', array('path' => '.+'))
+	->defaults(array(
+		'controller' => 'errors',
+		'action' => '404',
 ));
 
 if ( ! defined('SUPPRESS_REQUEST')) {
