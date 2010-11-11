@@ -87,7 +87,10 @@ $lang_options = '(en-ca|fr-ca)';
  * ORDER MATTERS HERE!!!
  */
 $modules = array();
-$modules['claero'] = MODPATH . 'claero';            // Claerolib3 conversion (must be at the top)
+$modules['cl4'] = MODPATH . 'cl4';                  // cl4
+$modules['cl4auth'] = MODPATH . 'cl4auth';          // cl4auth
+$modules['cl4admin'] = MODPATH . 'cl4admin';        // cl4admin
+$modules['cl4base'] = MODPATH . 'cl4base';          // cl4base
 if (FIREPHP_FLAG) $modules['firephp'] = MODPATH . 'firephp';          // FIre PHP debugging - ONLY WORKS IN FIREFOX
 $modules['database'] = MODPATH . 'database';        // Database access
 $modules['image'] = MODPATH . 'image';              // Image manipulation
