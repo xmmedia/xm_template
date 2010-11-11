@@ -280,7 +280,7 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` VALUES(1, '0000-00-00 00:00:00', 'admin@admin.com', 'e10adc3949ba59abbe56e057f20f883e', 'Admin', 'Account', 0, 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', '');
 INSERT INTO `user` VALUES(2, '0000-00-00 00:00:00', 'craig@nakamoto.ca', '0d107d09f5bbe40cade3de5c71e9e9b7', 'Craig', 'Nakamoto', 0, 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', '');
-INSERT INTO `user` VALUES(3, '0000-00-00 00:00:00', 'user@example.com', 'd41d8cd98f00b204e9800998ecf8427e', 'User1', '#1', 0, 0, '0000-00-00 00:00:00', 1, '2010-09-28 01:20:07', '');
+INSERT INTO `user` VALUES(3, '0000-00-00 00:00:00', 'user@example.com', 'd41d8cd98f00b204e9800998ecf8427e', 'User', '#1', 0, 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', '');
 
 -- --------------------------------------------------------
 
