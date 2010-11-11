@@ -169,8 +169,8 @@ CREATE TABLE `group` (
 -- Dumping data for table `group`
 --
 
-INSERT INTO `group` VALUES(1, 'Administrator', 'Client administrator, can edit user table.');
-INSERT INTO `group` VALUES(2, 'System Administrator', 'Programmer level administrator who can access database admin, etc.');
+INSERT INTO `group` VALUES(1, 'System Administrator', 'Programmer level administrator who can access database admin, etc.');
+INSERT INTO `group` VALUES(2, 'Administrator', 'Client administrator, can edit user table.');
 
 -- --------------------------------------------------------
 
