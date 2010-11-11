@@ -49,7 +49,7 @@ footer a:hover { text-decoration:underline; }
 
 /** the following are styles to create some formatting and are not quite as "required" as the above styles **/
 /** header **/
-.page_top_wrapper { background:url(images/top_bkg.jpg) top center repeat-x; border-bottom:1px solid #7e7e7e; height:82px; }
+.page_top_wrapper { background:url(/images/top_bkg.jpg) top center repeat-x; border-bottom:1px solid #7e7e7e; height:82px; }
 .page_top { margin:0 auto; min-width:850px; max-width:960px; position:relative; }
 .page_top_logo { float:left; margin:25px 0 0 15px; color:#fff; font-size:1.3em; }
 .page_top_logo a, .page_top_logo a:hover { display:block; text-decoration:none; color:#fff; }
@@ -61,18 +61,18 @@ footer a:hover { text-decoration:underline; }
 .language_options a:hover { text-decoration:underline; }
 
 /** nav **/
-.nav_wrapper_repeat { background:url(images/nav/repeat.jpg) repeat-x; height:73px; }
+.nav_wrapper_repeat { background:url(/images/nav/repeat.jpg) repeat-x; height:73px; }
 .nav_wrapper { margin:0 auto; max-width:960px; min-width:850px; }
-.nav_divider { background:url(images/nav/divider.jpg) top no-repeat; float:left; height:40px; width:15px; }
+.nav_divider { background:url(/images/nav/divider.jpg) top no-repeat; float:left; height:40px; width:15px; }
 
 .main_nav { float:left; height:38px; position:relative; width:auto; max-width:650px; z-index:500; }
 .main_nav ul { margin:0; }
 .main_nav li { float:left; height:auto; margin:0; padding:0 0 0 15px; list-style:none; height:38px; }
 .main_nav li a { display:block; padding:12px 15px 10px 0; color:#fff; text-decoration:none; font-size:1em; }
 .main_nav li.nav_divider { padding:0; }
-.main_nav li:hover { background:url(images/nav/link_hover.gif) repeat-x; }
-.main_nav li:hover a { background:url(images/nav/link_hover.gif) right top repeat-x; }
-.main_nav li.nav_divider:hover { background:url(images/nav/divider.jpg) top no-repeat; }
+.main_nav li:hover { background:url(/images/nav/link_hover.gif) repeat-x; }
+.main_nav li:hover a { background:url(/images/nav/link_hover.gif) right top repeat-x; }
+.main_nav li.nav_divider:hover { background:url(/images/nav/divider.jpg) top no-repeat; }
 
 .main_nav .sub_nav { display:none; background:none; width:600px; left:0; position:absolute; }
 .main_nav .sub_nav li { float:left; }
