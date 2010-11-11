@@ -3,16 +3,16 @@
 //-- Environment setup --------------------------------------------------------
 
 // identify what server this code is running from, and set up the global constants for the application
-if (!defined('RUNNING_AT_COMMAND_LINE')) define('RUNNING_AT_COMMAND_LINE', false);
-if (!RUNNING_AT_COMMAND_LINE && isset($_SERVER['SERVER_NAME']) && isset($_SERVER['SERVER_PORT'])) {
+if ( ! defined('RUNNING_AT_COMMAND_LINE')) define('RUNNING_AT_COMMAND_LINE', FALSE);
+if ( ! RUNNING_AT_COMMAND_LINE && isset($_SERVER['SERVER_NAME']) && isset($_SERVER['SERVER_PORT'])) {
     // script called through the webserver
-    $serverId = $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'];
+    $server_id = $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'];
 } else if (RUNNING_AT_COMMAND_LINE) {
-    $serverId = $_SERVER['PWD'];
+    $server_id = $_SERVER['PWD'];
 }
 
 // @todo make a defaults file with all the constants used through the site and load it after this switch so we don't have to everything in here even when it's not used; for example AWS_MEDIA_URL; this file could also include comments as to how each constant is used
-switch ($serverId) {
+switch ($server_id) {
     // production site
     case 'www.claero.com:80':
         define('CONFIG_FILE', 'development');
@@ -64,7 +64,7 @@ switch ($serverId) {
         break;
 
     default:
-        die('We cannot continue because the following server configuration is not defined: ' . $serverId);
+        die('We cannot continue because the following server configuration is not defined: ' . $server_id);
         break;
 } // switch
 
