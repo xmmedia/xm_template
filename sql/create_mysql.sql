@@ -190,16 +190,17 @@ CREATE TABLE `group_permission` (
 -- Dumping data for table `group_permission`
 --
 
-INSERT INTO `group_permission` VALUES(1, 2, 1);
-INSERT INTO `group_permission` VALUES(2, 2, 2);
-INSERT INTO `group_permission` VALUES(3, 2, 3);
-INSERT INTO `group_permission` VALUES(4, 2, 4);
-INSERT INTO `group_permission` VALUES(5, 2, 5);
-INSERT INTO `group_permission` VALUES(6, 1, 7);
-INSERT INTO `group_permission` VALUES(7, 1, 8);
-INSERT INTO `group_permission` VALUES(8, 1, 9);
-INSERT INTO `group_permission` VALUES(9, 2, 6);
-INSERT INTO `group_permission` VALUES(10, 2, 11);
+INSERT INTO `group_permission` VALUES(1, 1, 1);
+INSERT INTO `group_permission` VALUES(2, 1, 2);
+INSERT INTO `group_permission` VALUES(3, 1, 3);
+INSERT INTO `group_permission` VALUES(4, 1, 4);
+INSERT INTO `group_permission` VALUES(5, 1, 5);
+INSERT INTO `group_permission` VALUES(6, 1, 6);
+INSERT INTO `group_permission` VALUES(7, 1, 7);
+INSERT INTO `group_permission` VALUES(8, 1, 8);
+INSERT INTO `group_permission` VALUES(9, 1, 9);
+INSERT INTO `group_permission` VALUES(10, 2, 1);
+INSERT INTO `group_permission` VALUES(11, 2, 10);
 
 -- --------------------------------------------------------
 
@@ -219,17 +220,16 @@ CREATE TABLE `permission` (
 -- Dumping data for table `permission`
 --
 
-INSERT INTO `permission` VALUES(1, 'account/profile', 'Edit Profile', 'can edit their profile');
-INSERT INTO `permission` VALUES(2, 'claeroadmin/*/add', 'Database Admin Add', 'can a''dd'' and ''add similar'' any object / records in the database admin page');
-INSERT INTO `permission` VALUES(3, 'claeroadmin/*/edit', 'Database Admin Edit', 'can edit any object / records records in the database admin page');
-INSERT INTO `permission` VALUES(4, 'claeroadmin/*/search', 'Database Admin Search', 'can search any object / records in the database admin page');
-INSERT INTO `permission` VALUES(5, 'claeroadmin/*/export', 'Database Admin Export', 'can export any object / records in the database admin page');
-INSERT INTO `permission` VALUES(6, 'claeroadmin/*/delete', 'Database Admin Delete', 'can delete any object / records in the database admin page');
-INSERT INTO `permission` VALUES(7, 'claeroadmin/user/add', 'User Add', 'can add records to the user table');
-INSERT INTO `permission` VALUES(8, 'claeroadmin/user/edit', 'User Edit', 'can edit records in the user table');
-INSERT INTO `permission` VALUES(9, 'claeroadmin/user/delete', 'User Delete', 'can delete records in the user table');
-INSERT INTO `permission` VALUES(10, 'claeroadmin/user/search', 'User Search', 'can search records in the user table');
-INSERT INTO `permission` VALUES(11, 'claeroadmin/*/create', 'Database Admin Model Create', '');
+INSERT INTO `permission` VALUES(1, 'account/profile', 'Edit Profile', 'Can edit their profile, including changing their password.');
+INSERT INTO `permission` VALUES(2, 'claeroadmin/*/add', 'Database Admin Add', 'Can add or add similar any item in the DB Admin.');
+INSERT INTO `permission` VALUES(3, 'claeroadmin/*/edit', 'Database Admin Edit', 'Can edit any items in the DB Admin.');
+INSERT INTO `permission` VALUES(4, 'claeroadmin/*/search', 'Database Admin Search', 'Can search for any items in the DB Admin.');
+INSERT INTO `permission` VALUES(5, 'claeroadmin/*/export', 'Database Admin Export', 'Can export any items in the DB Admin.');
+INSERT INTO `permission` VALUES(6, 'claeroadmin/*/delete', 'Database Admin Delete', 'Can delete any item in the DB Admin.');
+INSERT INTO `permission` VALUES(7, 'claeroadmin/*/view', 'Database Admin View', 'Can view any item in the DB Admin.');
+INSERT INTO `permission` VALUES(8, 'claeroadmin/*/index', 'Database Admin List', 'Can view a list of items in the DB Admin.');
+INSERT INTO `permission` VALUES(9, 'claeroadmin/model_create', 'Database Admin Model Create', 'Can create PHP models from the DB Admin. (Unique from other DB Admin permissions.)');
+INSERT INTO `permission` VALUES(10, 'claeroadmin/useradmin/*', 'Database Admin - User', 'Can perform all possible actions on users in the DB Admin (add, edit, delete, search, view, list, export).');
 
 -- --------------------------------------------------------
 
