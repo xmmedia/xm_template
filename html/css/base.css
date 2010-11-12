@@ -54,7 +54,7 @@ footer a:hover { text-decoration:underline; }
 .page_top_logo a, .page_top_logo a:hover { display:block; text-decoration:none; color:#fff; }
 .page_top_user_info { float:right; margin:29px 15px 0 0; color:#ddd; }
 .page_top_user_info .login_in_as { color:#999; }
-.language_options { float:right; margin:10px 15px 0 0; color:#bbb; }
+.language_options { float:right; margin:10px 15px 0 0; color:#bbb; height:1em; }
 .language_options .language_label { color:#999; }
 .language_options a { color:#fff; text-decoration:none; }
 .language_options a:hover { text-decoration:underline; }
