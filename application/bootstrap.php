@@ -141,7 +141,7 @@ Route::set('pages_section', '(<lang>/)<section>/(<page>)', array('lang' => $lang
 ));
 
 // for all other pages, show a 404
-Route::set('catch_all', '<path>', array('path' => '.+'))
+Route::set('catch_all', '<path>', array('path' => '(|.+)'))
 	->defaults(array(
 		'controller' => 'base',
 		'action' => '404',
