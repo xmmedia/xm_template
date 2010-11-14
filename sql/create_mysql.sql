@@ -262,7 +262,7 @@ CREATE TABLE `user` (
   `password` char(50) COLLATE utf8_unicode_ci NOT NULL,
   `first_name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `last_name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `inactive_flag` tinyint(1) NOT NULL,
+  `active_flag` tinyint(1) NOT NULL,
   `login_count` smallint(6) NOT NULL,
   `last_login` datetime NOT NULL,
   `failed_login_count` mediumint(9) NOT NULL,
@@ -271,16 +271,16 @@ CREATE TABLE `user` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`),
   KEY `password` (`password`),
-  KEY `inactive_flag` (`inactive_flag`)
+  KEY `active_flag` (`active_flag`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` VALUES(1, '0000-00-00 00:00:00', 'admin@admin.com', 'e10adc3949ba59abbe56e057f20f883e', 'Admin', 'Account', 0, 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', '');
-INSERT INTO `user` VALUES(2, '0000-00-00 00:00:00', 'craig@nakamoto.ca', '0d107d09f5bbe40cade3de5c71e9e9b7', 'Craig', 'Nakamoto', 0, 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', '');
-INSERT INTO `user` VALUES(3, '0000-00-00 00:00:00', 'user@example.com', 'd41d8cd98f00b204e9800998ecf8427e', 'User', '#1', 0, 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', '');
+INSERT INTO `user` VALUES(1, '0000-00-00 00:00:00', 'admin@admin.com', 'e10adc3949ba59abbe56e057f20f883e', 'Admin', 'Account', 1, 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', '');
+INSERT INTO `user` VALUES(2, '0000-00-00 00:00:00', 'craig@nakamoto.ca', '0d107d09f5bbe40cade3de5c71e9e9b7', 'Craig', 'Nakamoto', 1, 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', '');
+INSERT INTO `user` VALUES(3, '0000-00-00 00:00:00', 'user@example.com', 'd41d8cd98f00b204e9800998ecf8427e', 'User', '#1', 1, 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', '');
 
 -- --------------------------------------------------------
 
