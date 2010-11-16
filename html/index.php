@@ -33,6 +33,7 @@ switch ($server_id) {
         define('ANALYTICS_ID', '');
         define('RECAPTCHA_PUBLIC_KEY', '');
         define('RECAPTCHA_PRIVATE_KEY', '');
+        define('DATABASE_DEFAULT', 'production');
         define('SESSION_TYPE', 'database');
         define('ADMIN_EMAIL', 'claero-support@claero.com');
         break;
@@ -57,6 +58,7 @@ switch ($server_id) {
         define('ANALYTICS_ID', 'UA-468095-28'); // UA-468095-28 is for template4.claero.com
         define('RECAPTCHA_PUBLIC_KEY', '');
         define('RECAPTCHA_PRIVATE_KEY', '');
+        define('DATABASE_DEFAULT', 'development');
         define('SESSION_TYPE', 'database');
         define('ADMIN_EMAIL', 'claero-support@claero.com');
         break;

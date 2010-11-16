@@ -114,6 +114,9 @@ if (isset($modules['claero'])) {
 	Claero::set_error_handlers();
 }
 
+// this sets the default database to use
+Database::$default = DATABASE_DEFAULT;
+
 // this sets the session type so we don't need to set it when calling Session::instance()
 Session::$default = SESSION_TYPE;
 

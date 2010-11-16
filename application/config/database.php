@@ -1,7 +1,7 @@
 <?php defined('SYSPATH') or die('No direct access allowed.');
 
 return array(
-	'default' => array(
+	'development' => array(
 		'type'       => 'mysql',
 		'connection' => array(
 			/**
@@ -28,7 +28,7 @@ return array(
 		'caching'      => FALSE,
 		'profiling'    => TRUE,
 	),
-	'alternate' => array(
+	'development-alternate' => array(
 		'type'       => 'pdo',
 		'connection' => array(
 			/**
