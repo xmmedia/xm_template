@@ -15,7 +15,6 @@ if ( ! RUNNING_AT_COMMAND_LINE && isset($_SERVER['SERVER_NAME']) && isset($_SERV
 switch ($server_id) {
     // production site
     case 'www.claero.com:80':
-        define('CONFIG_FILE', 'development');
         define('KOHANA_ENVIRONMENT', 'production');
         define('DEVELOPMENT_FLAG', FALSE);
         define('CACHE_FLAG', FALSE);
@@ -40,7 +39,6 @@ switch ($server_id) {
 
     // development site
     case 'template4.claero.com:80':
-        define('CONFIG_FILE', 'development');
         define('KOHANA_ENVIRONMENT', 'development');
         define('DEVELOPMENT_FLAG', TRUE);
         define('CACHE_FLAG', FALSE);
