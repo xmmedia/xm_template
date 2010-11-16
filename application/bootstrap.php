@@ -58,6 +58,7 @@ $settings = array(
     'errors' => DEBUG_FLAG,
     'profiling' => DEBUG_FLAG,
     'caching' => CACHE_FLAG,
+    'cache_dir' => ABS_ROOT . '/cache',
 );
 Kohana::init($settings);
 
@@ -75,9 +76,10 @@ Kohana::$log->attach(new Kohana_Log_File(ABS_ROOT . '/logs'));
 Kohana::$config->attach(new Kohana_Config_File);
 
 /**
-* setting the default language
-* if set to NULL, then the route won't include a language by default
-* if you want a language in the route, set default_lang to the language (ie, en-ca)
+* Setting the default language
+* If set to NULL, then the route won't include a language by default
+* If you want a language in the route, set default_lang to the language (ie, en-ca)
+* This needs to be here because it's used within some of the cl4 modules
 */
 define('DEFAULT_LANG', NULL);
 $lang_options = '(en-ca|fr-ca)';
