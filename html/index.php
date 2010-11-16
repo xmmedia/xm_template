@@ -13,59 +13,59 @@ if ( ! RUNNING_AT_COMMAND_LINE && isset($_SERVER['SERVER_NAME']) && isset($_SERV
 
 // @todo make a defaults file with all the constants used through the site and load it after this switch so we don't have to everything in here even when it's not used; for example AWS_MEDIA_URL; this file could also include comments as to how each constant is used
 switch ($server_id) {
-    // production site
-    case 'www.claero.com:80':
-        define('KOHANA_ENVIRONMENT', 'production');
-        define('DEVELOPMENT_FLAG', FALSE);
-        define('CACHE_FLAG', FALSE);
-        define('DEBUG_FLAG', FALSE);
-        define('FIREPHP_FLAG', FALSE);
-        define('UNAVAILABLE_FLAG', FALSE);
-        define('LONG_NAME', 'cl4 Template Site');
-        define('SHORT_NAME', 'cl4template');
-        define('APP_VERSION', '0.1');
-        define('HTTP_PROTOCOL', ($_SERVER['SERVER_PORT'] == '443' ? 'https' : 'http'));
-        define('URL_ROOT', HTTP_PROTOCOL . '://template4.claero.com');
-        define('ABS_ROOT', '/home/templat4/template4.claero.com');
-        define('UPLOAD_ROOT_PUBLIC', ABS_ROOT . '/html/uploads');
-        define('UPLOAD_ROOT_PRIVATE', ABS_ROOT . '/uploads');
-        define('UPLOAD_ROOT', UPLOAD_ROOT_PRIVATE);
-        define('ANALYTICS_ID', '');
-        define('RECAPTCHA_PUBLIC_KEY', '');
-        define('RECAPTCHA_PRIVATE_KEY', '');
-        define('DATABASE_DEFAULT', 'production');
-        define('SESSION_TYPE', 'database');
-        define('ADMIN_EMAIL', 'claero-support@claero.com');
-        break;
+	// production site
+	case 'www.claero.com:80':
+		define('KOHANA_ENVIRONMENT', 'production');
+		define('DEVELOPMENT_FLAG', FALSE);
+		define('CACHE_FLAG', FALSE);
+		define('DEBUG_FLAG', FALSE);
+		define('FIREPHP_FLAG', FALSE);
+		define('UNAVAILABLE_FLAG', FALSE);
+		define('LONG_NAME', 'cl4 Template Site');
+		define('SHORT_NAME', 'cl4template');
+		define('APP_VERSION', '0.1');
+		define('HTTP_PROTOCOL', ($_SERVER['SERVER_PORT'] == '443' ? 'https' : 'http'));
+		define('URL_ROOT', HTTP_PROTOCOL . '://template4.claero.com');
+		define('ABS_ROOT', '/home/templat4/template4.claero.com');
+		define('UPLOAD_ROOT_PUBLIC', ABS_ROOT . '/html/uploads');
+		define('UPLOAD_ROOT_PRIVATE', ABS_ROOT . '/uploads');
+		define('UPLOAD_ROOT', UPLOAD_ROOT_PRIVATE);
+		define('ANALYTICS_ID', '');
+		define('RECAPTCHA_PUBLIC_KEY', '');
+		define('RECAPTCHA_PRIVATE_KEY', '');
+		define('DATABASE_DEFAULT', 'production');
+		define('SESSION_TYPE', 'database');
+		define('ADMIN_EMAIL', 'claero-support@claero.com');
+		break;
 
-    // development site
-    case 'template4.claero.com:80':
-        define('KOHANA_ENVIRONMENT', 'development');
-        define('DEVELOPMENT_FLAG', TRUE);
-        define('CACHE_FLAG', FALSE);
-        define('DEBUG_FLAG', TRUE);
-        define('FIREPHP_FLAG', FALSE);
-        define('UNAVAILABLE_FLAG', FALSE);
-        define('LONG_NAME', 'cl4 Template Site');
-        define('SHORT_NAME', 'cl4template');
-        define('APP_VERSION', '0.1');
-        define('HTTP_PROTOCOL', ($_SERVER['SERVER_PORT'] == '443' ? 'https' : 'http'));
-        define('URL_ROOT', HTTP_PROTOCOL . '://template4.claero.com');
-        define('ABS_ROOT', '/home/templat4/template4.claero.com');
-        define('UPLOAD_ROOT_PUBLIC', ABS_ROOT . '/html/uploads');
-        define('UPLOAD_ROOT_PRIVATE', ABS_ROOT . '/uploads');
-        define('UPLOAD_ROOT', UPLOAD_ROOT_PRIVATE);
-        define('ANALYTICS_ID', 'UA-468095-28'); // UA-468095-28 is for template4.claero.com
-        define('RECAPTCHA_PUBLIC_KEY', '');
-        define('RECAPTCHA_PRIVATE_KEY', '');
-        define('DATABASE_DEFAULT', 'development');
-        define('SESSION_TYPE', 'database');
-        define('ADMIN_EMAIL', 'claero-support@claero.com');
-        break;
+	// development site
+	case 'template4.claero.com:80':
+		define('KOHANA_ENVIRONMENT', 'development');
+		define('DEVELOPMENT_FLAG', TRUE);
+		define('CACHE_FLAG', FALSE);
+		define('DEBUG_FLAG', TRUE);
+		define('FIREPHP_FLAG', FALSE);
+		define('UNAVAILABLE_FLAG', FALSE);
+		define('LONG_NAME', 'cl4 Template Site');
+		define('SHORT_NAME', 'cl4template');
+		define('APP_VERSION', '0.1');
+		define('HTTP_PROTOCOL', ($_SERVER['SERVER_PORT'] == '443' ? 'https' : 'http'));
+		define('URL_ROOT', HTTP_PROTOCOL . '://template4.claero.com');
+		define('ABS_ROOT', '/home/templat4/template4.claero.com');
+		define('UPLOAD_ROOT_PUBLIC', ABS_ROOT . '/html/uploads');
+		define('UPLOAD_ROOT_PRIVATE', ABS_ROOT . '/uploads');
+		define('UPLOAD_ROOT', UPLOAD_ROOT_PRIVATE);
+		define('ANALYTICS_ID', 'UA-468095-28'); // UA-468095-28 is for template4.claero.com
+		define('RECAPTCHA_PUBLIC_KEY', '');
+		define('RECAPTCHA_PRIVATE_KEY', '');
+		define('DATABASE_DEFAULT', 'development');
+		define('SESSION_TYPE', 'database');
+		define('ADMIN_EMAIL', 'claero-support@claero.com');
+		break;
 
-    default:
-        die('We cannot continue because the following server configuration is not defined: ' . $server_id);
-        break;
+	default:
+		die('We cannot continue because the following server configuration is not defined: ' . $server_id);
+		break;
 } // switch
 
 /**
@@ -82,28 +82,28 @@ switch ($server_id) {
  * deprecated notices. Disable with: E_ALL & ~E_DEPRECATED
  */
 if (DEBUG_FLAG) {
-    // debug mode
-    error_reporting(-1);
-    ini_set('display_errors', 'On');
+	// debug mode
+	error_reporting(-1);
+	ini_set('display_errors', 'On');
 } else {
-    // production site
-    error_reporting(E_ALL | E_STRICT);
+	// production site
+	error_reporting(E_ALL | E_STRICT);
 } // if
 
 // detect the browser to get the browser type
 if ( ! empty($_SERVER['HTTP_USER_AGENT'])) {
-	$userAgent = $_SERVER['HTTP_USER_AGENT'];
-	if (substr($userAgent, 'iPhone') !== FALSE) {
-	    $browserType = 'mobile_safari';
-	} else if ((substr($userAgent, 'Windows CE') !== FALSE && substr($userAgent, 'Smartphone') !== FALSE) || substr($userAgent, 'IEMobile') !== FALSE) {
-	    $browserType = 'mobile_default';
+	$user_agent = $_SERVER['HTTP_USER_AGENT'];
+	if (substr($user_agent, 'iPhone') !== FALSE) {
+		$browser_type = 'mobile_safari';
+	} else if ((substr($user_agent, 'Windows CE') !== FALSE && substr($user_agent, 'Smartphone') !== FALSE) || substr($user_agent, 'IEMobile') !== FALSE) {
+		$browser_type = 'mobile_default';
 	} else {
-	    $browserType = 'pc_default';
+		$browser_type = 'pc_default';
 	}
 } else {
-	$browserType = 'pc_default';
+	$browser_type = 'pc_default';
 }
-define('BROWSER_TYPE', $browserType);
+define('BROWSER_TYPE', $browser_type);
 
 /**
  * The default extension of resource files. If you change this, all resources
