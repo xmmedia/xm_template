@@ -12,7 +12,6 @@ if (isset($_SERVER['SERVER_NAME']) && isset($_SERVER['SERVER_PORT'])) {
 	$server_id = 'Unknown';
 }
 
-// @todo make a defaults file with all the constants used through the site and load it after this switch so we don't have to everything in here even when it's not used; for example AWS_MEDIA_URL; this file could also include comments as to how each constant is used
 switch ($server_id) {
 	// production site
 	case 'www.claero.com:80' :
