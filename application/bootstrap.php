@@ -127,6 +127,10 @@ Session::$default = SESSION_TYPE;
  * defaults for the URI. Routes are selected by whichever one matches first.
  */
 
+// Routes within this if state can only be access from the command line
+// all other routes are also accessible from the command line as: php html/index.php --uri="page/action"
+if (Kohana::$is_cli) { }
+
 // routes for "static" pages without a sub folder
 Route::set('pages', '(<lang>/)(<page>)', array('lang' => $lang_options))
 	->defaults(array(

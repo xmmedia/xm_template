@@ -3,18 +3,19 @@
 //-- Environment setup --------------------------------------------------------
 
 // identify what server this code is running from, and set up the global constants for the application
-if ( ! defined('RUNNING_AT_COMMAND_LINE')) define('RUNNING_AT_COMMAND_LINE', FALSE);
-if ( ! RUNNING_AT_COMMAND_LINE && isset($_SERVER['SERVER_NAME']) && isset($_SERVER['SERVER_PORT'])) {
+if (isset($_SERVER['SERVER_NAME']) && isset($_SERVER['SERVER_PORT'])) {
     // script called through the webserver
     $server_id = $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'];
-} else if (RUNNING_AT_COMMAND_LINE) {
+} else if (isset($_SERVER['PWD'])) {
     $server_id = $_SERVER['PWD'];
+} else {
+	$server_id = 'Unknown';
 }
 
 // @todo make a defaults file with all the constants used through the site and load it after this switch so we don't have to everything in here even when it's not used; for example AWS_MEDIA_URL; this file could also include comments as to how each constant is used
 switch ($server_id) {
 	// production site
-	case 'www.claero.com:80':
+	case 'www.claero.com:80' :
 		define('KOHANA_ENVIRONMENT', 'production');
 		define('DEVELOPMENT_FLAG', FALSE);
 		define('CACHE_FLAG', FALSE);
@@ -24,7 +25,11 @@ switch ($server_id) {
 		define('LONG_NAME', 'cl4 Template Site');
 		define('SHORT_NAME', 'cl4template');
 		define('APP_VERSION', '0.1');
-		define('HTTP_PROTOCOL', ($_SERVER['SERVER_PORT'] == '443' ? 'https' : 'http'));
+		if ( ! isset($_SERVER['SERVER_PORT'])) {
+			define('HTTP_PROTOCOL', 'http');
+		} else {
+			define('HTTP_PROTOCOL', ($_SERVER['SERVER_PORT'] == '443' ? 'https' : 'http'));
+		}
 		define('URL_ROOT', HTTP_PROTOCOL . '://template4.claero.com');
 		define('ABS_ROOT', '/home/templat4/template4.claero.com');
 		define('UPLOAD_ROOT_PUBLIC', ABS_ROOT . '/html/uploads');
@@ -39,7 +44,8 @@ switch ($server_id) {
 		break;
 
 	// development site
-	case 'template4.claero.com:80':
+	case 'template4.claero.com:80' :
+	case '/home/templat4/template4.claero.com' :
 		define('KOHANA_ENVIRONMENT', 'development');
 		define('DEVELOPMENT_FLAG', TRUE);
 		define('CACHE_FLAG', FALSE);
@@ -49,7 +55,11 @@ switch ($server_id) {
 		define('LONG_NAME', 'cl4 Template Site');
 		define('SHORT_NAME', 'cl4template');
 		define('APP_VERSION', '0.1');
-		define('HTTP_PROTOCOL', ($_SERVER['SERVER_PORT'] == '443' ? 'https' : 'http'));
+		if ( ! isset($_SERVER['SERVER_PORT'])) {
+			define('HTTP_PROTOCOL', 'http');
+		} else {
+			define('HTTP_PROTOCOL', ($_SERVER['SERVER_PORT'] == '443' ? 'https' : 'http'));
+		}
 		define('URL_ROOT', HTTP_PROTOCOL . '://template4.claero.com');
 		define('ABS_ROOT', '/home/templat4/template4.claero.com');
 		define('UPLOAD_ROOT_PUBLIC', ABS_ROOT . '/html/uploads');
