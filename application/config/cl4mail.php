@@ -5,7 +5,7 @@ return array(
 		'language' => 'en',
 		'from' => 'webmaster@example.com',
 		'from_name' => 'Website',
-		'log_email' => 'darryl.hein@claero.com',
+		'log_email' => ADMIN_EMAIL,
 		'mailer' => 'smtp', // smtp or sendmail
 		'smtp' => array(
 			'host' => 'localhost',
