@@ -2,15 +2,15 @@
 -- version 2.11.9.4
 -- http://www.phpmyadmin.net
 --
--- Host:
--- Generation Time: Nov 16, 2010 at 05:29 PM
+-- Host: 
+-- Generation Time: Nov 26, 2010 at 01:47 AM
 -- Server version: 5.0.77
 -- PHP Version: 5.2.14
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
 --
--- Database: `bvccxmme_main`
+-- Database: `journeyx_main`
 --
 
 -- --------------------------------------------------------
@@ -159,10 +159,10 @@ INSERT INTO `demo_sub` VALUES(7, '0000-00-00 00:00:00', 'Option 4', 4);
 
 CREATE TABLE `group` (
   `id` int(11) NOT NULL auto_increment,
-  `name` varchar(100) character set utf8 collate utf8_unicode_ci NOT NULL,
-  `description` text character set utf8 collate utf8_unicode_ci NOT NULL,
+  `name` varchar(100) collate utf8_unicode_ci NOT NULL,
+  `description` text collate utf8_unicode_ci NOT NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `group`
