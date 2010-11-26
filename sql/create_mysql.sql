@@ -220,15 +220,15 @@ CREATE TABLE `permission` (
 --
 
 INSERT INTO `permission` VALUES(1, 'account/profile', 'Edit Profile', 'Can edit their profile, including changing their password.');
-INSERT INTO `permission` VALUES(2, 'claeroadmin/*/add', 'Database Admin Add', 'Can add or add similar any item in the DB Admin.');
-INSERT INTO `permission` VALUES(3, 'claeroadmin/*/edit', 'Database Admin Edit', 'Can edit any items in the DB Admin.');
-INSERT INTO `permission` VALUES(4, 'claeroadmin/*/search', 'Database Admin Search', 'Can search for any items in the DB Admin.');
-INSERT INTO `permission` VALUES(5, 'claeroadmin/*/export', 'Database Admin Export', 'Can export any items in the DB Admin.');
-INSERT INTO `permission` VALUES(6, 'claeroadmin/*/delete', 'Database Admin Delete', 'Can delete any item in the DB Admin.');
-INSERT INTO `permission` VALUES(7, 'claeroadmin/*/view', 'Database Admin View', 'Can view any item in the DB Admin.');
-INSERT INTO `permission` VALUES(8, 'claeroadmin/*/index', 'Database Admin List', 'Can view a list of items in the DB Admin.');
-INSERT INTO `permission` VALUES(9, 'claeroadmin/model_create', 'Database Admin Model Create', 'Can create PHP models from the DB Admin. (Unique from other DB Admin permissions.)');
-INSERT INTO `permission` VALUES(10, 'claeroadmin/useradmin/*', 'Database Admin - User', 'Can perform all possible actions on users in the DB Admin (add, edit, delete, search, view, list, export).');
+INSERT INTO `permission` VALUES(2, 'cl4admin/*/add', 'Database Admin Add', 'Can add or add similar any item in the DB Admin.');
+INSERT INTO `permission` VALUES(3, 'cl4admin/*/edit', 'Database Admin Edit', 'Can edit any items in the DB Admin.');
+INSERT INTO `permission` VALUES(4, 'cl4admin/*/search', 'Database Admin Search', 'Can search for any items in the DB Admin.');
+INSERT INTO `permission` VALUES(5, 'cl4admin/*/export', 'Database Admin Export', 'Can export any items in the DB Admin.');
+INSERT INTO `permission` VALUES(6, 'cl4admin/*/delete', 'Database Admin Delete', 'Can delete any item in the DB Admin.');
+INSERT INTO `permission` VALUES(7, 'cl4admin/*/view', 'Database Admin View', 'Can view any item in the DB Admin.');
+INSERT INTO `permission` VALUES(8, 'cl4admin/*/index', 'Database Admin List', 'Can view a list of items in the DB Admin.');
+INSERT INTO `permission` VALUES(9, 'cl4admin/model_create', 'Database Admin Model Create', 'Can create PHP models from the DB Admin. (Unique from other DB Admin permissions.)');
+INSERT INTO `permission` VALUES(10, 'cl4admin/useradmin/*', 'Database Admin - User', 'Can perform all possible actions on users in the DB Admin (add, edit, delete, search, view, list, export).');
 
 -- --------------------------------------------------------
 

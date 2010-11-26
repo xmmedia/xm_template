@@ -84,12 +84,12 @@ footer a:hover { text-decoration:underline; }
 /** currently selected nav item **/
 .p_index .main_nav li.home,
 .p_aboutus .main_nav .aboutus,
-.p_claeroadmin .main_nav .dbadmin,
+.p_cl4admin .main_nav .dbadmin,
 /*.p_login .main_nav .login, shows up funny */
 .p_account .main_nav .account { background:url(/images/nav/link_hover.gif) repeat-x; }
 .p_index .main_nav li.home a,
 .p_aboutus .main_nav .aboutus a,
-.p_claeroadmin .main_nav .dbadmin a,
+.p_cl4admin .main_nav .dbadmin a,
 /*.p_login .main_nav .login, shows up funny */
 .p_account .main_nav .account a { background:url(/images/nav/link_hover.gif) right top repeat-x; }
 
