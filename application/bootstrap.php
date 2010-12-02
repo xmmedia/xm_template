@@ -170,7 +170,7 @@ if ( ! defined('SUPPRESS_REQUEST')) {
 // set up firephp for debugging
 if (FIREPHP_FLAG && DEBUG_FLAG) {
 	FirePHP_Profiler::instance()
-		->group('KO3 FirePHP Profiler Results:')
+        ->group('KO3 FirePHP Profiler Results:', array('Collapsed' => true))
 		->superglobals() // New Superglobals method to show them all...
 		->database()
 		->benchmark()
