@@ -54,11 +54,11 @@ ini_set('unserialize_callback_func', 'spl_autoload_call');
  * `string`  | error_view | set the error rendering view                   | `"kohana/error"`
  */
 $settings = array(
-    'index_file' => '',
-    'errors' => DEBUG_FLAG,
-    'profiling' => DEBUG_FLAG,
-    'caching' => CACHE_FLAG,
-    'cache_dir' => ABS_ROOT . '/cache',
+    'index_file'    => '',
+    'errors'        => DEBUG_FLAG,
+    'profiling'     => DEBUG_FLAG,
+    'caching'       => CACHE_FLAG,
+    'cache_dir'     => ABS_ROOT . '/cache',
 );
 Kohana::init($settings);
 

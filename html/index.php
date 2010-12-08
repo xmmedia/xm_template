@@ -84,8 +84,8 @@ switch ($server_id) {
 		define('UPLOAD_ROOT_PRIVATE', ABS_ROOT . '/uploads');
 		define('UPLOAD_ROOT', UPLOAD_ROOT_PRIVATE);
 		define('ANALYTICS_ID', '');
-		define('RECAPTCHA_PUBLIC_KEY', '');
-		define('RECAPTCHA_PRIVATE_KEY', '');
+		define('RECAPTCHA_PUBLIC_KEY', '6LdBb78SAAAAAPwU4d5IPWoK7flu79E52bsZJwqO');
+		define('RECAPTCHA_PRIVATE_KEY', '6LdBb78SAAAAAN3tvJvDylfiAsA9gyUR5jQI4qT4');
 		define('DATABASE_DEFAULT', 'development');
 		define('SESSION_TYPE', 'database');
 		define('ADMIN_EMAIL', 'dan.hulton@claero.com');
