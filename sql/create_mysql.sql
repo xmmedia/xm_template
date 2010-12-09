@@ -2,7 +2,7 @@
 -- version 2.11.9.4
 -- http://www.phpmyadmin.net
 --
--- Host: 
+-- Host:
 -- Generation Time: Nov 26, 2010 at 01:47 AM
 -- Server version: 5.0.77
 -- PHP Version: 5.2.14
@@ -61,6 +61,7 @@ INSERT INTO `auth_type` VALUES(3, 'Invalid Password', 3);
 INSERT INTO `auth_type` VALUES(4, 'Invalid Username & Password', 4);
 INSERT INTO `auth_type` VALUES(5, 'Unknown Error', 5);
 INSERT INTO `auth_type` VALUES(6, 'Too Many Attempts', 6);
+INSERT INTO `auth_type` VALUES(8, 'Verifying Human', 7);
 
 -- --------------------------------------------------------
 
