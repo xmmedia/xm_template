@@ -269,6 +269,8 @@ CREATE TABLE `user` (
   `failed_login_count` mediumint(9) NOT NULL,
   `last_failed_login` datetime NOT NULL,
   `reset_token` char(32) collate utf8_unicode_ci NOT NULL,
+  `updated_password` tinyint(3) unsigned NOT NULL DEFAULT '0',
+  `updated_profile` tinyint(3) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY  (`id`),
   UNIQUE KEY `username` (`username`),
   KEY `password` (`password`),
@@ -323,4 +325,3 @@ CREATE TABLE `user_token` (
 --
 -- Dumping data for table `user_token`
 --
-
