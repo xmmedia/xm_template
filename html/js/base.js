@@ -23,6 +23,8 @@ jQuery.fn.numeric = function() {
 
     return this;
 }
+
+$('.numeric').numeric();
 */
 
 // HTML5 autofocus plugin, Copyright (c) 2009, Mike Taylor, http://miketaylr.com, MIT licensed
@@ -86,9 +88,4 @@ $.datepicker.setDefaults({
     	// focuses the input when the date dialog closes
 		this.focus();
     }
-});
-
-$(function() {
-	// enable the numeric only functionaltiy for fields with class numeric
-	$('.numeric').numeric();
 });

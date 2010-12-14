@@ -107,7 +107,6 @@ Kohana::modules($modules);
 
 // set up firephp for debugging
 if (FIREPHP_FLAG && DEBUG_FLAG) {
-    Kohana::$log->attach(new FirePHP_Log_File(APPPATH . 'logs'));
     Kohana::$log->attach(new FirePHP_Log_Console());
 }
 
