@@ -1,6 +1,7 @@
 // jQuery Extension: any fields it is added to will not allow most non numeric values
+/*
 jQuery.fn.numeric = function() {
-    this.keypress(function(e) {
+	this.keypress(function(e) {
         var key = e.charCode ? e.charCode : e.keyCode ? e.keyCode : 0;
         if (e.ctrlKey || e.altKey // ctrl or alt key has been pressed
             || (key >= 48 && key <= 57) // numbers
@@ -22,6 +23,11 @@ jQuery.fn.numeric = function() {
 
     return this;
 }
+*/
+
+// HTML5 autofocus plugin, Copyright (c) 2009, Mike Taylor, http://miketaylr.com, MIT licensed
+(function($){ $.fn.autofocus=function(){return (this.first().autofocus!==true)?this.focus():this;};})(jQuery);
+$("[autofocus]").autofocus();
 
 $.fn.extend({
     /**
