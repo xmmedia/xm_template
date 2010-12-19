@@ -281,9 +281,9 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` VALUES(1, '0000-00-00 00:00:00', 'admin@admin.com', '4668682c67aa41e5abeefb3989dbf7879d14290099bdd892f8', 'Admin', 'Admin', 1, 204, '2010-11-16 17:28:31', 0, '2010-11-16 09:01:28', '');
-INSERT INTO `user` VALUES(2, '0000-00-00 00:00:00', 'craig@nakamoto.ca', '8804290dc243b37f4e3f83e53ff5a9334aabd0e4446b5e86f0', 'Craig', 'Nakamoto', 1, 22, '2010-11-16 10:55:17', 0, '2010-11-16 08:56:42', 'URmnrwYzAZFKX7weX3mynb2gARSbJwFa');
-INSERT INTO `user` VALUES(3, '0000-00-00 00:00:00', 'user@example.com', '526faa0fb5f3e551a8b6904fd6108a92ffb2392f6751b27b7e', 'User1', '#1', 1, 0, '0000-00-00 00:00:00', 1, '2010-09-28 01:20:07', 'fFdMuP7GtKs4CYzbzKJJhruhbZgFuCPR');
+INSERT INTO `user` VALUES(1, '0000-00-00 00:00:00', 'admin@admin.com', '4668682c67aa41e5abeefb3989dbf7879d14290099bdd892f8', 'Admin', 'Admin', 1, 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', '', 0, 0);
+INSERT INTO `user` VALUES(2, '0000-00-00 00:00:00', 'craig@nakamoto.ca', '8804290dc243b37f4e3f83e53ff5a9334aabd0e4446b5e86f0', 'Craig', 'Nakamoto', 1, 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', '', 0, 0);
+INSERT INTO `user` VALUES(3, '0000-00-00 00:00:00', 'user@example.com', '526faa0fb5f3e551a8b6904fd6108a92ffb2392f6751b27b7e', 'User1', '#1', 1, 0, '0000-00-00 00:00:00', 1, '0000-00-00 00:00:00', '', 0, 0);
 
 -- --------------------------------------------------------
 
