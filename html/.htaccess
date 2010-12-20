@@ -65,7 +65,7 @@ RewriteEngine On
 # Installation directory
 RewriteBase /
 
-# css/js/less
+# css/js
 # this is so you can control the cache more easily on your CSS and JS files; includes can become /css/filename.[timestamp].css
 #RewriteRule ^(.*)\.[\d]+\.(css|js)$ $1.$2 [L]
 
