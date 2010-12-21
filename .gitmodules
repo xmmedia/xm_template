@@ -43,3 +43,6 @@
 [submodule "modules/cl4admin"]
 	path = modules/cl4admin
 	url = git@github.com:claerosystems/cl4admin.git
+[submodule "html/cl4"]
+	path = html/cl4
+	url = git@github.com:claerosystems/cl4docroot.git
