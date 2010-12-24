@@ -39,7 +39,7 @@ class Model_Demo extends ORM {
 	// relationships
 	protected $_has_one = array(
 		'demo_sub' => array(
-			'model' => 'demosub',
+			'model' => 'demo_sub',
 			'through' => 'demo_sub',
 			'foreign_key' => 'id',
 			'far_key' => 'demo_sub_id'

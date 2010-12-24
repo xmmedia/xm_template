@@ -3,6 +3,6 @@
 return array(
 	'model_list' => array(
 		'demo' => 'Demo',
-		'demosub' => 'Demo Sub',
+		'demo_sub' => 'Demo Sub',
 	),
 );
