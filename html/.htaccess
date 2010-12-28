@@ -65,10 +65,6 @@ RewriteEngine On
 # Installation directory
 RewriteBase /
 
-# css/js
-# this is so you can control the cache more easily on your CSS and JS files; includes can become /css/filename.[timestamp].css
-#RewriteRule ^(.*)\.[\d]+\.(css|js)$ $1.$2 [L]
-
 # for www
 # this can be used for easily redirecting people to the www version of a site (it's a good idea to do this incase there is a future need for a CDN)
 #RewriteCond %{HTTP_HOST} !^www\.example\.com [NC]
