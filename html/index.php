@@ -79,7 +79,7 @@ switch ($server_id) {
 		define('APP_VERSION', '0.1');
 		define('HTTP_PROTOCOL', ($_SERVER['SERVER_PORT'] == '443' ? 'https' : 'http'));
 		define('URL_ROOT', HTTP_PROTOCOL . '://template4dh');
-		define('ABS_ROOT', 'D:\Projects\Template4');
+		define('ABS_ROOT', 'D:\Projects\git-cl4template');
 		define('UPLOAD_ROOT_PUBLIC', ABS_ROOT . '/html/uploads');
 		define('UPLOAD_ROOT_PRIVATE', ABS_ROOT . '/uploads');
 		define('UPLOAD_ROOT', UPLOAD_ROOT_PRIVATE);
