@@ -79,7 +79,32 @@ switch ($server_id) {
 		define('APP_VERSION', '0.1');
 		define('HTTP_PROTOCOL', ($_SERVER['SERVER_PORT'] == '443' ? 'https' : 'http'));
 		define('URL_ROOT', HTTP_PROTOCOL . '://template4dh');
-		define('ABS_ROOT', 'D:\Projects\Template4');
+		define('ABS_ROOT', 'D:\Projects\git-cl4template');
+		define('UPLOAD_ROOT_PUBLIC', ABS_ROOT . '/html/uploads');
+		define('UPLOAD_ROOT_PRIVATE', ABS_ROOT . '/uploads');
+		define('UPLOAD_ROOT', UPLOAD_ROOT_PRIVATE);
+		define('ANALYTICS_ID', '');
+		define('RECAPTCHA_PUBLIC_KEY', '6LdBb78SAAAAAPwU4d5IPWoK7flu79E52bsZJwqO');
+		define('RECAPTCHA_PRIVATE_KEY', '6LdBb78SAAAAAN3tvJvDylfiAsA9gyUR5jQI4qT4');
+		define('DATABASE_DEFAULT', 'development');
+		define('SESSION_TYPE', 'database');
+		define('ADMIN_EMAIL', 'dan.hulton@claero.com');
+		break;
+
+    // Home Development Dan Hulton
+    case 'template4.dev:80':
+		define('KOHANA_ENVIRONMENT', 'development');
+		define('DEVELOPMENT_FLAG', TRUE);
+		define('CACHE_FLAG', FALSE);
+		define('DEBUG_FLAG', TRUE);
+		define('FIREPHP_FLAG', TRUE);
+		define('UNAVAILABLE_FLAG', FALSE);
+		define('LONG_NAME', 'cl4 Template Site');
+		define('SHORT_NAME', 'cl4template');
+		define('APP_VERSION', '0.1');
+		define('HTTP_PROTOCOL', ($_SERVER['SERVER_PORT'] == '443' ? 'https' : 'http'));
+		define('URL_ROOT', HTTP_PROTOCOL . '://template4dh');
+		define('ABS_ROOT', 'F:\Projects\git-template4');
 		define('UPLOAD_ROOT_PUBLIC', ABS_ROOT . '/html/uploads');
 		define('UPLOAD_ROOT_PRIVATE', ABS_ROOT . '/uploads');
 		define('UPLOAD_ROOT', UPLOAD_ROOT_PRIVATE);
@@ -127,9 +152,9 @@ if (DEBUG_FLAG) {
 // detect the browser to get the browser type
 if ( ! empty($_SERVER['HTTP_USER_AGENT'])) {
 	$user_agent = $_SERVER['HTTP_USER_AGENT'];
-	if (substr($user_agent, 'iPhone') !== FALSE) {
+	if (strpos($user_agent, 'iPhone') !== FALSE) {
 		$browser_type = 'mobile_safari';
-	} else if ((substr($user_agent, 'Windows CE') !== FALSE && substr($user_agent, 'Smartphone') !== FALSE) || substr($user_agent, 'IEMobile') !== FALSE) {
+	} else if ((strpos($user_agent, 'Windows CE') !== FALSE && strpos($user_agent, 'Smartphone') !== FALSE) || strpos($user_agent, 'IEMobile') !== FALSE) {
 		$browser_type = 'mobile_default';
 	} else {
 		$browser_type = 'pc_default';

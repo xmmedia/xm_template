@@ -103,6 +103,7 @@ if (Kohana::$environment == Kohana::DEVELOPMENT) $modules['userguide'] = MODPATH
 
 if (CACHE_FLAG) $modules['cache'] = MODPATH . 'cache';      // Caching with multiple backends
 if (DEBUG_FLAG) $modules['codebench'] = MODPATH . 'codebench';  // Benchmarking tool
+if (DEBUG_FLAG) $modules['userguide'] = MODPATH . 'userguide';  // Kohana's user guide
 Kohana::modules($modules);
 
 // set up firephp for debugging
