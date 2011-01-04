@@ -66,56 +66,6 @@ switch ($server_id) {
 		define('ADMIN_EMAIL', 'darryl.hein@claero.com');
 		break;
 
-    // Local Development Dan Hulton
-    case 'template4dh:80':
-		define('KOHANA_ENVIRONMENT', 'development');
-		define('DEVELOPMENT_FLAG', TRUE);
-		define('CACHE_FLAG', FALSE);
-		define('DEBUG_FLAG', TRUE);
-		define('FIREPHP_FLAG', TRUE);
-		define('UNAVAILABLE_FLAG', FALSE);
-		define('LONG_NAME', 'cl4 Template Site');
-		define('SHORT_NAME', 'cl4template');
-		define('APP_VERSION', '0.1');
-		define('HTTP_PROTOCOL', ($_SERVER['SERVER_PORT'] == '443' ? 'https' : 'http'));
-		define('URL_ROOT', HTTP_PROTOCOL . '://template4dh');
-		define('ABS_ROOT', 'D:\Projects\git-cl4template');
-		define('UPLOAD_ROOT_PUBLIC', ABS_ROOT . '/html/uploads');
-		define('UPLOAD_ROOT_PRIVATE', ABS_ROOT . '/uploads');
-		define('UPLOAD_ROOT', UPLOAD_ROOT_PRIVATE);
-		define('ANALYTICS_ID', '');
-		define('RECAPTCHA_PUBLIC_KEY', '6LdBb78SAAAAAPwU4d5IPWoK7flu79E52bsZJwqO');
-		define('RECAPTCHA_PRIVATE_KEY', '6LdBb78SAAAAAN3tvJvDylfiAsA9gyUR5jQI4qT4');
-		define('DATABASE_DEFAULT', 'development');
-		define('SESSION_TYPE', 'database');
-		define('ADMIN_EMAIL', 'dan.hulton@claero.com');
-		break;
-
-    // Home Development Dan Hulton
-    case 'template4.dev:80':
-		define('KOHANA_ENVIRONMENT', 'development');
-		define('DEVELOPMENT_FLAG', TRUE);
-		define('CACHE_FLAG', FALSE);
-		define('DEBUG_FLAG', TRUE);
-		define('FIREPHP_FLAG', TRUE);
-		define('UNAVAILABLE_FLAG', FALSE);
-		define('LONG_NAME', 'cl4 Template Site');
-		define('SHORT_NAME', 'cl4template');
-		define('APP_VERSION', '0.1');
-		define('HTTP_PROTOCOL', ($_SERVER['SERVER_PORT'] == '443' ? 'https' : 'http'));
-		define('URL_ROOT', HTTP_PROTOCOL . '://template4dh');
-		define('ABS_ROOT', 'F:\Projects\git-template4');
-		define('UPLOAD_ROOT_PUBLIC', ABS_ROOT . '/html/uploads');
-		define('UPLOAD_ROOT_PRIVATE', ABS_ROOT . '/uploads');
-		define('UPLOAD_ROOT', UPLOAD_ROOT_PRIVATE);
-		define('ANALYTICS_ID', '');
-		define('RECAPTCHA_PUBLIC_KEY', '6LdBb78SAAAAAPwU4d5IPWoK7flu79E52bsZJwqO');
-		define('RECAPTCHA_PRIVATE_KEY', '6LdBb78SAAAAAN3tvJvDylfiAsA9gyUR5jQI4qT4');
-		define('DATABASE_DEFAULT', 'development');
-		define('SESSION_TYPE', 'database');
-		define('ADMIN_EMAIL', 'dan.hulton@claero.com');
-		break;
-
 	default:
 		die('We cannot continue because the following server configuration is not defined: ' . $server_id);
 		break;
