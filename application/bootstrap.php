@@ -99,11 +99,10 @@ $modules['image'] = MODPATH . 'image';              // Image manipulation
 $modules['orm'] = MODPATH . 'orm';                  // Object Relationship Mapping
 $modules['auth'] = MODPATH . 'auth';                // Basic authentication
 $modules['pagination'] = MODPATH . 'pagination';    // Paging of results
-if (Kohana::$environment == Kohana::DEVELOPMENT) $modules['userguide'] = MODPATH . 'userguide';      // User guide and API documentation
+if (Kohana::$environment == Kohana::DEVELOPMENT) $modules['userguide'] = MODPATH . 'userguide';      // Kohana userguide and API documentation
 
 if (CACHE_FLAG) $modules['cache'] = MODPATH . 'cache';      // Caching with multiple backends
 if (DEBUG_FLAG) $modules['codebench'] = MODPATH . 'codebench';  // Benchmarking tool
-if (DEBUG_FLAG) $modules['userguide'] = MODPATH . 'userguide';  // Kohana's user guide
 Kohana::modules($modules);
 
 // set up firephp for debugging
