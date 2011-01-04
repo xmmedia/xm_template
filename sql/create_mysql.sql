@@ -66,28 +66,28 @@ INSERT INTO `auth_type` VALUES(8, 'Verifying Human', 7);
 -- --------------------------------------------------------
 
 --
--- Table structure for table `claero_change`
+-- Table structure for table `change_log`
 --
 
-CREATE TABLE `claero_change` (
+CREATE TABLE `change_log` (
   `id` int(11) NOT NULL auto_increment,
+  `event_timestamp` timestamp NOT NULL default CURRENT_TIMESTAMP,
   `user_id` int(11) NOT NULL,
-  `event_time` timestamp NOT NULL default CURRENT_TIMESTAMP,
-  `sql` varchar(4096) collate utf8_unicode_ci NOT NULL,
   `table_name` varchar(64) collate utf8_unicode_ci NOT NULL,
-  `record_id` int(11) NOT NULL,
+  `record_pk` int(11) NOT NULL,
   `query_type` varchar(12) collate utf8_unicode_ci NOT NULL,
   `row_count` int(11) NOT NULL,
-  `query_time` decimal(10,3) unsigned NOT NULL,
+  `sql` varchar(15000) collate utf8_unicode_ci NOT NULL,
+  `changed` varchar(5000) collate utf8_unicode_ci NOT NULL,
   PRIMARY KEY  (`id`),
   KEY `user_id` (`user_id`),
   KEY `table_name` (`table_name`),
   KEY `query_type` (`query_type`),
-  KEY `record_id` (`record_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  KEY `record_pk` (`record_pk`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `claero_change`
+-- Dumping data for table `change_log`
 --
 
 
