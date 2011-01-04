@@ -1,75 +1,8 @@
 <?php
 
-//-- Environment setup --------------------------------------------------------
-
-// identify what server this code is running from, and set up the global constants for the application
-if (isset($_SERVER['SERVER_NAME']) && isset($_SERVER['SERVER_PORT'])) {
-    // script called through the webserver
-    $server_id = $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'];
-} else if (isset($_SERVER['PWD'])) {
-    $server_id = $_SERVER['PWD'];
-} else {
-	$server_id = 'Unknown';
-}
-
-switch ($server_id) {
-	// production site
-	case 'www.claero.com:80' :
-		define('KOHANA_ENVIRONMENT', 'production');
-		define('DEVELOPMENT_FLAG', FALSE);
-		define('CACHE_FLAG', FALSE);
-		define('DEBUG_FLAG', FALSE);
-		define('FIREPHP_FLAG', FALSE);
-		define('UNAVAILABLE_FLAG', FALSE);
-		define('LONG_NAME', 'cl4 Template Site');
-		define('SHORT_NAME', 'cl4template');
-		define('APP_VERSION', '0.1');
-		if ( ! isset($_SERVER['SERVER_PORT'])) {
-			define('HTTP_PROTOCOL', 'http');
-		} else {
-			define('HTTP_PROTOCOL', ($_SERVER['SERVER_PORT'] == '443' ? 'https' : 'http'));
-		}
-		define('URL_ROOT', HTTP_PROTOCOL . '://template4.claero.com');
-		define('ABS_ROOT', '/home/templat4/template4.claero.com');
-		define('ANALYTICS_ID', '');
-		define('RECAPTCHA_PUBLIC_KEY', '');
-		define('RECAPTCHA_PRIVATE_KEY', '');
-		define('DATABASE_DEFAULT', 'production');
-		define('SESSION_TYPE', 'database');
-		define('ADMIN_EMAIL', 'claero-support@claero.com');
-		break;
-
-	// development site
-	case 'template4.claero.com:80' :
-	case '/home/templat4/template4.claero.com' :
-		define('KOHANA_ENVIRONMENT', 'development');
-		define('DEVELOPMENT_FLAG', TRUE);
-		define('CACHE_FLAG', FALSE);
-		define('DEBUG_FLAG', TRUE);
-		define('FIREPHP_FLAG', FALSE);
-		define('UNAVAILABLE_FLAG', FALSE);
-		define('LONG_NAME', 'cl4 Template Site');
-		define('SHORT_NAME', 'cl4template');
-		define('APP_VERSION', '0.1');
-		if ( ! isset($_SERVER['SERVER_PORT'])) {
-			define('HTTP_PROTOCOL', 'http');
-		} else {
-			define('HTTP_PROTOCOL', ($_SERVER['SERVER_PORT'] == '443' ? 'https' : 'http'));
-		}
-		define('URL_ROOT', HTTP_PROTOCOL . '://template4.claero.com');
-		define('ABS_ROOT', '/home/templat4/template4.claero.com');
-		define('ANALYTICS_ID', 'UA-468095-28'); // UA-468095-28 is for template4.claero.com
-		define('RECAPTCHA_PUBLIC_KEY', '6LfEc78SAAAAAK0dnSQ7bu9NgcEA-PSku-7qR2w8');
-		define('RECAPTCHA_PRIVATE_KEY', '6LfEc78SAAAAAAOLItfy5lH_x-43dZxXF-cCblC6');
-		define('DATABASE_DEFAULT', 'development');
-		define('SESSION_TYPE', 'database');
-		define('ADMIN_EMAIL', 'darryl.hein@claero.com');
-		break;
-
-	default:
-		die('We cannot continue because the following server configuration is not defined: ' . $server_id);
-		break;
-} // switch
+// include the config file
+// for each server, replace this file with the correct config
+require_once('../application/init.php');
 
 // set the upload paths based on the ABS root
 // these can be set here because it's unlikely the relative path will change per site
