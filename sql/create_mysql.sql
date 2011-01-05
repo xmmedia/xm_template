@@ -201,6 +201,8 @@ INSERT INTO `group_permission` VALUES(8, 1, 8);
 INSERT INTO `group_permission` VALUES(9, 1, 9);
 INSERT INTO `group_permission` VALUES(10, 2, 1);
 INSERT INTO `group_permission` VALUES(11, 2, 10);
+INSERT INTO `group_permission` VALUES(12, 1, 22);
+INSERT INTO `group_permission` VALUES(13, 2, 22);
 
 -- --------------------------------------------------------
 
@@ -230,6 +232,7 @@ INSERT INTO `permission` VALUES(7, 'cl4admin/*/view', 'Database Admin View', 'Ca
 INSERT INTO `permission` VALUES(8, 'cl4admin/*/index', 'Database Admin List', 'Can view a list of items in the DB Admin.');
 INSERT INTO `permission` VALUES(9, 'cl4admin/model_create', 'Database Admin Model Create', 'Can create PHP models from the DB Admin. (Unique from other DB Admin permissions.)');
 INSERT INTO `permission` VALUES(10, 'cl4admin/useradmin/*', 'Database Admin - User', 'Can perform all possible actions on users in the DB Admin (add, edit, delete, search, view, list, export).');
+INSERT INTO `permission` VALUES(11, 'cl4admin', 'DB Admin Access', 'Gives access to DB Admin, although other permissions are required to access individual models/tables and actions.');
 
 -- --------------------------------------------------------
 
