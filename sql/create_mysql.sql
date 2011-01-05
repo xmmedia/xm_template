@@ -140,8 +140,8 @@ INSERT INTO `group_permission` VALUES(8, 1, 8);
 INSERT INTO `group_permission` VALUES(9, 1, 9);
 INSERT INTO `group_permission` VALUES(10, 2, 1);
 INSERT INTO `group_permission` VALUES(11, 2, 10);
-INSERT INTO `group_permission` VALUES(12, 1, 22);
-INSERT INTO `group_permission` VALUES(13, 2, 22);
+INSERT INTO `group_permission` VALUES(12, 1, 11);
+INSERT INTO `group_permission` VALUES(13, 2, 11);
 
 -- --------------------------------------------------------
 
