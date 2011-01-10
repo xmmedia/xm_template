@@ -97,10 +97,10 @@ footer a:hover { text-decoration:underline; }
 .logged_in_nav li { float:right; }
 .logged_in_nav a img { vertical-align:bottom; margin-right:5px; }
 
-/** login page formatting **/
-.login_wrapper {
+/** login box formatting, used on login and forgot password **/
+.login_box {
 	margin:20px auto 0 auto;
-	border:1px solid #888;
+	border:1px solid #fff;
 	width:400px;
 	padding:0 20px 20px 20px;
 	-moz-border-radius:15px;
@@ -110,12 +110,12 @@ footer a:hover { text-decoration:underline; }
     -webkit-box-shadow:0 0 15px #757171;
     box-shadow:0 0 15px #757171;
 }
-.login_wrapper .cl4_form, .login_wrapper .cl4_form li ul { margin:0; }
-.login_wrapper .cl4_form li ul li { display:block; float:none; width:150px; }
-.login_wrapper .cl4_form li ul li.field_label { margin-top:15px; width:400px; }
-.login_wrapper .cl4_form li ul li.field_value input { font-size:1.2em; width:390px; }
+.login_box .cl4_form, .login_box .cl4_form li ul { margin:0; }
+.login_box .cl4_form li ul li { display:block; float:none; width:150px; }
+.login_box .cl4_form li ul li.field_label { margin-top:15px; width:400px; }
+.login_box .cl4_form li ul li.field_value input { font-size:1.2em; width:390px; }
 .login_button { font-size:1.2em; }
-.login_wrapper .forgot_link { float:right; }
+.login_box .forgot_link { float:right; }
 
 /** development related styles **/
 #kohana_profiler { margin-top:20px; min-width:850px; }
