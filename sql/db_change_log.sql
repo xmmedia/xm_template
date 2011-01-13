@@ -33,3 +33,28 @@ DROP TABLE `claero_change` ;
 -- x8
 INSERT INTO `permission` VALUES(NULL, 'cl4admin', 'DB Admin Access', 'Gives access to DB Admin, although other permissions are required to access individual models/tables and actions.');
 -- x8
+
+-- DH 20110112 - changing all integer fields to unsigned
+-- x8
+ALTER TABLE `auth_log` CHANGE `id` `id` INT( 11 ) UNSIGNED NOT NULL AUTO_INCREMENT ,
+CHANGE `user_id` `user_id` INT( 11 ) UNSIGNED NOT NULL ,
+CHANGE `auth_type_id` `auth_type_id` INT( 11 ) UNSIGNED NOT NULL ;
+ALTER TABLE `auth_type` CHANGE `id` `id` INT( 11 ) UNSIGNED NOT NULL AUTO_INCREMENT ,
+CHANGE `display_order` `display_order` SMALLINT( 6 ) UNSIGNED NOT NULL ;
+ALTER TABLE `change_log` CHANGE `id` `id` INT( 11 ) UNSIGNED NOT NULL AUTO_INCREMENT ,
+CHANGE `user_id` `user_id` INT( 11 ) UNSIGNED NOT NULL ,
+CHANGE `record_pk` `record_pk` INT( 11 ) UNSIGNED NOT NULL ,
+CHANGE `row_count` `row_count` INT( 11 ) UNSIGNED NOT NULL ;
+ALTER TABLE `group` CHANGE `id` `id` INT( 11 ) UNSIGNED NOT NULL AUTO_INCREMENT ;
+ALTER TABLE `group_permission` CHANGE `id` `id` INT( 11 ) UNSIGNED NOT NULL AUTO_INCREMENT ,
+CHANGE `group_id` `group_id` INT( 11 ) UNSIGNED NOT NULL ,
+CHANGE `permission_id` `permission_id` INT( 11 ) UNSIGNED NOT NULL ;
+ALTER TABLE `permission` CHANGE `id` `id` INT( 11 ) UNSIGNED NOT NULL AUTO_INCREMENT ;
+ALTER TABLE `user` CHANGE `id` `id` INT( 11 ) UNSIGNED NOT NULL AUTO_INCREMENT ,
+CHANGE `active_flag` `active_flag` TINYINT( 1 ) UNSIGNED NOT NULL ;
+ALTER TABLE `user_group` CHANGE `id` `id` INT( 11 ) UNSIGNED NOT NULL AUTO_INCREMENT ,
+CHANGE `user_id` `user_id` INT( 11 ) UNSIGNED NOT NULL ,
+CHANGE `group_id` `group_id` INT( 11 ) UNSIGNED NOT NULL ;
+ALTER TABLE `user_token` CHANGE `id` `id` INT( 11 ) UNSIGNED NOT NULL AUTO_INCREMENT ,
+CHANGE `user_id` `user_id` INT( 11 ) UNSIGNED NOT NULL ;
+-- x8

@@ -3,14 +3,14 @@
 -- http://www.phpmyadmin.net
 --
 -- Host:
--- Generation Time: Nov 26, 2010 at 01:47 AM
--- Server version: 5.0.77
+-- Generation Time: Jan 13, 2011 at 12:53 AM
+-- Server version: 5.1.50
 -- PHP Version: 5.2.14
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
 --
--- Database: `journeyx_main`
+-- Database: `templat4_core`
 --
 
 -- --------------------------------------------------------
@@ -20,22 +20,21 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 --
 
 CREATE TABLE `auth_log` (
-  `id` int(11) NOT NULL auto_increment,
-  `user_id` int(11) NOT NULL,
-  `username` varchar(100) collate utf8_unicode_ci NOT NULL,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) unsigned NOT NULL,
+  `username` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `access_time` datetime NOT NULL,
-  `auth_type_id` int(11) NOT NULL,
-  `browser` varchar(255) collate utf8_unicode_ci NOT NULL,
-  `ip_address` varchar(15) collate utf8_unicode_ci NOT NULL,
-  PRIMARY KEY  (`id`),
+  `auth_type_id` int(11) unsigned NOT NULL,
+  `browser` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `ip_address` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`),
   KEY `access_type_id` (`auth_type_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `auth_log`
 --
-
 
 -- --------------------------------------------------------
 
@@ -44,10 +43,10 @@ CREATE TABLE `auth_log` (
 --
 
 CREATE TABLE `auth_type` (
-  `id` int(11) NOT NULL auto_increment,
-  `name` varchar(30) collate utf8_unicode_ci NOT NULL,
-  `display_order` smallint(6) NOT NULL,
-  PRIMARY KEY  (`id`),
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `display_order` smallint(6) unsigned NOT NULL,
+  PRIMARY KEY (`id`),
   KEY `display_order` (`display_order`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -70,16 +69,16 @@ INSERT INTO `auth_type` VALUES(8, 'Verifying Human', 7);
 --
 
 CREATE TABLE `change_log` (
-  `id` int(11) NOT NULL auto_increment,
-  `event_timestamp` timestamp NOT NULL default CURRENT_TIMESTAMP,
-  `user_id` int(11) NOT NULL,
-  `table_name` varchar(64) collate utf8_unicode_ci NOT NULL,
-  `record_pk` int(11) NOT NULL,
-  `query_type` varchar(12) collate utf8_unicode_ci NOT NULL,
-  `row_count` int(11) NOT NULL,
-  `sql` varchar(15000) collate utf8_unicode_ci NOT NULL,
-  `changed` varchar(5000) collate utf8_unicode_ci NOT NULL,
-  PRIMARY KEY  (`id`),
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `event_timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `user_id` int(11) unsigned NOT NULL,
+  `table_name` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
+  `record_pk` int(11) unsigned NOT NULL,
+  `query_type` varchar(12) COLLATE utf8_unicode_ci NOT NULL,
+  `row_count` int(11) unsigned NOT NULL,
+  `sql` varchar(15000) COLLATE utf8_unicode_ci NOT NULL,
+  `changed` varchar(5000) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`),
   KEY `table_name` (`table_name`),
   KEY `query_type` (`query_type`),
@@ -90,7 +89,6 @@ CREATE TABLE `change_log` (
 -- Dumping data for table `change_log`
 --
 
-
 -- --------------------------------------------------------
 
 --
@@ -98,11 +96,11 @@ CREATE TABLE `change_log` (
 --
 
 CREATE TABLE `group` (
-  `id` int(11) NOT NULL auto_increment,
-  `name` varchar(100) collate utf8_unicode_ci NOT NULL,
-  `description` text collate utf8_unicode_ci NOT NULL,
-  PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  `description` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `group`
@@ -118,10 +116,10 @@ INSERT INTO `group` VALUES(2, 'Administrator', 'Client administrator, can edit u
 --
 
 CREATE TABLE `group_permission` (
-  `id` int(11) NOT NULL auto_increment,
-  `group_id` int(11) NOT NULL,
-  `permission_id` int(11) NOT NULL,
-  PRIMARY KEY  (`id`),
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `group_id` int(11) unsigned NOT NULL,
+  `permission_id` int(11) unsigned NOT NULL,
+  PRIMARY KEY (`id`),
   UNIQUE KEY `group_id` (`group_id`,`permission_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -140,8 +138,8 @@ INSERT INTO `group_permission` VALUES(8, 1, 8);
 INSERT INTO `group_permission` VALUES(9, 1, 9);
 INSERT INTO `group_permission` VALUES(10, 2, 1);
 INSERT INTO `group_permission` VALUES(11, 2, 10);
-INSERT INTO `group_permission` VALUES(12, 1, 11);
-INSERT INTO `group_permission` VALUES(13, 2, 11);
+INSERT INTO `group_permission` VALUES(12, 1, 22);
+INSERT INTO `group_permission` VALUES(13, 2, 22);
 
 -- --------------------------------------------------------
 
@@ -150,11 +148,11 @@ INSERT INTO `group_permission` VALUES(13, 2, 11);
 --
 
 CREATE TABLE `permission` (
-  `id` int(11) NOT NULL auto_increment,
-  `permission` varchar(255) collate utf8_unicode_ci NOT NULL,
-  `name` varchar(150) collate utf8_unicode_ci NOT NULL,
-  `description` varchar(500) collate utf8_unicode_ci NOT NULL,
-  PRIMARY KEY  (`id`)
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `permission` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
+  `description` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -171,7 +169,7 @@ INSERT INTO `permission` VALUES(7, 'cl4admin/*/view', 'Database Admin View', 'Ca
 INSERT INTO `permission` VALUES(8, 'cl4admin/*/index', 'Database Admin List', 'Can view a list of items in the DB Admin.');
 INSERT INTO `permission` VALUES(9, 'cl4admin/model_create', 'Database Admin Model Create', 'Can create PHP models from the DB Admin. (Unique from other DB Admin permissions.)');
 INSERT INTO `permission` VALUES(10, 'cl4admin/useradmin/*', 'Database Admin - User', 'Can perform all possible actions on users in the DB Admin (add, edit, delete, search, view, list, export).');
-INSERT INTO `permission` VALUES(11, 'cl4admin', 'DB Admin Access', 'Gives access to DB Admin, although other permissions are required to access individual models/tables and actions.');
+INSERT INTO `permission` VALUES(22, 'cl4admin', 'DB Admin Access', 'Gives access to DB Admin, although other permissions are required to access individual models/tables and actions.');
 
 -- --------------------------------------------------------
 
@@ -180,17 +178,16 @@ INSERT INTO `permission` VALUES(11, 'cl4admin', 'DB Admin Access', 'Gives access
 --
 
 CREATE TABLE `session` (
-  `session_id` varchar(24) collate utf8_unicode_ci NOT NULL,
+  `session_id` varchar(24) COLLATE utf8_unicode_ci NOT NULL,
   `last_active` int(10) unsigned NOT NULL,
-  `contents` longtext collate utf8_unicode_ci NOT NULL,
-  PRIMARY KEY  (`session_id`),
+  `contents` longtext COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`session_id`),
   KEY `last_active` (`last_active`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `session`
 --
-
 
 -- --------------------------------------------------------
 
@@ -199,13 +196,13 @@ CREATE TABLE `session` (
 --
 
 CREATE TABLE `user` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `expiry_date` datetime NOT NULL,
   `username` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `password` char(50) COLLATE utf8_unicode_ci NOT NULL,
   `first_name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `last_name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `active_flag` tinyint(1) NOT NULL,
+  `active_flag` tinyint(1) unsigned NOT NULL,
   `login_count` smallint(6) NOT NULL,
   `last_login` datetime NOT NULL,
   `failed_login_count` mediumint(9) NOT NULL,
@@ -223,9 +220,7 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` VALUES(1, '0000-00-00 00:00:00', 'admin@admin.com', '4668682c67aa41e5abeefb3989dbf7879d14290099bdd892f8', 'Admin', 'Admin', 1, 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', '', 0, 0);
-INSERT INTO `user` VALUES(2, '0000-00-00 00:00:00', 'craig@nakamoto.ca', '8804290dc243b37f4e3f83e53ff5a9334aabd0e4446b5e86f0', 'Craig', 'Nakamoto', 1, 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', '', 0, 0);
-INSERT INTO `user` VALUES(3, '0000-00-00 00:00:00', 'user@example.com', '526faa0fb5f3e551a8b6904fd6108a92ffb2392f6751b27b7e', 'User1', '#1', 1, 0, '0000-00-00 00:00:00', 1, '0000-00-00 00:00:00', '', 0, 0);
+INSERT INTO `user` VALUES(1, '0000-00-00 00:00:00', 'admin@admin.com', '530a807bf7906acb79edb3b181956805048afcadf0a71f9037', 'Admin', 'Admin', 1, 286, '2011-01-04 22:28:42', 0, '2011-01-03 14:09:13', '', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -234,10 +229,10 @@ INSERT INTO `user` VALUES(3, '0000-00-00 00:00:00', 'user@example.com', '526faa0
 --
 
 CREATE TABLE `user_group` (
-  `id` int(11) NOT NULL auto_increment,
-  `user_id` int(11) NOT NULL,
-  `group_id` int(11) NOT NULL,
-  PRIMARY KEY  (`id`),
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) unsigned NOT NULL,
+  `group_id` int(11) unsigned NOT NULL,
+  PRIMARY KEY (`id`),
   UNIQUE KEY `user_id` (`user_id`,`group_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -246,7 +241,6 @@ CREATE TABLE `user_group` (
 --
 
 INSERT INTO `user_group` VALUES(1, 1, 1);
-INSERT INTO `user_group` VALUES(2, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -255,12 +249,12 @@ INSERT INTO `user_group` VALUES(2, 2, 1);
 --
 
 CREATE TABLE `user_token` (
-  `id` int(11) NOT NULL auto_increment,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `date_created` datetime NOT NULL,
   `date_expired` datetime NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `token` varchar(35) collate utf8_unicode_ci NOT NULL,
-  PRIMARY KEY  (`id`),
+  `user_id` int(11) unsigned NOT NULL,
+  `token` varchar(35) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
   KEY `date_expired` (`date_expired`,`user_id`,`token`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
