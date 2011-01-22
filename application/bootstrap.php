@@ -110,9 +110,9 @@ if (FIREPHP_FLAG && DEBUG_FLAG) {
 	Kohana::$log->attach(new FirePHP_Log_Console());
 }
 
-if (isset($modules['claero'])) {
+if (isset($modules['cl4'])) {
 	// sets the error handlers to use the customized Claero module versions only when the claero module is included
-	Claero::set_error_handlers();
+	cl4::set_error_handlers();
 }
 
 // this sets the default database to use
