@@ -52,6 +52,8 @@ CHANGE `permission_id` `permission_id` INT( 11 ) UNSIGNED NOT NULL ;
 ALTER TABLE `permission` CHANGE `id` `id` INT( 11 ) UNSIGNED NOT NULL AUTO_INCREMENT ;
 ALTER TABLE `user` CHANGE `id` `id` INT( 11 ) UNSIGNED NOT NULL AUTO_INCREMENT ,
 CHANGE `active_flag` `active_flag` TINYINT( 1 ) UNSIGNED NOT NULL ;
+ALTER TABLE `user` CHANGE `login_count` `login_count` SMALLINT( 6 ) UNSIGNED NOT NULL ,
+CHANGE `failed_login_count` `failed_login_count` MEDIUMINT( 9 ) UNSIGNED NOT NULL
 ALTER TABLE `user_group` CHANGE `id` `id` INT( 11 ) UNSIGNED NOT NULL AUTO_INCREMENT ,
 CHANGE `user_id` `user_id` INT( 11 ) UNSIGNED NOT NULL ,
 CHANGE `group_id` `group_id` INT( 11 ) UNSIGNED NOT NULL ;
