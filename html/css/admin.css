@@ -11,8 +11,8 @@ footer a:hover { text-decoration:underline; }
 /** the following are styles to create some formatting and are not quite as "required" as the above styles **/
 /** header **/
 .page_top { margin:0 auto; width:960px; position:relative; height:82px; }
-.page_top_logo { float:left; margin:20px 0 0 -4px; color:#fff; font-size:1.3em; }
-.page_top_logo a { display:block; }
+.page_top_logo { float:left; margin:20px 0 0 -4px; font-size:1.3em; font-weight:bold; }
+.page_top_logo a { display:block; color:#777; text-decoration:none; }
 .company_logo { float:right; }
 .page_top_user_info { float:right; margin:0; color:#969696; }
 .language_options { float:right; margin:10px 15px 0 0; color:#bbb; height:1em; }
@@ -37,9 +37,8 @@ footer a:hover { text-decoration:underline; }
 .main_nav ul li:hover .sub_nav { display:block; position:absolute; color:#484848; }
 .main_nav ul li:hover .sub_nav a, .main_nav ul li:hover .sub_nav li:hover { background:none; z-index:100; }
 .main_nav ul li .sub_nav li a:hover { color:#969696; }
-.main_nav ul li.reports .sub_nav { margin-left:172px; }
-.main_nav ul li.admin .sub_nav { margin-left:265px; }
-.main_nav ul li.dbadmin .sub_nav { margin-left:338px; }
+.main_nav ul li.aboutus .sub_nav { margin-left:78px; }
+.main_nav ul li.dbadmin .sub_nav { margin-left:178px; }
 
 /** currently selected nav item **/
 .p_rip .main_nav li.rip a,
