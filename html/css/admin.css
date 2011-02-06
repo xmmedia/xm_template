@@ -55,12 +55,15 @@ footer a:hover { text-decoration:underline; }
 .logged_in_nav ul li.logout a { padding-right:0; }
 .logged_in_nav a img { vertical-align:bottom; margin-right:5px; }
 
-/** login box formatting, used on login and forgot password **/
+/** login box formatting, used on login, forgot password and timed out **/
 .login_box {
 	margin:20px auto 0 auto;
-	border:1px solid #fff;
+	border:1px solid #dfdfdf;
 	width:400px;
 	padding:0 20px 20px 20px;
+}
+.boxshadow .login_box {
+	border:1px solid #fff;
 	-moz-border-radius:15px;
     -webkit-border-radius:15px;
     border-radius:15px;
