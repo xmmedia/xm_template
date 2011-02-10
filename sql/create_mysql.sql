@@ -211,10 +211,9 @@ CREATE TABLE `user` (
   `force_update_password_flag` tinyint(1) unsigned NOT NULL,
   `force_update_profile_flag` tinyint(1) unsigned NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `username` (`username`),
-  KEY `password` (`password`),
+  UNIQUE KEY `username` (`expiry_date`,`username`),
   KEY `active_flag` (`active_flag`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci; 
 
 --
 -- Dumping data for table `user`

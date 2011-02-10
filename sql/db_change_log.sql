@@ -60,3 +60,10 @@ CHANGE `group_id` `group_id` INT( 11 ) UNSIGNED NOT NULL ;
 ALTER TABLE `user_token` CHANGE `id` `id` INT( 11 ) UNSIGNED NOT NULL AUTO_INCREMENT ,
 CHANGE `user_id` `user_id` INT( 11 ) UNSIGNED NOT NULL ;
 -- x8
+
+-- DH 20110210 - adding expiry date to the username key (so usernames can be reused) and removing the unused password key
+-- x8
+ALTER TABLE `user` DROP INDEX `username` ,
+ADD UNIQUE `username` ( `expiry_date` , `username` ) ;
+ALTER TABLE `user` DROP INDEX `password` ;
+-- x8
