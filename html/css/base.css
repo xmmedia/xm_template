@@ -54,3 +54,11 @@ label { cursor:pointer; }
 	letter-spacing:1px;
 	color:#000;
 }
+
+/** basic nav **/
+.basic_nav { float:left; height:28px; position:relative; width:auto; z-index:500; }
+.basic_nav ul { margin:0; height:25px; }
+.basic_nav li { float:left; height:auto; margin:0; padding:0 15px 0 0; list-style:none; height:38px; }
+.basic_nav li a { display:block; padding:5px 15px 5px 0; color:#484848; text-decoration:none; }
+.basic_nav li:hover { }
+.basic_nav li:hover a { color:#969696; }
