@@ -89,19 +89,18 @@ $lang_options = '(en-ca|fr-ca)';
  * ORDER MATTERS HERE!!!
  */
 $modules = array();
-$modules['cl4'] = MODPATH . 'cl4';                  // cl4
-$modules['cl4auth'] = MODPATH . 'cl4auth';          // cl4auth
-$modules['cl4admin'] = MODPATH . 'cl4admin';        // cl4admin
-$modules['cl4base'] = MODPATH . 'cl4base';          // cl4base
-if (FIREPHP_FLAG) $modules['firephp'] = MODPATH . 'firephp';          // FIre PHP debugging - ONLY WORKS IN FIREFOX
-$modules['database'] = MODPATH . 'database';        // Database access
-$modules['image'] = MODPATH . 'image';              // Image manipulation
-$modules['orm'] = MODPATH . 'orm';                  // Object Relationship Mapping
-$modules['auth'] = MODPATH . 'auth';                // Basic authentication
-$modules['pagination'] = MODPATH . 'pagination';    // Paging of results
-if (Kohana::$environment == Kohana::DEVELOPMENT) $modules['userguide'] = MODPATH . 'userguide';      // Kohana userguide and API documentation
-
-if (CACHE_FLAG) $modules['cache'] = MODPATH . 'cache';      // Caching with multiple backends
+$modules['cl4'] =        MODPATH . 'cl4';         // cl4
+$modules['cl4auth'] =    MODPATH . 'cl4auth';     // cl4auth
+$modules['cl4admin'] =   MODPATH . 'cl4admin';    // cl4admin
+$modules['cl4base'] =    MODPATH . 'cl4base';     // cl4base
+if (FIREPHP_FLAG) $modules['firephp'] = MODPATH . 'firephp';  // Fire PHP debugging - ONLY WORKS IN FIREFOX
+$modules['database'] =   MODPATH . 'database';    // Database access
+$modules['image'] =      MODPATH . 'image';       // Image manipulation
+$modules['orm'] =        MODPATH . 'orm';         // Object Relationship Mapping
+$modules['auth'] =       MODPATH . 'auth';        // Basic authentication
+$modules['pagination'] = MODPATH . 'pagination';  // Paging of results
+if (Kohana::$environment == Kohana::DEVELOPMENT) $modules['userguide'] = MODPATH . 'userguide';  // Kohana userguide and API documentation
+if (CACHE_FLAG) $modules['cache'] = MODPATH . 'cache';  // Caching with multiple backends
 if (DEBUG_FLAG) $modules['codebench'] = MODPATH . 'codebench';  // Benchmarking tool
 Kohana::modules($modules);
 
