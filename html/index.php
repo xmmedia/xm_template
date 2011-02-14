@@ -114,19 +114,41 @@ define('SYSPATH', realpath($system) . DIRECTORY_SEPARATOR);
 // Clean up the configuration vars
 unset($application, $modules, $system);
 
-// Load the base, low-level functions
-require SYSPATH . 'base' . EXT;
+/**
+ * Define the start time of the application, used for profiling.
+ */
+if ( ! defined('KOHANA_START_TIME')) {
+	define('KOHANA_START_TIME', microtime(TRUE));
+}
 
-// Load the core Kohana class
-require SYSPATH . 'classes/kohana/core' . EXT;
-
-if (is_file(APPPATH . 'classes/kohana' . EXT)) {
-	// Application extends the core
-	require APPPATH . 'classes/kohana' . EXT;
-} else {
-	// Load empty core extension
-	require SYSPATH . 'classes/kohana' . EXT;
+/**
+ * Define the memory usage at the start of the application, used for profiling.
+ */
+if ( ! defined('KOHANA_START_MEMORY')) {
+	define('KOHANA_START_MEMORY', memory_get_usage());
 }
 
 // Bootstrap the application
 require APPPATH . 'bootstrap' . EXT;
+
+
+if ( ! defined('SUPPRESS_REQUEST')) {
+	/**
+	 * Execute the main request. A source of the URI can be passed, eg: $_SERVER['PATH_INFO'].
+	 * If no source is specified, the URI will be automatically detected.
+	 */
+	echo Request::factory()
+		->execute()
+		->send_headers()
+		->body();
+}
+
+// set up firephp for debugging
+if (FIREPHP_FLAG && DEBUG_FLAG) {
+	FirePHP_Profiler::instance()
+		->group('KO3 FirePHP Profiler Results:', array('Collapsed' => true))
+		->superglobals() // New Superglobals method to show them all...
+		->database()
+		->benchmark()
+		->groupEnd();
+}

@@ -4,7 +4,7 @@
 * Production config
 */
 
-define('KOHANA_ENVIRONMENT', 'production');
+define('KOHANA_ENVIRONMENT', 1); // production
 define('DEVELOPMENT_FLAG', FALSE);
 define('CACHE_FLAG', FALSE);
 define('DEBUG_FLAG', FALSE);

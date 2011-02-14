@@ -76,8 +76,8 @@ CREATE TABLE `change_log` (
   `record_pk` int(11) unsigned NOT NULL,
   `query_type` varchar(12) COLLATE utf8_unicode_ci NOT NULL,
   `row_count` int(11) unsigned NOT NULL,
-  `sql` varchar(15000) COLLATE utf8_unicode_ci NOT NULL,
-  `changed` varchar(5000) COLLATE utf8_unicode_ci NOT NULL,
+  `sql` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `changed` longtext COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`),
   KEY `table_name` (`table_name`),
@@ -152,7 +152,8 @@ CREATE TABLE `permission` (
   `permission` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `name` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
   `description` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `permission` (`permission`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -199,7 +200,7 @@ CREATE TABLE `user` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `expiry_date` datetime NOT NULL,
   `username` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `password` char(50) COLLATE utf8_unicode_ci NOT NULL,
+  `password` char(100) COLLATE utf8_unicode_ci NOT NULL,
   `first_name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `last_name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `active_flag` tinyint(1) unsigned NOT NULL,
@@ -213,7 +214,7 @@ CREATE TABLE `user` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`expiry_date`,`username`),
   KEY `active_flag` (`active_flag`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci; 
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `user`

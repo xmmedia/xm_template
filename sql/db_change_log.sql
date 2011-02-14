@@ -67,3 +67,19 @@ ALTER TABLE `user` DROP INDEX `username` ,
 ADD UNIQUE `username` ( `expiry_date` , `username` ) ;
 ALTER TABLE `user` DROP INDEX `password` ;
 -- x8
+
+-- DH 20110212 - changing the length of the password field to allow long password hashes
+-- x8
+ALTER TABLE `user` CHANGE `password` `password` CHAR( 100 ) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL ;
+-- x8
+
+-- DH 20110213 - adding a unique key the permission column in permission
+-- x8
+ALTER TABLE `permission` ADD UNIQUE `permission` ( `permission` );
+-- x8
+
+-- DH 20110213 - changing the sql and changed fields in change_log to longtext to support an almost unlimited length
+-- x8
+ALTER TABLE `change_log` CHANGE `sql` `sql` LONGTEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL ,
+CHANGE `changed` `changed` LONGTEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL ;
+-- x8

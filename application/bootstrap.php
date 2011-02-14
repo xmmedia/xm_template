@@ -2,6 +2,17 @@
 
 //-- Environment setup --------------------------------------------------------
 
+// Load the core Kohana class
+require SYSPATH.'classes/kohana/core' . EXT;
+
+if (is_file(APPPATH.'classes/kohana' . EXT)) {
+	// Application extends the core
+	require APPPATH.'classes/kohana' . EXT;
+} else {
+	// Load empty core extension
+	require SYSPATH.'classes/kohana' . EXT;
+}
+
 /**
  * Set the default time zone.
  *
@@ -16,7 +27,7 @@ date_default_timezone_set('America/Edmonton');
  * @see  http://kohanaframework.org/guide/using.configuration
  * @see  http://php.net/setlocale
  */
-setlocale(LC_ALL, 'en-ca.utf-8');
+setlocale(LC_ALL, 'en_CA.utf-8');
 
 /**
  * Enable the Kohana auto-loader.
@@ -37,33 +48,41 @@ ini_set('unserialize_callback_func', 'spl_autoload_call');
 //-- Configuration and initialization -----------------------------------------
 
 /**
+ * Set the default language
+ */
+I18n::lang('en-ca');
+
+/**
+ * Set Kohana::$environment to the value of KOHANA_ENVIRONMENT
+ */
+Kohana::$environment = KOHANA_ENVIRONMENT;
+
+/**
  * Initialize Kohana, setting the default options.
  *
  * The following options are available:
  *
  * Type      | Setting    | Description                                    | Default Value
  * ----------|------------|------------------------------------------------|---------------
- * `boolean` | errors     | use internal error and exception handling?     | `TRUE`
- * `boolean` | profile    | do internal benchmarking?                      | `TRUE`
- * `boolean` | caching    | cache the location of files between requests?  | `FALSE`
- * `string`  | charset    | character set used for all input and output    | `"utf-8"`
- * `string`  | base_url   | set the base URL for the application           | `"/"`
- * `string`  | index_file | set the index.php file name                    | `"index.php"`
- * `string`  | cache_dir  | set the cache directory path                   | `APPPATH."cache"`
- * `integer` | cache_life | set the default cache lifetime                 | `60`
- * `string`  | error_view | set the error rendering view                   | `"kohana/error"`
+ * `string`  | base_url   | set the base URL for the application           | NULL
+ * `string`  | index_file | set the index.php file name                    | "index.php"
+ * `boolean` | errors     | use internal error and exception handling?     | TRUE
+ * `boolean` | profile    | do internal benchmarking?                      | TRUE
+ * `boolean` | caching    | cache the location of files between requests?  | FALSE
+ * `string`  | charset    | character set used for all input and output    | "utf-8"
+ * `string`  | cache_dir  | set the cache directory path                   | APPPATH."cache"
+ * `integer` | cache_life | set the default cache lifetime                 | 60
+ * `string`  | error_view | set the error rendering view                   | "kohana/error"
  */
 $settings = array(
+	'base_url'      => '/',
     'index_file'    => '',
     'errors'        => DEBUG_FLAG,
-    'profiling'     => DEBUG_FLAG,
+    'profile'       => DEBUG_FLAG,
     'caching'       => CACHE_FLAG,
     'cache_dir'     => ABS_ROOT . '/cache',
 );
 Kohana::init($settings);
-
-// tell Kohana if we are dev, production, staging or testing
-Kohana::$environment = KOHANA_ENVIRONMENT;
 
 /**
  * Attach the file write to logging. Multiple writers are supported.
@@ -89,19 +108,19 @@ $lang_options = '(en-ca|fr-ca)';
  * ORDER MATTERS HERE!!!
  */
 $modules = array();
-$modules['cl4'] =        MODPATH . 'cl4';         // cl4
-$modules['cl4auth'] =    MODPATH . 'cl4auth';     // cl4auth
-$modules['cl4admin'] =   MODPATH . 'cl4admin';    // cl4admin
-$modules['cl4base'] =    MODPATH . 'cl4base';     // cl4base
-if (FIREPHP_FLAG) $modules['firephp'] = MODPATH . 'firephp';  // Fire PHP debugging - ONLY WORKS IN FIREFOX
-$modules['database'] =   MODPATH . 'database';    // Database access
-$modules['image'] =      MODPATH . 'image';       // Image manipulation
-$modules['orm'] =        MODPATH . 'orm';         // Object Relationship Mapping
-$modules['auth'] =       MODPATH . 'auth';        // Basic authentication
-$modules['pagination'] = MODPATH . 'pagination';  // Paging of results
-if (Kohana::$environment == Kohana::DEVELOPMENT) $modules['userguide'] = MODPATH . 'userguide';  // Kohana userguide and API documentation
-if (CACHE_FLAG) $modules['cache'] = MODPATH . 'cache';  // Caching with multiple backends
-if (DEBUG_FLAG) $modules['codebench'] = MODPATH . 'codebench';  // Benchmarking tool
+$modules['cl4']          = MODPATH . 'cl4';         // cl4
+$modules['cl4auth']      = MODPATH . 'cl4auth';     // cl4auth
+$modules['cl4admin']     = MODPATH . 'cl4admin';    // cl4admin
+$modules['cl4base']      = MODPATH . 'cl4base';     // cl4base
+if (FIREPHP_FLAG) $modules['firephp'] = MODPATH . 'firephp'; // Fire PHP debugging - ONLY WORKS IN FIREFOX
+$modules['database']     = MODPATH . 'database';    // Database access
+$modules['image']        = MODPATH . 'image';       // Image manipulation
+$modules['orm']          = MODPATH . 'orm';         // Object Relationship Mapping
+$modules['auth']         = MODPATH . 'auth';        // Basic authentication
+$modules['pagination']   = MODPATH . 'pagination';  // Paging of results
+if (Kohana::$environment == Kohana::DEVELOPMENT) $modules['userguide'] = MODPATH . 'userguide'; // Kohana userguide and API documentation
+if (CACHE_FLAG) $modules['cache'] = MODPATH . 'cache'; // Caching with multiple backends
+if (DEBUG_FLAG) $modules['codebench'] = MODPATH . 'codebench'; // Benchmarking tool
 Kohana::modules($modules);
 
 // set up firephp for debugging
@@ -119,6 +138,9 @@ Database::$default = DATABASE_DEFAULT;
 
 // this sets the session type so we don't need to set it when calling Session::instance()
 Session::$default = SESSION_TYPE;
+
+// the salt to use when creating the cookies for validation
+Cookie::$salt = '=V,]tB|H!;?RP!2Fv(<)"mC\sx48XmiF5|@JkM{.?W+SV>lj?QQs^:;\!ah~oj%';
 
 /**
  * Set the routes. Each route must have a minimum of a name, a URI and a set of
@@ -153,24 +175,3 @@ Route::set('catch_all', '<path>', array('path' => '(|.+)'))
 		'controller' => 'base',
 		'action' => '404',
 ));
-
-if ( ! defined('SUPPRESS_REQUEST')) {
-	/**
-	 * Execute the main request. A source of the URI can be passed, eg: $_SERVER['PATH_INFO'].
-	 * If no source is specified, the URI will be automatically detected.
-	 */
-	echo Request::instance()
-		->execute()
-		->send_headers()
-		->response;
-}
-
-// set up firephp for debugging
-if (FIREPHP_FLAG && DEBUG_FLAG) {
-	FirePHP_Profiler::instance()
-        ->group('KO3 FirePHP Profiler Results:', array('Collapsed' => true))
-		->superglobals() // New Superglobals method to show them all...
-		->database()
-		->benchmark()
-		->groupEnd();
-}

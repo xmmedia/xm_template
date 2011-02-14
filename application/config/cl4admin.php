@@ -2,7 +2,5 @@
 
 return array(
 	'model_list' => array(
-		'demo' => 'Demo',
-		'demo_sub' => 'Demo Sub',
 	),
 );
