@@ -220,7 +220,7 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` VALUES(1, '0000-00-00 00:00:00', 'admin@admin.com', '530a807bf7906acb79edb3b181956805048afcadf0a71f9037', 'Admin', 'Admin', 1, 286, '2011-01-04 22:28:42', 0, '2011-01-03 14:09:13', '', 0, 0);
+INSERT INTO `user` VALUES(1, '0000-00-00 00:00:00', 'admin@admin.com', '06b28319e30193fc0f1d06ad118db92cc53ec695e3f9c9257b63224015763728', 'Admin', 'Admin', 1, 286, '2011-01-04 22:28:42', 0, '2011-01-03 14:09:13', '', 0, 0);
 
 -- --------------------------------------------------------
 
