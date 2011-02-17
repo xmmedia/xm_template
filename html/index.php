@@ -32,21 +32,6 @@ if (DEBUG_FLAG) {
 	error_reporting(E_ALL | E_STRICT);
 } // if
 
-// detect the browser to get the browser type
-if ( ! empty($_SERVER['HTTP_USER_AGENT'])) {
-	$user_agent = $_SERVER['HTTP_USER_AGENT'];
-	if (strpos($user_agent, 'iPhone') !== FALSE) {
-		$browser_type = 'mobile_safari';
-	} else if ((strpos($user_agent, 'Windows CE') !== FALSE && strpos($user_agent, 'Smartphone') !== FALSE) || strpos($user_agent, 'IEMobile') !== FALSE) {
-		$browser_type = 'mobile_default';
-	} else {
-		$browser_type = 'pc_default';
-	}
-} else {
-	$browser_type = 'pc_default';
-}
-define('BROWSER_TYPE', $browser_type);
-
 /**
  * The default extension of resource files. If you change this, all resources
  * must be renamed to use the new extension.
