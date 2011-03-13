@@ -38,12 +38,10 @@ footer a:hover { text-decoration:underline; }
 .main_nav ul li.dbadmin .sub_nav { margin-left:178px; }
 
 /** currently selected nav item **/
-.p_rip .main_nav li.rip a,
-.p_documents .main_nav .documents a,
-.p_reports .main_nav .reports a,
-.p_admin .main_nav .admin a,
-.p_cl4admin .main_nav .dbadmin a,
-.p_account .main_nav .account a { color:#969696; }
+.p_rip .main_nav li.rip > a,
+.p_admin .main_nav .admin > a,
+.p_cl4admin .main_nav .dbadmin > a,
+.p_account .main_nav .account > a { color:#969696; }
 
 .logged_in_nav { float:right; width:250px; }
 .logged_in_nav ul { border-bottom:none; }
