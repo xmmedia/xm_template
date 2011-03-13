@@ -83,3 +83,23 @@ ALTER TABLE `permission` ADD UNIQUE `permission` ( `permission` );
 ALTER TABLE `change_log` CHANGE `sql` `sql` LONGTEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL ,
 CHANGE `changed` `changed` LONGTEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL ;
 -- x8
+
+-- DH 20110313 - changing the defaults of integer fields to 0
+-- x8
+ALTER TABLE `auth_log` CHANGE `user_id` `user_id` INT( 11 ) UNSIGNED NOT NULL DEFAULT '0',
+CHANGE `auth_type_id` `auth_type_id` INT( 11 ) UNSIGNED NOT NULL DEFAULT '0' ;
+ALTER TABLE `auth_type` CHANGE `display_order` `display_order` SMALLINT( 6 ) UNSIGNED NOT NULL DEFAULT '0' ;
+ALTER TABLE `change_log` CHANGE `user_id` `user_id` INT( 11 ) UNSIGNED NOT NULL DEFAULT '0',
+CHANGE `record_pk` `record_pk` INT( 11 ) UNSIGNED NOT NULL DEFAULT '0',
+CHANGE `row_count` `row_count` INT( 11 ) UNSIGNED NOT NULL DEFAULT '0' ;
+ALTER TABLE `group_permission` CHANGE `group_id` `group_id` INT( 11 ) UNSIGNED NOT NULL DEFAULT '0',
+CHANGE `permission_id` `permission_id` INT( 11 ) UNSIGNED NOT NULL DEFAULT '0' ;
+ALTER TABLE `user` CHANGE `active_flag` `active_flag` TINYINT( 1 ) UNSIGNED NOT NULL DEFAULT '0',
+CHANGE `login_count` `login_count` SMALLINT( 6 ) UNSIGNED NOT NULL DEFAULT '0',
+CHANGE `failed_login_count` `failed_login_count` MEDIUMINT( 9 ) UNSIGNED NOT NULL DEFAULT '0',
+CHANGE `force_update_password_flag` `force_update_password_flag` TINYINT( 1 ) UNSIGNED NOT NULL DEFAULT '0',
+CHANGE `force_update_profile_flag` `force_update_profile_flag` TINYINT( 1 ) UNSIGNED NOT NULL DEFAULT '0' ;
+ALTER TABLE `user_group` CHANGE `user_id` `user_id` INT( 11 ) UNSIGNED NOT NULL DEFAULT '0',
+CHANGE `group_id` `group_id` INT( 11 ) UNSIGNED NOT NULL DEFAULT '0' ;
+ALTER TABLE `user_token` CHANGE `user_id` `user_id` INT( 11 ) UNSIGNED NOT NULL DEFAULT '0' ;
+-- x8

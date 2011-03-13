@@ -21,10 +21,10 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
 CREATE TABLE `auth_log` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) unsigned NOT NULL,
+  `user_id` int(11) unsigned NOT NULL DEFAULT '0',
   `username` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `access_time` datetime NOT NULL,
-  `auth_type_id` int(11) unsigned NOT NULL,
+  `auth_type_id` int(11) unsigned NOT NULL DEFAULT '0',
   `browser` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `ip_address` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
@@ -45,7 +45,7 @@ CREATE TABLE `auth_log` (
 CREATE TABLE `auth_type` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `display_order` smallint(6) unsigned NOT NULL,
+  `display_order` smallint(6) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `display_order` (`display_order`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -71,11 +71,11 @@ INSERT INTO `auth_type` VALUES(8, 'Verifying Human', 7);
 CREATE TABLE `change_log` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `event_timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `user_id` int(11) unsigned NOT NULL,
+  `user_id` int(11) unsigned NOT NULL DEFAULT '0',
   `table_name` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
-  `record_pk` int(11) unsigned NOT NULL,
+  `record_pk` int(11) unsigned NOT NULL DEFAULT '0',
   `query_type` varchar(12) COLLATE utf8_unicode_ci NOT NULL,
-  `row_count` int(11) unsigned NOT NULL,
+  `row_count` int(11) unsigned NOT NULL DEFAULT '0',
   `sql` longtext COLLATE utf8_unicode_ci NOT NULL,
   `changed` longtext COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
@@ -117,8 +117,8 @@ INSERT INTO `group` VALUES(2, 'Administrator', 'Client administrator, can edit u
 
 CREATE TABLE `group_permission` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `group_id` int(11) unsigned NOT NULL,
-  `permission_id` int(11) unsigned NOT NULL,
+  `group_id` int(11) unsigned NOT NULL DEFAULT '0',
+  `permission_id` int(11) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `group_id` (`group_id`,`permission_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -203,14 +203,14 @@ CREATE TABLE `user` (
   `password` char(100) COLLATE utf8_unicode_ci NOT NULL,
   `first_name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `last_name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `active_flag` tinyint(1) unsigned NOT NULL,
-  `login_count` smallint(6) unsigned NOT NULL,
+  `active_flag` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `login_count` smallint(6) unsigned NOT NULL DEFAULT '0',
   `last_login` datetime NOT NULL,
-  `failed_login_count` mediumint(9) unsigned NOT NULL,
+  `failed_login_count` mediumint(9) unsigned NOT NULL DEFAULT '0',
   `last_failed_login` datetime NOT NULL,
   `reset_token` char(32) COLLATE utf8_unicode_ci NOT NULL,
-  `force_update_password_flag` tinyint(1) unsigned NOT NULL,
-  `force_update_profile_flag` tinyint(1) unsigned NOT NULL,
+  `force_update_password_flag` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `force_update_profile_flag` tinyint(1) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`expiry_date`,`username`),
   KEY `active_flag` (`active_flag`)
@@ -230,8 +230,8 @@ INSERT INTO `user` VALUES(1, '0000-00-00 00:00:00', 'admin@admin.com', '06b28319
 
 CREATE TABLE `user_group` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) unsigned NOT NULL,
-  `group_id` int(11) unsigned NOT NULL,
+  `user_id` int(11) unsigned NOT NULL DEFAULT '0',
+  `group_id` int(11) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `user_id` (`user_id`,`group_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -252,7 +252,7 @@ CREATE TABLE `user_token` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `date_created` datetime NOT NULL,
   `date_expired` datetime NOT NULL,
-  `user_id` int(11) unsigned NOT NULL,
+  `user_id` int(11) unsigned NOT NULL DEFAULT '0',
   `token` varchar(35) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   KEY `date_expired` (`date_expired`,`user_id`,`token`)
