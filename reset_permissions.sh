@@ -7,4 +7,4 @@ chmod g+w -R logs
 chmod o+w -R logs
 chmod g+w -R cache
 chmod o+w -R cache
-find . -type d -exec chmod g+s {} \;
+find . -type d ! -iname 'iworx-backup' -exec chmod g+s {} \;
