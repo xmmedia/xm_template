@@ -103,3 +103,9 @@ ALTER TABLE `user_group` CHANGE `user_id` `user_id` INT( 11 ) UNSIGNED NOT NULL 
 CHANGE `group_id` `group_id` INT( 11 ) UNSIGNED NOT NULL DEFAULT '0' ;
 ALTER TABLE `user_token` CHANGE `user_id` `user_id` INT( 11 ) UNSIGNED NOT NULL DEFAULT '0' ;
 -- x8
+
+-- DH 20110406 - adding the first change log id to change_log to keep track of all the changes made in 1 PHP instance
+-- x8
+ALTER TABLE `change_log` ADD `first_change_log_id` INT UNSIGNED NOT NULL DEFAULT '0' AFTER `event_timestamp` ;
+ALTER TABLE `change_log` ADD INDEX ( `first_change_log_id` );
+-- x8

@@ -71,6 +71,7 @@ INSERT INTO `auth_type` VALUES(8, 'Verifying Human', 7);
 CREATE TABLE `change_log` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `event_timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `first_change_log_id` int(10) unsigned NOT NULL DEFAULT '0',
   `user_id` int(11) unsigned NOT NULL DEFAULT '0',
   `table_name` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
   `record_pk` int(11) unsigned NOT NULL DEFAULT '0',
@@ -82,7 +83,8 @@ CREATE TABLE `change_log` (
   KEY `user_id` (`user_id`),
   KEY `table_name` (`table_name`),
   KEY `query_type` (`query_type`),
-  KEY `record_pk` (`record_pk`)
+  KEY `record_pk` (`record_pk`),
+  KEY `first_change_log_id` (`first_change_log_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
