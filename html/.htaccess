@@ -11,6 +11,8 @@
 
 # set the default character set for PHP
 php_value default_charset "UTF-8"
+#php_value post_max_size 30M
+#php_value upload_max_filesize 30M
 
 # use utf-8 encoding for anything served text/plain or text/html
 AddDefaultCharset utf-8
