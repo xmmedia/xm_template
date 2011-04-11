@@ -157,7 +157,6 @@ Route::set('pages', '(<lang>/)(<page>)', array('lang' => $lang_options))
 		'controller' => 'page',
 		'lang' => DEFAULT_LANG,
 		'page' => 'index',
-		'section' => NULL,
 ));
 
 // route for "static" pages with a sub folder
