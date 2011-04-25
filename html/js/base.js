@@ -53,9 +53,9 @@
 	// Only works on the first element in the jQuery object
 	$.fn.checked = function() {
 		if (this.length > 1) {
-			return this.get(0).attr('checked');
+			return this.get(0).is(':checked');
 		} else if (this.length == 1) {
-			return this.attr('checked');
+			return this.is(':checked');
 		} else {
 			return false;
 		}
