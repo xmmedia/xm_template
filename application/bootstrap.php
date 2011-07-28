@@ -77,7 +77,6 @@ Kohana::$environment = KOHANA_ENVIRONMENT;
 $settings = array(
 	'base_url'      => '/',
     'index_file'    => '',
-    'errors'        => DEBUG_FLAG,
     'profile'       => DEBUG_FLAG,
     'caching'       => CACHE_FLAG,
     'cache_dir'     => ABS_ROOT . '/cache',
@@ -126,11 +125,6 @@ Kohana::modules($modules);
 // set up firephp for debugging
 if (FIREPHP_FLAG && DEBUG_FLAG) {
 	Kohana::$log->attach(new FirePHP_Log_Console());
-}
-
-if (isset($modules['cl4'])) {
-	// sets the error handlers to use the customized Claero module versions only when the claero module is included
-	cl4::set_error_handlers();
 }
 
 // this sets the default database to use
