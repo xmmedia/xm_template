@@ -107,6 +107,7 @@ $lang_options = '(en-ca|fr-ca)';
  * ORDER MATTERS HERE!!!
  */
 $modules = array();
+$modules['xmmedia']      = MODPATH . 'xmmedia';     // xmmedia
 $modules['cl4']          = MODPATH . 'cl4';         // cl4
 $modules['cl4auth']      = MODPATH . 'cl4auth';     // cl4auth
 $modules['cl4admin']     = MODPATH . 'cl4admin';    // cl4admin
