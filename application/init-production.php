@@ -8,7 +8,6 @@ define('KOHANA_ENVIRONMENT', 1); // production
 define('DEVELOPMENT_FLAG', FALSE);
 define('CACHE_FLAG', FALSE);
 define('DEBUG_FLAG', FALSE);
-define('FIREPHP_FLAG', FALSE);
 define('UNAVAILABLE_FLAG', FALSE);
 define('LONG_NAME', 'cl4 Template Site');
 define('SHORT_NAME', 'cl4template');

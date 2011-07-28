@@ -111,7 +111,6 @@ $modules['cl4']          = MODPATH . 'cl4';         // cl4
 $modules['cl4auth']      = MODPATH . 'cl4auth';     // cl4auth
 $modules['cl4admin']     = MODPATH . 'cl4admin';    // cl4admin
 $modules['cl4base']      = MODPATH . 'cl4base';     // cl4base
-if (FIREPHP_FLAG) $modules['firephp'] = MODPATH . 'firephp'; // Fire PHP debugging - ONLY WORKS IN FIREFOX
 $modules['database']     = MODPATH . 'database';    // Database access
 $modules['image']        = MODPATH . 'image';       // Image manipulation
 $modules['orm']          = MODPATH . 'orm';         // Object Relationship Mapping
@@ -121,11 +120,6 @@ if (Kohana::$environment == Kohana::DEVELOPMENT) $modules['userguide'] = MODPATH
 if (CACHE_FLAG) $modules['cache'] = MODPATH . 'cache'; // Caching with multiple backends
 if (DEBUG_FLAG) $modules['codebench'] = MODPATH . 'codebench'; // Benchmarking tool
 Kohana::modules($modules);
-
-// set up firephp for debugging
-if (FIREPHP_FLAG && DEBUG_FLAG) {
-	Kohana::$log->attach(new FirePHP_Log_Console());
-}
 
 // this sets the default database to use
 Database::$default = DATABASE_DEFAULT;
