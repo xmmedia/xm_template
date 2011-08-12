@@ -4,7 +4,7 @@
 * Config for template4.claero.com
 */
 
-define('KOHANA_ENVIRONMENT', 4); // development
+define('KOHANA_ENVIRONMENT', 40); // development
 define('DEVELOPMENT_FLAG', TRUE);
 define('CACHE_FLAG', FALSE);
 define('DEBUG_FLAG', TRUE);
