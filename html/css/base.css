@@ -23,8 +23,8 @@ h6 { font-size:0.7em; }
 ol.no_style, ul.no_style { list-style-type:none; margin:0; padding:0; }
 ol, ul { margin:10px 10px 10px 40px; }
 li { margin:5px 0; }
-ol li { list-style:decimal; }
-ul li { list-style:disc; }
+ol { list-style:decimal; }
+ul { list-style:disc; }
 
 /** tables styles **/
 table tr td, td.align_top { vertical-align:top; }
