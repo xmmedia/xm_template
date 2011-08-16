@@ -222,7 +222,7 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` VALUES(1, '0000-00-00 00:00:00', 'admin@admin.com', '06b28319e30193fc0f1d06ad118db92cc53ec695e3f9c9257b63224015763728', 'Admin', 'Admin', 1, 286, '2011-01-04 22:28:42', 0, '2011-01-03 14:09:13', '', 0, 0);
+INSERT INTO `user` VALUES(1, '0000-00-00 00:00:00', 'admin@admin.com', '06b28319e30193fc0f1d06ad118db92cc53ec695e3f9c9257b63224015763728', 'Admin', 'Admin', 1, 0, '2011-01-04 22:28:42', 0, '2011-01-03 14:09:13', '', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -670,3 +670,20 @@ INSERT INTO `permission` VALUES(NULL, 'useradmin/group/edit', 'User Admin - Grou
 INSERT INTO `permission` VALUES(NULL, 'useradmin/group/permissions', 'User Admin - Group Permissions', 'Allows the user to add and remove permissions from the permission group.');
 INSERT INTO `permission` VALUES(NULL, 'useradmin/group/users', 'User Admin - Group Users', 'Allows the user to add and remove users from the permission group.');
 INSERT INTO `permission` VALUES(NULL, 'useradmin/group/delete', 'User Admin - Group Delete', 'Allows the user to delete a permission group.');
+
+
+-- Assign the User Admin and DB Change permissions to the default groups
+INSERT INTO `group_permission` (`id`, `group_id`, `permission_id`) VALUES(14, 1, 25);
+INSERT INTO `group_permission` (`id`, `group_id`, `permission_id`) VALUES(15, 1, 28);
+INSERT INTO `group_permission` (`id`, `group_id`, `permission_id`) VALUES(16, 1, 29);
+INSERT INTO `group_permission` (`id`, `group_id`, `permission_id`) VALUES(17, 1, 26);
+INSERT INTO `group_permission` (`id`, `group_id`, `permission_id`) VALUES(18, 1, 27);
+INSERT INTO `group_permission` (`id`, `group_id`, `permission_id`) VALUES(19, 1, 30);
+INSERT INTO `group_permission` (`id`, `group_id`, `permission_id`) VALUES(20, 1, 32);
+INSERT INTO `group_permission` (`id`, `group_id`, `permission_id`) VALUES(21, 1, 36);
+INSERT INTO `group_permission` (`id`, `group_id`, `permission_id`) VALUES(22, 1, 33);
+INSERT INTO `group_permission` (`id`, `group_id`, `permission_id`) VALUES(23, 1, 34);
+INSERT INTO `group_permission` (`id`, `group_id`, `permission_id`) VALUES(24, 1, 35);
+INSERT INTO `group_permission` (`id`, `group_id`, `permission_id`) VALUES(25, 1, 31);
+INSERT INTO `group_permission` (`id`, `group_id`, `permission_id`) VALUES(26, 1, 24);
+INSERT INTO `group_permission` (`id`, `group_id`, `permission_id`) VALUES(27, 1, 23);
