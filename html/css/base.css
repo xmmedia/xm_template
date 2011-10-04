@@ -69,6 +69,7 @@ input[type="checkbox"] { vertical-align:text-bottom; *vertical-align:baseline; }
 
 /** nav **/
 /* currently select nav items */
+.p_index .top_nav_wrapper nav ul > li.home > a,
 .p_admin .top_nav_wrapper nav ul > li.dbadmin > a,
 .p_useradmin .top_nav_wrapper nav ul > li.dbadmin > a,
 .p_cl4admin .top_nav_wrapper nav ul > li.dbadmin > a,
