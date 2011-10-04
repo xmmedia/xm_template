@@ -99,6 +99,4 @@ $.ajaxSetup({ cache: false });
 $(function() {
 	$('[autofocus]').autofocus();
 	$('.numeric').numeric();
-	// avoid lingering borders on selected links
-	$('a').click(function() { this.blur(); });
 });
