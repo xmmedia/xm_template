@@ -1,4 +1,4 @@
-chgrp templat4 -R *
+chgrp template -R *
 chmod g+w -R uploads
 chmod o+w -R uploads
 chmod g+w -R html/uploads

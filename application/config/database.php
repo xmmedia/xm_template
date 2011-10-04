@@ -18,9 +18,9 @@ return array(
 			 */
 			'hostname'   => 'localhost',
 			'port'       => 3306,
-			'database'   => 'templat4_core',
-			'username'   => 'templat4_core',
-			'password'   => 'template467',
+			'database'   => 'template_main',
+			'username'   => 'template_main',
+			'password'   => '_wrVyi95utzl\'09}@{p',
 			'persistent' => FALSE,
 		),
 		'table_prefix' => '',
