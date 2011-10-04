@@ -81,7 +81,7 @@ input[type="checkbox"] { vertical-align:text-bottom; *vertical-align:baseline; }
 .p_cycleadmin .top_nav_wrapper nav ul > li.dbadmin > a.clicked,
 .p_cl4admin .top_nav_wrapper nav ul > li.dbadmin > a.clicked { color:#0645ad; }
 
-.top_nav_wrapper { width:100%; background:#2d2d2d; border-bottom:1px solid #000; height:30px; white-space:nowrap; }
+.top_nav_wrapper { width:100%; background:#2d2d2d; border-bottom:1px solid #000; height:29px; white-space:nowrap; font-size:0.9em; }
 .top_nav_wrapper nav { width:960px; margin:0 auto; }
 .top_nav_wrapper nav ul { list-style:none; position:absolute; padding:0; }
 .top_nav_wrapper nav ul.left { left:0; margin:0 0 0 4px; }
@@ -122,7 +122,7 @@ input[type="checkbox"] { vertical-align:text-bottom; *vertical-align:baseline; }
 	float:left;
 	z-index:2000;
 	border:1px solid #bebebe;
-	border-top:none;
+	border-top:1px solid #fff;
 	background-color:#fff;
 	box-shadow:0 1px 5px #ccc;
 	-moz-box-shadow:0 1px 5px #ccc;
