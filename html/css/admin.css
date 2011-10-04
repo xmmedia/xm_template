@@ -10,7 +10,7 @@ footer a:hover { text-decoration:underline; }
 
 /** the following are styles to create some formatting and are not quite as "required" as the above styles **/
 /** header **/
-.page_top { margin:0 auto; width:960px; position:relative; height:82px; }
+.page_top { margin:0 auto; width:960px; position:relative; height:52px; }
 .page_top_logo { float:left; margin:20px 0 0 -4px; font-size:1.3em; font-weight:bold; }
 .page_top_logo a { display:block; color:#777; text-decoration:none; }
 .company_logo { float:right; }
@@ -19,34 +19,6 @@ footer a:hover { text-decoration:underline; }
 .language_options .language_label { color:#999; }
 .language_options a { color:#777; text-decoration:none; }
 .language_options a:hover { text-decoration:underline; }
-
-/** nav **/
-.nav_wrapper { margin:0 auto; width:960px; height:73px; }
-
-.main_nav { height:38px; max-width:650px; }
-.main_nav ul { height:35px; border-bottom:1px solid #dfdfdf; }
-.main_nav li a { padding:12px 15px 10px 0; }
-
-.main_nav .sub_nav { display:none; background:none; width:600px; left:0; position:absolute; border-bottom:none; }
-.main_nav .sub_nav li { float:left; }
-.main_nav ul li .sub_nav li a { color:#484848; }
-.main_nav ul li:hover ul li { display:block; }
-.main_nav ul li:hover .sub_nav { display:block; position:absolute; color:#484848; }
-.main_nav ul li:hover .sub_nav a, .main_nav ul li:hover .sub_nav li:hover { background:none; z-index:100; }
-.main_nav ul li .sub_nav li a:hover { color:#969696; }
-.main_nav ul li.aboutus .sub_nav { margin-left:78px; }
-.main_nav ul li.dbadmin .sub_nav { margin-left:178px; }
-
-/** currently selected nav item **/
-.p_admin .main_nav .admin > a,
-.p_cl4admin .main_nav .dbadmin > a,
-.p_account .main_nav .account > a { color:#969696; }
-
-.logged_in_nav { float:right; width:250px; }
-.logged_in_nav ul { border-bottom:none; }
-.logged_in_nav ul li { float:right; padding:0 0 0 15px; }
-.logged_in_nav ul li.logout a { padding-right:0; }
-.logged_in_nav a img { vertical-align:bottom; margin-right:5px; }
 
 /** login box formatting, used on login, forgot password and timed out **/
 .login_box {

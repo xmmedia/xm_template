@@ -1,6 +1,6 @@
 <?php defined('SYSPATH') or die ('No direct script access.');
 
-class Controller_Base extends Controller_cl4_Base {
+class Controller_Base extends Controller_XM_Base {
 	/**
 	* Called before the action
 	* Does everything else in the parent before()'s, but also logs the request.
