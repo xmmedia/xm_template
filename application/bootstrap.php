@@ -75,11 +75,11 @@ Kohana::$environment = KOHANA_ENVIRONMENT;
  * `string`  | error_view | set the error rendering view                   | "kohana/error"
  */
 $settings = array(
-	'base_url'      => '/',
-    'index_file'    => '',
-    'profile'       => DEBUG_FLAG,
-    'caching'       => CACHE_FLAG,
-    'cache_dir'     => ABS_ROOT . '/cache',
+	'base_url'      => URL_ROOT,
+	'index_file'    => '',
+	'profile'       => DEBUG_FLAG,
+	'caching'       => CACHE_FLAG,
+	'cache_dir'     => ABS_ROOT . '/cache',
 );
 Kohana::init($settings);
 
