@@ -118,7 +118,7 @@ $modules['orm']          = MODPATH . 'orm';         // Object Relationship Mappi
 $modules['auth']         = MODPATH . 'auth';        // Basic authentication
 $modules['pagination']   = MODPATH . 'pagination';  // Paging of results
 if (Kohana::$environment == Kohana::DEVELOPMENT) $modules['userguide'] = MODPATH . 'userguide'; // Kohana userguide and API documentation
-if (CACHE_FLAG) $modules['cache'] = MODPATH . 'cache'; // Caching with multiple backends
+$modules['cache'] = MODPATH . 'cache'; // Caching with multiple backends
 if (DEBUG_FLAG) $modules['codebench'] = MODPATH . 'codebench'; // Benchmarking tool
 Kohana::modules($modules);
 
