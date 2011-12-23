@@ -1,52 +1,16 @@
-/** standard html tags **/
-html { overflow-y:scroll; overflow:-moz-scrollbars-vertical; } /* always show vertical scrollbar in firefox and ie8 */
-body {
-	font-family:Arial, Helvetica, sans-serif;
-	font-size:0.8em;
-	text-align:center;
-	color:#000;
-	margin:0;
-	padding:0;
-	background:#fff;
-}
-p { margin:10px 0; }
-h1, h2, h3, h4, h5, h6 { margin:10px 0 7px 0; font-weight:bold; }
-h1 { font-size:2em; }
-h2 { font-size:1.7em; }
-h3 { font-size:1.4em; }
-h4 { font-size:1.2em; }
-h5 { /* normal font size */ }
-h6 { font-size:0.7em; }
-
-/* list styles */
-ol.no_style, ul.no_style { list-style-type:none; margin:0; padding:0; }
-ol, ul { margin:10px 10px 10px 40px; }
-li { margin:5px 0; }
-ol { list-style:decimal; }
-ul { list-style:disc; }
-
-/** tables styles **/
-table tr td, td.align_top { vertical-align:top; }
-
-/** other element styles -- brings back the default styling after the CSS reset **/
-em { font-style:italic; }
-strong { font-weight:bold; }
-small { font-size:0.9em; }
-label { cursor:pointer; }
-
-/** align radio, labels, forms **/
-input[type="radio"] { vertical-align:text-bottom; }
-input[type="checkbox"] { vertical-align:text-bottom; *vertical-align:baseline; }
-.ie6 input { vertical-align:text-bottom; }
-
-/** commonly used styles **/
-.clear { clear:both; }
-.hidden { display:none; }
-.center { text-align:center; }
+body { font-family: Arial, Helvetica, sans-serif; }
+h1, h2, h3, h4, h5, h6 { margin: 0 0 7px 0; }
+p { margin: 10px 0; }
+address { font-style: normal; }
+label { cursor: pointer; }
+.cl4_message { color: #000; font-weight: normal; padding: 0; }
+.labels_above label { display: block; margin-top: 8px; }
+.clear { clear: both; }
 
 /** development related styles **/
 #kohana_profiler { margin-top:20px; min-width:850px; }
-.debug { text-align:left; }
+.debug { text-align:left; background-color:transparent; }
+.debug code { background-color:transparent; }
 .development_msg {
 	width:100%;
 	text-align:center;
@@ -58,76 +22,3 @@ input[type="checkbox"] { vertical-align:text-bottom; *vertical-align:baseline; }
 	letter-spacing:1px;
 	color:#000;
 }
-
-/** basic nav **/
-.basic_nav { float:left; height:28px; position:relative; width:auto; z-index:500; }
-.basic_nav ul { margin:0; height:25px; }
-.basic_nav li { float:left; height:auto; margin:0; padding:0 15px 0 0; list-style:none; height:38px; }
-.basic_nav li a { display:block; padding:5px 15px 5px 0; color:#484848; text-decoration:none; }
-.basic_nav li:hover { }
-.basic_nav li:hover a { color:#969696; }
-
-/** nav **/
-/* currently select nav items */
-.p_index .top_nav_wrapper nav ul > li.home > a,
-.p_admin .top_nav_wrapper nav ul > li.dbadmin > a,
-.p_useradmin .top_nav_wrapper nav ul > li.dbadmin > a,
-.p_cl4admin .top_nav_wrapper nav ul > li.dbadmin > a,
-.p_login .top_nav_wrapper nav ul > li.login > a,
-.p_account .top_nav_wrapper nav ul > li.login > a { border-top:2px solid #dd4b39; font-weight:bold; color:#fff; padding-top:7px; }
-/* for the menu items that have sub menus, so when they are clicked when they are also the current one, the main item doesn't stay white */
-.p_admin .top_nav_wrapper nav ul > li.dbadmin > a.clicked,
-.p_useradmin .top_nav_wrapper nav ul > li.dbadmin > a.clicked,
-.p_cycleadmin .top_nav_wrapper nav ul > li.dbadmin > a.clicked,
-.p_cl4admin .top_nav_wrapper nav ul > li.dbadmin > a.clicked { color:#0645ad; }
-
-.top_nav_wrapper { width:100%; background:#2d2d2d; border-bottom:1px solid #000; height:29px; white-space:nowrap; font-size:0.9em; }
-.top_nav_wrapper nav { width:960px; margin:0 auto; }
-.top_nav_wrapper nav ul { list-style:none; position:absolute; padding:0; }
-.top_nav_wrapper nav ul.left { left:0; margin:0 0 0 4px; }
-.top_nav_wrapper nav ul.right { right:0; margin:0 10px 0 0; }
-.top_nav_wrapper nav ul li { float:left; margin:0; padding:0; text-align:left; }
-.top_nav_wrapper nav ul li > a { display:block; color:#ccc; text-decoration:none; padding:8px 8px 9px 8px; border:1px solid transparent; border-bottom:none; }
-.top_nav_wrapper nav ul li > a:hover { background-color:#4c4c4c; }
-.top_nav_wrapper nav .more { /* the down arrow */
-	position:relative;
-	top:-1px;
-	border-style:solid dashed dashed;
-	border-color:transparent;
-	border-top-color:#c0c0c0;
-	display:-moz-inline-box;
-	display:inline-block;
-	font-size:0;
-	height:0;
-	line-height:0;
-	width:0;
-	border-width:3px 3px 0;
-	padding-top:1px;
-	margin-right:3px;
-	left:4px;
-}
-.top_nav_wrapper nav ul li > a.clicked {
-	color:#0645ad;
-	background-color:#fff;
-	border:1px solid #bebebe;
-	border-bottom:none;
-	box-shadow:0 1px 5px #ccc;
-	-moz-box-shadow:0 1px 5px #ccc;
-	-webkit-box-shadow:0 1px 5px #ccc;
-}
-
-.top_nav_wrapper .sub_nav {
-	visibility:hidden;
-	position:absolute;
-	float:left;
-	z-index:2000;
-	border:1px solid #bebebe;
-	border-top:1px solid #fff;
-	background-color:#fff;
-	box-shadow:0 1px 5px #ccc;
-	-moz-box-shadow:0 1px 5px #ccc;
-	-webkit-box-shadow:0 1px 5px #ccc;
-}
-.top_nav_wrapper .sub_nav li { float:none; }
-.top_nav_wrapper .sub_nav li a { float:none; color:#0645ad; }
-.top_nav_wrapper .sub_nav li a:hover { background-color:#ececec; }

@@ -116,9 +116,9 @@ $(function() {
 			link_offset = $link.offset();
 			link_width = $link.width();
 			if ($sub_nav.hasClass('right')) {
-				$sub_nav.css({ right: ($(window).width() - (link_offset.left + link_width + 38)), top : (link_offset.top + 4), visibility: 'visible' });
+				$sub_nav.css({ right: ($(window).width() - (link_offset.left + link_width + 38)), top : ($link.parent().innerHeight()), visibility: 'visible' });
 			} else {
-				$sub_nav.css({ left: (link_offset.left - 44), top : (link_offset.top - 6), visibility: 'visible' });
+				$sub_nav.css({ left: (link_offset.left - 4), top : ($link.parent().innerHeight()), visibility: 'visible' });
 			}
 			if ($sub_nav.width() < link_width + 16) {
 				$sub_nav.css('width', link_width + 16 + 'px');
