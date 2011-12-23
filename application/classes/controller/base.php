@@ -8,11 +8,14 @@ class Controller_Base extends Controller_XM_Base {
 	*/
 	public function before() {
 		try {
-			Model_Request_Log::store_request();
+			// only log the request if they're logged in
+			if (Auth::instance()->logged_in()) {
+				Model_Request_Log::store_request();
+			}
 		} catch (Exception $e) {
 			Kohana_Exception::caught_handler($e, FALSE, FALSE);
 		}
 
 		parent::before();
 	} // function before
-}
+} // class
