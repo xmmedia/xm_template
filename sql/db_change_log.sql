@@ -109,3 +109,9 @@ ALTER TABLE `user_token` CHANGE `user_id` `user_id` INT( 11 ) UNSIGNED NOT NULL 
 ALTER TABLE `change_log` ADD `first_change_log_id` INT UNSIGNED NOT NULL DEFAULT '0' AFTER `event_timestamp` ;
 ALTER TABLE `change_log` ADD INDEX ( `first_change_log_id` );
 -- x8
+
+-- DH 20111229 - changing the get and post fields in request log to be longtext instead of text
+-- x8
+ALTER TABLE `request_log` CHANGE `get` `get` LONGTEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL ,
+CHANGE `post` `post` LONGTEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL ;
+-- x8
