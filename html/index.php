@@ -118,11 +118,34 @@ if ( ! defined('KOHANA_START_MEMORY')) {
 // Bootstrap the application
 require APPPATH . 'bootstrap' . EXT;
 
-/**
- * Execute the main request. A source of the URI can be passed, eg: $_SERVER['PATH_INFO'].
- * If no source is specified, the URI will be automatically detected.
- */
-echo Request::factory()
-	->execute()
-	->send_headers()
-	->body();
+try {
+	/**
+	 * Execute the main request. A source of the URI can be passed, eg: $_SERVER['PATH_INFO'].
+	 * If no source is specified, the URI will be automatically detected.
+	 */
+	echo Request::factory()
+		->execute()
+		->send_headers()
+		->body();
+} catch (Exception $e) {
+	try {
+		Kohana_Exception::caught_handler($e);
+
+		// If there was an error, send a 404 response and display an error
+		$response = Request::current()
+			->response();
+		if ( empty($response)) {
+			$response = new Response();
+		}
+		echo $response->status(404)
+			->body(View::factory('pages/404')
+				->set('message', 'Something went terribly wrong. Try again in a few minutes.'))
+			->send_headers()
+			->body();
+	} catch (Exception $e) {
+		// This is completely overkill, but helps some people sleep at night
+		Kohana_Exception::caught_handler($e);
+		echo "Something went wrong. Try again in a few minutes.";
+		exit;
+	}
+}
