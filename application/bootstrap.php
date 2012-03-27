@@ -106,20 +106,19 @@ $lang_options = '(en-ca|fr-ca)';
  * Enable modules. Modules are referenced by a relative or absolute path.
  * ORDER MATTERS HERE!!!
  */
-$modules = array();
-$modules['xmmedia']      = MODPATH . 'xmmedia';     // xmmedia
-$modules['cl4']          = MODPATH . 'cl4';         // cl4
-$modules['cl4auth']      = MODPATH . 'cl4auth';     // cl4auth
-$modules['cl4admin']     = MODPATH . 'cl4admin';    // cl4admin
-$modules['cl4base']      = MODPATH . 'cl4base';     // cl4base
-$modules['database']     = MODPATH . 'database';    // Database access
-$modules['image']        = MODPATH . 'image';       // Image manipulation
-$modules['orm']          = MODPATH . 'orm';         // Object Relationship Mapping
-$modules['auth']         = MODPATH . 'auth';        // Basic authentication
-$modules['pagination']   = MODPATH . 'pagination';  // Paging of results
-if (Kohana::$environment == Kohana::DEVELOPMENT) $modules['userguide'] = MODPATH . 'userguide'; // Kohana userguide and API documentation
-$modules['cache'] = MODPATH . 'cache'; // Caching with multiple backends
-if (DEBUG_FLAG) $modules['codebench'] = MODPATH . 'codebench'; // Benchmarking tool
+$modules = array(
+	'xmmedia'      => MODPATH . 'xmmedia',     // xmmedia
+	'cl4'          => MODPATH . 'cl4',         // cl4
+	'cl4auth'      => MODPATH . 'cl4auth',     // cl4auth
+	'cl4admin'     => MODPATH . 'cl4admin',    // cl4admin
+	'cl4base'      => MODPATH . 'cl4base',     // cl4base
+	'database'     => MODPATH . 'database',    // Database access
+	'image'        => MODPATH . 'image',       // Image manipulation
+	'orm'          => MODPATH . 'orm',         // Object Relationship Mapping
+	'auth'         => MODPATH . 'auth',        // Basic authentication
+	'pagination'   => MODPATH . 'pagination',  // Paging of results
+	'cache'        => MODPATH . 'cache',       // Caching with multiple backends
+);
 Kohana::modules($modules);
 
 // this sets the default database to use
@@ -130,6 +129,15 @@ Session::$default = SESSION_TYPE;
 
 // the salt to use when creating the cookies for validation
 Cookie::$salt = '=V,]tB|H!;?RP!2Fv(<)"mC\sx48XmiF5|@JkM{.?W+SV>lj?QQs^:;\!ah~oj%';
+
+// if we're in development, logged in and allowed then include the userguide and codebench modules
+if (Kohana::$environment == Kohana::DEVELOPMENT && Auth::instance()->logged_in() && Auth::instance()->allowed('cl4admin/model_create')) {
+	$modules = array_merge(Kohana::modules(), array(
+		'userguide' => MODPATH . 'userguide', // Kohana userguide and API documentation
+		'codebench' => MODPATH . 'codebench', // Benchmarking tool
+	));
+	Kohana::modules($modules);
+}
 
 /**
  * Set the routes. Each route must have a minimum of a name, a URI and a set of
