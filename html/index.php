@@ -138,7 +138,7 @@ try {
 			$response = new Response();
 		}
 		echo $response->status(404)
-			->body(View::factory('pages/404')
+			->body(View::factory('pages/en-ca/404')
 				->set('message', 'Something went terribly wrong. Try again in a few minutes.'))
 			->send_headers()
 			->body();
