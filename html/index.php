@@ -132,10 +132,14 @@ try {
 		Kohana_Exception::caught_handler($e);
 
 		// If there was an error, send a 404 response and display an error
-		$response = Request::current()
-			->response();
-		if ( empty($response)) {
+		$request = Request::current();
+		if ( ! $request instanceof Request) {
 			$response = new Response();
+		} else {
+			$response = $request->response();
+			if ( empty($response)) {
+				$response = new Response();
+			}
 		}
 		echo $response->status(404)
 			->body(View::factory('pages/en-ca/404')
