@@ -131,7 +131,7 @@ Session::$default = SESSION_TYPE;
 Cookie::$salt = '=V,]tB|H!;?RP!2Fv(<)"mC\sx48XmiF5|@JkM{.?W+SV>lj?QQs^:;\!ah~oj%';
 
 // if we're in development, logged in and allowed then include the userguide and codebench modules
-if (Kohana::$environment == Kohana::DEVELOPMENT && Auth::instance()->logged_in() && Auth::instance()->allowed('cl4admin/model_create')) {
+if (Kohana::$environment == Kohana::DEVELOPMENT && Auth::instance()->logged_in() && Auth::instance()->allowed('userguide')) {
 	$modules = array_merge(Kohana::modules(), array(
 		'userguide' => MODPATH . 'userguide', // Kohana userguide and API documentation
 		'codebench' => MODPATH . 'codebench', // Benchmarking tool
