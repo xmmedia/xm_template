@@ -139,13 +139,13 @@ try {
 		}
 		echo $response->status(404)
 			->body(View::factory('pages/en-ca/404')
-				->set('message', 'Something went terribly wrong. Try again in a few minutes.'))
+				->set('message', 'Something went wrong. Try again in a few minutes.'))
 			->send_headers()
 			->body();
 	} catch (Exception $e) {
 		// This is completely overkill, but helps some people sleep at night
 		Kohana_Exception::caught_handler($e);
-		echo "Something went wrong. Try again in a few minutes.";
+		echo 'Something went terribly wrong. Try again in a few minutes.';
 		exit;
 	}
 }
