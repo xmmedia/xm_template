@@ -20,11 +20,11 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 --
 
 CREATE TABLE `auth_log` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) unsigned NOT NULL DEFAULT '0',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int(10) unsigned NOT NULL DEFAULT '0',
   `username` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `access_time` datetime NOT NULL,
-  `auth_type_id` int(11) unsigned NOT NULL DEFAULT '0',
+  `auth_type_id` int(10) unsigned NOT NULL DEFAULT '0',
   `browser` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `ip_address` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
@@ -43,7 +43,7 @@ CREATE TABLE `auth_log` (
 --
 
 CREATE TABLE `auth_type` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `display_order` smallint(6) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
@@ -69,14 +69,14 @@ INSERT INTO `auth_type` VALUES(8, 'Verifying Human', 7);
 --
 
 CREATE TABLE `change_log` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `event_timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `first_change_log_id` int(10) unsigned NOT NULL DEFAULT '0',
-  `user_id` int(11) unsigned NOT NULL DEFAULT '0',
+  `user_id` int(10) unsigned NOT NULL DEFAULT '0',
   `table_name` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
-  `record_pk` int(11) unsigned NOT NULL DEFAULT '0',
+  `record_pk` int(10) unsigned NOT NULL DEFAULT '0',
   `query_type` varchar(12) COLLATE utf8_unicode_ci NOT NULL,
-  `row_count` int(11) unsigned NOT NULL DEFAULT '0',
+  `row_count` int(10) unsigned NOT NULL DEFAULT '0',
   `sql` longtext COLLATE utf8_unicode_ci NOT NULL,
   `changed` longtext COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
@@ -98,7 +98,7 @@ CREATE TABLE `change_log` (
 --
 
 CREATE TABLE `contact` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(10) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `phone` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
@@ -120,7 +120,7 @@ CREATE TABLE `contact` (
 --
 
 CREATE TABLE `country` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(10) NOT NULL AUTO_INCREMENT,
   `expiry_date` datetime NOT NULL,
   `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `symbol` varchar(5) COLLATE utf8_unicode_ci NOT NULL,
@@ -396,7 +396,7 @@ INSERT INTO `country` VALUES(248, '0000-00-00 00:00:00', 'Zimbabwe', '', '1.0000
 --
 
 CREATE TABLE `group` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `description` text COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
@@ -416,9 +416,9 @@ INSERT INTO `group` VALUES(2, 'Administrator', 'Client administrator, can edit u
 --
 
 CREATE TABLE `group_permission` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `group_id` int(11) unsigned NOT NULL DEFAULT '0',
-  `permission_id` int(11) unsigned NOT NULL DEFAULT '0',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `group_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `permission_id` int(10) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `group_id` (`group_id`,`permission_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -441,20 +441,20 @@ INSERT INTO `group_permission` VALUES(11, 2, 10);
 INSERT INTO `group_permission` VALUES(12, 1, 11);
 INSERT INTO `group_permission` VALUES(13, 2, 11);
 INSERT INTO `group_permission` VALUES(14, 1, 12);
-INSERT INTO `group_permission` VALUES(15, 1, 25);
-INSERT INTO `group_permission` VALUES(16, 1, 28);
-INSERT INTO `group_permission` VALUES(17, 1, 29);
-INSERT INTO `group_permission` VALUES(18, 1, 26);
-INSERT INTO `group_permission` VALUES(19, 1, 27);
-INSERT INTO `group_permission` VALUES(20, 1, 30);
-INSERT INTO `group_permission` VALUES(21, 1, 32);
-INSERT INTO `group_permission` VALUES(22, 1, 36);
-INSERT INTO `group_permission` VALUES(23, 1, 33);
-INSERT INTO `group_permission` VALUES(24, 1, 34);
-INSERT INTO `group_permission` VALUES(25, 1, 35);
-INSERT INTO `group_permission` VALUES(26, 1, 31);
-INSERT INTO `group_permission` VALUES(27, 1, 24);
-INSERT INTO `group_permission` VALUES(28, 1, 23);
+INSERT INTO `group_permission` VALUES(15, 1, 15);
+INSERT INTO `group_permission` VALUES(16, 1, 18);
+INSERT INTO `group_permission` VALUES(17, 1, 19);
+INSERT INTO `group_permission` VALUES(18, 1, 16);
+INSERT INTO `group_permission` VALUES(19, 1, 17);
+INSERT INTO `group_permission` VALUES(20, 1, 20);
+INSERT INTO `group_permission` VALUES(21, 1, 22);
+INSERT INTO `group_permission` VALUES(22, 1, 26);
+INSERT INTO `group_permission` VALUES(23, 1, 23);
+INSERT INTO `group_permission` VALUES(24, 1, 24);
+INSERT INTO `group_permission` VALUES(25, 1, 25);
+INSERT INTO `group_permission` VALUES(26, 1, 21);
+INSERT INTO `group_permission` VALUES(29, 1, 14);
+INSERT INTO `group_permission` VALUES(30, 1, 13);
 
 -- --------------------------------------------------------
 
@@ -463,7 +463,7 @@ INSERT INTO `group_permission` VALUES(28, 1, 23);
 --
 
 CREATE TABLE `permission` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `permission` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `name` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
   `description` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
@@ -547,9 +547,9 @@ CREATE TABLE `session` (
 --
 
 CREATE TABLE `state` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(10) NOT NULL AUTO_INCREMENT,
   `expiry_date` datetime NOT NULL,
-  `country_id` int(11) NOT NULL,
+  `country_id` int(10) NOT NULL,
   `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `abbrev` varchar(3) COLLATE utf8_unicode_ci NOT NULL,
   `alternate` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -643,7 +643,7 @@ INSERT INTO `state` VALUES(69, '0000-00-00 00:00:00', 40, 'Yukon', 'YT', '', 10)
 --
 
 CREATE TABLE `user` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `expiry_date` datetime NOT NULL,
   `username` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `password` char(100) COLLATE utf8_unicode_ci NOT NULL,
@@ -666,7 +666,7 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` VALUES(1, '0000-00-00 00:00:00', 'admin@admin.com', '06b28319e30193fc0f1d06ad118db92cc53ec695e3f9c9257b63224015763728', 'Admin', 'Admin', 1, 16, '2012-04-26 01:01:25', 0, '2011-12-23 15:15:11', '0PE8IwzuI0KRauBKUkFZnsFKD2mzKdB2', 0, 0);
+INSERT INTO `user` VALUES(1, '0000-00-00 00:00:00', 'admin@admin.com', '06b28319e30193fc0f1d06ad118db92cc53ec695e3f9c9257b63224015763728', 'Admin', 'Admin', 1, 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', '', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -675,9 +675,9 @@ INSERT INTO `user` VALUES(1, '0000-00-00 00:00:00', 'admin@admin.com', '06b28319
 --
 
 CREATE TABLE `user_group` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) unsigned NOT NULL DEFAULT '0',
-  `group_id` int(11) unsigned NOT NULL DEFAULT '0',
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `group_id` int(10) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `user_id` (`user_id`,`group_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -695,10 +695,10 @@ INSERT INTO `user_group` VALUES(1, 1, 1);
 --
 
 CREATE TABLE `user_token` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `date_created` datetime NOT NULL,
   `date_expired` datetime NOT NULL,
-  `user_id` int(11) unsigned NOT NULL DEFAULT '0',
+  `user_id` int(10) unsigned NOT NULL DEFAULT '0',
   `token` varchar(35) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   KEY `date_expired` (`date_expired`,`user_id`,`token`)
