@@ -149,20 +149,11 @@ if (Kohana::$environment == Kohana::DEVELOPMENT && Auth::instance()->logged_in()
 if (Kohana::$is_cli) { }
 
 // routes for "static" pages without a sub folder
-Route::set('pages', '(<lang>/)(<page>)', array('lang' => $lang_options))
+Route::set('pages', '(<lang>/)(<action>)', array('lang' => $lang_options))
 	->defaults(array(
 		'controller' => 'page',
 		'lang' => DEFAULT_LANG,
-		'page' => 'index',
-));
-
-// route for "static" pages with a sub folder
-Route::set('pages_section', '(<lang>/)<section>/(<page>)', array('lang' => $lang_options))
-	->defaults(array(
-		'controller' => 'page',
-		'lang' => DEFAULT_LANG,
-		'section' => 'index',
-		'page' => 'index',
+		'action' => 'index',
 ));
 
 // for all other pages, show a 404
