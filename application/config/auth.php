@@ -12,4 +12,6 @@ return array(
 	//'enable_3.0.x_hashing' => TRUE,
 	//'hash_method' => 'sha1', // remove once 3.1 update is done
 	//'salt_pattern'  => '1, 3, 5, 9, 14, 15, 20, 21, 28, 30',
+
+	'default_login_redirect' => 'useradmin',
 );
