@@ -1,16 +1,16 @@
 -- phpMyAdmin SQL Dump
--- version 2.11.9.4
+-- version 2.11.11.3
 -- http://www.phpmyadmin.net
 --
 -- Host:
--- Generation Time: Jan 13, 2011 at 12:53 AM
--- Server version: 5.1.50
--- PHP Version: 5.2.14
+-- Generation Time: Apr 26, 2012 at 03:04 AM
+-- Server version: 5.1.52
+-- PHP Version: 5.3.8
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
 --
--- Database: `templat4_core`
+-- Database: `template_main`
 --
 
 -- --------------------------------------------------------
@@ -94,219 +94,41 @@ CREATE TABLE `change_log` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `group`
+-- Table structure for table `contact`
 --
 
-CREATE TABLE `group` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `description` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `group`
---
-
-INSERT INTO `group` VALUES(1, 'System Administrator', 'Programmer level administrator who can access database admin, etc.');
-INSERT INTO `group` VALUES(2, 'Administrator', 'Client administrator, can edit user table.');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `group_permission`
---
-
-CREATE TABLE `group_permission` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `group_id` int(11) unsigned NOT NULL DEFAULT '0',
-  `permission_id` int(11) unsigned NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `group_id` (`group_id`,`permission_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `group_permission`
---
-
-INSERT INTO `group_permission` VALUES(1, 1, 1);
-INSERT INTO `group_permission` VALUES(2, 1, 2);
-INSERT INTO `group_permission` VALUES(3, 1, 3);
-INSERT INTO `group_permission` VALUES(4, 1, 4);
-INSERT INTO `group_permission` VALUES(5, 1, 5);
-INSERT INTO `group_permission` VALUES(6, 1, 6);
-INSERT INTO `group_permission` VALUES(7, 1, 7);
-INSERT INTO `group_permission` VALUES(8, 1, 8);
-INSERT INTO `group_permission` VALUES(9, 1, 9);
-INSERT INTO `group_permission` VALUES(10, 2, 1);
-INSERT INTO `group_permission` VALUES(11, 2, 10);
-INSERT INTO `group_permission` VALUES(12, 1, 11);
-INSERT INTO `group_permission` VALUES(13, 2, 11);
-INSERT INTO `group_permission` VALUES(14, 1, 12);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `permission`
---
-
-CREATE TABLE `permission` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `permission` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `name` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
-  `description` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `permission` (`permission`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `permission`
---
-
-INSERT INTO `permission` VALUES(1, 'account/profile', 'Edit Profile', 'Can edit their profile, including changing their password.');
-INSERT INTO `permission` VALUES(2, 'cl4admin/*/add', 'Database Admin Add', 'Can add or add similar any item in the DB Admin.');
-INSERT INTO `permission` VALUES(3, 'cl4admin/*/edit', 'Database Admin Edit', 'Can edit any items in the DB Admin.');
-INSERT INTO `permission` VALUES(4, 'cl4admin/*/search', 'Database Admin Search', 'Can search for any items in the DB Admin.');
-INSERT INTO `permission` VALUES(5, 'cl4admin/*/export', 'Database Admin Export', 'Can export any items in the DB Admin.');
-INSERT INTO `permission` VALUES(6, 'cl4admin/*/delete', 'Database Admin Delete', 'Can delete any item in the DB Admin.');
-INSERT INTO `permission` VALUES(7, 'cl4admin/*/view', 'Database Admin View', 'Can view any item in the DB Admin.');
-INSERT INTO `permission` VALUES(8, 'cl4admin/*/index', 'Database Admin List', 'Can view a list of items in the DB Admin.');
-INSERT INTO `permission` VALUES(9, 'cl4admin/model_create', 'Database Admin Model Create', 'Can create PHP models from the DB Admin. (Unique from other DB Admin permissions.)');
-INSERT INTO `permission` VALUES(10, 'cl4admin/useradmin/*', 'Database Admin - User', 'Can perform all possible actions on users in the DB Admin (add, edit, delete, search, view, list, export).');
-INSERT INTO `permission` VALUES(11, 'cl4admin', 'DB Admin Access', 'Gives access to DB Admin, although other permissions are required to access individual models/tables and actions.');
-INSERT INTO `permission` VALUES(12, 'userguide', 'Kohana User Guide', 'Gives access to the Kohana User Guide and API Browser by enabling the modules.');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `session`
---
-
-CREATE TABLE `session` (
-  `session_id` varchar(24) COLLATE utf8_unicode_ci NOT NULL,
-  `last_active` int(10) unsigned NOT NULL,
-  `contents` longtext COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`session_id`),
-  KEY `last_active` (`last_active`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `session`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `user`
---
-
-CREATE TABLE `user` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `expiry_date` datetime NOT NULL,
-  `username` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `password` char(100) COLLATE utf8_unicode_ci NOT NULL,
-  `first_name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `last_name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `active_flag` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `login_count` smallint(6) unsigned NOT NULL DEFAULT '0',
-  `last_login` datetime NOT NULL,
-  `failed_login_count` mediumint(9) unsigned NOT NULL DEFAULT '0',
-  `last_failed_login` datetime NOT NULL,
-  `reset_token` char(32) COLLATE utf8_unicode_ci NOT NULL,
-  `force_update_password_flag` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `force_update_profile_flag` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `username` (`expiry_date`,`username`),
-  KEY `active_flag` (`active_flag`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `user`
---
-
-INSERT INTO `user` VALUES(1, '0000-00-00 00:00:00', 'admin@admin.com', '06b28319e30193fc0f1d06ad118db92cc53ec695e3f9c9257b63224015763728', 'Admin', 'Admin', 1, 0, '2011-01-04 22:28:42', 0, '2011-01-03 14:09:13', '', 0, 0);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `user_group`
---
-
-CREATE TABLE `user_group` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) unsigned NOT NULL DEFAULT '0',
-  `group_id` int(11) unsigned NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `user_id` (`user_id`,`group_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `user_group`
---
-
-INSERT INTO `user_group` VALUES(1, 1, 1);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `user_token`
---
-
-CREATE TABLE `user_token` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `date_created` datetime NOT NULL,
-  `date_expired` datetime NOT NULL,
-  `user_id` int(11) unsigned NOT NULL DEFAULT '0',
-  `token` varchar(35) COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `date_expired` (`date_expired`,`user_id`,`token`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `user_token`
---
-
-
--- Additional SQL to use all the features of the xmmedia module
-
--- Contact table
 CREATE TABLE `contact` (
-  `id` int(11) NOT NULL auto_increment,
-  `name` varchar(100) collate utf8_unicode_ci NOT NULL,
-  `email` varchar(100) collate utf8_unicode_ci NOT NULL,
-  `phone` varchar(15) collate utf8_unicode_ci NOT NULL,
-  `message` text collate utf8_unicode_ci NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `phone` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
+  `message` text COLLATE utf8_unicode_ci NOT NULL,
   `date_submitted` datetime NOT NULL,
-  `ip_address` varchar(15) collate utf8_unicode_ci NOT NULL,
-  PRIMARY KEY  (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
-
-
--- Request log table
-CREATE TABLE `request_log` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `datetime` datetime NOT NULL,
-  `user_id` int(10) unsigned NOT NULL DEFAULT '0',
-  `path` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `get` longtext COLLATE utf8_unicode_ci NOT NULL,
-  `post` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `ip_address` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `contact`
+--
 
 
+-- --------------------------------------------------------
 
--- Country table and countries
+--
+-- Table structure for table `country`
+--
+
 CREATE TABLE `country` (
-  `id` int(11) NOT NULL auto_increment,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `expiry_date` datetime NOT NULL,
-  `name` varchar(50) collate utf8_unicode_ci NOT NULL,
-  `symbol` varchar(5) collate utf8_unicode_ci NOT NULL,
-  `exchange_rate` decimal(11,5) NOT NULL default '1.00000',
-  `code` char(3) collate utf8_unicode_ci NOT NULL,
-  `currency_code` varchar(3) collate utf8_unicode_ci NOT NULL,
+  `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `symbol` varchar(5) COLLATE utf8_unicode_ci NOT NULL,
+  `exchange_rate` decimal(11,5) NOT NULL DEFAULT '1.00000',
+  `code` char(3) COLLATE utf8_unicode_ci NOT NULL,
+  `currency_code` varchar(3) COLLATE utf8_unicode_ci NOT NULL,
   `display_order` smallint(6) NOT NULL,
-  PRIMARY KEY  (`id`),
+  PRIMARY KEY (`id`),
   KEY `name` (`name`),
   KEY `code` (`code`),
   KEY `display_order` (`display_order`),
@@ -314,7 +136,10 @@ CREATE TABLE `country` (
   KEY `currency_code` (`currency_code`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- list taken from http://en.wikipedia.org/wiki/ISO_3166-1 on May 5, 2011
+--
+-- Dumping data for table `country`
+--
+
 INSERT INTO `country` VALUES(1, '0000-00-00 00:00:00', 'Afghanistan', '', '1.00000', 'AF', '', 100);
 INSERT INTO `country` VALUES(2, '0000-00-00 00:00:00', 'Åland Islands', '', '1.00000', 'AX', '', 110);
 INSERT INTO `country` VALUES(3, '0000-00-00 00:00:00', 'Albania', '', '1.00000', 'AL', '', 120);
@@ -564,24 +389,182 @@ INSERT INTO `country` VALUES(246, '0000-00-00 00:00:00', 'Yemen', '', '1.00000',
 INSERT INTO `country` VALUES(247, '0000-00-00 00:00:00', 'Zambia', '', '1.00000', 'ZM', '', 2560);
 INSERT INTO `country` VALUES(248, '0000-00-00 00:00:00', 'Zimbabwe', '', '1.00000', 'ZW', '', 2570);
 
+-- --------------------------------------------------------
 
+--
+-- Table structure for table `group`
+--
 
--- State table and states
+CREATE TABLE `group` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `description` text COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `group`
+--
+
+INSERT INTO `group` VALUES(1, 'System Administrator', 'Programmer level administrator who can access database admin, etc.');
+INSERT INTO `group` VALUES(2, 'Administrator', 'Client administrator, can edit user table.');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `group_permission`
+--
+
+CREATE TABLE `group_permission` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `group_id` int(11) unsigned NOT NULL DEFAULT '0',
+  `permission_id` int(11) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `group_id` (`group_id`,`permission_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `group_permission`
+--
+
+INSERT INTO `group_permission` VALUES(1, 1, 1);
+INSERT INTO `group_permission` VALUES(2, 1, 2);
+INSERT INTO `group_permission` VALUES(3, 1, 3);
+INSERT INTO `group_permission` VALUES(4, 1, 4);
+INSERT INTO `group_permission` VALUES(5, 1, 5);
+INSERT INTO `group_permission` VALUES(6, 1, 6);
+INSERT INTO `group_permission` VALUES(7, 1, 7);
+INSERT INTO `group_permission` VALUES(8, 1, 8);
+INSERT INTO `group_permission` VALUES(9, 1, 9);
+INSERT INTO `group_permission` VALUES(10, 2, 1);
+INSERT INTO `group_permission` VALUES(11, 2, 10);
+INSERT INTO `group_permission` VALUES(12, 1, 11);
+INSERT INTO `group_permission` VALUES(13, 2, 11);
+INSERT INTO `group_permission` VALUES(14, 1, 12);
+INSERT INTO `group_permission` VALUES(15, 1, 25);
+INSERT INTO `group_permission` VALUES(16, 1, 28);
+INSERT INTO `group_permission` VALUES(17, 1, 29);
+INSERT INTO `group_permission` VALUES(18, 1, 26);
+INSERT INTO `group_permission` VALUES(19, 1, 27);
+INSERT INTO `group_permission` VALUES(20, 1, 30);
+INSERT INTO `group_permission` VALUES(21, 1, 32);
+INSERT INTO `group_permission` VALUES(22, 1, 36);
+INSERT INTO `group_permission` VALUES(23, 1, 33);
+INSERT INTO `group_permission` VALUES(24, 1, 34);
+INSERT INTO `group_permission` VALUES(25, 1, 35);
+INSERT INTO `group_permission` VALUES(26, 1, 31);
+INSERT INTO `group_permission` VALUES(27, 1, 24);
+INSERT INTO `group_permission` VALUES(28, 1, 23);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `permission`
+--
+
+CREATE TABLE `permission` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `permission` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
+  `description` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `permission` (`permission`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `permission`
+--
+
+INSERT INTO `permission` VALUES(1, 'account/profile', 'Edit Profile', 'Can edit their profile, including changing their password.');
+INSERT INTO `permission` VALUES(2, 'cl4admin/*/add', 'Database Admin Add', 'Can add or add similar any item in the DB Admin.');
+INSERT INTO `permission` VALUES(3, 'cl4admin/*/edit', 'Database Admin Edit', 'Can edit any items in the DB Admin.');
+INSERT INTO `permission` VALUES(4, 'cl4admin/*/search', 'Database Admin Search', 'Can search for any items in the DB Admin.');
+INSERT INTO `permission` VALUES(5, 'cl4admin/*/export', 'Database Admin Export', 'Can export any items in the DB Admin.');
+INSERT INTO `permission` VALUES(6, 'cl4admin/*/delete', 'Database Admin Delete', 'Can delete any item in the DB Admin.');
+INSERT INTO `permission` VALUES(7, 'cl4admin/*/view', 'Database Admin View', 'Can view any item in the DB Admin.');
+INSERT INTO `permission` VALUES(8, 'cl4admin/*/index', 'Database Admin List', 'Can view a list of items in the DB Admin.');
+INSERT INTO `permission` VALUES(9, 'cl4admin/model_create', 'Database Admin Model Create', 'Can create PHP models from the DB Admin. (Unique from other DB Admin permissions.)');
+INSERT INTO `permission` VALUES(10, 'cl4admin/useradmin/*', 'Database Admin - User', 'Can perform all possible actions on users in the DB Admin (add, edit, delete, search, view, list, export).');
+INSERT INTO `permission` VALUES(11, 'cl4admin', 'DB Admin Access', 'Gives access to DB Admin, although other permissions are required to access individual models/tables and actions.');
+INSERT INTO `permission` VALUES(12, 'userguide', 'Kohana User Guide', 'Gives access to the Kohana User Guide and API Browser by enabling the modules.');
+INSERT INTO `permission` VALUES(13, 'dbchange/index', 'DB Change', 'Allows the user to run SQL commands across multiple databases.');
+INSERT INTO `permission` VALUES(14, 'useradmin/index', 'User Admin', 'Allows the user to access the list of users.');
+INSERT INTO `permission` VALUES(15, 'useradmin/add', 'User Admin - Add User', 'Allows the user to add new users.');
+INSERT INTO `permission` VALUES(16, 'useradmin/edit', 'User Admin - Edit User', 'Allows the user to edit users, excluding their permissions.');
+INSERT INTO `permission` VALUES(17, 'useradmin/edit/permissions', 'User Admin - Edit User Permissions', 'Allows the user to edit a users permissions.');
+INSERT INTO `permission` VALUES(18, 'useradmin/user/group/*', 'User Admin - All Groups', 'Allows the user to add any permission group to a user.');
+INSERT INTO `permission` VALUES(19, 'useradmin/delete', 'User Admin - Delete User', 'Allows the user to delete users.');
+INSERT INTO `permission` VALUES(20, 'useradmin/email_password', 'User Admin - Email Password', 'Allows the user to email a new password to a user.');
+INSERT INTO `permission` VALUES(21, 'useradmin/group/index', 'User Admin - Groups List', 'Allows the user to access the list of permission groups.');
+INSERT INTO `permission` VALUES(22, 'useradmin/group/add', 'User Admin - Group Add', 'Allows the user to add a new permission group. Doesn''t allow the user to assign permissions to the group.');
+INSERT INTO `permission` VALUES(23, 'useradmin/group/edit', 'User Admin - Group Edit', 'Allows the user to edit the name and description of a permission group.');
+INSERT INTO `permission` VALUES(24, 'useradmin/group/permissions', 'User Admin - Group Permissions', 'Allows the user to add and remove permissions from the permission group.');
+INSERT INTO `permission` VALUES(25, 'useradmin/group/users', 'User Admin - Group Users', 'Allows the user to add and remove users from the permission group.');
+INSERT INTO `permission` VALUES(26, 'useradmin/group/delete', 'User Admin - Group Delete', 'Allows the user to delete a permission group.');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `request_log`
+--
+
+CREATE TABLE `request_log` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `datetime` datetime NOT NULL,
+  `user_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `path` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `get` text COLLATE utf8_unicode_ci NOT NULL,
+  `post` text COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `request_log`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `session`
+--
+
+CREATE TABLE `session` (
+  `session_id` varchar(24) COLLATE utf8_unicode_ci NOT NULL,
+  `last_active` int(10) unsigned NOT NULL,
+  `contents` longtext COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`session_id`),
+  KEY `last_active` (`last_active`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `session`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `state`
+--
+
 CREATE TABLE `state` (
-  `id` int(11) NOT NULL auto_increment,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `expiry_date` datetime NOT NULL,
   `country_id` int(11) NOT NULL,
-  `name` varchar(100) collate utf8_unicode_ci NOT NULL,
-  `abbrev` varchar(3) collate utf8_unicode_ci NOT NULL,
-  `alternate` varchar(255) collate utf8_unicode_ci NOT NULL,
+  `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `abbrev` varchar(3) COLLATE utf8_unicode_ci NOT NULL,
+  `alternate` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `display_order` smallint(6) NOT NULL,
-  PRIMARY KEY  (`id`),
+  PRIMARY KEY (`id`),
   KEY `date_expired` (`expiry_date`),
   KEY `alternate` (`alternate`),
   KEY `country_id` (`country_id`),
   KEY `display_order` (`display_order`),
   KEY `date_expired_2` (`expiry_date`,`country_id`,`name`,`display_order`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `state`
+--
 
 INSERT INTO `state` VALUES(1, '0000-00-00 00:00:00', 40, 'Alberta', 'AB', '', 10);
 INSERT INTO `state` VALUES(2, '0000-00-00 00:00:00', 235, 'Alaska', 'AK', '', 100);
@@ -653,39 +636,74 @@ INSERT INTO `state` VALUES(67, '0000-00-00 00:00:00', 235, 'West Virginia', 'WV'
 INSERT INTO `state` VALUES(68, '0000-00-00 00:00:00', 235, 'Wyoming', 'WY', '', 100);
 INSERT INTO `state` VALUES(69, '0000-00-00 00:00:00', 40, 'Yukon', 'YT', '', 10);
 
+-- --------------------------------------------------------
 
--- Permissions for the DB Change (dbchange controller)
-INSERT INTO `permission` VALUES(NULL, 'dbchange/index', 'DB Change', 'Allows the user to run SQL commands across multiple databases.');
+--
+-- Table structure for table `user`
+--
 
+CREATE TABLE `user` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `expiry_date` datetime NOT NULL,
+  `username` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `password` char(100) COLLATE utf8_unicode_ci NOT NULL,
+  `first_name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `last_name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `active_flag` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `login_count` smallint(6) unsigned NOT NULL DEFAULT '0',
+  `last_login` datetime NOT NULL,
+  `failed_login_count` mediumint(9) unsigned NOT NULL DEFAULT '0',
+  `last_failed_login` datetime NOT NULL,
+  `reset_token` char(32) COLLATE utf8_unicode_ci NOT NULL,
+  `force_update_password_flag` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  `force_update_profile_flag` tinyint(1) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username` (`expiry_date`,`username`),
+  KEY `active_flag` (`active_flag`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Permission for User Admin (useradmin controller)
-INSERT INTO `permission` VALUES(NULL, 'useradmin/index', 'User Admin', 'Allows the user to access the list of users.');
-INSERT INTO `permission` VALUES(NULL, 'useradmin/add', 'User Admin - Add User', 'Allows the user to add new users.');
-INSERT INTO `permission` VALUES(NULL, 'useradmin/edit', 'User Admin - Edit User', 'Allows the user to edit users, excluding their permissions.');
-INSERT INTO `permission` VALUES(NULL, 'useradmin/edit/permissions', 'User Admin - Edit User Permissions', 'Allows the user to edit a users permissions.');
-INSERT INTO `permission` VALUES(NULL, 'useradmin/user/group/*', 'User Admin - All Groups', 'Allows the user to add any permission group to a user.');
-INSERT INTO `permission` VALUES(NULL, 'useradmin/delete', 'User Admin - Delete User', 'Allows the user to delete users.');
-INSERT INTO `permission` VALUES(NULL, 'useradmin/email_password', 'User Admin - Email Password', 'Allows the user to email a new password to a user.');
-INSERT INTO `permission` VALUES(NULL, 'useradmin/group/index', 'User Admin - Groups List', 'Allows the user to access the list of permission groups.');
-INSERT INTO `permission` VALUES(NULL, 'useradmin/group/add', 'User Admin - Group Add', 'Allows the user to add a new permission group. Doesn''t allow the user to assign permissions to the group.');
-INSERT INTO `permission` VALUES(NULL, 'useradmin/group/edit', 'User Admin - Group Edit', 'Allows the user to edit the name and description of a permission group.');
-INSERT INTO `permission` VALUES(NULL, 'useradmin/group/permissions', 'User Admin - Group Permissions', 'Allows the user to add and remove permissions from the permission group.');
-INSERT INTO `permission` VALUES(NULL, 'useradmin/group/users', 'User Admin - Group Users', 'Allows the user to add and remove users from the permission group.');
-INSERT INTO `permission` VALUES(NULL, 'useradmin/group/delete', 'User Admin - Group Delete', 'Allows the user to delete a permission group.');
+--
+-- Dumping data for table `user`
+--
 
+INSERT INTO `user` VALUES(1, '0000-00-00 00:00:00', 'admin@admin.com', '06b28319e30193fc0f1d06ad118db92cc53ec695e3f9c9257b63224015763728', 'Admin', 'Admin', 1, 16, '2012-04-26 01:01:25', 0, '2011-12-23 15:15:11', '0PE8IwzuI0KRauBKUkFZnsFKD2mzKdB2', 0, 0);
 
--- Assign the User Admin and DB Change permissions to the default groups
-INSERT INTO `group_permission` (`id`, `group_id`, `permission_id`) VALUES(15, 1, 25);
-INSERT INTO `group_permission` (`id`, `group_id`, `permission_id`) VALUES(16, 1, 28);
-INSERT INTO `group_permission` (`id`, `group_id`, `permission_id`) VALUES(17, 1, 29);
-INSERT INTO `group_permission` (`id`, `group_id`, `permission_id`) VALUES(18, 1, 26);
-INSERT INTO `group_permission` (`id`, `group_id`, `permission_id`) VALUES(19, 1, 27);
-INSERT INTO `group_permission` (`id`, `group_id`, `permission_id`) VALUES(20, 1, 30);
-INSERT INTO `group_permission` (`id`, `group_id`, `permission_id`) VALUES(21, 1, 32);
-INSERT INTO `group_permission` (`id`, `group_id`, `permission_id`) VALUES(22, 1, 36);
-INSERT INTO `group_permission` (`id`, `group_id`, `permission_id`) VALUES(23, 1, 33);
-INSERT INTO `group_permission` (`id`, `group_id`, `permission_id`) VALUES(24, 1, 34);
-INSERT INTO `group_permission` (`id`, `group_id`, `permission_id`) VALUES(25, 1, 35);
-INSERT INTO `group_permission` (`id`, `group_id`, `permission_id`) VALUES(26, 1, 31);
-INSERT INTO `group_permission` (`id`, `group_id`, `permission_id`) VALUES(27, 1, 24);
-INSERT INTO `group_permission` (`id`, `group_id`, `permission_id`) VALUES(28, 1, 23);
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_group`
+--
+
+CREATE TABLE `user_group` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) unsigned NOT NULL DEFAULT '0',
+  `group_id` int(11) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `user_id` (`user_id`,`group_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `user_group`
+--
+
+INSERT INTO `user_group` VALUES(1, 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_token`
+--
+
+CREATE TABLE `user_token` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `date_created` datetime NOT NULL,
+  `date_expired` datetime NOT NULL,
+  `user_id` int(11) unsigned NOT NULL DEFAULT '0',
+  `token` varchar(35) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `date_expired` (`date_expired`,`user_id`,`token`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `user_token`
+--
