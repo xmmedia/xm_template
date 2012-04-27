@@ -100,7 +100,8 @@ Kohana::$config->attach(new Kohana_Config_File);
 * This needs to be here because it's used within some of the cl4 modules
 */
 define('DEFAULT_LANG', NULL);
-$lang_options = '(en-ca|fr-ca)';
+// separate languages with |
+$lang_options = '(en-ca)';
 
 /**
  * Enable modules. Modules are referenced by a relative or absolute path.
@@ -149,9 +150,9 @@ if (Kohana::$environment == Kohana::DEVELOPMENT && Auth::instance()->logged_in()
 if (Kohana::$is_cli) { }
 
 // routes for "static" pages without a sub folder
-Route::set('pages', '(<lang>/)(<action>)', array('lang' => $lang_options))
+Route::set('public', '(<lang>/)(<action>)', array('lang' => $lang_options, 'action' => '|'))
 	->defaults(array(
-		'controller' => 'page',
+		'controller' => 'public',
 		'lang' => DEFAULT_LANG,
 		'action' => 'index',
 ));
@@ -159,6 +160,6 @@ Route::set('pages', '(<lang>/)(<action>)', array('lang' => $lang_options))
 // for all other pages, show a 404
 Route::set('catch_all', '<path>', array('path' => '(|.+)'))
 	->defaults(array(
-		'controller' => 'base',
+		'controller' => 'public',
 		'action' => '404',
 ));
