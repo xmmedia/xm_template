@@ -28,7 +28,7 @@ class Controller_Base extends Controller_XM_Base {
 		$this->template->styles = array(
 			'css/1140.css' => 'screen',
 			'css/normalize.css' => NULL,
-			'//ajax.googleapis.com/ajax/libs/jqueryui/1.8.17/themes/pepper-grinder/jquery-ui.css' => NULL,
+			'//ajax.googleapis.com/ajax/libs/jqueryui/1.8.19/themes/pepper-grinder/jquery-ui.css' => NULL,
 			'cl4/css/cl4.css' => NULL,
 			'css/base.css' => NULL,
 		);
@@ -46,8 +46,8 @@ class Controller_Base extends Controller_XM_Base {
 
 		if (empty($this->template->scripts)) $this->template->scripts = array();
 		// add jquery js (for all pages, other js relies on it, so it has to be included first)
-		if ( ! isset($this->template->scripts['jquery'])) $this->template->scripts['jquery'] = '//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js';
-		if ( ! isset($this->template->scripts['jquery_ui'])) $this->template->scripts['jquery_ui'] = '//ajax.googleapis.com/ajax/libs/jqueryui/1.8.17/jquery-ui.min.js';
+		if ( ! isset($this->template->scripts['jquery'])) $this->template->scripts['jquery'] = '//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js';
+		if ( ! isset($this->template->scripts['jquery_ui'])) $this->template->scripts['jquery_ui'] = '//ajax.googleapis.com/ajax/libs/jqueryui/1.8.19/jquery-ui.min.js';
 		if ( ! isset($this->template->scripts['jquery_outside'])) $this->template->scripts['jquery_outside'] = 'js/jquery.outside.min.js';
 		if ( ! isset($this->template->scripts['css3_mediaqueries'])) $this->template->scripts['css3_mediaqueries'] = 'js/css3-mediaqueries.js';
 		if ( ! isset($this->template->scripts['cl4'])) $this->template->scripts['cl4'] = 'cl4/js/cl4.js';
