@@ -1,7 +1,7 @@
 <?php
 
 /**
-* Config for template4.claero.com
+* Config for template4.xmmedia.net
 */
 
 define('KOHANA_ENVIRONMENT', 40); // development
