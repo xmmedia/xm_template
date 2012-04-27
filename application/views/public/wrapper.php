@@ -1,13 +1,12 @@
 
-<?php if ( ! empty($pre_message) || ! empty($message)) { ?>
+<?php
+$message_html = (string) $message;
+if ( ! empty($pre_message) || ! empty($message_html)) { ?>
 <div id="container">
 	<div id="row">
 		<div class="twelvecol">
 	<?php
-	echo $pre_message;
-	if ( ! empty($message)) {
-		echo $message;
-	}
+	echo $pre_message, $message_html;
 	?>
 		</div>
 	</div>
