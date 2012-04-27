@@ -17,6 +17,8 @@ td { vertical-align: top; }
 .clear_spacer_small { clear:both; margin-bottom:10px; height:1px; }
 .hidden { display:none; }
 .center { text-align:center; }
+img.right { float: right; margin: 0 0 10px 10px; }
+img.left { float: left; margin: 0 10px 10px 0; }
 
 /** basic nav **/
 .basic_nav { float:left; height:28px; position:relative; width:auto; z-index:500; }
