@@ -2,8 +2,8 @@
 <?php
 $message_html = (string) $message;
 if ( ! empty($pre_message) || ! empty($message_html)) { ?>
-<div id="container">
-	<div id="row">
+<div class="container">
+	<div class="row">
 		<div class="twelvecol">
 	<?php
 	echo $pre_message, $message_html;
