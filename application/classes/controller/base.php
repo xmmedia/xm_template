@@ -2,10 +2,9 @@
 
 class Controller_Base extends Controller_XM_Base {
 	/**
-	* Called before the action
-	* Does everything else in the parent before()'s, but also logs the request.
-	*
-	*/
+	 * Called before the action.
+	 * Does everything else in the parent before()'s, but also logs the request.
+	 */
 	public function before() {
 		try {
 			// only log the request if they're logged in

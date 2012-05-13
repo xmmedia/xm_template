@@ -4,10 +4,9 @@ class Controller_Public extends Controller_Base {
 	public $template = 'public/base';
 
 	/**
-	* Called before the action
-	* Does everything else in the parent before()'s, but also logs the request.
-	*
-	*/
+	 * Called before the action.
+	 * Does everything else in the parent before()'s and also adds the public CSS.
+	 */
 	public function before() {
 		parent::before();
 
