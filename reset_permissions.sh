@@ -1,3 +1,4 @@
+#!/bin/bash
 chgrp template -R *
 chmod g+w -R uploads
 chmod o+w -R uploads
