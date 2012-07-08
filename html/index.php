@@ -6,8 +6,8 @@ require_once('../application/init.php');
 
 // set the upload paths based on the ABS root
 // these can be set here because it's unlikely the relative path will change per site
-define('UPLOAD_ROOT_PUBLIC', ABS_ROOT . '/html/uploads');
-define('UPLOAD_ROOT_PRIVATE', ABS_ROOT . '/uploads');
+define('UPLOAD_ROOT_PUBLIC', ABS_ROOT . DIRECTORY_SEPARATOR . 'html' . DIRECTORY_SEPARATOR . 'uploads');
+define('UPLOAD_ROOT_PRIVATE', ABS_ROOT . DIRECTORY_SEPARATOR . 'uploads');
 define('UPLOAD_ROOT', UPLOAD_ROOT_PRIVATE);
 
 /**
