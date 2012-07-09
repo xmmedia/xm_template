@@ -57,4 +57,11 @@ class Controller_Base extends Controller_XM_Base {
 
 		return $this;
 	} // function add_template_js
+
+	/**
+	* Throws a 404 exception.
+	*/
+	public function action_404() {
+		throw new Kohana_Exception('The file could not be found.');
+	} // function action_404
 } // class
