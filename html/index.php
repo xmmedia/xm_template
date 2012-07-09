@@ -127,7 +127,19 @@ try {
 		->execute()
 		->send_headers()
 		->body();
+
+} catch (HTTP_Exception $e) {
+	// HTTP exception
+	echo Request::factory(Route::get('error')->uri(array(
+			'action'  => $e->getCode(),
+			'message' => rawurlencode($e->getMessage())
+		)))
+		->execute()
+		->send_headers()
+		->body();
+
 } catch (Exception $e) {
+	// unknown exception, so try to show a "nice" page
 	try {
 		Kohana_Exception::caught_handler($e);
 

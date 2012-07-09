@@ -157,9 +157,10 @@ Route::set('public', '(<lang>/)(<action>)', array('lang' => $lang_options, 'acti
 		'action' => 'index',
 ));
 
-// for all other pages, show a 404
-Route::set('catch_all', '<path>', array('path' => '(|.+)'))
+// error route
+Route::set('error', '(<lang>/)error/<action>(/<message>)', array('lang' => $lang_options, 'action' => '[0-9]++', 'message' => '.+'))
 	->defaults(array(
-		'controller' => 'public',
+		'lang' => DEFAULT_LANG,
+		'controller' => 'error',
 		'action' => '404',
 ));
