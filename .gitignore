@@ -11,3 +11,4 @@ kohana_release
 nbproject
 *.komodoproject
 build
+sftp-config.json
