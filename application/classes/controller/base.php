@@ -48,7 +48,6 @@ class Controller_Base extends Controller_XM_Base {
 		if ( ! isset($this->template->scripts['jquery'])) $this->template->scripts['jquery'] = '//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js';
 		if ( ! isset($this->template->scripts['jquery_ui'])) $this->template->scripts['jquery_ui'] = '//ajax.googleapis.com/ajax/libs/jqueryui/1.8.19/jquery-ui.min.js';
 		if ( ! isset($this->template->scripts['jquery_outside'])) $this->template->scripts['jquery_outside'] = 'js/jquery.outside.min.js';
-		if ( ! isset($this->template->scripts['css3_mediaqueries'])) $this->template->scripts['css3_mediaqueries'] = 'js/css3-mediaqueries.js';
 		if ( ! isset($this->template->scripts['cl4'])) $this->template->scripts['cl4'] = 'cl4/js/cl4.js';
 		if ( ! isset($this->template->scripts['cl4_ajax'])) $this->template->scripts['cl4_ajax'] = 'cl4/js/ajax.js';
 		if ( ! isset($this->template->scripts['base'])) $this->template->scripts['base'] = 'js/base.js';
