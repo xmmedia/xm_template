@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host:
--- Generation Time: Apr 26, 2012 at 03:04 AM
--- Server version: 5.1.52
--- PHP Version: 5.3.8
+-- Generation Time: Sep 14, 2012 at 04:40 PM
+-- Server version: 5.1.61
+-- PHP Version: 5.3.13
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
@@ -131,6 +131,82 @@ CREATE TABLE `contact` (
 --
 -- Dumping data for table `contact`
 --
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `content`
+--
+
+CREATE TABLE `content` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `expiry_date` datetime NOT NULL,
+  `last_update` datetime NOT NULL,
+  `last_update_user_id` int(10) unsigned NOT NULL,
+  `code` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
+  `content_page_id` int(10) unsigned NOT NULL,
+  `description` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
+  `instructions` varchar(1000) COLLATE utf8_unicode_ci NOT NULL,
+  `content` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `text_only_flag` tinyint(1) unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `expiry_date` (`expiry_date`,`code`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `content`
+--
+
+INSERT INTO `content` VALUES(1, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 'test', 'Test Content', 0, 'Just a test to make sure content admin is working.', 'This doesn''t display anywhere. It''s just a test to demo the content admin.', '', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `content_history`
+--
+
+CREATE TABLE `content_history` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `expiry_date` datetime NOT NULL,
+  `content_id` int(10) unsigned NOT NULL,
+  `creation_date` datetime NOT NULL,
+  `creation_user_id` int(10) unsigned NOT NULL,
+  `post_date` datetime NOT NULL,
+  `post_user_id` int(10) unsigned NOT NULL,
+  `history_date` datetime NOT NULL,
+  `history_user_id` int(10) unsigned NOT NULL,
+  `content` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `comments` varchar(1000) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `expiry_date` (`expiry_date`,`content_id`,`post_date`,`history_date`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `content_history`
+--
+
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `content_page`
+--
+
+CREATE TABLE `content_page` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `expiry_date` datetime NOT NULL,
+  `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `url` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `expiry_date` (`expiry_date`,`name`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `content_page`
+--
+
 
 -- --------------------------------------------------------
 
@@ -456,7 +532,6 @@ INSERT INTO `group_permission` VALUES(7, 1, 7);
 INSERT INTO `group_permission` VALUES(8, 1, 8);
 INSERT INTO `group_permission` VALUES(9, 1, 9);
 INSERT INTO `group_permission` VALUES(10, 2, 1);
-INSERT INTO `group_permission` VALUES(11, 2, 10);
 INSERT INTO `group_permission` VALUES(12, 1, 11);
 INSERT INTO `group_permission` VALUES(13, 2, 11);
 INSERT INTO `group_permission` VALUES(14, 1, 12);
@@ -474,6 +549,17 @@ INSERT INTO `group_permission` VALUES(25, 1, 25);
 INSERT INTO `group_permission` VALUES(26, 1, 21);
 INSERT INTO `group_permission` VALUES(29, 1, 14);
 INSERT INTO `group_permission` VALUES(30, 1, 13);
+INSERT INTO `group_permission` VALUES(31, 1, 27);
+INSERT INTO `group_permission` VALUES(32, 1, 28);
+INSERT INTO `group_permission` VALUES(33, 2, 27);
+INSERT INTO `group_permission` VALUES(34, 2, 28);
+INSERT INTO `group_permission` VALUES(35, 2, 14);
+INSERT INTO `group_permission` VALUES(36, 2, 15);
+INSERT INTO `group_permission` VALUES(37, 2, 18);
+INSERT INTO `group_permission` VALUES(38, 2, 19);
+INSERT INTO `group_permission` VALUES(39, 2, 16);
+INSERT INTO `group_permission` VALUES(40, 2, 17);
+INSERT INTO `group_permission` VALUES(41, 2, 20);
 
 -- --------------------------------------------------------
 
@@ -503,7 +589,7 @@ INSERT INTO `permission` VALUES(6, 'cl4admin/*/delete', 'Database Admin Delete',
 INSERT INTO `permission` VALUES(7, 'cl4admin/*/view', 'Database Admin View', 'Can view any item in the DB Admin.');
 INSERT INTO `permission` VALUES(8, 'cl4admin/*/index', 'Database Admin List', 'Can view a list of items in the DB Admin.');
 INSERT INTO `permission` VALUES(9, 'cl4admin/model_create', 'Database Admin Model Create', 'Can create PHP models from the DB Admin. (Unique from other DB Admin permissions.)');
-INSERT INTO `permission` VALUES(10, 'cl4admin/useradmin/*', 'Database Admin - User', 'Can perform all possible actions on users in the DB Admin (add, edit, delete, search, view, list, export).');
+INSERT INTO `permission` VALUES(10, 'cl4admin/contact/*', 'Database Admin - Contacts', 'Can perform all possible actions on Contacts in the DB Admin (add, edit, delete, search, view, list, export).');
 INSERT INTO `permission` VALUES(11, 'cl4admin', 'DB Admin Access', 'Gives access to DB Admin, although other permissions are required to access individual models/tables and actions.');
 INSERT INTO `permission` VALUES(12, 'userguide', 'Kohana User Guide', 'Gives access to the Kohana User Guide and API Browser by enabling the modules.');
 INSERT INTO `permission` VALUES(13, 'dbchange/index', 'DB Change', 'Allows the user to run SQL commands across multiple databases.');
@@ -520,6 +606,8 @@ INSERT INTO `permission` VALUES(23, 'useradmin/group/edit', 'User Admin - Group 
 INSERT INTO `permission` VALUES(24, 'useradmin/group/permissions', 'User Admin - Group Permissions', 'Allows the user to add and remove permissions from the permission group.');
 INSERT INTO `permission` VALUES(25, 'useradmin/group/users', 'User Admin - Group Users', 'Allows the user to add and remove users from the permission group.');
 INSERT INTO `permission` VALUES(26, 'useradmin/group/delete', 'User Admin - Group Delete', 'Allows the user to delete a permission group.');
+INSERT INTO `permission` VALUES(27, 'contentadmin', 'Content Admin', 'Allows the user to access the content admin. Required for users to edit content.');
+INSERT INTO `permission` VALUES(28, 'contentadmin/*', 'Content Admin - All Content', 'Allows the user to make changes to all content.');
 
 -- --------------------------------------------------------
 
@@ -658,6 +746,36 @@ INSERT INTO `state` VALUES(69, '0000-00-00 00:00:00', 40, 'Yukon', 'YT', '', 10)
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tree`
+--
+
+CREATE TABLE `tree` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `expiry_date` datetime NOT NULL,
+  `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `lft` int(10) unsigned NOT NULL,
+  `rgt` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `expiry_date` (`expiry_date`,`lft`,`rgt`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `tree`
+--
+
+INSERT INTO `tree` VALUES(1, '0000-00-00 00:00:00', 'root', 1, 22);
+INSERT INTO `tree` VALUES(14, '0000-00-00 00:00:00', 'Televisions', 13, 16);
+INSERT INTO `tree` VALUES(13, '0000-00-00 00:00:00', 'Electronics', 12, 17);
+INSERT INTO `tree` VALUES(12, '0000-00-00 00:00:00', 'Cherry', 7, 8);
+INSERT INTO `tree` VALUES(11, '0000-00-00 00:00:00', 'Red', 6, 9);
+INSERT INTO `tree` VALUES(10, '0000-00-00 00:00:00', 'Fruit', 3, 10);
+INSERT INTO `tree` VALUES(9, '0000-00-00 00:00:00', 'Food', 2, 11);
+INSERT INTO `tree` VALUES(15, '0000-00-00 00:00:00', 'Tube', 14, 15);
+INSERT INTO `tree` VALUES(16, '0000-00-00 00:00:00', 'Orange', 4, 5);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user`
 --
 
@@ -685,7 +803,7 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` VALUES(1, '0000-00-00 00:00:00', 'admin@admin.com', '06b28319e30193fc0f1d06ad118db92cc53ec695e3f9c9257b63224015763728', 'Admin', 'Admin', 1, 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', '', 0, 0);
+INSERT INTO `user` VALUES(1, '0000-00-00 00:00:00', 'admin@admin.com', '06b28319e30193fc0f1d06ad118db92cc53ec695e3f9c9257b63224015763728', 'Admin', 'Admin', 1, 11, '2012-09-14 13:16:30', 0, '0000-00-00 00:00:00', '', 0, 0);
 
 -- --------------------------------------------------------
 
