@@ -96,7 +96,6 @@ $(function() {
 		var $sub_nav = $link.parent().find('.sub_nav');
 		if ($sub_nav.css('visibility') != 'hidden') {
 			$sub_nav.css({ visibility: 'hidden' });
-			$('#change_company').hide();
 			$link.removeClass('clicked');
 		} else {
 			$('.top_nav_wrapper li.has_subnav > a.clicked').click();
