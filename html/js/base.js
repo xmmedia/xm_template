@@ -101,7 +101,7 @@ $(function() {
 	$('.numeric').numeric();
 
 	// sub nav
-	$('.top_nav_wrapper li.has_subnav > a').click(function(e) {
+	$('.top_nav_wrapper').on('click', 'li.has_subnav > a', function(e) {
 		e.preventDefault();
 		e.stopPropagation();
 
