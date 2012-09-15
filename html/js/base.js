@@ -60,13 +60,6 @@
 			return false;
 		}
 	};
-
-	// strips a table by adding and removing the odd and even classes on the odd and even rows
-	$.fn.strip_table = function() {
-		this.find('tr:even').addClass('even').removeClass('odd');
-		this.find('tr:odd').addClass('odd').removeClass('even');
-		return this;
-	};
 })(jQuery);
 
 // defaults for the date picker; these are necessary so the date picker within cl4 work
