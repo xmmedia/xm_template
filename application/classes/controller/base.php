@@ -45,7 +45,7 @@ class Controller_Base extends Controller_XM_Base {
 
 		if (empty($this->template->scripts)) $this->template->scripts = array();
 		// add jquery js (for all pages, other js relies on it, so it has to be included first)
-		if ( ! isset($this->template->scripts['jquery'])) $this->template->scripts['jquery'] = '//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js';
+		if ( ! isset($this->template->scripts['jquery'])) $this->template->scripts['jquery'] = '//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js';
 		if ( ! isset($this->template->scripts['jquery_ui'])) $this->template->scripts['jquery_ui'] = '//ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js';
 		if (DEBUG_FLAG) {
 			if ( ! isset($this->template->scripts['debug'])) $this->template->scripts['debug'] = 'xm/js/debug.js';
