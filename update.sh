@@ -44,26 +44,26 @@ do
 	esac
 done
 
-if [ -z "${BRANCH}" ]; then echo ; echo "Error: The branch is not set"; echo ; usage; exit 1; fi
-if [ -z "${GIT_REPO}" ]; then echo ; echo "Error: The git repo path is not set"; echo ; usage; exit 1; fi
-if [ -z "${PHP_INIT}" ]; then echo ; echo "Error: The PHP init/config is not set"; echo ; usage; exit 1; fi
+if [[ -z "${BRANCH}" ]]; then echo ; echo "Error: The branch is not set"; echo ; usage; exit 1; fi
+if [[ -z "${GIT_REPO}" ]]; then echo ; echo "Error: The git repo path is not set"; echo ; usage; exit 1; fi
+if [[ -z "${PHP_INIT}" ]]; then echo ; echo "Error: The PHP init/config is not set"; echo ; usage; exit 1; fi
 
 echo
 echo "Checking out the repo \"${GIT_REPO}\" to branch \"${BRANCH}\" and setting the config to \"${PHP_INIT}.php\"";
 echo
-if [ $SILENT_MODE != "y" ]; then
+if [[ $SILENT_MODE != "y" ]]; then
 	read -p "Continue (y/n)? ";
-	if [[ "$REPLY" == "n" || "$REPLY" == "" ]]; then
+	if [[ "$REPLY" != "y" ]]; then
 		echo "Stopping!";
 		exit 1;
 	fi
 fi
 
-if [ -d "$CHECKOUT_DIR" ]; then
+if [[ -d "$CHECKOUT_DIR" ]]; then
 	echo
 	read -p "The temporary checkout dir exists (${CHECKOUT_DIR}). Delete it? (y/n)? ";
-	if [ $SILENT_MODE != "y" ]; then
-		if [[ "$REPLY" == "n" || "$REPLY" == "" ]]; then
+	if [[ $SILENT_MODE != "y" ]]; then
+		if [[ "$REPLY" != "y" ]]; then
 			echo "Stopping!";
 			exit 1;
 		fi
@@ -87,7 +87,7 @@ rm -rf `find $CHECKOUT_DIR/ -name .gitmodules` || exit 1
 echo
 echo "-- Removing the init files we don't want, keeping ${PHP_INIT}.php";
 # only remove the init and rename the init we want if we don't want to use the init
-if [ $PHP_INIT != "init" ]; then
+if [[ $PHP_INIT != "init" ]]; then
 	echo "-- Removing $CHECKOUT_DIR/application/init.php";
 	rm -vf $CHECKOUT_DIR/application/init.php || exit 1
 	echo "-- Renaming $CHECKOUT_DIR/application/${PHP_INIT}.php to $CHECKOUT_DIR/application/init.php";
@@ -97,10 +97,10 @@ fi
 echo "-- Removing the other init files (init-*)";
 rm -vf $CHECKOUT_DIR/application/init-* || exit 1
 
-if [ $SILENT_MODE != "y" ]; then
+if [[ $SILENT_MODE != "y" ]]; then
 	echo
 	read -p "Copy the files into place? (y/n) ";
-	if [[ "$REPLY" == "n" || "$REPLY" == "" ]]; then
+	if [[ "$REPLY" != "y" ]]; then
 		echo "Stopped! Files are located in $CHECKOUT_DIR/";
 		exit 0
 	fi
@@ -117,7 +117,7 @@ rm -rf `find html/ ! -path "html/uploads" ! -path "html/"` && mv $CHECKOUT_DIR/h
 cd html/ || exit 1
 
 # just run the change scripts
-if [ $SILENT_MODE == "y" ]; then
+if [[ $SILENT_MODE == "y" ]]; then
 	echo
 	echo "-- Running change scripts";
 	php index.php --uri="change_script/run" || exit 1
@@ -129,7 +129,7 @@ else
 	php index.php --uri="change_script/list" || exit 1
 
 	read -p "Do you want to run the above change scripts? (y/n) ";
-	if [ "$REPLY" == "y" ]; then
+	if [[ "$REPLY" == "y" ]]; then
 		echo
 		echo "-- Running change scripts";
 		php index.php --uri="change_script/run" || exit 1
