@@ -29,7 +29,7 @@ Note: The server must have access to the git repos.
 EOF
 }
 
-while getopts b:c:g:i:sh: optname
+while getopts b:c:g:i:sh optname
 do
 	case "${optname}"
 	in
@@ -44,9 +44,9 @@ do
 	esac
 done
 
-if [ -z "${BRANCH}" ]; then echo ; echo "Error: The branch is not set\n"; usage; exit 1; fi
-if [ -z "${GIT_REPO}" ]; then echo ; echo "Error: The git repo path is not set\n"; usage; exit 1; fi
-if [ -z "${PHP_INIT}" ]; then echo ; echo "Error: The PHP init/config is not set\n"; usage; exit 1; fi
+if [ -z "${BRANCH}" ]; then echo ; echo "Error: The branch is not set"; echo ; usage; exit 1; fi
+if [ -z "${GIT_REPO}" ]; then echo ; echo "Error: The git repo path is not set"; echo ; usage; exit 1; fi
+if [ -z "${PHP_INIT}" ]; then echo ; echo "Error: The PHP init/config is not set"; echo ; usage; exit 1; fi
 
 echo
 echo "Checking out the repo \"${GIT_REPO}\" to branch \"${BRANCH}\" and setting the config to \"${PHP_INIT}.php\"";
@@ -61,8 +61,17 @@ fi
 
 if [ -d "$CHECKOUT_DIR" ]; then
 	echo
+	read -p "The temporary checkout dir exists (${CHECKOUT_DIR}). Delete it? (y/n)? ";
+	if [ $SILENT_MODE != "y" ]; then
+		if [ "$REPLY" == "n" ]; then
+			echo "Stopping!\n";
+			exit 1;
+		fi
+	fi
+
+
 	echo "-- Removing existing $CHECKOUT_DIR/";
-	rm -rf $CHECKOUT_DIR
+	rm -rf $CHECKOUT_DIR || exit 1
 fi
 
 echo
