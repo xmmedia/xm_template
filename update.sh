@@ -53,8 +53,8 @@ echo "Checking out the repo \"${GIT_REPO}\" to branch \"${BRANCH}\" and setting 
 echo
 if [ $SILENT_MODE != "y" ]; then
 	read -p "Continue (y/n)? ";
-	if [ "$REPLY" == "n" ]; then
-		echo "Stopping!\n";
+	if [[ "$REPLY" == "n" || "$REPLY" == "" ]]; then
+		echo "Stopping!";
 		exit 1;
 	fi
 fi
@@ -63,30 +63,29 @@ if [ -d "$CHECKOUT_DIR" ]; then
 	echo
 	read -p "The temporary checkout dir exists (${CHECKOUT_DIR}). Delete it? (y/n)? ";
 	if [ $SILENT_MODE != "y" ]; then
-		if [ "$REPLY" == "n" ]; then
-			echo "Stopping!\n";
+		if [[ "$REPLY" == "n" || "$REPLY" == "" ]]; then
+			echo "Stopping!";
 			exit 1;
 		fi
 	fi
-
 
 	echo "-- Removing existing $CHECKOUT_DIR/";
 	rm -rf $CHECKOUT_DIR || exit 1
 fi
 
 echo
-echo "-- Checking out repo and submodules\n";
+echo "-- Checking out repo and submodules";
 git clone --branch $BRANCH --recursive $GIT_REPO $CHECKOUT_DIR || exit 1
 
 # remove all the git directories
 echo
-echo "-- Recursively removing git directoies and files (.git, .gitignore, .gitmodules)\n";
+echo "-- Recursively removing git directoies and files (.git, .gitignore, .gitmodules)";
 rm -rf `find $CHECKOUT_DIR/ -name .git` || exit 1
 rm -rf `find $CHECKOUT_DIR/ -name .gitignore` || exit 1
 rm -rf `find $CHECKOUT_DIR/ -name .gitmodules` || exit 1
 
 echo
-echo "-- Removing the init files we don't want, keeping ${PHP_INIT}.php\n";
+echo "-- Removing the init files we don't want, keeping ${PHP_INIT}.php";
 # only remove the init and rename the init we want if we don't want to use the init
 if [ $PHP_INIT != "init" ]; then
 	echo "-- Removing $CHECKOUT_DIR/application/init.php";
@@ -101,7 +100,7 @@ rm -vf $CHECKOUT_DIR/application/init-* || exit 1
 if [ $SILENT_MODE != "y" ]; then
 	echo
 	read -p "Copy the files into place? (y/n) ";
-	if [ "$REPLY" == "n" ]; then
+	if [[ "$REPLY" == "n" || "$REPLY" == "" ]]; then
 		echo "Stopped! Files are located in $CHECKOUT_DIR/";
 		exit 0
 	fi
