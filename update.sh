@@ -1,7 +1,7 @@
 #!/bin/bash
 # clones the entire repo, moves around the init files and then moves all the files into place
 
-GIT_REPO="git@example.com:/repo.git";
+GIT_REPO="git@github.com:xmmedia/xm_template.git";
 CHECKOUT_DIR="updates_temp";
 SILENT_MODE="n";
 
@@ -20,6 +20,7 @@ OPTIONS:
 
 Usage:
 
+   sh ./update.sh -b master -i init-production
    sh ./update.sh -b master -g git@repo.example.com:/repo.git -i init-production
 
 The repo can be hard coded at the top of the script thus removing the need for the -g parameter on each run. Although it can still be overridden in the parameters if needed.
