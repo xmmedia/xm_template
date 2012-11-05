@@ -150,17 +150,15 @@ if (Kohana::$environment == Kohana::DEVELOPMENT && Auth::instance()->logged_in()
 if (Kohana::$is_cli) { }
 
 // routes for "static" pages without a sub folder
-Route::set('public', '(<lang>/)(<action>)', array('lang' => $lang_options, 'action' => '|'))
+Route::set('public', '(<action>)', array('action' => '|'))
 	->defaults(array(
 		'controller' => 'public',
-		'lang' => DEFAULT_LANG,
 		'action' => 'index',
 ));
 
 // error route
-Route::set('error', '(<lang>/)error/<action>(/<message>)', array('lang' => $lang_options, 'action' => '[0-9]++', 'message' => '.+'))
+Route::set('error', 'error/<action>(/<message>)', array('action' => '[0-9]++', 'message' => '.+'))
 	->defaults(array(
-		'lang' => DEFAULT_LANG,
 		'controller' => 'error',
 		'action' => '404',
 ));
