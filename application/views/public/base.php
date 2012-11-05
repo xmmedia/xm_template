@@ -5,7 +5,7 @@ echo View::factory('public/head')
 <body class="<?php echo HTML::chars(trim($body_class)); ?>">
 <?php
 // development_message: message regarding site being in development; check for development inside the file
-echo View::factory('cl4/base/development_message')
+echo View::factory('base/development_message')
 	->set($kohana_view_data);
 // header: menus, logos, etc
 echo View::factory('public/header')
@@ -14,13 +14,13 @@ echo View::factory('public/header')
 echo View::factory('public/wrapper')
 	->set($kohana_view_data);
 // analytics: code for website stats, such as Google Analytics
-echo View::factory('cl4/base/analytics')
+echo View::factory('base/analytics')
 	->set($kohana_view_data);
 // footer_javascript: js to be loaded at the bottom of the page
-echo View::factory('cl4/base/footer_javascript')
+echo View::factory('base/footer_javascript')
 	->set($kohana_view_data);
 // debug: debug output; detects debug mode within view
-echo View::factory('cl4/base/debug')
+echo View::factory('base/debug')
 		->set($kohana_view_data); ?>
 </body>
 </html>
