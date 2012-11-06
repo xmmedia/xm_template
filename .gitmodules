@@ -37,9 +37,6 @@
 [submodule "modules/cl4auth"]
 	path = modules/cl4auth
 	url = git@github.com:claerosystems/cl4auth.git
-[submodule "modules/cl4base"]
-	path = modules/cl4base
-	url = git@github.com:claerosystems/cl4base.git
 [submodule "modules/cl4admin"]
 	path = modules/cl4admin
 	url = git@github.com:claerosystems/cl4admin.git

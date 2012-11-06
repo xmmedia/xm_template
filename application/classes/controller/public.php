@@ -1,7 +1,10 @@
 <?php defined('SYSPATH') or die ('No direct script access.');
 
+/**
+ * Public controller for public pages.
+ */
 class Controller_Public extends Controller_Base {
-	public $template = 'public/base';
+	public $template = 'public/template';
 
 	/**
 	 * Called before the action.
@@ -11,9 +14,8 @@ class Controller_Public extends Controller_Base {
 		parent::before();
 
 		if ($this->auto_render) {
-			$this->template->styles['css/public.css'] = NULL;
+			$this->add_style('public', 'css/public.css');
 		}
-
 	} // function before
 
 	/**
@@ -23,9 +25,10 @@ class Controller_Public extends Controller_Base {
 	 */
 	public function action_index() {
 		try {
-			$this->template->body_html = View::factory('pages/en-ca/index');
+			$this->template->body_html = View::factory('pages/index');
 		} catch (Exception $e) {
 			Kohana_Exception::caught_handler($e);
+			$this->error_500();
 		}
 	} // function action_index
 }
