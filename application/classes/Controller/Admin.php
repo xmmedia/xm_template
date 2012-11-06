@@ -11,8 +11,7 @@ class Controller_Admin extends Controller_Base {
 		parent::before();
 
 		if ($this->auto_render) {
-			$this->template->styles['css/admin.css'] = NULL;
+			$this->add_style('admin', 'css/admin.css');
 		}
-
 	} // function before
 }
