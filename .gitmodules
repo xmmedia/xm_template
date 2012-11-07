@@ -43,9 +43,6 @@
 [submodule "html/cl4"]
 	path = html/cl4
 	url = git@github.com:claerosystems/cl4docroot.git
-[submodule "modules/xmmedia"]
-	path = modules/xmmedia
-	url = git@github.com:xmmedia/kohana_module.git
 [submodule "html/xm"]
 	path = html/xm
 	url = git@github.com:xmmedia/kohana_module_docroot.git
