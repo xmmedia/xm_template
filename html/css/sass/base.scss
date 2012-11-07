@@ -1,0 +1,47 @@
+@import "1140", "normalize", "jquery-ui", "cl4";
+
+body, input { font-family: Arial, Helvetica, sans-serif; }
+input { font-size: 0.9em; }
+input, select { margin: 2px; }
+h1, h2, h3, h4, h5, h6 { margin: 0 0 7px 0; }
+p { margin: 10px 0; }
+address { font-style: normal; }
+label { cursor: pointer; }
+td { vertical-align: top; }
+
+/** commonly used styles **/
+.cl4_message { color: #000; padding: 0; }
+.labels_above label { display: block; margin-top: 8px; }
+.labels_above .radios label { display: inline; padding-right: 1.5em; }
+.labels_above .radios input { margin-right: 0.5em; }
+.clear { clear:both; }
+.clear_spacer { clear:both; margin-bottom:20px; height:1px; }
+.clear_spacer_small { clear:both; margin-bottom:10px; height:1px; }
+.hidden { display:none; }
+.center { text-align:center; }
+img.right { float: right; margin-bottom: 10px; margin-left: 10px; }
+img.left { float: left; margin-right: 10px; margin-bottom: 10px; }
+
+/** basic nav **/
+.basic_nav { float:left; height:28px; position:relative; width:auto; z-index:500; }
+.basic_nav ul { margin:0; height:25px; padding:0; }
+.basic_nav li { float:left; height:auto; margin:0; padding:0 15px 0 0; list-style:none; height:38px; }
+.basic_nav li a { display:block; padding:5px 15px 5px 0; color:#484848; text-decoration:none; }
+.basic_nav li:hover { }
+.basic_nav li:hover a { color:#969696; }
+
+/** development related styles **/
+#kohana_profiler { margin-top:20px; min-width:850px; }
+.debug { text-align:left; background-color:transparent; }
+.debug code { background-color:transparent; }
+.development_msg {
+	width:100%;
+	text-align:center;
+	font-size:1.2em;
+	padding:5px 0;
+	border-bottom:1px solid #333;
+	background-color:#edb737;
+	font-weight:bold;
+	letter-spacing:1px;
+	color:#000;
+}
