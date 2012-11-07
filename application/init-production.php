@@ -17,7 +17,7 @@ if ( ! isset($_SERVER['SERVER_PORT'])) {
 } else {
 	define('HTTP_PROTOCOL', ($_SERVER['SERVER_PORT'] == '443' ? 'https' : 'http'));
 }
-define('URL_ROOT', HTTP_PROTOCOL . '://template.xmmedia.net');
+define('URL_ROOT', HTTP_PROTOCOL . '://template4.xmmedia.net');
 define('ABS_ROOT', '/home/template/template4.xmmedia.net');
 define('ANALYTICS_ID', '');
 define('RECAPTCHA_PUBLIC_KEY', '');
