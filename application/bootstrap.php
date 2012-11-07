@@ -38,6 +38,14 @@ setlocale(LC_ALL, 'en_CA.utf-8');
 spl_autoload_register(array('Kohana', 'auto_load'));
 
 /**
+ * Optionally, you can enable a compatibility auto-loader for use with
+ * older modules that have not been updated for PSR-0.
+ *
+ * It is recommended to not enable this unless absolutely necessary.
+ */
+//spl_autoload_register(array('Kohana', 'auto_load_lowercase'));
+
+/**
  * Enable the Kohana auto-loader for unserialization.
  *
  * @see  http://php.net/spl_autoload_call
@@ -74,24 +82,23 @@ Kohana::$environment = KOHANA_ENVIRONMENT;
  * `integer` | cache_life | set the default cache lifetime                 | 60
  * `string`  | error_view | set the error rendering view                   | "kohana/error"
  */
-$settings = array(
+Kohana::init(array(
 	'base_url'      => URL_ROOT,
 	'index_file'    => '',
 	'profile'       => DEBUG_FLAG,
 	'caching'       => CACHE_FLAG,
 	'cache_dir'     => ABS_ROOT . '/cache',
-);
-Kohana::init($settings);
+));
 
 /**
  * Attach the file write to logging. Multiple writers are supported.
  */
-Kohana::$log->attach(new Kohana_Log_File(ABS_ROOT . '/logs'));
+Kohana::$log->attach(new Log_File(ABS_ROOT . 'logs'));
 
 /**
  * Attach a file reader to config. Multiple readers are supported.
  */
-Kohana::$config->attach(new Kohana_Config_File);
+Kohana::$config->attach(new Config_File);
 
 /**
 * Setting the default language
@@ -108,17 +115,17 @@ $lang_options = '(en-ca)';
  * ORDER MATTERS HERE!!!
  */
 $modules = array(
-	'xmmedia'      => MODPATH . 'xmmedia',     // xmmedia
-	'cl4'          => MODPATH . 'cl4',         // cl4
-	'cl4auth'      => MODPATH . 'cl4auth',     // cl4auth
-	'cl4admin'     => MODPATH . 'cl4admin',    // cl4admin
-	'cl4base'      => MODPATH . 'cl4base',     // cl4base
-	'database'     => MODPATH . 'database',    // Database access
-	'image'        => MODPATH . 'image',       // Image manipulation
-	'orm'          => MODPATH . 'orm',         // Object Relationship Mapping
-	'auth'         => MODPATH . 'auth',        // Basic authentication
-	'pagination'   => MODPATH . 'pagination',  // Paging of results
-	'cache'        => MODPATH . 'cache',       // Caching with multiple backends
+	'xmmedia'    => MODPATH . 'xmmedia',    // xmmedia
+	'cl4'        => MODPATH . 'cl4',        // cl4
+	'cl4auth'    => MODPATH . 'cl4auth',    // cl4auth
+	'cl4admin'   => MODPATH . 'cl4admin',   // cl4admin
+	'database'   => MODPATH . 'database',   // Database access
+	'image'      => MODPATH . 'image',      // Image manipulation
+	'minion'     => MODPATH . 'minion',     // CLI Tasks
+	'orm'        => MODPATH . 'orm',        // Object Relationship Mapping
+	'auth'       => MODPATH . 'auth',       // Basic authentication
+	'pagination' => MODPATH . 'pagination', // Paging of results
+	'cache'      => MODPATH . 'cache',      // Caching with multiple backends
 );
 Kohana::modules($modules);
 
