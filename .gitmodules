@@ -49,3 +49,6 @@
 [submodule "modules/minion"]
 	path = modules/minion
 	url = git://github.com/kohana/minion.git
+[submodule "modules/xm"]
+	path = modules/xm
+	url = git@github.com:xmmedia/kohana_module.git
