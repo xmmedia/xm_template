@@ -116,9 +116,8 @@ $lang_options = '(en-ca)';
  */
 $modules = array(
 	'xm'         => MODPATH . 'xm',         // xmmedia
+	'cl4base'    => MODPATH . 'cl4base',    // cl4base
 	'cl4'        => MODPATH . 'cl4',        // cl4
-	'cl4auth'    => MODPATH . 'cl4auth',    // cl4auth
-	'cl4admin'   => MODPATH . 'cl4admin',   // cl4admin
 	'database'   => MODPATH . 'database',   // Database access
 	'image'      => MODPATH . 'image',      // Image manipulation
 	'minion'     => MODPATH . 'minion',     // CLI Tasks
