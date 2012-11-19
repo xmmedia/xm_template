@@ -19,11 +19,14 @@ if ( ! empty($page_title) && trim($page_title) != '') {
 	} // foreach
 } // if
 ?>
-	<!--[if lte IE 9]><link href="/css/1140ie.css" rel="stylesheet" media="screen" /><![endif]-->
+	<!--[if lte IE 9]><link href="/css/1140ie.css" rel="stylesheet"><![endif]-->
 <?php
-foreach ($styles as $file => $type) echo TAB . HTML::style($file, array('media' => $type)) . EOL;
-// http://www.modernizr.com fixes missing html5 elements in IE and detects for new HTML5 features; this needs to be loaded here so the HTML5 tags will show in IE
-echo "\t" . HTML::script($modernizr_path) . EOL; ?>
+foreach ($styles as $file => $type) {
+	echo TAB, HTML::style($file, array('media' => $type)), EOL;
+}
+
+echo TAB, HTML::script('js/modernizr.min.js'), EOL;
+?>
 	<script>
 		var cl4_in_debug = <?php echo (int) DEBUG_FLAG; ?>;
 	</script>
