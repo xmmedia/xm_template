@@ -3,7 +3,7 @@
 /**
  * Public controller for public pages.
  */
-class Controller_Public extends Controller_XM_Public {
+class Controller_Public extends Controller_CL4_Public {
 	/**
 	 * Action: index
 	 *
