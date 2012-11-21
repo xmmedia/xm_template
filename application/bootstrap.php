@@ -151,7 +151,7 @@ if (Kohana::$environment == Kohana::DEVELOPMENT && Auth::instance()->logged_in()
  */
 
 // routes for "static" pages without a sub folder
-Route::set('public', '(<action>)', array('action' => '|'))
+Route::set('public', '(<action>)')
 	->defaults(array(
 		'controller' => 'public',
 		'action' => 'index',
