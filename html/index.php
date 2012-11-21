@@ -118,51 +118,19 @@ if ( ! defined('KOHANA_START_MEMORY')) {
 // Bootstrap the application
 require APPPATH . 'bootstrap' . EXT;
 
-try {
-	if (PHP_SAPI == 'cli') {
-		class_exists('Minion_Task') OR die('minion required!');
-		set_exception_handler(array('Kohana_Minion_Exception_Handler', 'handler'));
+if (PHP_SAPI == 'cli') {
+	class_exists('Minion_Task') OR die('minion required!');
+	set_exception_handler(array('Kohana_Minion_Exception_Handler', 'handler'));
 
-		Minion_Task::factory(Minion_CLI::options())->execute();
+	Minion_Task::factory(Minion_CLI::options())->execute();
 
-	} else {
-		/**
-		 * Execute the main request. A source of the URI can be passed, eg: $_SERVER['PATH_INFO'].
-		 * If no source is specified, the URI will be automatically detected.
-		 */
-		echo Request::factory()
-			->execute()
-			->send_headers()
-			->body();
-	}
-
-} catch (HTTP_Exception $e) {
-	// HTTP exception
-	echo Request::factory(Route::get('error')->uri(array(
-			'action'  => $e->getCode(),
-			'message' => rawurlencode($e->getMessage())
-		)))
+} else {
+	/**
+	 * Execute the main request. A source of the URI can be passed, eg: $_SERVER['PATH_INFO'].
+	 * If no source is specified, the URI will be automatically detected.
+	 */
+	echo Request::factory(TRUE, array(), FALSE)
 		->execute()
-		->send_headers()
+		->send_headers(TRUE)
 		->body();
-
-} catch (Exception $e) {
-	// unknown exception, so try to show a "nice" page
-	try {
-		Kohana_Exception::caught_handler($e);
-
-		// If there was an error, send a 500 response and display an error
-		echo Request::factory(Route::get('error')->uri(array(
-				'action'  => 500,
-				'message' => 'Something went wrong. Try again in a few minutes.',
-			)))
-			->execute()
-			->send_headers()
-			->body();
-	} catch (Exception $e) {
-		// This is completely overkill, but helps some people sleep at night
-		Kohana_Exception::caught_handler($e);
-		echo 'Something went terribly wrong. Try again in a few minutes.';
-		exit;
-	}
 }
