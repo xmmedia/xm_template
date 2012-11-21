@@ -116,15 +116,13 @@ $lang_options = '(en-ca)';
  */
 $modules = array(
 	'xm'         => MODPATH . 'xm',         // xmmedia
+	'cl4base'    => MODPATH . 'cl4base',    // cl4base
 	'cl4'        => MODPATH . 'cl4',        // cl4
-	'cl4auth'    => MODPATH . 'cl4auth',    // cl4auth
-	'cl4admin'   => MODPATH . 'cl4admin',   // cl4admin
 	'database'   => MODPATH . 'database',   // Database access
 	'image'      => MODPATH . 'image',      // Image manipulation
 	'minion'     => MODPATH . 'minion',     // CLI Tasks
 	'orm'        => MODPATH . 'orm',        // Object Relationship Mapping
 	'auth'       => MODPATH . 'auth',       // Basic authentication
-	'pagination' => MODPATH . 'pagination', // Paging of results
 	'cache'      => MODPATH . 'cache',      // Caching with multiple backends
 );
 Kohana::modules($modules);
@@ -153,15 +151,8 @@ if (Kohana::$environment == Kohana::DEVELOPMENT && Auth::instance()->logged_in()
  */
 
 // routes for "static" pages without a sub folder
-Route::set('public', '(<action>)', array('action' => '|'))
+Route::set('public', '(<action>)')
 	->defaults(array(
 		'controller' => 'public',
 		'action' => 'index',
-));
-
-// error route
-Route::set('error', 'error/<action>(/<message>)', array('action' => '[0-9]++', 'message' => '.+'))
-	->defaults(array(
-		'controller' => 'error',
-		'action' => '404',
 ));

@@ -22,9 +22,6 @@
 [submodule "modules/orm"]
 	path = modules/orm
 	url = git://github.com/kohana/orm.git
-[submodule "modules/pagination"]
-	path = modules/pagination
-	url = git://github.com/kohana/pagination.git
 [submodule "modules/unittest"]
 	path = modules/unittest
 	url = git://github.com/kohana/unittest.git
@@ -34,12 +31,6 @@
 [submodule "modules/cl4"]
 	path = modules/cl4
 	url = git@github.com:claerosystems/cl4.git
-[submodule "modules/cl4auth"]
-	path = modules/cl4auth
-	url = git@github.com:claerosystems/cl4auth.git
-[submodule "modules/cl4admin"]
-	path = modules/cl4admin
-	url = git@github.com:claerosystems/cl4admin.git
 [submodule "html/cl4"]
 	path = html/cl4
 	url = git@github.com:claerosystems/cl4docroot.git
@@ -52,3 +43,6 @@
 [submodule "modules/xm"]
 	path = modules/xm
 	url = git@github.com:xmmedia/kohana_module.git
+[submodule "modules/cl4base"]
+	path = modules/cl4base
+	url = git@github.com:claerosystems/cl4base.git
