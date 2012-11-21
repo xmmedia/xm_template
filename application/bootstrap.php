@@ -123,7 +123,6 @@ $modules = array(
 	'minion'     => MODPATH . 'minion',     // CLI Tasks
 	'orm'        => MODPATH . 'orm',        // Object Relationship Mapping
 	'auth'       => MODPATH . 'auth',       // Basic authentication
-	'pagination' => MODPATH . 'pagination', // Paging of results
 	'cache'      => MODPATH . 'cache',      // Caching with multiple backends
 );
 Kohana::modules($modules);
