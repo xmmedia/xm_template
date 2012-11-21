@@ -156,10 +156,3 @@ Route::set('public', '(<action>)', array('action' => '|'))
 		'controller' => 'public',
 		'action' => 'index',
 ));
-
-// error route
-Route::set('error', 'error(/<template>)/<action>(/<message>)', array('template' => '(base|public)', 'action' => '[0-9]++', 'message' => '.+'))
-	->defaults(array(
-		'controller' => 'error',
-		'action' => '404',
-));
