@@ -3,19 +3,16 @@
 /** cl4 mixins **/
 $debug_msg_img: image-url('cl4/message-debug.gif', false, false);
 
-$cl4_icon_spacing: 10px;
-$cl4_include_icon_dimensions: true;
-
-$cl4_icons-spacing: $cl4_icon_spacing;
-$cl4_icons-sprite-dimensions: $cl4_include_icon_dimensions;
+$cl4_icons-layout: smart;
+$cl4_icons-sprite-dimensions: true;
 @import "cl4_icons/*.png";
 
-$cl4_arrows-spacing: $cl4_icon_spacing;
-$cl4_arrows-sprite-dimensions: $cl4_include_icon_dimensions;
+$cl4_arrows-layout: smart;
+$cl4_arrows-sprite-dimensions: true;
 @import "cl4_arrows/*.png";
 
-$cl4_file_types-spacing: $cl4_icon_spacing;
-$cl4_file_types-sprite-dimensions: $cl4_include_icon_dimensions;
+$cl4_file_types-layout: smart;
+$cl4_file_types-sprite-dimensions: true;
 @import "cl4_file_types/*.png";
 
 @include cl4_all();
