@@ -5,7 +5,10 @@ http_path = "/"
 css_dir = "html/css"
 sass_dir = "html/css/sass"
 images_dir = "html/images"
+http_images_path = "/images"
+http_generated_images_path = "/images"
 javascripts_dir = "html/js"
+http_javascripts_path = "/js"
 
 output_style = :compressed
 
@@ -13,6 +16,9 @@ output_style = :compressed
 # relative_assets = true
 
 line_comments = false
+
+add_import_path "html/cl4/css/sass"
+add_import_path "html/xm/css/sass"
 
 
 # If you prefer the indented syntax, you might want to regenerate this
