@@ -2,13 +2,11 @@
 <?php
 $message_html = (string) $message;
 if ( ! empty($pre_message) || ! empty($message_html)) { ?>
-<div class="container">
-	<div class="row">
-		<div class="twelvecol">
+<div class="grid">
+	<div class="col">
 	<?php
 	echo $pre_message, $message_html;
 	?>
-		</div>
 	</div>
 </div>
 <?php } // if ?>

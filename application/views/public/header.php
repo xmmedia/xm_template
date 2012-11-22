@@ -1,7 +1,7 @@
 <header>
-	<nav class="container">
-		<ul class="row">
-			<li class="twocol"><a href="/">Home</a></li>
+	<nav class="grid">
+		<ul class="col">
+			<li><a href="/">Home</a></li>
 		</ul>
 	</nav>
 </header>

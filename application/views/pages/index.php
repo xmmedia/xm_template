@@ -1,22 +1,86 @@
-<div class="container">
-	<div class="row">
-		<div class="twelvecol">
-			<h1>Welcome to the cl4 sample site</h1>
-			<p>Welcome to the current cl4 template site. This site is designed to help get you started with cl4.</p>
-			<h2>Debugging</h2>
-			<p>By default FirePHP is used for debugging, this can be overridden easily by doing the following:</p>
-			<ul>
-				<li>List item</li>
-			</ul>
-			<p>If you are using Firefox, you need to have Firebug and FirePHP add-ons installed. Once this is done, you should be able to
-			open firebug and see the debugging and benchmark data in the console. Sometimes you have to restart the browser to make this work.</p>
+<div class="grid grid_pad">
+	<div class="col">
+		<h1>Welcome to the cl4 sample site</h1>
+		<p>Welcome to the current cl4 template site. This site is designed to help get you started with cl4.</p>
+		<h2>Debugging</h2>
+		<ul>
+			<li>List item</li>
+		</ul>
+	</div>
+</div>
 
-			<h1>Heading 1</h1>
-			<h2>Heading 2</h2>
-			<h3>Heading 3</h3>
-			<h4>Heading 4</h4>
-			<h5>Heading 5</h5>
-			<h6>Heading 6</h6>
+<div class="grid grid_pad">
+	<div class="col-2-3">
+		<div class="module">
+			<h3>2/3 (Opt-in Outside Padding)</h3>
+			<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+		</div>
+	</div>
+	<div class="col-1-3">
+		<div class="module">
+			<h3>1/3</h3>
+			<p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam.</p>
+		</div>
+	</div>
+</div>
+
+<div class="grid grid_pad">
+	<div class="col-1-8">
+		<div class="module">
+			<h3>1/8</h3>
+		</div>
+	</div>
+	<div class="col-1-8">
+		<div class="module">
+			<h3>1/8</h3>
+		</div>
+	</div>
+  	<div class="col-1-8">
+		<div class="module">
+			<h3>1/8</h3>
+		</div>
+	</div>
+	<div class="col-1-8">
+		<div class="module">
+			<h3>1/8</h3>
+		</div>
+	</div>
+	<div class="col-1-8">
+		<div class="module">
+			<h3>1/8</h3>
+		</div>
+	</div>
+	<div class="col-1-8">
+		<div class="module">
+			<h3>1/8</h3>
+		</div>
+	</div>
+	<div class="col-1-8">
+		<div class="module">
+			<h3>1/8</h3>
+		</div>
+	</div>
+	<div class="col-1-8">
+		<div class="module">
+			<h3>1/8</h3>
+		</div>
+	</div>
+</div>
+
+<div class="grid grid_pad">
+	<div class="col-1-4">
+		<div class="module">
+			<h3>1/4</h3>
+		</div>
+	</div>
+	<div class="col-1-2">
+		<div class="module">
+			<h3>1/2</h3>
+		</div>
+	</div>
+	<div class="col-1-4">
+		<div class="module">
+			<h3>1/4</h3>
 		</div>
 	</div>
 </div>
