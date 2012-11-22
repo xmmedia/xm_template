@@ -1,4 +1,25 @@
-@import "1140", "normalize", "jquery-ui", "cl4";
+@import "1140", "normalize", "jquery-ui", "_cl4_mixins";
+
+/** cl4 mixins **/
+$debug_msg_img: image-url('cl4/message-debug.gif', false, false);
+
+$cl4_icon_spacing: 10px;
+$cl4_include_icon_dimensions: true;
+
+$cl4_icons-spacing: $cl4_icon_spacing;
+$cl4_icons-sprite-dimensions: $cl4_include_icon_dimensions;
+@import "cl4_icons/*.png";
+
+$cl4_arrows-spacing: $cl4_icon_spacing;
+$cl4_arrows-sprite-dimensions: $cl4_include_icon_dimensions;
+@import "cl4_arrows/*.png";
+
+$cl4_file_types-spacing: $cl4_icon_spacing;
+$cl4_file_types-sprite-dimensions: $cl4_include_icon_dimensions;
+@import "cl4_file_types/*.png";
+
+@include cl4_all();
+/* end cl4 mixins */
 
 body, input { font-family: Arial, Helvetica, sans-serif; }
 input { font-size: 0.9em; }
