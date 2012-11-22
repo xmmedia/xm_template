@@ -606,8 +606,8 @@ INSERT INTO `permission` VALUES(23, 'user_admin/group/edit', 'User Admin - Group
 INSERT INTO `permission` VALUES(24, 'user_admin/group/permissions', 'User Admin - Group Permissions', 'Allows the user to add and remove permissions from the permission group.');
 INSERT INTO `permission` VALUES(25, 'user_admin/group/users', 'User Admin - Group Users', 'Allows the user to add and remove users from the permission group.');
 INSERT INTO `permission` VALUES(26, 'user_admin/group/delete', 'User Admin - Group Delete', 'Allows the user to delete a permission group.');
-INSERT INTO `permission` VALUES(27, 'contentadmin', 'Content Admin', 'Allows the user to access the content admin. Required for users to edit content.');
-INSERT INTO `permission` VALUES(28, 'contentadmin/*', 'Content Admin - All Content', 'Allows the user to make changes to all content.');
+INSERT INTO `permission` VALUES(27, 'content_admin', 'Content Admin', 'Allows the user to access the content admin. Required for users to edit content.');
+INSERT INTO `permission` VALUES(28, 'content_admin/*', 'Content Admin - All Content', 'Allows the user to make changes to all content.');
 
 -- --------------------------------------------------------
 
