@@ -10,6 +10,7 @@ if (DEVELOPMENT_FLAG) {
 if ( ! empty($page_title) && trim($page_title) != '') {
 	echo HTML::chars($page_title);
 } ?></title>
+
 <?php if ( ! empty($meta_tags)) {
 	foreach ($meta_tags as $name => $content) {
 		if ( ! empty($content)) {
@@ -17,9 +18,7 @@ if ( ! empty($page_title) && trim($page_title) != '') {
 		} // if
 	} // foreach
 } // if
-?>
-	<!--[if lte IE 9]><link href="/css/1140ie.css" rel="stylesheet"><![endif]-->
-<?php
+
 foreach ($styles as $file => $type) {
 	echo TAB, HTML::style($file, array('media' => $type)), EOL;
 }
