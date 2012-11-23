@@ -27,7 +27,7 @@ footer a:hover { text-decoration: underline; }
 .p_account .top_nav_wrapper nav ul > li.login > a { border-top: 2px solid #dd4b39; border-right: none; border-left: none; font-weight: bold; color: #fff; padding-top: 6px; }
 /* for the menu items that have sub menus, so when they are clicked when they are also the current one, the main item doesn't stay white */
 .p_admin .top_nav_wrapper nav ul > li.dbadmin > a.clicked,
-.p_contentadmin .top_nav_wrapper nav ul > li.dbadmin > a.clicked,
+.p_content_admin .top_nav_wrapper nav ul > li.dbadmin > a.clicked,
 .p_user_admin .top_nav_wrapper nav ul > li.dbadmin > a.clicked,
 .p_cl4admin .top_nav_wrapper nav ul > li.dbadmin > a.clicked { color: #0645ad; }
 
