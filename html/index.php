@@ -120,7 +120,7 @@ require APPPATH . 'bootstrap' . EXT;
 
 if (PHP_SAPI == 'cli') {
 	class_exists('Minion_Task') OR die('minion required!');
-	set_exception_handler(array('Kohana_Minion_Exception_Handler', 'handler'));
+	set_exception_handler(array('Kohana_Minion_Exception', 'handler'));
 
 	Minion_Task::factory(Minion_CLI::options())->execute();
 
