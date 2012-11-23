@@ -29,38 +29,12 @@ CREATE TABLE `auth_log` (
   `ip_address` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`),
-  KEY `access_type_id` (`auth_type_id`)
+  KEY `auth_type_id` (`auth_type_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `auth_log`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `auth_type`
---
-
-CREATE TABLE `auth_type` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `display_order` smallint(6) unsigned NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`),
-  KEY `display_order` (`display_order`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `auth_type`
---
-
-INSERT INTO `auth_type` VALUES(1, 'Logged In', 1);
-INSERT INTO `auth_type` VALUES(2, 'Logged Out', 2);
-INSERT INTO `auth_type` VALUES(3, 'Invalid Password', 3);
-INSERT INTO `auth_type` VALUES(4, 'Invalid Username & Password', 4);
-INSERT INTO `auth_type` VALUES(5, 'Unknown Error', 5);
-INSERT INTO `auth_type` VALUES(6, 'Too Many Attempts', 6);
-INSERT INTO `auth_type` VALUES(8, 'Verifying Human', 7);
 
 -- --------------------------------------------------------
 
