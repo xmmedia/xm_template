@@ -1,4 +1,4 @@
-@import "compass", "compass/utilities/general", "normalize", "_cl4_mixins", "_xm_helpers";
+@import "compass", "normalize", "_cl4_mixins", "_xm_helpers";
 
 * { @include box-sizing(border-box); }
 
@@ -22,7 +22,7 @@ $cl4_file_types-sprite-dimensions: true;
 @include cl4_all();
 /* end cl4 mixins */
 
-body, input { font-family: Arial, Helvetica, sans-serif; }
+body, input { font-family: Arial, Helvetica, sans-serif; font-size: 0.8em; }
 input { font-size: 0.9em; }
 input, select { margin: 2px; }
 h1, h2, h3, h4, h5, h6 { margin: 0 0 7px 0; }
@@ -43,14 +43,6 @@ td { vertical-align: top; }
 .center { text-align: center; }
 img.right { float: right; margin-bottom: 10px; margin-left: 10px; }
 img.left { float: left; margin-right: 10px; margin-bottom: 10px; }
-
-/** basic nav **/
-.basic_nav { float: left; height: 28px; position: relative; width: auto; z-index: 500; }
-.basic_nav ul { margin: 0; height: 25px; padding: 0; }
-.basic_nav li { float: left; height: auto; margin: 0; padding: 0 15px 0 0; list-style: none; height: 38px; }
-.basic_nav li a { display: block; padding: 5px 15px 5px 0; color: #484848; text-decoration: none; }
-.basic_nav li:hover { }
-.basic_nav li:hover a { color: #969696; }
 
 /** development related styles **/
 #kohana_profiler { margin-top: 20px; min-width: 850px; }
