@@ -1,7 +1,7 @@
 <div class="grid grid_pad">
 	<div class="col">
-		<h1>Welcome to the cl4 sample site</h1>
-		<p>Welcome to the current cl4 template site. This site is designed to help get you started with cl4.</p>
+		<h1>Welcome to the CL4 + XM sample site</h1>
+		<p>Welcome to the current CL4 + XM template site. This site is designed to help get you started with cl4.</p>
 		<h2>Debugging</h2>
 		<ul>
 			<li>List item</li>
