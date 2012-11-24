@@ -102,12 +102,12 @@ $(function() {
 			link_offset = $link.offset();
 			link_width = $link.width();
 			if ($sub_nav.hasClass('right')) {
-				$sub_nav.css({ right: ($(window).width() - (link_offset.left + link_width + 38)), top : ($link.parent().innerHeight()), visibility: 'visible' });
+				$sub_nav.css({ right: ($(window).width() - (link_offset.left + link_width + 39)), top : ($link.parent().innerHeight()), visibility: 'visible' });
 			} else {
-				$sub_nav.css({ left: (link_offset.left - 4), top : ($link.parent().innerHeight()), visibility: 'visible' });
+				$sub_nav.css({ left: (link_offset.left - 5), top : ($link.parent().innerHeight()), visibility: 'visible' });
 			}
-			if ($sub_nav.width() < link_width + 16) {
-				$sub_nav.css('width', link_width + 16 + 'px');
+			if ($sub_nav.width() < link_width + 19) {
+				$sub_nav.css('width', link_width + 19 + 'px');
 			}
 			$link.addClass('clicked');
 			$sub_nav.bind('clickoutside', function() {
