@@ -101,16 +101,6 @@ Kohana::$log->attach(new Log_File(ABS_ROOT . 'logs'));
 Kohana::$config->attach(new Config_File);
 
 /**
-* Setting the default language
-* If set to NULL, then the route won't include a language by default
-* If you want a language in the route, set default_lang to the language (ie, en-ca)
-* This needs to be here because it's used within some of the cl4 modules
-*/
-define('DEFAULT_LANG', NULL);
-// separate languages with |
-$lang_options = '(en-ca)';
-
-/**
  * Enable modules. Modules are referenced by a relative or absolute path.
  * ORDER MATTERS HERE!!!
  */
