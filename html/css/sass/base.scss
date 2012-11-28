@@ -66,6 +66,7 @@ $grid_pad: 1em;
 .grid {
 	background: #ddd; /* probably remove, for demo purposes */
 	margin: 0 0 $grid_pad 0;
+	padding: $grid_pad;
 	max-width: 1140px;
 	min-width: 755px;
 	margin: 0 auto;
