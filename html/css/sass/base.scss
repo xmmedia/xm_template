@@ -1,6 +1,18 @@
-@import "compass", "normalize", "_cl4_mixins", "_xm_helpers";
+@import "compass", "normalize", "_variables", "_cl4_mixins", "_xm_helpers";
 
 * { @include box-sizing(border-box); }
+
+.clearfix:after {
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: " ";
+	clear: both;
+	height: 0;
+}
+
+img, object, embed { max-width: 100%; }
+img { height: auto; }
 
 @import "jquery-ui";
 
@@ -62,14 +74,12 @@ img.left { float: left; margin-right: 10px; margin-bottom: 10px; }
 
 /** grid **/
 /* based off of http://css-tricks.com/dont-overthink-it-grids/ */
-$grid_pad: 1em;
 .grid {
 	background: #ddd; /* probably remove, for demo purposes */
-	margin: 0 0 $grid_pad 0;
 	padding: $grid_pad;
 	max-width: 1140px;
 	min-width: 755px;
-	margin: 0 auto;
+	margin: 0 auto $grid_pad auto;
 
 	&:after {
 		content: "";
