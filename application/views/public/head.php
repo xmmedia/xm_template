@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html <?php if (isset($language)) { ?>lang="<?php echo HTML::chars($language); ?>" <?php } ?>class="no-js">
+<html class="no-js" prefix="og: http://ogp.me/ns#">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,7 +18,14 @@ if ( ! empty($page_title) && trim($page_title) != '') {
 		} // if
 	} // foreach
 } // if
+?>
+	<meta property="og:title" content="<?php echo HTML::chars($page_title); ?>">
+	<meta property="og:type"  content="website">
+	<meta property="og:url"   content="<?php echo HTML::chars($_SERVER['SCRIPT_URI']); ?>">
+	<meta property="og:site_name" content="<?php echo HTML::chars(LONG_NAME); ?>">
+	<meta property="og:image" content="<?php echo HTML::chars(URL_ROOT . '/apple-touch-icon.png'); ?>">
 
+<?php
 foreach ($styles as $file => $type) {
 	echo TAB, HTML::style($file, array('media' => $type)), EOL;
 }
