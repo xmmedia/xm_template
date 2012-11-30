@@ -10,6 +10,7 @@ class Controller_Public extends Controller_CL4_Public {
 	 * @return void
 	 */
 	public function action_index() {
+		$this->template->page_title = 'CL4 + XM Template';
 		$this->template->body_html = View::factory('pages/index');
-	} // function action_index
+	}
 }
