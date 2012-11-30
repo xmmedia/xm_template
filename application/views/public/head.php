@@ -11,7 +11,8 @@ if ( ! empty($page_title) && trim($page_title) != '') {
 	echo HTML::chars($page_title);
 } ?></title>
 
-<?php if ( ! empty($meta_tags)) {
+<?php
+if ( ! empty($meta_tags)) {
 	foreach ($meta_tags as $name => $content) {
 		if ( ! empty($content)) {
 			echo TAB . HTML::meta($name, $content) . EOL;
@@ -24,6 +25,7 @@ if ( ! empty($page_title) && trim($page_title) != '') {
 	<meta property="og:url"   content="<?php echo HTML::chars($_SERVER['SCRIPT_URI']); ?>">
 	<meta property="og:site_name" content="<?php echo HTML::chars(LONG_NAME); ?>">
 	<meta property="og:image" content="<?php echo HTML::chars(URL_ROOT . '/apple-touch-icon.png'); ?>">
+	<?php if ( ! empty($meta_tags['description'])) { ?><meta property="og:description" content="<?php echo HTML::chars($meta_tags['description']); ?>"><?php } // if ?>
 
 <?php
 foreach ($styles as $file => $type) {
