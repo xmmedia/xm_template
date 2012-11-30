@@ -35,6 +35,7 @@ label { cursor: pointer; }
 td { vertical-align: top; }
 img, object, embed { max-width: 100%; }
 img { height: auto; }
+nav ul { list-style: none; }
 
 .clearfix:after {
 	visibility: hidden;
