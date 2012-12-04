@@ -2,9 +2,9 @@
 
 return array(
 	'model_list' => array(
-		'change_script' => 'Change Scripts',
-		'contact' => 'Contacts',
+		'Change_Script' => 'Change Scripts',
+		'Contact' => 'Contacts',
 		// remove the user list from the admin
-		'user_admin' => '',
+		'User_Admin' => '',
 	),
 );
