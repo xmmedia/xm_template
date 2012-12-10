@@ -2,7 +2,7 @@
 
 return array(
 	'default' => array(
-		'debug' => DEBUG_FLAG,
+		'debug' => (KOHANA_ENVIRONMENT > Kohana::PRODUCTION),
 		'from' => 'webmaster@example.com',
 		'from_name' => 'Template4',
 		'log_email' => ADMIN_EMAIL,
