@@ -1,6 +1,6 @@
 @import "compass", "_vars", "normalize", "_cl4_mixins", "_xm_helpers";
 
-* { @include box-sizing(border-box); }
+*, *:after, *:before { @include box-sizing(border-box); }
 
 @import "jquery-ui";
 
@@ -93,16 +93,16 @@ img.left { float: left; margin-right: 10px; margin-bottom: 10px; }
 }
 .col, [class*='col-'] {
 	float: left;
-	padding-right: $grid_pad;
-	.grid &:last-of-type {
+	padding-left: $grid_pad;
+	.grid &:first-child {
 		padding-right: 0;
 	}
 }
 /* Opt-in outside padding */
 .grid_pad {
-	padding: $grid_pad 0 $grid_pad $grid_pad;
-	[class*='col-']:last-of-type {
-		padding-right: $grid_pad;
+	padding: $grid_pad $grid_pad $grid_pad 0;
+	[class*='col-']:first-child {
+		padding-left: $grid_pad;
 	}
 }
 
