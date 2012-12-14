@@ -1,4 +1,4 @@
-@import "compass", "_vars", "normalize", "_cl4_mixins", "_xm_helpers";
+@import "compass", "_vars", "_media", "normalize", "_cl4_mixins", "_xm_helpers";
 
 *, *:after, *:before { @include box-sizing(border-box); }
 
@@ -90,6 +90,8 @@ img.left { float: left; margin-right: 10px; margin-bottom: 10px; }
 		display: table;
 		clear: both;
 	}
+
+	@include respond_to(wide-handhelds) { width: 100%; min-width: 0; }
 }
 .col, [class*='col-'] {
 	float: left;
@@ -97,6 +99,8 @@ img.left { float: left; margin-right: 10px; margin-bottom: 10px; }
 	.grid &:first-child {
 		padding-right: 0;
 	}
+
+	@include respond_to(wide-handhelds) { float: none; width: auto; }
 }
 /* Opt-in outside padding */
 .grid_pad {
@@ -118,9 +122,4 @@ img.left { float: left; margin-right: 10px; margin-bottom: 10px; }
 .module {
 	padding: $grid_pad;
 	background: #eee;
-}
-
-@media (max-width: 767px) {
-	.grid { width: 100%; min-width: 0; }
-	[class*='col-'] { float: none; width: auto; }
 }
