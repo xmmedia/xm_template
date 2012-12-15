@@ -13,7 +13,7 @@
 		clear: both;
 	}
 
-	@include respond_to(wide-handhelds) { width: 100%; min-width: 0; }
+	@include respond_to(wide_handhelds) { width: 100%; min-width: 0; }
 }
 .col, [class*='col-'] {
 	float: left;
@@ -21,8 +21,6 @@
 	.grid &:first-child {
 		padding-right: 0;
 	}
-
-	@include respond_to(wide-handhelds) { float: none; width: auto; }
 }
 /* Opt-in outside padding */
 .grid_pad {
@@ -39,6 +37,11 @@
 .col-1-2 { width: 50%; }
 .col-1-4 { width: 25%; }
 .col-1-8 { width: 12.5%; }
+
+/* note: this has be here instead of inside the class above because otherwise the cols will override the width */
+@include respond_to(wide_handhelds) {
+	[class*='col-'] { float: none; width: auto; }
+}
 
 /* a default module setup for demo purposes */
 .module {

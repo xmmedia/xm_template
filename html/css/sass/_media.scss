@@ -6,7 +6,7 @@
  	@if $media == handhelds {
 		@media only screen and (max-width: 479px) { @content }
 	}
-	@else if $media == wide-handhelds {
+	@else if $media == wide_handhelds {
 		@media only screen and (max-width: 767px) { @content }
 	}
 	@else if $media == tablets {
