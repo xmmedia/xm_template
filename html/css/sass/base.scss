@@ -1,4 +1,4 @@
-@import "compass", "_vars", "_media", "normalize", "_cl4_mixins", "_xm_helpers";
+@import "compass", "_vars", "_media", "_clearfix", "normalize", "_cl4_mixins", "_xm_helpers";
 
 *, *:after, *:before { @include box-sizing(border-box); }
 
@@ -36,15 +36,6 @@ td { vertical-align: top; }
 img, object, embed { max-width: 100%; }
 img { height: auto; }
 nav ul { list-style: none; }
-
-.clearfix:after {
-	visibility: hidden;
-	display: block;
-	font-size: 0;
-	content: " ";
-	clear: both;
-	height: 0;
-}
 
 /** commonly used styles **/
 .cl4_message { color: #000; padding: 0; }
