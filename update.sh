@@ -113,7 +113,17 @@ rm -rf application/ && mv $CHECKOUT_DIR/application/ application/ || exit 1
 rm -rf modules/ && mv $CHECKOUT_DIR/modules/ modules/ || exit 1
 rm -rf system/ && mv $CHECKOUT_DIR/system/ system/ || exit 1
 rm -rf change_scripts/ && mv $CHECKOUT_DIR/change_scripts/ change_scripts/ || exit 1
-rm -rf `find html/ ! -path "html/uploads" ! -path "html/"` && mv $CHECKOUT_DIR/html/* html/ && mv $CHECKOUT_DIR/html/.htaccess html/ || exit 1
+
+# deal with the html dir
+# enable extended globbing
+shopt -s extglob || exit 1
+# remove the html/uploads dir in the checkout dir so we don't overrite the one in the live dir
+rm -rf $CHECKOUT_DIR/html/uploads || exit 1
+cd html/ || exit 1
+# remove everything but the uploads dir
+rm -rf !(uploads) || exit 1
+cd ../ || exit 1
+mv $CHECKOUT_DIR/html/* html/ && mv $CHECKOUT_DIR/html/.htaccess html/ || exit 1
 
 cd html/ || exit 1
 
