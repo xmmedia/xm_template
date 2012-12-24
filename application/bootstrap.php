@@ -115,15 +115,15 @@ Kohana::$config->attach(new Config_File);
  * ORDER MATTERS HERE!!!
  */
 $modules = array(
-	'xm'         => MODPATH . 'xm',         // xmmedia
-	'cl4base'    => MODPATH . 'cl4base',    // cl4base
-	'cl4'        => MODPATH . 'cl4',        // cl4
-	'database'   => MODPATH . 'database',   // Database access
-	'image'      => MODPATH . 'image',      // Image manipulation
-	'minion'     => MODPATH . 'minion',     // CLI Tasks
-	'orm'        => MODPATH . 'orm',        // Object Relationship Mapping
-	'auth'       => MODPATH . 'auth',       // Basic authentication
-	'cache'      => MODPATH . 'cache',      // Caching with multiple backends
+	'xm'       => MODPATH . 'xm',         // xmmedia
+	'cl4base'  => MODPATH . 'cl4base',    // cl4base
+	'cl4'      => MODPATH . 'cl4',        // cl4
+	'database' => MODPATH . 'database',   // Database access
+	'image'    => MODPATH . 'image',      // Image manipulation
+	'minion'   => MODPATH . 'minion',     // CLI Tasks
+	'orm'      => MODPATH . 'orm',        // Object Relationship Mapping
+	'auth'     => MODPATH . 'auth',       // Basic authentication
+	'cache'    => MODPATH . 'cache',      // Caching with multiple backends
 );
 Kohana::modules($modules);
 
