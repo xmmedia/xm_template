@@ -103,7 +103,7 @@ Kohana::init(array(
 /**
  * Attach the file write to logging. Multiple writers are supported.
  */
-Kohana::$log->attach(new Log_File(ABS_ROOT . 'logs'));
+Kohana::$log->attach(new Log_File(ABS_ROOT . '/logs'));
 
 /**
  * Attach a file reader to config. Multiple readers are supported.
@@ -114,7 +114,7 @@ Kohana::$config->attach(new Config_File);
  * Enable modules. Modules are referenced by a relative or absolute path.
  * ORDER MATTERS HERE!!!
  */
-$modules = array(
+Kohana::modules(array(
 	'xm'       => MODPATH . 'xm',         // xmmedia
 	'cl4base'  => MODPATH . 'cl4base',    // cl4base
 	'cl4'      => MODPATH . 'cl4',        // cl4
@@ -124,8 +124,7 @@ $modules = array(
 	'orm'      => MODPATH . 'orm',        // Object Relationship Mapping
 	'auth'     => MODPATH . 'auth',       // Basic authentication
 	'cache'    => MODPATH . 'cache',      // Caching with multiple backends
-);
-Kohana::modules($modules);
+));
 
 // this sets the default database to use
 Database::$default = DATABASE_DEFAULT;
