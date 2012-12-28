@@ -21,7 +21,7 @@ OPTIONS:
 Usage:
 
    sh ./update.sh -b master -i init-production
-   sh ./update.sh -b master -g git@repo.example.com:/repo.git -i init-production
+   sh ./update.sh -b master -g ${GIT_REPO} -i init-production
 
 The repo can be hard coded at the top of the script thus removing the need for the -g parameter on each run. Although it can still be overridden in the parameters if needed.
 
