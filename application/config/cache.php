@@ -2,6 +2,6 @@
 
 return array(
 	'file' => array(
-		'cache_dir' => DOCROOT . '../cache',
+		'cache_dir' => ABS_ROOT . '/cache',
 	),
 );
