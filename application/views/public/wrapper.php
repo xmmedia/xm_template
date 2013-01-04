@@ -14,6 +14,3 @@ if ( ! empty($pre_message) || ! empty($message_html)) { ?>
 <div class="main_content">
 <?php echo $body_html; ?>
 </div>
-
-<?php echo View::factory('public/footer')
-	->set($kohana_view_data); ?>
