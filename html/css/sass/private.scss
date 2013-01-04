@@ -12,8 +12,8 @@ footer a:hover { text-decoration: underline; }
 
 /** the following are styles to create some formatting and are not quite as "required" as the above styles **/
 /** header **/
-.page_top { margin: 0 auto; width: 960px; position: relative; height: 52px; }
-.page_top_logo { float: left; margin: 20px 0 0 -4px; font-size: 1.3em; font-weight: bold; }
+.page_top { margin: 0 auto; width: 960px; position: relative; height: 52px; @extend .clearfix; }
+.page_top_logo { float: left; margin: 20px 0 0 -4px; font-size: 1.3em; font-weight: bold; @extend .clearfix; }
 .page_top_logo a { display: block; color: #777; text-decoration: none; }
 
 /** nav **/
