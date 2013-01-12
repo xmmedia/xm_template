@@ -19,14 +19,7 @@
 	float: left;
 	padding-left: $grid_pad;
 	.grid &:first-child {
-		padding-right: 0;
-	}
-}
-/* Opt-in outside padding */
-.grid_pad {
-	padding: $grid_pad $grid_pad $grid_pad 0;
-	[class*='col-']:first-child {
-		padding-left: $grid_pad;
+		padding-left: 0;
 	}
 }
 
