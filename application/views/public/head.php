@@ -7,9 +7,7 @@
 if (DEVELOPMENT_FLAG) {
 	echo '*** ' . HTML::chars(SHORT_NAME . ' v' . APP_VERSION) . ' Development Site *** ';
 }
-if ( ! empty($page_title) && trim($page_title) != '') {
-	echo HTML::chars($page_title);
-} ?></title>
+echo HTML::chars($page_title); ?></title>
 
 <?php
 if ( ! empty($meta_tags)) {
