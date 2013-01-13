@@ -94,9 +94,11 @@ $(function() {
 		e.preventDefault();
 		e.stopPropagation();
 
-		var $link = $(this);
-		var $sub_nav = $link.parent().find('.sub_nav');
-		if ($sub_nav.css('visibility') != 'hidden') {
+		var $link = $(this),
+			$sub_nav = $link.parent().find('.sub_nav'),
+			link_offset,
+			link_width;
+		if ($sub_nav.css('visibility') !== 'hidden') {
 			$sub_nav.css({ visibility: 'hidden' });
 			$link.removeClass('clicked');
 		} else {
