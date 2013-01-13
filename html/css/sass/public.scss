@@ -3,11 +3,9 @@
 nav ul { padding-left: 0; }
 
 /** general formatting / containers **/
-header { margin-bottom: 1em; }
-header nav li { float: left; margin-right: $grid_pad * 1.5; }
+header {
+	margin-bottom: 1em;
+	nav li { float: left; margin-right: $grid_pad * 1.5; }
+}
 
 footer { height: 80px; margin-top: 30px; padding: 10px; font-size: 0.8em; color: #777; background: #ebebeb; text-align: left; }
-footer .footer_content { margin: 0 auto; width: 960px; text-align: left; padding-top: 30px; }
-footer .footer_links { float: right; }
-footer a { color: #777; text-decoration: none; }
-footer a:hover { text-decoration: underline; }
