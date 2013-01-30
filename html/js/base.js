@@ -67,14 +67,14 @@
 if (typeof $.datepicker !== 'undefined') {
 	$.datepicker.setDefaults({
 		showOn: 'both',
-		buttonText: 'Click view calendar to pick date',
+		buttonText: 'Click to view the calendar and pick a date',
 		showButtonPanel: true,
 		changeMonth: true,
 		changeYear: true,
 		constrainInput: false,
 		duration: 'fast',
 		yearRange: 'c-5:c+5',
-		appendText: '(YYYY-MM-DD)',
+		appendText: 'YYYY-MM-DD',
 		onClose: function(dateText, inst) {
 			// focuses the input when the date dialog closes
 			this.focus();
