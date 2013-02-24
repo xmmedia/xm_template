@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Kohana + CL4 + XM Site Template : Template for Kohana + CL4 + XM Kohana Module" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Kohana + CL4 + XM Site Template</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/xmmedia/xm_template">View on GitHub</a>
+
+          <h1 id="project_title">Kohana + CL4 + XM Site Template</h1>
+          <h2 id="project_tagline">Template for Kohana + CL4 + XM Kohana Module</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/xmmedia/xm_template/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/xmmedia/xm_template/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>Kohana + cl4 + XM Template</h1>
+
+<p>This template includes everything needed to quickly get started using the <a href="http://cl4.claero.com">cl4</a> and <a href="https://github.com/xmmedia/kohana_module">XM</a> modules with Kohana. Right now it's setup to use Kohana 3.3.0.</p>
+
+<h2>Setting Up a Site Using the XM Template</h2>
+
+<p>The XM Template can be found here: <a href="https://github.com/xmmedia/xm_template">https://github.com/xmmedia/xm_template</a></p>
+
+<p>The basic idea is to pull down the code, as a ZIP or TAR either from github or from a cloned repo on your machine. Extract the ZIP/TAR to your working directory, add submodules and Kohana, and then start configuring the site. Typically, using the template, I get a site up and running in 15 minutes. Note these instructions have some specifics for XM Media, InterWorx, and Beanstalk, so tweak as necessary for your own setup.</p>
+
+<p>We are constantly updating the </p>
+
+<ul>
+<li>Setup the repo in Beanstalk (can be done with Tower Git)</li>
+<li>Clone the repo locally</li>
+<li>Export the cl4template repo into the local repo
+
+<ul>
+<li>Remove all the module folders inside modules</li>
+<li>Remove the system dir</li>
+<li>Remove html/cl4 &amp; html/xm</li>
+</ul>
+</li>
+<li>Commit everything and push into Beanstalk. You'll need to create the master branch on Beanstalk when doing the first push.</li>
+<li>Add submodules and checkout the correction versions. Then commit.  Run each piece of code (of the first script) after each comment separately as it will break otherwise. Or create a base script to the run the commands (especially useful if doing this more than once).<code>#!/bin/bash
+# add submodules
+# run this from within the root of your repo
+git submodule add git://github.com/kohana/core.git system
+git submodule add git://github.com/kohana/auth.git modules/auth
+git submodule add git://github.com/kohana/cache.git modules/cache
+git submodule add git://github.com/kohana/codebench.git modules/codebench
+git submodule add git://github.com/kohana/database.git modules/database
+git submodule add git://github.com/kohana/image.git modules/image
+git submodule add git://github.com/kohana/minion.git modules/minion
+git submodule add git://github.com/kohana/orm.git modules/orm
+git submodule add git://github.com/kohana/unittest.git modules/unittest
+git submodule add git://github.com/kohana/userguide.git modules/userguide
+git submodule init
+# add claero modules
+git submodule add <a href="mailto:git@github.com">git@github.com</a>:claerosystems/cl4.git modules/cl4
+git submodule add <a href="mailto:git@github.com">git@github.com</a>:claerosystems/cl4base.git modules/cl4base
+git submodule add <a href="mailto:git@github.com">git@github.com</a>:claerosystems/cl4docroot.git html/cl4
+git submodule init
+# add xmmedia modules
+git submodule add <a href="mailto:git@github.com">git@github.com</a>:xmmedia/kohana_module.git modules/xm
+git submodule add <a href="mailto:git@github.com">git@github.com</a>:xmmedia/kohana_module_docroot.git html/xm
+git submodule init
+</code><code>#!/bin/bash
+# checkout the correct versions of the module (currently v3.3.0 for most Kohana modules and kohana_v3.3/master for cl4 &amp; xm)
+echo "-- submodule init &amp; update" &amp;&amp;
+git submodule init &amp;&amp; git submodule update &amp;&amp;
+echo "-- module &gt; Kohana Auth" &amp;&amp;
+cd modules/auth &amp;&amp; git checkout 3.1/master &amp;&amp; git pull &amp;&amp; git checkout v3.3.0 &amp;&amp;
+echo "-- module &gt; Kohana Cache" &amp;&amp;
+cd ../cache &amp;&amp; git checkout 3.1/master &amp;&amp; git pull &amp;&amp; git checkout v3.3.0 &amp;&amp;
+echo "-- module &gt; Kohana Codebench" &amp;&amp;
+cd ../codebench &amp;&amp; git checkout 3.1/master &amp;&amp; git pull &amp;&amp; git checkout v3.3.0 &amp;&amp;
+echo "-- module &gt; Kohana Database" &amp;&amp;
+cd ../database &amp;&amp; git checkout 3.1/master &amp;&amp; git pull &amp;&amp; git checkout v3.3.0 &amp;&amp;
+echo "-- module &gt; Kohana Image" &amp;&amp;
+cd ../image &amp;&amp; git checkout 3.1/master &amp;&amp; git pull &amp;&amp; git checkout v3.3.0 &amp;&amp;
+echo "-- module &gt; Kohana Minion" &amp;&amp;
+cd ../minion &amp;&amp; git checkout 3.3/master &amp;&amp; git pull &amp;&amp; git checkout v3.3.0 &amp;&amp;
+echo "-- module &gt; Kohana ORM" &amp;&amp;
+cd ../orm &amp;&amp; git checkout 3.1/master &amp;&amp; git pull &amp;&amp; git checkout v3.3.0 &amp;&amp;
+echo "-- module &gt; Kohana Unit Test" &amp;&amp;
+cd ../unittest &amp;&amp; git checkout 3.1/master &amp;&amp; git pull &amp;&amp; git checkout v3.3.0 &amp;&amp;
+echo "-- module &gt; Kohana Userguide" &amp;&amp;
+cd ../userguide &amp;&amp; git checkout 3.1/master &amp;&amp; git pull &amp;&amp; git checkout v3.3.0 &amp;&amp;
+echo "-- module &gt; cl4" &amp;&amp;
+cd ../cl4 &amp;&amp; git checkout master &amp;&amp; git pull &amp;&amp; git checkout kohana_v3.3/master &amp;&amp;
+echo "-- module &gt; cl4base" &amp;&amp;
+cd ../cl4base &amp;&amp; git checkout master &amp;&amp; git pull &amp;&amp; git checkout kohana_v3.3/master &amp;&amp;
+echo "-- module &gt; cl4docroot" &amp;&amp;
+cd ../../html/cl4 &amp;&amp; git checkout master &amp;&amp; git pull &amp;&amp; git checkout kohana_v3.3/master &amp;&amp;
+echo "-- module &gt; Kohana System" &amp;&amp;
+cd ../../system &amp;&amp; git checkout 3.1/master &amp;&amp; git pull &amp;&amp; git checkout v3.3.0 &amp;&amp;
+cd .. &amp;&amp;
+echo "-- module &gt; XM" &amp;&amp;
+cd modules/xm &amp;&amp; git checkout master &amp;&amp; git pull &amp;&amp; git checkout kohana_v3.3/master &amp;&amp;
+echo "-- module &gt; XM Docroot" &amp;&amp;
+cd ../../html/xm &amp;&amp; git checkout master &amp;&amp; git pull &amp;&amp; git checkout kohana_v3.3/master &amp;&amp;
+cd ../..
+</code><code>#!/bin/bash
+# checkout the correct versions of the module (currently v3.2.2 for most Kohana modules and kohana_v3.2/master for cl4 &amp; xm)
+echo "-- submodule init &amp; update" &amp;&amp;
+git submodule init &amp;&amp; git submodule update &amp;&amp;
+echo "-- module &gt; Kohana Auth" &amp;&amp;
+cd modules/auth &amp;&amp; git checkout 3.1/master &amp;&amp; git pull &amp;&amp; git checkout v3.2.2 &amp;&amp;
+echo "-- module &gt; Kohana Cache" &amp;&amp;
+cd ../cache &amp;&amp; git checkout 3.1/master &amp;&amp; git pull &amp;&amp; git checkout v3.2.2 &amp;&amp;
+echo "-- module &gt; Kohana Codebench" &amp;&amp;
+cd ../codebench &amp;&amp; git checkout 3.1/master &amp;&amp; git pull &amp;&amp; git checkout v3.2.2 &amp;&amp;
+echo "-- module &gt; Kohana Database" &amp;&amp;
+cd ../database &amp;&amp; git checkout 3.1/master &amp;&amp; git pull &amp;&amp; git checkout v3.2.2 &amp;&amp;
+echo "-- module &gt; Kohana Image" &amp;&amp;
+cd ../image &amp;&amp; git checkout 3.1/master &amp;&amp; git pull &amp;&amp; git checkout v3.2.2 &amp;&amp;
+echo "-- module &gt; Kohana OAuth" &amp;&amp;
+cd ../oauth &amp;&amp; git checkout 3.1/master &amp;&amp; git pull &amp;&amp; git checkout 3.1/master &amp;&amp;
+echo "-- module &gt; Kohana ORM" &amp;&amp;
+cd ../orm &amp;&amp; git checkout 3.1/master &amp;&amp; git pull &amp;&amp; git checkout v3.2.2 &amp;&amp;
+echo "-- module &gt; Kohana Pagination" &amp;&amp;
+cd ../pagination &amp;&amp; git checkout 3.1/master &amp;&amp; git pull &amp;&amp; git checkout 3.1/develop &amp;&amp;
+echo "-- module &gt; Kohana Unit Test" &amp;&amp;
+cd ../unittest &amp;&amp; git checkout 3.1/master &amp;&amp; git pull &amp;&amp; git checkout v3.2.2 &amp;&amp;
+echo "-- module &gt; Kohana Userguide" &amp;&amp;
+cd ../userguide &amp;&amp; git checkout 3.1/master &amp;&amp; git pull &amp;&amp; git checkout v3.2.2 &amp;&amp;
+echo "-- module &gt; cl4" &amp;&amp;
+cd ../cl4 &amp;&amp; git checkout master &amp;&amp; git pull &amp;&amp; git checkout kohana_v3.2/master &amp;&amp;
+echo "-- module &gt; cl4admin" &amp;&amp;
+cd ../cl4admin &amp;&amp; git checkout master &amp;&amp; git pull &amp;&amp; git checkout kohana_v3.2/master &amp;&amp;
+echo "-- module &gt; cl4base" &amp;&amp;
+cd ../cl4base &amp;&amp; git checkout master &amp;&amp; git pull &amp;&amp; git checkout kohana_v3.2/master &amp;&amp;
+echo "-- module &gt; cl4auth" &amp;&amp;
+cd ../cl4auth &amp;&amp; git checkout master &amp;&amp; git pull &amp;&amp; git checkout kohana_v3.2/master &amp;&amp;
+echo "-- module &gt; cl4docroot" &amp;&amp;
+cd ../../html/cl4 &amp;&amp; git checkout master &amp;&amp; git pull &amp;&amp; git checkout kohana_v3.2/master &amp;&amp;
+echo "-- module &gt; Kohana System" &amp;&amp;
+cd ../../system &amp;&amp; git checkout 3.1/master &amp;&amp; git pull &amp;&amp; git checkout v3.2.2 &amp;&amp;
+cd .. &amp;&amp;
+echo "-- module &gt; XM" &amp;&amp;
+cd modules/xmmedia &amp;&amp; git checkout master &amp;&amp; git pull &amp;&amp; git checkout kohana_v3.2/master &amp;&amp;
+echo "-- module &gt; XM Docroot" &amp;&amp;
+cd ../../html/xm &amp;&amp; git checkout master &amp;&amp; git pull &amp;&amp; git checkout kohana_v3.2/master &amp;&amp;
+cd ../..
+</code>Note that the above adds the OAuth module, although it isn't maintained and we don't include it in the the template config/bootstrap.</li>
+<li>Add site on InterWorx</li>
+<li>Setup in Sublime and Transmit</li>
+<li>Upload the files</li>
+<li>Change the user in reset_permissions.sh (and any other necessary changes) and then run it</li>
+<li>Create database in InterWorx</li>
+<li>Change the database collation to utf8_unicode_ci</li>
+<li>Import SQL from create_mysql.sql and optimize all the tables</li>
+<li>Put database config in ''application/config/database.php'' and change the change script database in ''application/config/change_script.php''</li>
+<li>Update application/init.php
+
+<ul>
+<li>change long and short name</li>
+<li>set url root</li>
+<li>set abs root</li>
+<li>remove default analytics ID for dev</li>
+<li>update the recaptcha keys (xmmedia keys are 6Lcx3r8SAAAAABYYRNe-jm5fuZcJnkRsdR1RLZjd and 6Lcx3r8SAAAAAKa_TPZKcuQV7NoI_M5pT8Culdj8)</li>
+<li>change admin email address (2)</li>
+</ul>
+</li>
+<li>Login and update the admin user info. At the same time you're doing this, update the auth salt. So, (1) login, (2) click edit on the admin user, (3) enter the new information and don't save. (4) Change the auth salt ([[<a href="https://www.grc.com/passwords.htm%7Cgreat">https://www.grc.com/passwords.htm|great</a> place to get salts]]) and upload to the server. (5) Then save the user.
+
+<ul>
+<li>change username from <a href="mailto:admin@admin.com">admin@admin.com</a> to <a href="mailto:admin@xmmedia.net">admin@xmmedia.net</a>
+</li>
+<li>change the password (current 123456)</li>
+<li>change name to XM Media</li>
+<li>If you change the auth salt later, you'll need to retrieve your salted password like: ''echo debug::vars(auth::instance()-&gt;hash(''));''</li>
+</ul>
+</li>
+<li>Update cl4mail config
+
+<ul>
+<li>change from address and name</li>
+<li>add mandrill api key &amp; username</li>
+</ul>
+</li>
+<li>Add ''<a href="mailto:admin@xmmedia.net">admin@xmmedia.net</a>'' to the array of admin accounts in config/cl4login</li>
+<li>Change the cookie (bootstrap) salt</li>
+<li>Update robots.txt sitemap path and remove comment</li>
+<li>Change the necessary information on the ''config/model_create''</li>
+</ul>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Kohana + CL4 + XM Site Template maintained by <a href="https://github.com/xmmedia">xmmedia</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
