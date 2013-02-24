@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title><?php echo HTML::chars($page_title); ?></title>
+	<title><?php echo HTML::chars($title); ?></title>
 <?php
 $styles = array(
 	'css/base.css' => NULL,
