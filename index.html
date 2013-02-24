@@ -65,30 +65,33 @@
 <li>set url root</li>
 <li>set abs root</li>
 <li>remove default analytics ID for dev</li>
-<li>update the recaptcha keys (xmmedia keys are 6Lcx3r8SAAAAABYYRNe-jm5fuZcJnkRsdR1RLZjd and 6Lcx3r8SAAAAAKa_TPZKcuQV7NoI_M5pT8Culdj8)</li>
-<li>change admin email address (2)</li>
+<li>update the recaptcha keys</li>
+<li>change admin email address (twice)</li>
 </ul>
 </li>
-<li>Login and update the admin user info. At the same time you're doing this, update the auth salt. So, (1) login, (2) click edit on the admin user, (3) enter the new information and don't save. (4) Change the auth salt (<a href="https://www.grc.com/passwords.htm%7Cgreat">https://www.grc.com/passwords.htm|great</a> place to get salts) and upload to the server. (5) Then save the user.
+<li>Login and update the admin user info. At the same time you're doing this, update the auth salt. So, (1) login, (2) click edit on the admin user, (3) enter the new information and don't save. (4) Change the auth salt (<a href="https://www.grc.com/passwords.htm%7C">GRC</a> is a great place to get salts) and upload to the server. (5) Then save the user.
 
 <ul>
 <li>change username from <a href="mailto:admin@admin.com">admin@admin.com</a> to the correct admin username</li>
 <li>change the password (current 123456)</li>
-<li>change name to XM Media</li>
-<li>If you change the auth salt later, you'll need to retrieve your salted password like: ''echo debug::vars(auth::instance()-&gt;hash(''));''</li>
+<li>change name to the company name (ie, XM Media)</li>
+<li>If you change the auth salt later, you'll need to retrieve your salted password like: <code>echo debug::vars(auth::instance()-&gt;hash('&lt;password&gt;'));</code>
+</li>
 </ul>
 </li>
 <li>Update cl4mail config
 
 <ul>
 <li>change from address and name</li>
-<li>add mandrill api key &amp; username</li>
+<li>add <a href="http://mandrill.com/">Mandrill</a> api key &amp; username</li>
 </ul>
 </li>
-<li>Add the admin username choosen in step 15 to the array of admin accounts in config/cl4login</li>
-<li>Change the cookie (bootstrap) salt</li>
+<li>Add the admin username choosen in step 15 to the array of admin accounts in <code>config/cl4login</code>
+</li>
+<li>Change the cookie salt (in bootstrap)</li>
 <li>Update robots.txt sitemap path and remove comment</li>
-<li>Change the necessary information on the ''config/model_create''</li>
+<li>Change the necessary information on the <code>config/model_create</code>
+</li>
 </ol><h3>Submodule Scripts</h3>
 
 <p>Add the submodules:</p>
