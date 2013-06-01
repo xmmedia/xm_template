@@ -11,12 +11,12 @@ This script will change to the right init file and then run the change scripts. 
 OPTIONS:
    -h   Show this message.
    -p   The path to the site, ie, /home/example/example.com
-   -i   The PHP init/config to use, ie, init-production.
+   -i   The PHP init/config to use, ie, production (init will be init-production.php) or example.com (init will be init-example.php).
    -s   Execute without any confirmation. This will move the files into place and run the change scripts without a confirmation.
 
 Usage:
 
-   sh ./deploy_hq.sh -i init-production -p /home/example/example.com
+   sh ./deploy_hq.sh -i production -p /home/example/example.com
 
 EOF
 }
@@ -36,6 +36,12 @@ done
 
 if [[ -z "${PHP_INIT}" ]]; then echo ; echo "Error: The PHP init/config is not set"; echo ; usage; exit 1; fi
 if [[ -z "${SITE_PATH}" ]]; then echo ; echo "Error: The site path is not set"; echo ; usage; exit 1; fi
+
+if [[ "${PHP_INIT}" == "" ]]; then
+	PHP_INIT="init";
+else
+	PHP_INIT="init-${PHP_INIT}";
+fi
 
 cd $SITE_PATH || exit 1
 
