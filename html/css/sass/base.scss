@@ -25,8 +25,10 @@ $cl4_file_types-sprite-dimensions: true;
 body, input { font-family: Arial, Helvetica, sans-serif; font-size: 0.8em; }
 input { font-size: 0.9em; }
 input, select { margin: 2px; }
-h1 { margin: 1.5em 0 0.4em 0; }
-h1:first-of-type { margin-top: 0; }
+h1 {
+	margin: 1.5em 0 0.4em 0;
+	&:first-of-type { margin-top: 0; }
+}
 h2 { margin: 1.2em 0 0.4em 0; }
 h3, h4, h5, h6 { margin: 1.7em 0 0.1em 0; }
 p { margin: 1.3em 0; }
@@ -39,14 +41,20 @@ nav ul { list-style: none; }
 
 /** commonly used styles **/
 .cl4_message { color: #000; padding: 0; }
-.labels_above label { display: block; margin-top: 8px; }
-.labels_above .radios label { display: inline; padding-right: 1.5em; }
-.labels_above .radios input { margin-right: 0.5em; }
+.labels_above {
+	label { display: block; margin-top: 8px; }
+	.radios {
+		label { display: inline; padding-right: 1.5em; }
+		input { margin-right: 0.5em; }
+	}
+}
 .hidden { display: none; }
 .text_center { text-align: center; }
 .text_left { text-align: left; }
-img.right { float: right; margin-bottom: 10px; margin-left: 10px; }
-img.left { float: left; margin-right: 10px; margin-bottom: 10px; }
+img{
+	&.right { float: right; margin-bottom: 10px; margin-left: 10px; }
+	&.left { float: left; margin-right: 10px; margin-bottom: 10px; }
+}
 
 @import "_debug";
 @import "_grid";
