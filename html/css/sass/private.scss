@@ -128,10 +128,8 @@ $sub_nav_items: admin dbadmin, contact_admin dbadmin, user_admin dbadmin, cl4adm
 	.cl4_form, .cl4_form li ul { padding: 0; }
 	.cl4_form li ul li {
 		display: block; float: none; width: 150px;
-		&.field_label {
-			margin-top: 15px; width: 400px;
-			input { font-size: 1.2em; width: 390px; }
-		}
+		&.field_label { margin-top: 15px; width: 400px; }
+		&.field_value input { font-size: 1.2em; width: 390px; }
 	}
 	.forgot_link { float: right; }
 }
