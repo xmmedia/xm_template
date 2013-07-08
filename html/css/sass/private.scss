@@ -134,3 +134,6 @@ $sub_nav_items: admin dbadmin, contact_admin dbadmin, user_admin dbadmin, cl4adm
 	.forgot_link { float: right; }
 }
 .login_button { font-size: 1.2em; }
+
+// for tinymce as it doesn't seem to layout properly when border-box
+.mce-container, .mce-container *, .moxman-container, .moxman-container * { @include box-sizing(content-box); }
