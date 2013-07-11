@@ -15,24 +15,28 @@ OPTIONS:
 
 Usage:
 
-   sh ./deploy_hq.sh -c init-production -s
+   sh ./deploy_hq.sh -s -c init-production
 
 EOF
 }
 
-while getopts p:sh optname
+while getopts c:sh optname
 do
-	case "${optname}"
-	in
-		s) SILENT_MODE="y";;
-		c) CONFIG=${OPTARG};;
-		h)
-			usage
-			exit 0;;
-	esac
+        case "${optname}"
+        in
+                s) SILENT_MODE="y";;
+                c) CONFIG="application/config/inits/$OPTARG.php";;
+                h)
+                        usage
+                        exit 0;;
+        esac
 done
 
-cp application/config/inits/${CONFIG}.php application/init.php || exit 1
+if [[ -e "${CONFIG}" ]]; then
+        echo
+        echo "-- Copying config into place";
+        cp ${CONFIG} application/init.php || exit 1
+fi
 
 cd html/ || exit 1
 
