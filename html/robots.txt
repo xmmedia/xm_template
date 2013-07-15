@@ -1,3 +1,5 @@
 # robotstxt.org/
 User-agent: *
+Disallow: /login
+
 #Sitemap: http://www.example.com/sitemap.xml
