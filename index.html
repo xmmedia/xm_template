@@ -28,11 +28,13 @@
         </ul>
       </header>
       <section>
-        <h1>Kohana + cl4 + XM Template</h1>
+        <h1>
+<a name="kohana--cl4--xm-template" class="anchor" href="#kohana--cl4--xm-template"><span class="octicon octicon-link"></span></a>Kohana + cl4 + XM Template</h1>
 
 <p>This template includes everything needed to quickly get started using the <a href="http://cl4.claero.com">cl4</a> and <a href="https://github.com/xmmedia/kohana_module">XM</a> modules with Kohana. Right now it's setup to use Kohana 3.3.0.</p>
 
-<h2>Setting Up a Site Using the XM Template</h2>
+<h2>
+<a name="setting-up-a-site-using-the-xm-template" class="anchor" href="#setting-up-a-site-using-the-xm-template"><span class="octicon octicon-link"></span></a>Setting Up a Site Using the XM Template</h2>
 
 <p>The basic idea is to pull down the code, as a ZIP or TAR either from github or from a cloned repo on your machine. Extract the ZIP/TAR to your working directory, add submodules and Kohana, and then start configuring the site. Typically, using the template, I get a site up and running in 15 minutes. Note these instructions have some specifics for XM Media, InterWorx, and Beanstalk, so tweak as necessary for your own setup.</p>
 
@@ -58,7 +60,7 @@
 <li>Import SQL from <code>sql/create_mysql.sql</code> and optimize all the tables</li>
 <li>Put database config in <code>application/config/database.php</code> and change the change script database in <code>application/config/change_script.php</code>
 </li>
-<li>Update application/init.php
+<li>Copy the init from <code>application/config/inits</code> to <code>application/init.php</code>. The update <code>application/init.php</code>
 
 <ul>
 <li>change long and short name</li>
@@ -92,7 +94,8 @@
 <li>Update robots.txt sitemap path and remove comment</li>
 <li>Change the necessary information on the <code>config/model_create</code>
 </li>
-</ol><h3>Submodule Scripts</h3>
+</ol><h3>
+<a name="submodule-scripts" class="anchor" href="#submodule-scripts"><span class="octicon octicon-link"></span></a>Submodule Scripts</h3>
 
 <p>Add the submodules:</p>
 
