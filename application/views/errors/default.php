@@ -25,7 +25,7 @@ echo View::factory('public/header')
 ?>
 <div class="grid">
 	<h1><?php echo HTML::chars($title); ?></h1>
-	<p><?php echo HTML::chars($message); ?></p>
+	<p><?php echo HTML::chars(UTF8::clean($message)); ?></p>
 </div>
 <?php
 // the footer
