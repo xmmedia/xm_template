@@ -23,7 +23,8 @@ if ( ! empty($meta_tags)) {
 	<meta property="og:url"   content="<?php echo HTML::chars($_SERVER['SCRIPT_URI']); ?>">
 	<meta property="og:site_name" content="<?php echo HTML::chars(LONG_NAME); ?>">
 	<meta property="og:image" content="<?php echo HTML::chars(URL_ROOT . '/apple-touch-icon.png'); ?>">
-	<?php if ( ! empty($meta_tags['description'])) { ?><meta property="og:description" content="<?php echo HTML::chars($meta_tags['description']); ?>"><?php } // if ?>
+<?php if ( ! empty($meta_tags['description'])) { ?>	<meta property="og:description" content="<?php echo HTML::chars($meta_tags['description']); ?>"><?php } // if ?>
+	<link rel="author" href="humans.txt">
 
 <?php
 foreach ($styles as $file => $type) {
