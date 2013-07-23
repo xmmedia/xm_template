@@ -1,6 +1,7 @@
-@import "compass", "_vars", "_media", "_clearfix", "normalize", "_cl4_mixins", "_xm_helpers";
+@import "compass", "_vars", "_media", "normalize", "_cl4_mixins", "_xm_helpers", "_clearfix";
 
 *, *:after, *:before { @include box-sizing(border-box); }
+.clearfix { @extend %clearfix; }
 
 @import "jquery-ui";
 
