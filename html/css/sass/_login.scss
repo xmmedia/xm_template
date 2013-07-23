@@ -1,0 +1,22 @@
+/** login box formatting, used on login, forgot password and timed out **/
+.login_box {
+	margin: 20px auto 0 auto;
+	border: 1px solid #dfdfdf;
+	width: 34em;
+	padding: 15px 20px 20px 20px;
+}
+.boxshadow .login_box {
+	@include border-radius(15px);
+	@include single-box-shadow(#757171, 0, 0, 10px);
+}
+.login_box {
+	h1 { color: #666; }
+	.cl4_form, .cl4_form li ul { padding: 0; }
+	.cl4_form li ul li {
+		display: block; float: none; width: 150px;
+		&.field_label { margin-top: 15px; width: 400px; }
+		&.field_value input { font-size: 1.2em; width: 390px; }
+	}
+	.forgot_link { float: right; }
+}
+.login_button { font-size: 1.2em; }
