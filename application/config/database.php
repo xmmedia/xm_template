@@ -30,6 +30,6 @@ return array(
 		'table_prefix' => '',
 		'charset'      => 'utf8',
 		'caching'      => FALSE,
-		'profiling'    => TRUE,
+		'profiling'    => FALSE,
 	),
 );
