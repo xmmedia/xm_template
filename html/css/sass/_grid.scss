@@ -33,11 +33,5 @@
 
 /* note: this has be here instead of inside the class above because otherwise the cols will override the width */
 @include respond_to(wide_handhelds) {
-	[class*='col-'] { float: none; width: auto; }
-}
-
-/* a default module setup for demo purposes */
-.module {
-	padding: $grid_pad;
-	background: #eee;
+	[class*='col-'] { float: none; width: auto; padding-left: 0; }
 }
