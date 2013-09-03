@@ -15,7 +15,7 @@ OPTIONS:
 
 Usage:
 
-   sh ./deploy_hq.sh -s -c init-production
+   sh ./beanstalk_deploy.sh -s -c init-production
 
 EOF
 }
