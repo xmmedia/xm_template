@@ -23,9 +23,13 @@ echo TAB, HTML::script('js/modernizr.min.js'), EOL;
 echo View::factory('public/header')
 	->set($kohana_view_data);
 ?>
-<div class="grid">
-	<h1><?php echo HTML::chars($title); ?></h1>
-	<p><?php echo HTML::chars(UTF8::clean($message)); ?></p>
+<div class="main_content">
+	<div class="grid">
+		<div class="col">
+			<h1><?php echo HTML::chars($title); ?></h1>
+			<p><?php echo HTML::chars(UTF8::clean($message)); ?></p>
+		</div>
+	</div>
 </div>
 <?php
 // the footer
