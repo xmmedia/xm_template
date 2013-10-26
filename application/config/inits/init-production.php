@@ -1,7 +1,7 @@
 <?php
 
 /**
-* Production config
+* Production config: template4.xmmedia.net
 */
 
 define('KOHANA_ENVIRONMENT', 10); // production
@@ -25,3 +25,4 @@ define('RECAPTCHA_PRIVATE_KEY', '');
 define('DATABASE_DEFAULT', 'production');
 define('SESSION_TYPE', 'database');
 define('ADMIN_EMAIL', 'admin@xmmedia.net');
+define('CHANGE_SCRIPT_CONFIG', 'template4.xmmedia.net');

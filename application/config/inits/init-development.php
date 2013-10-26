@@ -1,7 +1,7 @@
 <?php
 
 /**
-* Config for template4.xmmedia.net
+* Config for template4dev.xmmedia.net
 */
 
 define('KOHANA_ENVIRONMENT', 40); // development
@@ -25,3 +25,4 @@ define('RECAPTCHA_PRIVATE_KEY', '6Lc1xMgSAAAAAMh1B01a4esghv32GyG36rZM6-VA');
 define('DATABASE_DEFAULT', 'development');
 define('SESSION_TYPE', 'database');
 define('ADMIN_EMAIL', 'admin@xmmedia.net');
+define('CHANGE_SCRIPT_CONFIG', 'template4dev.xmmedia.net');
