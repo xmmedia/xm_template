@@ -1,7 +1,7 @@
 /** nav **/
 /* currently select nav items */
 %top_nav_item_current { border-top: 2px solid #dd4b39; border-right: none; border-left: none; font-weight: bold; color: #fff; padding-top: 6px; }
-$nav_items: index home, admin dbadmin, content_admin dbadmin, user_admin dbadmin, cl4admin dbadmin, login login, account login;
+$nav_items: index home, admin dbadmin, content_admin dbadmin, user_admin dbadmin, xmadmin dbadmin, login login, account login;
 @each $nav_item in $nav_items {
 	$page_class: nth($nav_item, 1);
 	$nav_class: nth($nav_item, 2);
@@ -9,7 +9,7 @@ $nav_items: index home, admin dbadmin, content_admin dbadmin, user_admin dbadmin
 }
 /* for the menu items that have sub menus, so when they are clicked when they are also the current one, the main item doesn't stay white */
 %sub_top_nav_current { color: #0645ad; }
-$sub_nav_items: admin dbadmin, contact_admin dbadmin, user_admin dbadmin, cl4admin dbadmin;
+$sub_nav_items: admin dbadmin, contact_admin dbadmin, user_admin dbadmin, xmadmin dbadmin;
 @each $nav_item in $nav_items {
 	$page_class: nth($nav_item, 1);
 	$nav_class: nth($nav_item, 2);

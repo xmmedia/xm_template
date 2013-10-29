@@ -95,8 +95,8 @@ if ( ! is_dir($system) && is_dir(DOCROOT . $system))
 define('APPPATH', realpath($application) . DIRECTORY_SEPARATOR);
 define('MODPATH', realpath($modules) . DIRECTORY_SEPARATOR);
 define('SYSPATH', realpath($system) . DIRECTORY_SEPARATOR);
-// set a path for cl4 which will be used on our extension of Kohana so we can use the cl4 exception handler
-define('CL4_PATH', realpath(MODPATH . 'cl4') . DIRECTORY_SEPARATOR);
+// set a path for xm which will be used on our extension of Kohana so we can use the xm exception handler
+define('XM_PATH', realpath(MODPATH . 'xm') . DIRECTORY_SEPARATOR);
 
 // Clean up the configuration vars
 unset($application, $modules, $system);

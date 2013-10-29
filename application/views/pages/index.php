@@ -1,7 +1,7 @@
 <div class="grid">
 	<div class="col">
-		<h1>Welcome to the CL4 + XM sample site</h1>
-		<p>Welcome to the current CL4 + XM template site. This site is designed to help get you started with cl4 &amp; XM.</p>
+		<h1>Welcome to the XM sample site</h1>
+		<p>Welcome to the current XM template site. This site is designed to help get you started with XM Kohana module.</p>
 		<h2>Second Level Header</h2>
 		<ul>
 			<li>List item</li>

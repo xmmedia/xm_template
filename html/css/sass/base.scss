@@ -1,27 +1,27 @@
-@import "compass", "_vars", "_media", "_normalize", "_cl4_mixins", "_xm_helpers", "_clearfix";
+@import "compass", "_vars", "_media", "_normalize", "_xm_mixins", "_xm_helpers", "_clearfix";
 
 *, *:after, *:before { @include box-sizing(border-box); }
 .clearfix { @extend %clearfix; }
 
 @import "jquery-ui";
 
-/** cl4 mixins **/
-$debug_msg_img: image-url('/cl4/images/message-debug.gif', false, false);
+/** xm mixins **/
+$debug_msg_img: image-url('/xm/images/message-debug.gif', false, false);
 
-$cl4_icons-layout: smart;
-$cl4_icons-sprite-dimensions: true;
-@import "cl4_icons/*.png";
+$xm_icons-layout: smart;
+$xm_icons-sprite-dimensions: true;
+@import "xm_icons/*.png";
 
-$cl4_arrows-layout: smart;
-$cl4_arrows-sprite-dimensions: true;
-@import "cl4_arrows/*.png";
+$xm_arrows-layout: smart;
+$xm_arrows-sprite-dimensions: true;
+@import "xm_arrows/*.png";
 
-$cl4_file_types-layout: smart;
-$cl4_file_types-sprite-dimensions: true;
-@import "cl4_file_types/*.png";
+$xm_file_types-layout: smart;
+$xm_file_types-sprite-dimensions: true;
+@import "xm_file_types/*.png";
 
-@include cl4_all();
-/* end cl4 mixins */
+@include xm_all();
+/* end xm mixins */
 
 body, input { font-family: Arial, Helvetica, sans-serif; font-size: 0.8em; }
 input { font-size: 0.9em; }
@@ -41,7 +41,7 @@ img { height: auto; }
 nav ul { list-style: none; }
 
 /** commonly used styles **/
-.cl4_message { color: #000; padding: 0; }
+.xm_message { color: #000; padding: 0; }
 .labels_above {
 	label { display: block; margin-top: 8px; }
 	.radios {
