@@ -1,5 +1,5 @@
 #!/bin/bash
-# setups up the compass project, including the xm and cl4 libraries
+# setups up the compass project, including the xm library
 # the SASS and CSS dirs are setup as the default dirs
 # sym link the xm images & icons dirs to the "local" images:
 cd html/images
