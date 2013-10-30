@@ -555,16 +555,16 @@ CREATE TABLE `permission` (
 --
 
 INSERT INTO `permission` VALUES(1, 'account/profile', 'Edit Profile', 'Can edit their profile, including changing their password.');
-INSERT INTO `permission` VALUES(2, 'xmadmin/*/add', 'Database Admin Add', 'Can add or add similar any item in the DB Admin.');
-INSERT INTO `permission` VALUES(3, 'xmadmin/*/edit', 'Database Admin Edit', 'Can edit any items in the DB Admin.');
-INSERT INTO `permission` VALUES(4, 'xmadmin/*/search', 'Database Admin Search', 'Can search for any items in the DB Admin.');
-INSERT INTO `permission` VALUES(5, 'xmadmin/*/export', 'Database Admin Export', 'Can export any items in the DB Admin.');
-INSERT INTO `permission` VALUES(6, 'xmadmin/*/delete', 'Database Admin Delete', 'Can delete any item in the DB Admin.');
-INSERT INTO `permission` VALUES(7, 'xmadmin/*/view', 'Database Admin View', 'Can view any item in the DB Admin.');
-INSERT INTO `permission` VALUES(8, 'xmadmin/*/index', 'Database Admin List', 'Can view a list of items in the DB Admin.');
-INSERT INTO `permission` VALUES(9, 'xmadmin/model_create', 'Database Admin Model Create', 'Can create PHP models from the DB Admin. (Unique from other DB Admin permissions.)');
-INSERT INTO `permission` VALUES(10, 'xmadmin/contact/*', 'Database Admin - Contacts', 'Can perform all possible actions on Contacts in the DB Admin (add, edit, delete, search, view, list, export).');
-INSERT INTO `permission` VALUES(11, 'xmadmin', 'DB Admin Access', 'Gives access to DB Admin, although other permissions are required to access individual models/tables and actions.');
+INSERT INTO `permission` VALUES(2, 'xm_db_admin/*/add', 'Database Admin Add', 'Can add or add similar any item in the DB Admin.');
+INSERT INTO `permission` VALUES(3, 'xm_db_admin/*/edit', 'Database Admin Edit', 'Can edit any items in the DB Admin.');
+INSERT INTO `permission` VALUES(4, 'xm_db_admin/*/search', 'Database Admin Search', 'Can search for any items in the DB Admin.');
+INSERT INTO `permission` VALUES(5, 'xm_db_admin/*/export', 'Database Admin Export', 'Can export any items in the DB Admin.');
+INSERT INTO `permission` VALUES(6, 'xm_db_admin/*/delete', 'Database Admin Delete', 'Can delete any item in the DB Admin.');
+INSERT INTO `permission` VALUES(7, 'xm_db_admin/*/view', 'Database Admin View', 'Can view any item in the DB Admin.');
+INSERT INTO `permission` VALUES(8, 'xm_db_admin/*/index', 'Database Admin List', 'Can view a list of items in the DB Admin.');
+INSERT INTO `permission` VALUES(9, 'xm_db_admin/model_create', 'Database Admin Model Create', 'Can create PHP models from the DB Admin. (Unique from other DB Admin permissions.)');
+INSERT INTO `permission` VALUES(10, 'xm_db_admin/contact/*', 'Database Admin - Contacts', 'Can perform all possible actions on Contacts in the DB Admin (add, edit, delete, search, view, list, export).');
+INSERT INTO `permission` VALUES(11, 'xm_db_admin', 'DB Admin Access', 'Gives access to DB Admin, although other permissions are required to access individual models/tables and actions.');
 INSERT INTO `permission` VALUES(12, 'userguide', 'Kohana User Guide', 'Gives access to the Kohana User Guide and API Browser by enabling the modules.');
 INSERT INTO `permission` VALUES(13, 'db_change/index', 'DB Change', 'Allows the user to run SQL commands across multiple databases.');
 INSERT INTO `permission` VALUES(14, 'user_admin/index', 'User Admin', 'Allows the user to access the list of users.');
