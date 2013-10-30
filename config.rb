@@ -17,7 +17,6 @@ output_style = :compressed
 
 line_comments = false
 
-add_import_path "html/cl4/css/sass"
 add_import_path "html/xm/css/sass"
 
 

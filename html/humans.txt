@@ -11,5 +11,5 @@
 
     HTML5, CSS3
     Normalize.css, jQuery, Modernizr
-    PHP, Kohana, CL4, XM
+    PHP, Kohana, XM Kohana Module
     SublimeText, git

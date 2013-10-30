@@ -34,6 +34,6 @@ foreach ($styles as $file => $type) {
 echo TAB, HTML::script('js/modernizr.min.js'), EOL;
 ?>
 	<script>
-		var cl4_in_debug = <?php echo (int) DEBUG_FLAG; ?>;
+		var in_debug = <?php echo (int) DEBUG_FLAG; ?>;
 	</script>
 </head>

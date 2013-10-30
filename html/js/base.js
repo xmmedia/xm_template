@@ -62,8 +62,8 @@
 	};
 })(jQuery);
 
-// defaults for the date picker; these are necessary so the date picker within cl4 work
-// these are in addition to the ones found in cl4.js
+// defaults for the date picker; these are necessary so the date picker within xm work
+// these are in addition to the ones found in xm.js
 if (typeof $.datepicker !== 'undefined') {
 	$.datepicker.setDefaults({
 		showOn: 'both',

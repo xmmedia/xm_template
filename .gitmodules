@@ -25,12 +25,6 @@
 [submodule "modules/userguide"]
 	path = modules/userguide
 	url = git://github.com/kohana/userguide.git
-[submodule "modules/cl4"]
-	path = modules/cl4
-	url = git@github.com:claerosystems/cl4.git
-[submodule "html/cl4"]
-	path = html/cl4
-	url = git@github.com:claerosystems/cl4docroot.git
 [submodule "html/xm"]
 	path = html/xm
 	url = git@github.com:xmmedia/kohana_module_docroot.git
@@ -40,6 +34,3 @@
 [submodule "modules/xm"]
 	path = modules/xm
 	url = git@github.com:xmmedia/kohana_module.git
-[submodule "modules/cl4base"]
-	path = modules/cl4base
-	url = git@github.com:claerosystems/cl4base.git

@@ -2,7 +2,7 @@
 
 return array(
 	'model_comment' => array(
-		'package' => 'CL4 Template',
+		'package' => 'XM Template',
 		'category' => 'Models',
 		'author' => 'XM Media Inc.',
 		'copyright' => '(c) ' . date('Y') . ' XM Media Inc.',
