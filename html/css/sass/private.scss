@@ -16,9 +16,9 @@ footer {
 
 /** the following are styles to create some formatting and are not quite as "required" as the above styles **/
 /** header **/
-.page_top { margin: 0 auto; width: 960px; position: relative; height: 52px; @extend .clearfix; }
+.page_top { margin: 0 auto; width: 960px; position: relative; height: 52px; @extend %clearfix; }
 .page_top_logo {
-	float: left; margin: 20px 0 0 -4px; font-size: 1.3em; font-weight: bold; @extend .clearfix;
+	float: left; margin: 20px 0 0 -4px; font-size: 1.3em; font-weight: bold; @extend %clearfix;
 	a { display: block; color: #777; text-decoration: none; }
 }
 
