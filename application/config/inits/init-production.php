@@ -10,7 +10,7 @@ define('CACHE_FLAG', FALSE);
 define('DEBUG_FLAG', FALSE);
 define('UNAVAILABLE_FLAG', FALSE);
 define('LONG_NAME', 'XM Template Site');
-define('SHORT_NAME', 'XM+Template');
+define('SHORT_NAME', 'XMTemplate');
 define('APP_VERSION', '1');
 if ( ! isset($_SERVER['SERVER_PORT'])) {
 	define('HTTP_PROTOCOL', 'http');
