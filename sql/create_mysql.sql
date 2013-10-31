@@ -468,15 +468,18 @@ CREATE TABLE `group` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `description` text COLLATE utf8_unicode_ci NOT NULL,
-  PRIMARY KEY (`id`)
+  `privileged` tinyint(1) unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `name` (`name`),
+  KEY `name_privileged` (`name`,`privileged`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `group`
 --
 
-INSERT INTO `group` VALUES(1, 'System Administrator', 'Programmer level administrator who can access database admin, etc.');
-INSERT INTO `group` VALUES(2, 'Administrator', 'Client administrator, can edit user table.');
+INSERT INTO `group` VALUES(1, 'System Administrator', 'Programmer level administrator who can access database admin, etc.', 0);
+INSERT INTO `group` VALUES(2, 'Administrator', 'Client administrator, can edit user table.', 0);
 
 -- --------------------------------------------------------
 
@@ -523,17 +526,19 @@ INSERT INTO `group_permission` VALUES(25, 1, 25);
 INSERT INTO `group_permission` VALUES(26, 1, 21);
 INSERT INTO `group_permission` VALUES(29, 1, 14);
 INSERT INTO `group_permission` VALUES(30, 1, 13);
-INSERT INTO `group_permission` VALUES(31, 1, 27);
-INSERT INTO `group_permission` VALUES(32, 1, 28);
-INSERT INTO `group_permission` VALUES(33, 2, 27);
+INSERT INTO `group_permission` VALUES(31, 1, 28);
+INSERT INTO `group_permission` VALUES(32, 1, 29);
+INSERT INTO `group_permission` VALUES(33, 1, 27);
 INSERT INTO `group_permission` VALUES(34, 2, 28);
-INSERT INTO `group_permission` VALUES(35, 2, 14);
-INSERT INTO `group_permission` VALUES(36, 2, 15);
-INSERT INTO `group_permission` VALUES(37, 2, 18);
-INSERT INTO `group_permission` VALUES(38, 2, 19);
-INSERT INTO `group_permission` VALUES(39, 2, 16);
-INSERT INTO `group_permission` VALUES(40, 2, 17);
-INSERT INTO `group_permission` VALUES(41, 2, 20);
+INSERT INTO `group_permission` VALUES(35, 2, 29);
+INSERT INTO `group_permission` VALUES(36, 2, 14);
+INSERT INTO `group_permission` VALUES(37, 2, 15);
+INSERT INTO `group_permission` VALUES(38, 2, 18);
+INSERT INTO `group_permission` VALUES(39, 2, 19);
+INSERT INTO `group_permission` VALUES(40, 2, 16);
+INSERT INTO `group_permission` VALUES(41, 2, 17);
+INSERT INTO `group_permission` VALUES(42, 2, 20);
+INSERT INTO `group_permission` VALUES(43, 2, 27);
 
 -- --------------------------------------------------------
 
@@ -580,8 +585,9 @@ INSERT INTO `permission` VALUES(23, 'user_admin/group/edit', 'User Admin - Group
 INSERT INTO `permission` VALUES(24, 'user_admin/group/permissions', 'User Admin - Group Permissions', 'Allows the user to add and remove permissions from the permission group.');
 INSERT INTO `permission` VALUES(25, 'user_admin/group/users', 'User Admin - Group Users', 'Allows the user to add and remove users from the permission group.');
 INSERT INTO `permission` VALUES(26, 'user_admin/group/delete', 'User Admin - Group Delete', 'Allows the user to delete a permission group.');
-INSERT INTO `permission` VALUES(27, 'content_admin', 'Content Admin', 'Allows the user to access the content admin. Required for users to edit content.');
-INSERT INTO `permission` VALUES(28, 'content_admin/*', 'Content Admin - All Content', 'Allows the user to make changes to all content.');
+INSERT INTO `permission` VALUES(27, 'user_admin/group/privileged', 'User Admin - Access to Privileged Groups', 'Allows the user to add and remove privileged groups from a user or change the permissions on the groups.');
+INSERT INTO `permission` VALUES(28, 'content_admin', 'Content Admin', 'Allows the user to access the content admin. Required for users to edit content.');
+INSERT INTO `permission` VALUES(29, 'content_admin/*', 'Content Admin - All Content', 'Allows the user to make changes to all content.');
 
 -- --------------------------------------------------------
 
