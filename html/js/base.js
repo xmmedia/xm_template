@@ -66,15 +66,13 @@
 // these are in addition to the ones found in xm.js
 if (typeof $.datepicker !== 'undefined') {
 	$.datepicker.setDefaults({
-		showOn: 'both',
-		buttonText: 'Click to view the calendar and pick a date',
+		showOn: 'focus',
 		showButtonPanel: true,
 		changeMonth: true,
 		changeYear: true,
 		constrainInput: false,
 		duration: 'fast',
 		yearRange: 'c-5:c+5',
-		appendText: 'YYYY-MM-DD',
 		onClose: function(dateText, inst) {
 			// focuses the input when the date dialog closes
 			this.focus();
