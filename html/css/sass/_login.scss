@@ -1,22 +1,16 @@
 /** login box formatting, used on login, forgot password and timed out **/
 .login_box {
-	margin: 20px auto 0 auto;
+	@extend %clearfix;
+	margin: 2em auto 0 auto;
 	border: 1px solid #dfdfdf;
 	width: 34em;
-	padding: 15px 20px 20px 20px;
-}
-.boxshadow .login_box {
-	@include border-radius(15px);
-	@include single-box-shadow(#757171, 0, 0, 10px);
-}
-.login_box {
+	padding: 1.5em 2em 2em 2em;
+
 	h1 { color: #666; }
-	.xm_form, .xm_form li ul { padding: 0; }
-	.xm_form li ul li {
-		display: block; float: none; width: 150px;
-		&.field_label { margin-top: 15px; width: 400px; }
-		&.field_value input { font-size: 1.2em; width: 390px; }
+	.field {
+		margin-bottom: 0.5em;
+		label { display: block; }
+		input[type="text"], input[type="password"] { width: 100%; }
 	}
-	.forgot_link { float: right; }
+	.go_link { float: right; }
 }
-.login_button { font-size: 1.2em; }
