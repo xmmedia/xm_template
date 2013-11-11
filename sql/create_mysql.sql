@@ -771,7 +771,6 @@ CREATE TABLE `user` (
   `last_login` datetime NOT NULL,
   `failed_login_count` mediumint(9) unsigned NOT NULL DEFAULT '0',
   `last_failed_login` datetime NOT NULL,
-  `reset_token` char(32) COLLATE utf8_unicode_ci NOT NULL,
   `force_update_password_flag` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `force_update_profile_flag` tinyint(1) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
@@ -783,7 +782,7 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` VALUES(1, '0000-00-00 00:00:00', 'admin@admin.com', '06b28319e30193fc0f1d06ad118db92cc53ec695e3f9c9257b63224015763728', 'Admin', 'Admin', 1, 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', '', 0, 0);
+INSERT INTO `user` VALUES(1, '0000-00-00 00:00:00', 'admin@admin.com', '06b28319e30193fc0f1d06ad118db92cc53ec695e3f9c9257b63224015763728', 'Admin', 'Admin', 1, 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -804,6 +803,21 @@ CREATE TABLE `user_group` (
 --
 
 INSERT INTO `user_group` VALUES(1, 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_reset`
+--
+
+CREATE TABLE `user_reset` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int(10) unsigned NOT NULL,
+  `token` char(32) COLLATE utf8_unicode_ci NOT NULL,
+  `datetime` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `user_id` (`user_id`,`token`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
 
