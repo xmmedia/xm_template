@@ -815,9 +815,15 @@ CREATE TABLE `user_reset` (
   `user_id` int(10) unsigned NOT NULL,
   `token` char(32) COLLATE utf8_unicode_ci NOT NULL,
   `datetime` datetime NOT NULL,
+  `browser` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `ip_address` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `user_id` (`user_id`,`token`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `user_reset`
+--
 
 -- --------------------------------------------------------
 
