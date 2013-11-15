@@ -1,15 +1,16 @@
 /** login box formatting, used on login, forgot password and timed out **/
 .login_box {
 	@extend %clearfix;
-	margin: 2em auto 0 auto;
-	border: 1px solid #dfdfdf;
 	width: 34em;
+	margin: 2em auto 0 auto;
 	padding: 1.5em 2em 2em 2em;
+	border: 1px solid #dfdfdf;
+	color: #555;
 
-	h1 { color: #666; }
+	h1 { color: #636363; }
 	.field {
 		margin-bottom: 0.5em;
-		label { display: block; }
+		label { display: block; color: #666; }
 		input[type="text"], input[type="password"] { width: 100%; }
 	}
 	.go_link { float: right; }
