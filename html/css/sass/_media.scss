@@ -1,9 +1,24 @@
 /**
- * mixin for media queries
+ * mixins for media queries
  * taken from https://gist.github.com/1215856#file-6_media_queries-scss
  */
+@mixin respond_to_min($media) {
+	@if $media == handhelds {
+		@media only screen and (min-width: 479px) { @content }
+	}
+	@else if $media == wide_handhelds {
+		@media only screen and (min-width: 767px) { @content }
+	}
+	@else if $media == tablets {
+		@media only screen and (min-width: 900px) { @content }
+	}
+	@else if $media == wide_tablets {
+		@media only screen and (min-width: 1025px) { @content }
+	}
+}
+
 @mixin respond_to($media) {
- 	@if $media == handhelds {
+	@if $media == handhelds {
 		@media only screen and (max-width: 479px) { @content }
 	}
 	@else if $media == wide_handhelds {
@@ -14,5 +29,39 @@
 	}
 	@else if $media == wide_tablets {
 		@media only screen and (max-width: 1025px) { @content }
+	}
+}
+
+// debug for showing the screen width in the bottom right
+@mixin screen_width_display {
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	z-index: 9999;
+	padding: .5em .75em;
+	font-family: monospace;
+	font-size: 1.125em;
+	color: #20d832;
+	background: rgba(0,0,0,.5);
+}
+
+$show_screen_width: false !default;
+@if $show_screen_width == true {
+	$start_at: 300px;
+	$increment_by: 10px;
+
+	$min: floor($start_at/$increment_by);
+	$max: floor(($max_width + 100)/$increment_by);
+
+	body {
+		&:before {
+			@include screen_width_display;
+
+			@for $i from $min through $max {
+				@media screen and (min-width: #{$i * $increment_by}) {
+					content: "width: #{$i * $increment_by}";
+				}
+			}
+		}
 	}
 }
