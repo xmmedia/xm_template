@@ -3,8 +3,6 @@
 *, *:after, *:before { @include box-sizing(border-box); }
 .clearfix { @extend %clearfix; }
 
-@import "jquery-ui";
-
 /** xm mixins **/
 $debug_msg_img: image-url('/xm/images/message-debug.gif', false, false);
 
