@@ -1,5 +1,7 @@
 @import "compass", "_vars", "_media", "_xm_mixins", "_xm_helpers", "_clearfix";
 
+@import "jquery-ui";
+
 /** general formatting / containers **/
 header { border-bottom: 1px solid #dfdfdf; margin-bottom: 10px; }
 #wrapper { padding: 15px; background-color: #fff; text-align: left; }
