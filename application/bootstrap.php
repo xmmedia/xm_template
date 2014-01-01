@@ -97,13 +97,13 @@ Kohana::init(array(
 	'index_file'    => '',
 	'profile'       => DEBUG_FLAG,
 	'caching'       => CACHE_FLAG,
-	'cache_dir'     => ABS_ROOT . '/cache',
+	'cache_dir'     => ABS_ROOT . DIRECTORY_SEPARATOR . 'cache',
 ));
 
 /**
  * Attach the file write to logging. Multiple writers are supported.
  */
-Kohana::$log->attach(new Log_File(ABS_ROOT . '/logs'));
+Kohana::$log->attach(new Log_File(ABS_ROOT . DIRECTORY_SEPARATOR . 'logs'));
 
 /**
  * Attach a file reader to config. Multiple readers are supported.
