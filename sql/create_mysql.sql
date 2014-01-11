@@ -509,6 +509,7 @@ INSERT INTO `group_permission` VALUES(7, 1, 7);
 INSERT INTO `group_permission` VALUES(8, 1, 8);
 INSERT INTO `group_permission` VALUES(9, 1, 9);
 INSERT INTO `group_permission` VALUES(10, 2, 1);
+INSERT INTO `group_permission` VALUES(11, 1, 30);
 INSERT INTO `group_permission` VALUES(12, 1, 11);
 INSERT INTO `group_permission` VALUES(13, 2, 11);
 INSERT INTO `group_permission` VALUES(14, 1, 12);
@@ -588,6 +589,7 @@ INSERT INTO `permission` VALUES(26, 'user_admin/group/delete', 'User Admin - Gro
 INSERT INTO `permission` VALUES(27, 'user_admin/group/privileged', 'User Admin - Access to Privileged Groups', 'Allows the user to add and remove privileged groups from a user or change the permissions on the groups.');
 INSERT INTO `permission` VALUES(28, 'content_admin', 'Content Admin', 'Allows the user to access the content admin. Required for users to edit content.');
 INSERT INTO `permission` VALUES(29, 'content_admin/*', 'Content Admin - All Content', 'Allows the user to make changes to all content.');
+INSERT INTO `permission` VALUES(30, 'error_admin', 'Error Admin', 'Gives full access to the Error Admin.');
 
 -- --------------------------------------------------------
 
