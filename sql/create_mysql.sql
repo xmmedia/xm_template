@@ -181,6 +181,56 @@ CREATE TABLE `content_page` (
 -- Dumping data for table `content_page`
 --
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `error_group`
+--
+
+CREATE TABLE `error_group` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `file` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `line` int(10) unsigned NOT NULL,
+  `data` mediumtext COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `error_group`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `error_log`
+--
+
+CREATE TABLE `error_log` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `error_group_id` int(10) unsigned NOT NULL,
+  `datetime` datetime NOT NULL,
+  `message` varchar(1024) COLLATE utf8_unicode_ci NOT NULL,
+  `file` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `line` int(10) unsigned NOT NULL,
+  `code` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `trace` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `url` varchar(1024) COLLATE utf8_unicode_ci NOT NULL,
+  `remote_address` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
+  `server` mediumtext COLLATE utf8_unicode_ci NOT NULL,
+  `post` mediumtext COLLATE utf8_unicode_ci NOT NULL,
+  `get` mediumtext COLLATE utf8_unicode_ci NOT NULL,
+  `files` mediumtext COLLATE utf8_unicode_ci NOT NULL,
+  `cookie` mediumtext COLLATE utf8_unicode_ci NOT NULL,
+  `session` mediumtext COLLATE utf8_unicode_ci NOT NULL,
+  `html` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `resolved` tinyint(1) unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `datetime` (`error_group_id`,`datetime`,`resolved`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `error_log`
+--
 
 -- --------------------------------------------------------
 
