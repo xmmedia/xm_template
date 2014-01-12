@@ -1,0 +1,8 @@
+#!/usr/bin/env php
+<?php
+
+// need to change the working dir
+// otherwise it will attempt to include files from one left to high up
+chdir(__DIR__ . DIRECTORY_SEPARATOR . 'html');
+
+include __DIR__ . DIRECTORY_SEPARATOR . 'html' . DIRECTORY_SEPARATOR . 'index.php';
