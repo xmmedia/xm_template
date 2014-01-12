@@ -181,6 +181,56 @@ CREATE TABLE `content_page` (
 -- Dumping data for table `content_page`
 --
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `error_group`
+--
+
+CREATE TABLE `error_group` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `file` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `line` int(10) unsigned NOT NULL,
+  `data` mediumtext COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `error_group`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `error_log`
+--
+
+CREATE TABLE `error_log` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `error_group_id` int(10) unsigned NOT NULL,
+  `datetime` datetime NOT NULL,
+  `message` varchar(1024) COLLATE utf8_unicode_ci NOT NULL,
+  `file` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `line` int(10) unsigned NOT NULL,
+  `code` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `trace` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `url` varchar(1024) COLLATE utf8_unicode_ci NOT NULL,
+  `remote_address` varchar(15) COLLATE utf8_unicode_ci NOT NULL,
+  `server` mediumtext COLLATE utf8_unicode_ci NOT NULL,
+  `post` mediumtext COLLATE utf8_unicode_ci NOT NULL,
+  `get` mediumtext COLLATE utf8_unicode_ci NOT NULL,
+  `files` mediumtext COLLATE utf8_unicode_ci NOT NULL,
+  `cookie` mediumtext COLLATE utf8_unicode_ci NOT NULL,
+  `session` mediumtext COLLATE utf8_unicode_ci NOT NULL,
+  `html` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `resolved` tinyint(1) unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `datetime` (`error_group_id`,`datetime`,`resolved`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `error_log`
+--
 
 -- --------------------------------------------------------
 
@@ -509,6 +559,7 @@ INSERT INTO `group_permission` VALUES(7, 1, 7);
 INSERT INTO `group_permission` VALUES(8, 1, 8);
 INSERT INTO `group_permission` VALUES(9, 1, 9);
 INSERT INTO `group_permission` VALUES(10, 2, 1);
+INSERT INTO `group_permission` VALUES(11, 1, 30);
 INSERT INTO `group_permission` VALUES(12, 1, 11);
 INSERT INTO `group_permission` VALUES(13, 2, 11);
 INSERT INTO `group_permission` VALUES(14, 1, 12);
@@ -588,6 +639,7 @@ INSERT INTO `permission` VALUES(26, 'user_admin/group/delete', 'User Admin - Gro
 INSERT INTO `permission` VALUES(27, 'user_admin/group/privileged', 'User Admin - Access to Privileged Groups', 'Allows the user to add and remove privileged groups from a user or change the permissions on the groups.');
 INSERT INTO `permission` VALUES(28, 'content_admin', 'Content Admin', 'Allows the user to access the content admin. Required for users to edit content.');
 INSERT INTO `permission` VALUES(29, 'content_admin/*', 'Content Admin - All Content', 'Allows the user to make changes to all content.');
+INSERT INTO `permission` VALUES(30, 'error_admin', 'Error Admin', 'Gives full access to the Error Admin.');
 
 -- --------------------------------------------------------
 
