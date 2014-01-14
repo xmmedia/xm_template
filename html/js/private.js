@@ -1,8 +1,3 @@
-//@codekit-prepend "jquery.outside.min.js";
-//@codekit-prepend "../xm/js/xm.js";
-//@codekit-prepend "../xm/js/ajax.js";
-//@codekit-prepend "base.js";
-
 $(function() {
 	// admin sub nav
 	$('.top_nav_wrapper').on('click', 'li.has_subnav > a', function(e) {
