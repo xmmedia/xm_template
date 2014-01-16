@@ -8,12 +8,12 @@ module.exports = function(grunt) {
 			},
 			build: {
 				files: {
+					'html/js/base.min.js': 'html/js/base.js',
 					'html/js/private.min.js':
 					[
 						'html/js/jquery.outside.min.js',
 						'html/xm/js/xm.js',
-						'html/xm/js/ajax.js',
-						'html/js/base.js'
+						'html/xm/js/ajax.js'
 					]
 				}
 			}
