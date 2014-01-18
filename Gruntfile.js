@@ -10,12 +10,12 @@ module.exports = function(grunt) {
 				files: {
 					'html/js/base.min.js': 'html/js/base.js',
 					'html/js/private.min.js':
-					[
-						'html/js/jquery.outside.min.js',
-						'html/xm/js/xm.js',
-						'html/xm/js/ajax.js',
-						'html/js/private.js'
-					]
+						[
+							'html/js/jquery.outside.min.js',
+							'html/xm/js/xm.js',
+							'html/xm/js/ajax.js',
+							'html/js/private.js'
+						]
 				}
 			}
 		},
@@ -48,7 +48,7 @@ module.exports = function(grunt) {
 
 			css: {
 				files: ['html/css/sass/*.scss'],
-				tasks: ['compass'],
+				tasks: ['compass', 'autoprefixer'],
 				options: {
 					spawn: false,
 				}
