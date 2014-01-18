@@ -15,7 +15,18 @@ module.exports = function(grunt) {
 							'html/xm/js/xm.js',
 							'html/xm/js/ajax.js',
 							'html/js/private.js'
+						],
+					'html/js/public.min.js':
+						[
+							'html/xm/js/xm.js',
+							'html/xm/js/ajax.js',
+							'html/js/public.js'
 						]
+				}
+			},
+			xm: {
+				files: {
+					'html/xm/js/error_admin.min.js': 'html/xm/js/error_admin.js'
 				}
 			}
 		},
@@ -23,18 +34,48 @@ module.exports = function(grunt) {
 		compass: {
 			dist: {
 				options: {
-					config: 'config.rb'
+					httpPath: '/',
+					cssDir: 'html/css',
+					sassDir: 'html/css/sass',
+					imagesDir: 'html/images',
+					httpImagesPath: '/images',
+					httpGeneratedImagesPath: '/images',
+					javascriptsDir: 'html/js',
+					httpJavascriptsPath: '/js',
+					outputStyle: 'compressed',
+					noLineComments: false,
+					importPath: 'html/xm/css/sass'
+				}
+			},
+			xm: {
+				options: {
+					httpPath: '/',
+					cssDir: 'html/xm/css',
+					sassDir: 'html/xm/css/sass',
+					imagesDir: 'html/xm/images',
+					httpImagesPath: '/xm/images',
+					httpGeneratedImagesPath: '/xm/images',
+					javascriptsDir: 'html/xm/js',
+					httpJavascriptsPath: '/xm/js',
+					outputStyle: 'compressed',
+					noLineComments: false
 				}
 			}
 		},
 
 		autoprefixer: {
-			multiple_files: {
+			dist: {
 				expand: true,
 				flatten: true,
-				src: 'html/css/*.css', // -> src/css/file1.css, src/css/file2.css
-				dest: 'html/css/' // -> dest/css/file1.css, dest/css/file2.css
+				src: 'html/css/*.css',
+				dest: 'html/css/'
 			},
+			xm: {
+				expand: true,
+				flatten: true,
+				src: 'html/xm/css/*.css',
+				dest: 'html/xm/css/'
+			}
 		},
 
 		watch: {
