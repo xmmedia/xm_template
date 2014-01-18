@@ -8,8 +8,6 @@ chmod g+w -R logs
 chmod o+w -R logs
 chmod g+w -R cache
 chmod o+w -R cache
-chmod o+x minion
-chmod g+x minion
-chmod o+x miniond
-chmod g+x miniond
+chmod a+x minion
+chmod a+x miniond
 find . -type d ! -iname 'iworx-backup' -exec chmod g+s {} \;
