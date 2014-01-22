@@ -15,12 +15,6 @@ module.exports = function(grunt) {
 							'html/xm/js/xm.js',
 							'html/xm/js/ajax.js',
 							'html/js/private.js'
-						],
-					'html/js/public.min.js':
-						[
-							'html/xm/js/xm.js',
-							'html/xm/js/ajax.js',
-							'html/js/public.js'
 						]
 				}
 			},
