@@ -74,7 +74,7 @@ module.exports = function(grunt) {
 
 		watch: {
 			scripts: {
-				files: ['html/js/*.js'],
+				files: ['html/js/*.js', 'html/xm/js/*.js'],
 				tasks: ['uglify'],
 				options: {
 					spawn: false,
@@ -82,7 +82,7 @@ module.exports = function(grunt) {
 			},
 
 			css: {
-				files: ['html/css/sass/*.scss'],
+				files: ['html/css/sass/*.scss', 'html/xm/css/sass/*.scss'],
 				tasks: ['compass', 'autoprefixer'],
 				options: {
 					spawn: false,
