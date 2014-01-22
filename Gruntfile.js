@@ -15,12 +15,6 @@ module.exports = function(grunt) {
 							'html/xm/js/xm.js',
 							'html/xm/js/ajax.js',
 							'html/js/private.js'
-						],
-					'html/js/public.min.js':
-						[
-							'html/xm/js/xm.js',
-							'html/xm/js/ajax.js',
-							'html/js/public.js'
 						]
 				}
 			},
@@ -80,7 +74,7 @@ module.exports = function(grunt) {
 
 		watch: {
 			scripts: {
-				files: ['html/js/*.js'],
+				files: ['html/js/*.js', 'html/xm/js/*.js'],
 				tasks: ['uglify'],
 				options: {
 					spawn: false,
@@ -88,7 +82,7 @@ module.exports = function(grunt) {
 			},
 
 			css: {
-				files: ['html/css/sass/*.scss'],
+				files: ['html/css/sass/*.scss', 'html/xm/css/sass/*.scss'],
 				tasks: ['compass', 'autoprefixer'],
 				options: {
 					spawn: false,
