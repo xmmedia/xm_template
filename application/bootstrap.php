@@ -93,11 +93,11 @@ if (isset($_SERVER['KOHANA_ENV'])) {
  * `string`  | error_view | set the error rendering view                   | "kohana/error"
  */
 Kohana::init(array(
-	'base_url'      => URL_ROOT,
-	'index_file'    => '',
-	'profile'       => DEBUG_FLAG,
-	'caching'       => CACHE_FLAG,
-	'cache_dir'     => ABS_ROOT . DIRECTORY_SEPARATOR . 'cache',
+	'base_url'   => URL_ROOT,
+	'index_file' => '',
+	'profile'    => DEBUG_FLAG,
+	'caching'    => CACHE_FLAG,
+	'cache_dir'  => ABS_ROOT . DIRECTORY_SEPARATOR . 'cache',
 ));
 
 /**
