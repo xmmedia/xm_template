@@ -3,13 +3,13 @@
 
 # TEAM
 
-    Darryl Hein -- Developer -- @darrylhein
+	Darryl Hein -- Developer -- @darrylhein
 
 # THANKS
 
 # TECHNOLOGY COLOPHON
 
-    HTML5, CSS3
-    Normalize.css, jQuery, Modernizr
-    PHP, Kohana, XM Kohana Module
-    SublimeText, git, Grunt
+	HTML5, CSS3
+	Normalize.css, jQuery, Modernizr
+	PHP, Kohana, XM Kohana Module
+	SublimeText, git, Grunt
