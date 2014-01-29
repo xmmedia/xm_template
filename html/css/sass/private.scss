@@ -18,10 +18,17 @@ footer {
 
 /** the following are styles to create some formatting and are not quite as "required" as the above styles **/
 /** header **/
-.page_top { margin: 0 auto; width: 960px; position: relative; height: 52px; @extend %clearfix; }
-.page_top_logo {
-	float: left; margin: 20px 0 0 -4px; font-size: 1.3em; font-weight: bold; @extend %clearfix;
-	a { display: block; color: #777; text-decoration: none; }
+.page_top {
+	@extend %clearfix;
+	width: 960px; height: 4em; margin: 0 auto;
+	.page_top_logo {
+		@extend %clearfix;
+		float: left; margin: 1em 0 0 1em; font-size: 1.3em; font-weight: bold;
+		@include respond_to_min(wide_tablets) {
+			margin-left: 0;
+		}
+		a { display: block; color: #777; text-decoration: none; }
+	}
 }
 
 @import "_private_nav", "_login", "_tinymce";
