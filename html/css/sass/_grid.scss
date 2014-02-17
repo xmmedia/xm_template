@@ -1,38 +1,35 @@
 /** grid **/
 /* based off of http://css-tricks.com/dont-overthink-it-grids/ */
 .grid {
+	@extend %clearfix;
 	background: #ddd; /* probably remove, for demo purposes */
 	padding: $grid_pad $grid_pad 0 $grid_pad;
-	max-width: $max_width;
-	min-width: $min_width;
 	margin: 0 auto 0 auto;
-
-	&:after {
-		content: "";
-		display: table;
-		clear: both;
-	}
-
-	@include respond_to(wide_handhelds) { width: 100%; min-width: 0; }
-}
-.col, [class*='col-'] {
-	float: left;
-	padding-left: $grid_pad;
-	.grid &:first-child {
-		padding-left: 0;
-	}
+	@include respond_to_min(wide_handhelds) { max-width: $max_width; min-width: $min_width; }
 }
 
-/* some default columns */
-.col { width: 100%; }
-.col-2-3 { width: 2 / 3 * 100%; }
-.col-1-3 { width: 1 / 3 * 100%; }
-.col-1-2 { width: 1 / 2 * 100%; }
-.col-1-4 { width: 1 / 4 * 100%; }
-.col-3-4 { width: 3 / 4 * 100%; }
-.col-1-8 { width: 1 / 8 * 100%; }
+@include respond_to_min(wide_handhelds) {
+	/* some default columns */
+	.col { width: 100%; }
+	.col-2-3 { width: 2 / 3 * 100%; }
+	.col-1-3 { width: 1 / 3 * 100%; }
+	.col-1-2 { width: 1 / 2 * 100%; }
+	.col-1-4 { width: 1 / 4 * 100%; }
+	.col-3-4 { width: 3 / 4 * 100%; }
+	.col-1-8 { width: 1 / 8 * 100%; }
+	.col-1-12 { width: 1 / 12 * 100%; }
+	.col-5-12 { width: 5 / 12 * 100%; }
 
-/* note: this has be here instead of inside the class above because otherwise the cols will override the width */
-@include respond_to(wide_handhelds) {
-	[class*='col-'] { float: none; width: auto; padding-left: 0; }
+	[class*='col-'] {
+		float: left;
+		padding-left: $grid_pad;
+
+	}
+	.grid {
+		.col, [class*='col-'] {
+			&:first-child {
+				padding-left: 0;
+			}
+		}
+	}
 }
