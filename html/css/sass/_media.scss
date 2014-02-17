@@ -38,6 +38,10 @@
 	}
 }
 
+@mixin respond_to_retina() {
+	@media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) { @content }
+}
+
 // debug for showing the screen width in the bottom right
 @mixin screen_width_display {
 	position: fixed;
