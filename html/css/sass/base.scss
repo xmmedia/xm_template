@@ -1,6 +1,6 @@
 @import "compass", "_vars", "_media", "_normalize", "_xm_mixins", "_xm_helpers", "_clearfix";
 
-*, *:after, *:before { @include box-sizing(border-box); }
+*, *:after, *:before { box-sizing: border-box; }
 .clearfix { @extend %clearfix; }
 
 /** xm mixins **/
