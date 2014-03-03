@@ -26,7 +26,7 @@ $(function() {
 			link.addClass('clicked');
 
 			// watch for clicks outside the sub nav element
-			$('html').on('click', function(e) {
+			$('html').one('click', function(e) {
 				// make sure the clicked element is not in the sub nav
 				// and the sub nav element was not clicked
 				if (sub_nav.has(e.target).length === 0 && ! sub_nav.is(e.target)) {
