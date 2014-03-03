@@ -5,7 +5,10 @@
 	background: #ddd; /* probably remove, for demo purposes */
 	padding: $grid_pad $grid_pad 0 $grid_pad;
 	margin: 0 auto 0 auto;
-	@include respond_to_min(wide_handhelds) { max-width: $max_width; min-width: $min_width; }
+	@include respond_to_min(wide_handhelds) {
+		max-width: $max_width;
+		min-width: $min_width;
+	}
 }
 
 @include respond_to_min(wide_handhelds) {
@@ -23,7 +26,6 @@
 	[class*='col-'] {
 		float: left;
 		padding-left: $grid_pad;
-
 	}
 	.grid {
 		.col, [class*='col-'] {
