@@ -6,9 +6,9 @@
 
 define('KOHANA_ENVIRONMENT', 10); // production
 define('DEVELOPMENT_FLAG', FALSE);
-define('CACHE_FLAG', FALSE);
-define('DEBUG_FLAG', FALSE);
+define('DEBUG_FLAG', DEVELOPMENT_FLAG);
 define('UNAVAILABLE_FLAG', FALSE);
+define('CACHE_FLAG', FALSE);
 define('LONG_NAME', 'XM Template Site');
 if ( ! isset($_SERVER['SERVER_PORT'])) {
 	define('HTTP_PROTOCOL', 'http');
