@@ -8,9 +8,14 @@ module.exports = function(grunt) {
 			},
 			dist: {
 				files: {
-					'html/js/base.min.js': 'html/js/base.js',
+					'html/js/base.min.js':
+						[
+							'html/js/jquery.min.js',
+							'html/js/base.js'
+						],
 					'html/js/private.min.js':
 						[
+							'html/js/jquery-ui.min.js',
 							'html/xm/js/xm.js',
 							'html/xm/js/ajax.js',
 							'html/js/private.js'
