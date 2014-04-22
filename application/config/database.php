@@ -2,7 +2,7 @@
 
 return array(
 	'development' => array(
-		'type'       => 'MySQL',
+		'type'       => 'MySQLi',
 		'connection' => array(
 			'hostname'   => 'localhost',
 			'port'       => 3306,
@@ -18,7 +18,7 @@ return array(
 	),
 
 	'production' => array(
-		'type'       => 'MySQL',
+		'type'       => 'MySQLi',
 		'connection' => array(
 			'hostname'   => 'localhost',
 			'port'       => 3306,
