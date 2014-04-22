@@ -561,7 +561,6 @@ INSERT INTO `group_permission` VALUES(NULL, 1, 9);
 INSERT INTO `group_permission` VALUES(NULL, 1, 11);
 INSERT INTO `group_permission` VALUES(NULL, 1, 12);
 INSERT INTO `group_permission` VALUES(NULL, 1, 13);
-INSERT INTO `group_permission` VALUES(NULL, 1, 14);
 INSERT INTO `group_permission` VALUES(NULL, 1, 15);
 INSERT INTO `group_permission` VALUES(NULL, 1, 16);
 INSERT INTO `group_permission` VALUES(NULL, 1, 17);
@@ -581,7 +580,6 @@ INSERT INTO `group_permission` VALUES(NULL, 1, 30);
 
 INSERT INTO `group_permission` VALUES(NULL, 2, 1);
 INSERT INTO `group_permission` VALUES(NULL, 2, 11);
-INSERT INTO `group_permission` VALUES(NULL, 2, 14);
 INSERT INTO `group_permission` VALUES(NULL, 2, 15);
 INSERT INTO `group_permission` VALUES(NULL, 2, 16);
 INSERT INTO `group_permission` VALUES(NULL, 2, 17);
@@ -623,7 +621,6 @@ INSERT INTO `permission` VALUES(9, 'xm_db_admin/model_create', 'Database Admin M
 INSERT INTO `permission` VALUES(10, 'xm_db_admin/contact/*', 'Database Admin - Contacts', 'Can perform all possible actions on Contacts in the DB Admin (add, edit, delete, search, view, list, export).');
 INSERT INTO `permission` VALUES(11, 'xm_db_admin', 'DB Admin Access', 'Gives access to DB Admin, although other permissions are required to access individual models/tables and actions.');
 INSERT INTO `permission` VALUES(12, 'userguide', 'Kohana User Guide', 'Gives access to the Kohana User Guide and API Browser by enabling the modules.');
-INSERT INTO `permission` VALUES(13, 'db_change/index', 'DB Change', 'Allows the user to run SQL commands across multiple databases.');
 INSERT INTO `permission` VALUES(14, 'user_admin/index', 'User Admin', 'Allows the user to access the list of users.');
 INSERT INTO `permission` VALUES(15, 'user_admin/add', 'User Admin - Add User', 'Allows the user to add new users.');
 INSERT INTO `permission` VALUES(16, 'user_admin/edit', 'User Admin - Edit User', 'Allows the user to edit users, excluding their permissions.');
