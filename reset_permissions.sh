@@ -10,4 +10,5 @@ chmod g+w -R cache
 chmod o+w -R cache
 chmod a+x minion
 chmod a+x miniond
+chmod a+x beanstalk_deploy.sh
 find . -type d ! -iname 'iworx-backup' -exec chmod g+s {} \;

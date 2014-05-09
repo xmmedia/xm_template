@@ -15,7 +15,7 @@ OPTIONS:
 
 Usage:
 
-	sh ./beanstalk_deploy.sh -s -c init-production
+	./beanstalk_deploy.sh -s -c init-production
 
 EOF
 }
@@ -38,25 +38,23 @@ if [[ -e "${CONFIG}" ]]; then
 	cp ${CONFIG} application/init.php || exit 1
 fi
 
-cd html/ || exit 1
-
 # just run the change scripts
 if [[ $SILENT_MODE == "y" ]]; then
 	echo
 	echo "-- Running change scripts";
-	php index.php --task="change:script:run" || exit 1
+	./minion Change:Script:Run || exit 1
 
 # list the change scripts and then ask if they should be run
 else
 	echo
 	echo "-- Listing change scripts";
-	php index.php --task="change:script:list" || exit 1
+	./minion Change:Script:List || exit 1
 
 	read -p "Do you want to run the above change scripts? (y/n) ";
 	if [[ "$REPLY" == "y" ]]; then
 		echo
 		echo "-- Running change scripts";
-		php index.php --task="change:script:run" || exit 1
+		./minion Change:Script:Run || exit 1
 	fi
 fi
 
