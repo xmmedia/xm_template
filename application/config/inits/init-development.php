@@ -16,7 +16,7 @@ if ( ! isset($_SERVER['SERVER_PORT'])) {
 	define('HTTP_PROTOCOL', ($_SERVER['SERVER_PORT'] == '443' ? 'https' : 'http'));
 }
 define('URL_ROOT', HTTP_PROTOCOL . '://template4dev.xmmedia.net');
-define('ABS_ROOT', '/home/templat1/template4dev.xmmedia.net/');
+define('ABS_ROOT', '/home/templat1/template4dev.xmmedia.net');
 define('ANALYTICS_ID', 'UA-17170806-9'); // UA-17170806-9 is for template4.xmmedia.net
 define('RECAPTCHA_PUBLIC_KEY', '6Lc1xMgSAAAAAI7B-eRAahlvGQS2yKB16o5qBP3X');
 define('RECAPTCHA_PRIVATE_KEY', '6Lc1xMgSAAAAAMh1B01a4esghv32GyG36rZM6-VA');
