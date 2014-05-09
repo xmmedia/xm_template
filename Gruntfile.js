@@ -10,6 +10,7 @@ module.exports = function(grunt) {
 				files: {
 					'html/js/base.min.js':
 						[
+							'html/js/modernizr.min.js',
 							'html/js/jquery.min.js',
 							'html/js/base.js'
 						],
