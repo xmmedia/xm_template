@@ -1,12 +1,12 @@
 /** development related styles **/
-#kohana_profiler { margin-top: 20px; min-width: 850px; }
+#kohana_profiler { margin-top: 2em; min-width: 850px; }
 .debug { text-align: left; background-color: transparent; }
 .debug code { background-color: transparent; }
 .development_msg {
 	width: 100%;
 	text-align: center;
 	font-size: 1.2em;
-	padding: 5px 0;
+	padding: 0.3em 0;
 	border-bottom: 1px solid #333;
 	background-color: #edb737;
 	font-weight: bold;
