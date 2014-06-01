@@ -5,12 +5,17 @@
 a { color: #2b82cb; }
 
 /** general formatting / containers **/
-header { border-bottom: 1px solid #dfdfdf; margin-bottom: 10px; }
-#wrapper { padding: 15px; background-color: #fff; text-align: left; }
+header { border-bottom: 1px solid #dfdfdf; margin-bottom: 0.6em; }
+#wrapper { padding: 0 1em; background-color: #fff; text-align: left; }
 #main_content { margin: 0 auto; width: 960px; }
 footer {
-	height: 80px; margin-top: 30px; padding: 10px; font-size: 0.8em; color: #777; background: #ebebeb; text-align: left;
-	.footer_content { margin: 0 auto; width: 960px; text-align: left; padding-top: 30px; }
+	height: 7em;
+	margin-top: 2.5em;
+	padding: $grid_pad;
+	font-size: 0.8em;
+	color: #777;
+	background: #ebebeb;
+	text-align: left;
 	nav { float: left; }
 	.footer_links { float: right; }
 	a {
