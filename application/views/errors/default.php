@@ -9,9 +9,9 @@ $styles = array(
 	'css/base.css' => NULL,
 	'css/public.css' => NULL,
 );
-foreach ($styles as $file => $type) {
+foreach ($styles as $file => $type) :
 	echo TAB, HTML::style($file, array('media' => $type)), EOL;
-}
+endforeach;
 
 echo TAB, HTML::script('js/modernizr.min.js'), EOL;
 ?>
