@@ -1,5 +1,5 @@
 var gulp = require('gulp'),
-	concat = require('gulp-concat'),
+	concat = require('gulp-concat-sourcemap'),
 	uglify = require('gulp-uglify'),
 	sass = require('gulp-ruby-sass'),
 	autoprefixer = require('gulp-autoprefixer'),
@@ -10,6 +10,7 @@ var gulp = require('gulp'),
 // paths & options used within the tasks
 var paths = {
 	scripts : [
+		// local
 		{
 			dest : 'html/js',
 			destFile : 'base.min.js',
@@ -31,6 +32,7 @@ var paths = {
 					'html/js/private.js'
 				]
 		},
+		// xm module
 		{
 			dest : 'html/xm/js',
 			destFile : 'error_admin.min.js',
@@ -41,6 +43,7 @@ var paths = {
 		}
 	],
 	styles : [
+		// local
 		{
 			src : 'html/css/sass/*.scss',
 			dest : 'html/css',
@@ -49,11 +52,12 @@ var paths = {
 				loadPath: 'html/xm/css/sass'
 			}
 		},
+		// xm module
 		{
 			src : 'html/xm/css/sass/*.scss',
 			dest : 'html/xm/css',
 			options : {
-				style: 'compressed',
+				style: 'compressed'
 			}
 		}
 	]
@@ -72,7 +76,10 @@ gulp.task('scripts', function(cb) {
 				.pipe(uglify({
 					mangle : false
 				}))
-				.pipe(concat(script.destFile))
+				.pipe(concat(script.destFile, {
+					// remove the first directory from the paths in the sourcemap
+					prefix : 1
+				}))
 				.pipe(gulp.dest(script.dest))
 				.pipe(notify({ message: 'Scripts task complete: <%= file.relative %>' }));
 		}
