@@ -1,9 +1,10 @@
 var gulp = require('gulp'),
 	concat = require('gulp-concat'),
 	uglify = require('gulp-uglify'),
-	notify = require('gulp-notify'),
 	sass = require('gulp-ruby-sass'),
 	autoprefixer = require('gulp-autoprefixer'),
+	base64 = require('gulp-base64'),
+	notify = require('gulp-notify'),
 	Q = require('q');
 
 // paths & options used within the tasks
@@ -94,6 +95,11 @@ gulp.task('styles', function() {
 			gulp.src(style.src)
 				.pipe(sass(style.options))
 				.pipe(autoprefixer())
+				// inline any svg images
+				.pipe(base64({
+					baseDir: 'html',
+					extensions: ['svg']
+				}))
 				.pipe(gulp.dest(style.dest))
 				.pipe(notify({ message: 'Styles task complete: <%= file.relative %>' }));
 		}
