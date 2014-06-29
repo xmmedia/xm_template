@@ -4,7 +4,6 @@ var gulp = require('gulp'),
 	sass = require('gulp-ruby-sass'),
 	autoprefixer = require('gulp-autoprefixer'),
 	base64 = require('gulp-base64'),
-	notify = require('gulp-notify'),
 	Q = require('q');
 
 // paths & options used within the tasks
@@ -78,10 +77,10 @@ gulp.task('scripts', function(cb) {
 				}))
 				.pipe(concat(script.destFile, {
 					// remove the first directory from the paths in the sourcemap
-					prefix : 1
+					prefix : 1,
+					sourceRoot : '/'
 				}))
-				.pipe(gulp.dest(script.dest))
-				.pipe(notify({ message: 'Scripts task complete: <%= file.relative %>' }));
+				.pipe(gulp.dest(script.dest));
 		}
 
 		deferred.resolve();
@@ -107,8 +106,7 @@ gulp.task('styles', function() {
 					baseDir: 'html',
 					extensions: ['svg']
 				}))
-				.pipe(gulp.dest(style.dest))
-				.pipe(notify({ message: 'Styles task complete: <%= file.relative %>' }));
+				.pipe(gulp.dest(style.dest));
 		}
 
 		deferred.resolve();
