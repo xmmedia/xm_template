@@ -117,8 +117,10 @@ gulp.task('styles', function() {
 
 // Rerun the task when a file changes
 gulp.task('watch', function() {
-	gulp.watch(['html/js/**', 'html/xm/js/**'], ['scripts']);
-	gulp.watch(['html/css/sass/**', 'html/xm/css/sass/**'], ['styles']);
+	// watch everything in the JS dirs & sub dirs with extension .js, but exclude the .min.js files
+	gulp.watch(['html/js/**/*.js', 'html/xm/js/**/*.js', '!**/*.min.js'], ['scripts']);
+	// watch everything in the sass dirs & sub dirs with extension .scss
+	gulp.watch(['html/css/sass/**/*.scss', 'html/xm/css/sass/**/*.scss'], ['styles']);
 });
 
 // The default task (called when you run `gulp` from cli)
