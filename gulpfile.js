@@ -15,9 +15,9 @@ var paths = {
 			destFile : 'base.min.js',
 			files :
 				[
-					'html/js/modernizr.min.js',
-					'html/js/jquery.min.js',
-					'html/js/base.js'
+					'html/js/src/modernizr.min.js',
+					'html/js/src/jquery.min.js',
+					'html/js/src/base.js'
 				]
 		},
 		{
@@ -25,10 +25,10 @@ var paths = {
 			destFile : 'private.min.js',
 			files :
 				[
-					'html/js/jquery-ui.min.js',
-					'html/xm/js/xm.js',
-					'html/xm/js/ajax.js',
-					'html/js/private.js'
+					'html/js/src/jquery-ui.min.js',
+					'html/xm/js/src/xm.js',
+					'html/xm/js/src/ajax.js',
+					'html/js/src/private.js'
 				]
 		},
 		// xm module
@@ -37,7 +37,7 @@ var paths = {
 			destFile : 'error_admin.min.js',
 			files :
 				[
-					'html/xm/js/error_admin.js'
+					'html/xm/js/src/error_admin.js'
 				]
 		}
 	],
@@ -118,7 +118,7 @@ gulp.task('styles', function() {
 // Rerun the task when a file changes
 gulp.task('watch', function() {
 	// watch everything in the JS dirs & sub dirs with extension .js, but exclude the .min.js files
-	gulp.watch(['html/js/**/*.js', 'html/xm/js/**/*.js', '!**/*.min.js'], ['scripts']);
+	gulp.watch(['html/js/src/**/*.js', 'html/xm/js/src/**/*.js'], ['scripts']);
 	// watch everything in the sass dirs & sub dirs with extension .scss
 	gulp.watch(['html/css/sass/**/*.scss', 'html/xm/css/sass/**/*.scss'], ['styles']);
 });
