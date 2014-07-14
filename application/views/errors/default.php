@@ -12,9 +12,10 @@ $styles = array(
 foreach ($styles as $file => $type) :
 	echo TAB, HTML::style($file, array('media' => $type)), EOL;
 endforeach;
-
-echo TAB, HTML::script('js/modernizr.min.js'), EOL;
 ?>
+	<!--[if lt IE 9]>
+	<script><?php echo include(DOCROOT . 'js' . DIRECTORY_SEPARATOR . 'html5shiv.min.js'); ?></script>
+	<![endif]-->
 </head>
 
 <body>
