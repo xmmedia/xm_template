@@ -4,6 +4,7 @@ var gulp = require('gulp'),
 	sass = require('gulp-ruby-sass'),
 	autoprefixer = require('gulp-autoprefixer'),
 	base64 = require('gulp-base64'),
+	svgmin = require('gulp-svgmin'),
 	Q = require('q');
 
 // paths & options used within the tasks
@@ -90,7 +91,7 @@ gulp.task('scripts', function(cb) {
 });
 
 // Styles
-gulp.task('styles', function() {
+gulp.task('styles', ['svgs'], function() {
 	var deferred = Q.defer();
 
 	setTimeout(function() {
@@ -113,6 +114,13 @@ gulp.task('styles', function() {
 	}, 1);
 
 	return deferred.promise;
+});
+
+// SVGs
+gulp.task('svgs', function() {
+	return gulp.src('html/images/*.svg')
+		.pipe(svgmin())
+		.pipe(gulp.dest('html/images'));
 });
 
 // Rerun the task when a file changes
