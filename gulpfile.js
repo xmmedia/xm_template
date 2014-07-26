@@ -49,7 +49,8 @@ var paths = {
 			dest : 'html/css',
 			options : {
 				style: 'compressed',
-				loadPath: 'html/xm/css/sass'
+				loadPath: 'html/xm/css/sass',
+				container : 'local_sass'
 			}
 		},
 		// xm module
@@ -57,7 +58,8 @@ var paths = {
 			src : 'html/xm/css/sass/*.scss',
 			dest : 'html/xm/css',
 			options : {
-				style: 'compressed'
+				style: 'compressed',
+				container : 'xm_sass'
 			}
 		}
 	]
