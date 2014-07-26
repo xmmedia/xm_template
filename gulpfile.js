@@ -5,6 +5,7 @@ var gulp = require('gulp'),
 	autoprefixer = require('gulp-autoprefixer'),
 	base64 = require('gulp-base64'),
 	svgmin = require('gulp-svgmin'),
+	size = require('gulp-size'),
 	Q = require('q');
 
 // paths & options used within the tasks
@@ -83,6 +84,9 @@ gulp.task('scripts', function(cb) {
 					prefix : 1,
 					sourceRoot : '/'
 				}))
+				.pipe(size({
+					showFiles: true
+				}))
 				.pipe(gulp.dest(script.dest));
 		}
 
@@ -108,6 +112,9 @@ gulp.task('styles', ['svgs'], function() {
 				.pipe(base64({
 					baseDir: 'html',
 					extensions: ['svg']
+				}))
+				.pipe(size({
+					showFiles: true
 				}))
 				.pipe(gulp.dest(style.dest));
 		}
