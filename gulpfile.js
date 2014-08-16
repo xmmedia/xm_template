@@ -49,8 +49,8 @@ var paths = {
 			src : 'html/css/sass/*.scss',
 			dest : 'html/css',
 			options : {
-				style: 'compressed',
-				loadPath: 'html/xm/css/sass',
+				style : 'compressed',
+				loadPath : 'html/xm/css/sass',
 				container : 'local_sass'
 			}
 		},
@@ -59,7 +59,7 @@ var paths = {
 			src : 'html/xm/css/sass/*.scss',
 			dest : 'html/xm/css',
 			options : {
-				style: 'compressed',
+				style : 'compressed',
 				container : 'xm_sass'
 			}
 		}
