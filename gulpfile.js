@@ -107,11 +107,14 @@ gulp.task('styles', ['svgs'], function() {
 
 			gulp.src(style.src)
 				.pipe(sass(style.options))
+				// write the files so everything is saved for autoprefixer and base64
+				.pipe(gulp.dest(style.dest))
 				.pipe(autoprefixer())
-				// inline any svg images
+				// inline any files with extensions: svg, png@datauri, or jpg#datauri
 				.pipe(base64({
-					baseDir: 'html',
-					extensions: ['svg']
+					baseDir : 'html',
+					extensions : ['svg', /\.png#datauri$/i, /\.jpg#datauri$/i],
+					maxImageSize : 8*1024 // bytes
 				}))
 				.pipe(size({
 					showFiles: true
