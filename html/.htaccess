@@ -76,8 +76,8 @@ AddCharset utf-8 .html .htm .php .atom .css .js .json .rss .vtt .xml
   RedirectMatch 403 (\,|\)\+|/\,/|\{0\}|\(/\(|\.\.\.|\+\+\+|\||\\\"\\\")
   RedirectMatch 403 \.(cgi|asp|aspx|cfg|dll|exe|jsp|mdb|sql|ini|rar)$
   RedirectMatch 403 /(contac|fpw|install|pingserver|register)\.php$
-  RedirectMatch 403 (base64|crossdomain|localhost|wwwroot|e107\_)
-  RedirectMatch 403 (eval\(|\_vti\_|\(null\)|echo.*kae|config\.xml)
+  RedirectMatch 403 (base64|localhost|wwwroot|e107\_)
+  RedirectMatch 403 (eval\(|\_vti\_|\(null\)|echo.*kae)
   RedirectMatch 403 \.well\-known/host\-meta
   RedirectMatch 403 /function\.array\-rand
   RedirectMatch 403 \)\;\$\(this\)\.html\(
