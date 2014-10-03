@@ -130,7 +130,7 @@ gulp.task('styles', ['svgs'], function() {
 
 // SVGs
 gulp.task('svgs', function() {
-	return gulp.src('html/images/*.svg')
+	return gulp.src('html/images/**/*.svg')
 		.pipe(svgmin())
 		.pipe(gulp.dest('html/images'));
 });
