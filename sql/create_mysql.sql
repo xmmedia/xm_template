@@ -561,6 +561,7 @@ INSERT INTO `group_permission` VALUES(NULL, 1, 9);
 INSERT INTO `group_permission` VALUES(NULL, 1, 11);
 INSERT INTO `group_permission` VALUES(NULL, 1, 12);
 INSERT INTO `group_permission` VALUES(NULL, 1, 13);
+INSERT INTO `group_permission` VALUES(NULL, 1, 14);
 INSERT INTO `group_permission` VALUES(NULL, 1, 15);
 INSERT INTO `group_permission` VALUES(NULL, 1, 16);
 INSERT INTO `group_permission` VALUES(NULL, 1, 17);
@@ -580,6 +581,7 @@ INSERT INTO `group_permission` VALUES(NULL, 1, 30);
 
 INSERT INTO `group_permission` VALUES(NULL, 2, 1);
 INSERT INTO `group_permission` VALUES(NULL, 2, 11);
+INSERT INTO `group_permission` VALUES(NULL, 2, 14);
 INSERT INTO `group_permission` VALUES(NULL, 2, 15);
 INSERT INTO `group_permission` VALUES(NULL, 2, 16);
 INSERT INTO `group_permission` VALUES(NULL, 2, 17);
