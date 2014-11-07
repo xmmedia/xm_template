@@ -33,7 +33,7 @@ endforeach;
 ?>
 
 	<!--[if lt IE 9]>
-	<script><?php echo include(DOCROOT . 'js' . DIRECTORY_SEPARATOR . 'html5shiv.min.js'); ?></script>
+	<script><?php echo file_get_contents(DOCROOT . 'js' . DIRECTORY_SEPARATOR . 'html5shiv.min.js'); ?></script>
 	<![endif]-->
 	<script>
 		var in_debug = <?php echo (int) DEBUG_FLAG; ?>;
