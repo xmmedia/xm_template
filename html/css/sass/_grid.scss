@@ -7,7 +7,6 @@
 	margin: 0 auto 0 auto;
 	@include respond_to_min(wide_handhelds) {
 		max-width: $max_width;
-		min-width: $min_width;
 	}
 }
 
