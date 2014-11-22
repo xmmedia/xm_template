@@ -6,7 +6,8 @@ var gulp = require('gulp'),
 	base64 = require('gulp-base64'),
 	svgmin = require('gulp-svgmin'),
 	size = require('gulp-size'),
-	Q = require('q');
+	Q = require('q'),
+	colors = require('colors');
 
 // paths & options used within the tasks
 var paths = {
@@ -107,15 +108,27 @@ gulp.task('styles', ['svgs'], function() {
 
 			gulp.src(style.src)
 				.pipe(sass(style.options))
+				.on('error', function (err) {
+					console.log('   ' + 'SASS ERROR'.underline.red);
+					console.log('   ' + err.message.underline.red);
+				})
 				// write the files so everything is saved for autoprefixer and base64
 				.pipe(gulp.dest(style.dest))
 				.pipe(autoprefixer())
+				.on('error', function (err) {
+					console.log('   ' + 'Autoprefixer ERROR'.underline.red);
+					console.log('   ' + err.message.underline.red);
+				})
 				// inline any files with extensions: svg, png@datauri, or jpg#datauri
 				.pipe(base64({
 					baseDir : 'html',
 					extensions : ['svg', /\.png#datauri$/i, /\.jpg#datauri$/i],
 					maxImageSize : 8*1024 // bytes
 				}))
+				.on('error', function (err) {
+					console.log('   ' + 'Base64 ERROR'.underline.red);
+					console.log('   ' + err.message.underline.red);
+				})
 				.pipe(size({
 					showFiles: true
 				}))
