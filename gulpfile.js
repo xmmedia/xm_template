@@ -80,11 +80,19 @@ gulp.task('scripts', function(cb) {
 				.pipe(uglify({
 					mangle : false
 				}))
+				.on('error', function (err) {
+					console.log('   ' + 'Uglify JS ERROR'.underline.red);
+					console.log('   ' + err.message.underline.red);
+				})
 				.pipe(concat(script.destFile, {
 					// remove the first directory from the paths in the sourcemap
 					prefix : 1,
 					sourceRoot : '/'
 				}))
+				.on('error', function (err) {
+					console.log('   ' + 'Concat JS ERROR'.underline.red);
+					console.log('   ' + err.message.underline.red);
+				})
 				.pipe(size({
 					showFiles: true
 				}))
