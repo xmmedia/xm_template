@@ -52,7 +52,9 @@ var paths = {
 			options : {
 				style : 'compressed',
 				loadPath : 'html/xm/css/sass',
-				container : 'local_sass'
+				container : 'local_sass',
+				// disable source maps (don't work with autoprefixer atm)
+				"sourcemap=none" : true
 			}
 		},
 		// xm module
@@ -61,7 +63,9 @@ var paths = {
 			dest : 'html/xm/css',
 			options : {
 				style : 'compressed',
-				container : 'xm_sass'
+				container : 'xm_sass',
+				// disable source maps (don't work with autoprefixer atm)
+				"sourcemap=none" : true
 			}
 		}
 	]
