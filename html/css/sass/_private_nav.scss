@@ -9,8 +9,8 @@ $nav_items: index home, admin admin, content_admin admin, user_admin admin, xm_d
 }
 /* for the menu items that have sub menus, so when they are clicked when they are also the current one, the main item doesn't stay white */
 %sub_top_nav_current { color: #0645ad; }
-$sub_nav_items: admin admin, contact_admin admin, user_admin admin, xm_db_admin admin, error_admin admin;
-@each $nav_item in $nav_items {
+$sub_nav_items: admin admin, content_admin admin, user_admin admin, xm_db_admin admin, error_admin admin;
+@each $nav_item in $sub_nav_items {
 	$page_class: nth($nav_item, 1);
 	$nav_class: nth($nav_item, 2);
 	.p_#{$page_class} .top_nav_wrapper nav ul > li.#{$nav_class} > a.clicked { @extend %sub_top_nav_current; }
