@@ -76,14 +76,19 @@ gulp.task('scripts', function(cb) {
 	var deferred = Q.defer();
 
 	setTimeout(function() {
-		var script;
+		var script, uglify_options;
 		for (var key in paths.scripts) {
 			script = paths.scripts[key];
 
+			uglify_options = {
+				mangle : false
+			};
+			for (var _key in script.uglify_options) {
+				uglify_options[_key] = script.uglify_options[_key];
+			}
+
 			gulp.src(script.files)
-				.pipe(uglify({
-					mangle : false
-				}))
+				.pipe(uglify(uglify_options))
 				.on('error', function (err) {
 					console.log('   ' + 'Uglify JS ERROR'.underline.red);
 					console.log('   ' + err.message.underline.red);
