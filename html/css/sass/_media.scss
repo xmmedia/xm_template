@@ -4,16 +4,16 @@
  */
 @mixin respond_to_min($media) {
 	@if $media == handhelds {
-		@media only screen and (min-width: 479px) { @content }
+		@media only screen and (min-width: 25em) { @content }
 	}
 	@else if $media == wide_handhelds {
-		@media only screen and (min-width: 767px) { @content }
+		@media only screen and (min-width: 48em) { @content }
 	}
 	@else if $media == tablets {
-		@media only screen and (min-width: 900px) { @content }
+		@media only screen and (min-width: 56em) { @content }
 	}
 	@else if $media == wide_tablets {
-		@media only screen and (min-width: 1025px) { @content }
+		@media only screen and (min-width: 64em) { @content }
 	}
 	@else {
 		@media only screen and (min-width: $media) { @content }
@@ -22,16 +22,16 @@
 
 @mixin respond_to($media) {
 	@if $media == handhelds {
-		@media only screen and (max-width: 479px) { @content }
+		@media only screen and (max-width: 25em) { @content }
 	}
 	@else if $media == wide_handhelds {
-		@media only screen and (max-width: 767px) { @content }
+		@media only screen and (max-width: 48em) { @content }
 	}
 	@else if $media == tablets {
-		@media only screen and (max-width: 900px) { @content }
+		@media only screen and (max-width: 56em) { @content }
 	}
 	@else if $media == wide_tablets {
-		@media only screen and (max-width: 1025px) { @content }
+		@media only screen and (max-width: 64em) { @content }
 	}
 	@else {
 		@media only screen and (max-width: $media) { @content }
