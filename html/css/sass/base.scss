@@ -8,7 +8,7 @@ $debug_msg_img: url('/xm/images/message-debug.gif');
 @include xm_all();
 /* end xm mixins */
 
-body, input { font-family: Arial, Helvetica, sans-serif; font-size: 0.8em; }
+html, input { font-family: Arial, Helvetica, sans-serif; font-size: 0.8em; }
 input { font-size: 0.9em; }
 input, select { margin: 0.2em; }
 input[type=radio], input[type=checkbox] { margin-right: 0.5em; }
