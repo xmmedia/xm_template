@@ -1,4 +1,4 @@
-@import "_vars", "_media", "_normalize", "_xm_mixins", "_xm_helpers", "_clearfix";
+@import "_vars", "_media", "_normalize", "../../xm/css/sass/_xm_mixins", "../../xm/css/sass/_xm_helpers", "_clearfix";
 
 *, *:after, *:before { box-sizing: border-box; }
 .clearfix { @extend %clearfix; }
