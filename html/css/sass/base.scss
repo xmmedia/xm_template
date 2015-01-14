@@ -18,6 +18,13 @@ h1 {
 }
 h2 { margin: 1.2em 0 0.4em 0; }
 h3, h4, h5, h6 { margin: 1.7em 0 0.1em 0; }
+h1, h2, h3 {
+	a {
+		color: inherit;
+		text-decoration: none;
+		&:hover, &:active { color: inherit; text-decoration: underline; }
+	}
+}
 p { margin: 1.3em 0; }
 address { font-style: normal; }
 label { cursor: pointer; }
