@@ -1,7 +1,8 @@
 var gulp = require('gulp'),
 	concat = require('gulp-concat-sourcemap'),
 	uglify = require('gulp-uglify'),
-	sass = require('gulp-ruby-sass'),
+	sass = require('gulp-sass'),
+	sourcemaps = require('gulp-sourcemaps'),
 	autoprefixer = require('gulp-autoprefixer'),
 	base64 = require('gulp-base64'),
 	svgmin = require('gulp-svgmin'),
@@ -50,11 +51,7 @@ var paths = {
 			src : 'html/css/sass/*.scss',
 			dest : 'html/css',
 			options : {
-				style : 'compressed',
-				loadPath : 'html/xm/css/sass',
-				container : 'local_sass',
-				// disable source maps (don't work with autoprefixer atm)
-				"sourcemap=none" : true
+				outputStyle : 'compressed'
 			}
 		},
 		// xm module
@@ -62,10 +59,7 @@ var paths = {
 			src : 'html/xm/css/sass/*.scss',
 			dest : 'html/xm/css',
 			options : {
-				style : 'compressed',
-				container : 'xm_sass',
-				// disable source maps (don't work with autoprefixer atm)
-				"sourcemap=none" : true
+				outputStyle : 'compressed'
 			}
 		}
 	]
@@ -124,19 +118,22 @@ gulp.task('styles', ['svgs'], function() {
 			style = paths.styles[key];
 
 			gulp.src(style.src)
+				.pipe(sourcemaps.init())
 				.pipe(sass(style.options))
 				.on('error', function (err) {
 					console.log('   ' + 'SASS ERROR'.underline.red);
 					console.log('   ' + err.message.underline.red);
 				})
-				// write the files so everything is saved for autoprefixer and base64
-				.pipe(gulp.dest(style.dest))
 				.pipe(autoprefixer())
 				.on('error', function (err) {
 					console.log('   ' + 'Autoprefixer ERROR'.underline.red);
 					console.log('   ' + err.message.underline.red);
 				})
-				// inline any files with extensions: svg, png@datauri, or jpg#datauri
+				.pipe(sourcemaps.write('.', {
+					includeContent : false,
+					sourceRoot : 'sass/'
+				}))
+				// inline any files with extensions: svg, png#datauri, or jpg#datauri
 				.pipe(base64({
 					baseDir : 'html',
 					extensions : ['svg', /\.png#datauri$/i, /\.jpg#datauri$/i],
