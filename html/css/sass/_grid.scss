@@ -5,12 +5,12 @@
 	background: #ddd; /* probably remove, for demo purposes */
 	padding: $grid_pad $grid_pad 0 $grid_pad;
 	margin: 0 auto 0 auto;
-	@include respond_to_min(wide_handhelds) {
+	@include mq(wide_handhelds) {
 		max-width: $max_width;
 	}
 }
 
-@include respond_to_min(wide_handhelds) {
+@include mq(wide_handhelds) {
 	/* some default columns */
 	.col { width: 100%; }
 	.col-2-3 { width: 2 / 3 * 100%; }
