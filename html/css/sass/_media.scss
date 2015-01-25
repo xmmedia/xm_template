@@ -2,15 +2,15 @@
  * mixins for media queries
  * taken from https://gist.github.com/1215856#file-6_media_queries-scss
  */
-@mixin respond_to_min($media) {
+@mixin mq($media) {
 	@if $media == handhelds {
-		@media only screen and (min-width: 25em) { @content }
+		@media only screen and (min-width: 20em) { @content }
 	}
 	@else if $media == wide_handhelds {
-		@media only screen and (min-width: 48em) { @content }
+		@media only screen and (min-width: 35em) { @content }
 	}
 	@else if $media == tablets {
-		@media only screen and (min-width: 56em) { @content }
+		@media only screen and (min-width: 48em) { @content }
 	}
 	@else if $media == wide_tablets {
 		@media only screen and (min-width: 64em) { @content }
@@ -20,15 +20,15 @@
 	}
 }
 
-@mixin respond_to($media) {
+@mixin mq_max($media) {
 	@if $media == handhelds {
-		@media only screen and (max-width: 25em) { @content }
+		@media only screen and (max-width: 20em) { @content }
 	}
 	@else if $media == wide_handhelds {
-		@media only screen and (max-width: 48em) { @content }
+		@media only screen and (max-width: 35em) { @content }
 	}
 	@else if $media == tablets {
-		@media only screen and (max-width: 56em) { @content }
+		@media only screen and (max-width: 48em) { @content }
 	}
 	@else if $media == wide_tablets {
 		@media only screen and (max-width: 64em) { @content }
@@ -38,7 +38,7 @@
 	}
 }
 
-@mixin respond_to_retina() {
+@mixin mq_retina() {
 	@media
 		only screen and (-webkit-min-device-pixel-ratio: 1.5),
 		only screen and (min-device-pixel-ratio: 1.5),

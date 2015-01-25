@@ -32,7 +32,7 @@ footer {
 	.page_top_logo {
 		@extend %clearfix;
 		float: left; margin: 1em 0 0 1em; font-size: 1.3em; font-weight: bold;
-		@include respond_to_min(wide_tablets) {
+		@include mq(wide_tablets) {
 			margin-left: 0;
 		}
 		a { display: block; color: #777; text-decoration: none; }
