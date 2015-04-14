@@ -14,7 +14,7 @@ foreach ($styles as $file => $type) :
 endforeach;
 ?>
 	<!--[if lt IE 9]>
-	<script><?php echo include(DOCROOT . 'js' . DIRECTORY_SEPARATOR . 'html5shiv.min.js'); ?></script>
+	<script><?php echo file_get_contents(DOCROOT . 'js' . DIRECTORY_SEPARATOR . 'html5shiv.min.js'); ?></script>
 	<![endif]-->
 </head>
 
